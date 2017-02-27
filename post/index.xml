@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Suraj Narwade</title>
-    <link>https://belikesuraj.github.io/post/index.xml</link>
+    <link>https://surajnarwade.github.io/post/index.xml</link>
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 03 Nov 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://belikesuraj.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://surajnarwade.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to install OpenStack-packstack from source and test individual patches locally!</title>
-      <link>https://belikesuraj.github.io/post/blog17/</link>
+      <link>https://surajnarwade.github.io/post/blog17/</link>
       <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog17/</guid>
+      <guid>https://surajnarwade.github.io/post/blog17/</guid>
       <description>&lt;p&gt;Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following &lt;a href=&#34;https://www.rdoproject.org/install/quickstart/&#34;&gt;RDO doc&lt;/a&gt;. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch &lt;a href=&#34;https://review.openstack.org/#/c/360388/&#34;&gt;https://review.openstack.org/#/c/360388/&lt;/a&gt;  about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan Kumar&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/fj_pena&#34;&gt;Javier Peña&lt;/a&gt;
 1. have used centos 7 box for this purpose.&lt;/p&gt;
 
@@ -75,10 +75,10 @@ as my target was Magnum component,&lt;/p&gt;
     
     <item>
       <title>PyCon India 2016 - Weekend I’ll never forget</title>
-      <link>https://belikesuraj.github.io/post/blog16/</link>
+      <link>https://surajnarwade.github.io/post/blog16/</link>
       <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog16/</guid>
+      <guid>https://surajnarwade.github.io/post/blog16/</guid>
       <description>&lt;p&gt;Woo! It was so exciting, because It was my First &lt;a href=&#34;https://in.pycon.org/2016/&amp;gt;`_&#34;&gt;PyCon&lt;/a&gt; ,First conference, First flight and  First time Delhi.
 1. Was so excited to meet all new people who were known  over IRC,dgplug and social media volunteer(PyCon) only.
    We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point &lt;a href=&#34;https://www.airbnb.co.in/rooms/9891304?checkin=15-11-2016&amp;amp;checkout=26-11-2016&amp;amp;guests=10&amp;amp;s=nJSEVSE5&#34;&gt;Mulberry house&lt;/a&gt; (one of my memorable places in Delhi) :P&lt;/p&gt;
@@ -98,9 +98,9 @@ The day ended with volunteer gathering, feedback session and next day planning :
 
 &lt;p&gt;Now It was time to encourage, appreciate the efforts of &lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express&lt;/a&gt; volunteers. We all gathered on the stage. It was an awesome feeling( huge round of applause) :).  We, volunteers conducted Around 88 workshops in 11 states in this python month(10th august to 10th September). Thinking of such grand success, we have decided to run this python express for all 365 days.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Much awaited keynote was delivered by &lt;a href=&#34;https://twitter.com/ghoseb&#34;&gt;Baishampayan Ghose&lt;/a&gt;, known as B.G. is the CTO of Helpshift,Inc. He discussed lots of things regarding programmer, systems, etc some of his key points were:&lt;/p&gt;
 
@@ -110,7 +110,7 @@ The day ended with volunteer gathering, feedback session and next day planning :
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
@@ -118,7 +118,7 @@ The day ended with volunteer gathering, feedback session and next day planning :
 
 &lt;p&gt;Lots of geeks were gathered and crowded  Red Hat booth, were curious about RedHat , RDOproject, solved some there queries too :)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;It was around 4.30 pm and it was time for our 2nd keynote speaker, &lt;a href=&#34;https://twitter.com/vanl&#34;&gt;Van Lindberg&lt;/a&gt; , Vice President of RackSpace.
@@ -153,21 +153,21 @@ as failure is the source of GROWTH and responding to failure is a personal respo
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;Day 2 ended with PyCon India Dinner Party for volunteers and speakers at BBQ Nation Vasant Kunj, Delhi, It was full of fun and enjoyment. Meanwhile, I found something interesting near BBQ, MINI cooper on a wall :)&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Day3&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Started with the keynote of &lt;a href=&#34;https://twitter.com/amuellerml&#34;&gt;Andreas Mueller&lt;/a&gt; (Research Engineer at the NYU Center for Data Science)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p3-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p3-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;As per Andreas,&lt;/p&gt;
@@ -185,7 +185,7 @@ After that, Kushal presented Red Hat sponsored talk on “Python in Red Hat fami
 Vote of thanks was given by anuvrat Parashar, and announcement of Next PyCon was done.
 Finally, we had #dgplug group photo, photo sessions and  goodbye with lots of memories and a good stock of knowledge, new friends. Finally thanked to my social media volunteer colleagues Shashank Aryan and Shweta Suman.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p3-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/p3-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;Thanks, Sayan, Kushal  for awesome clicks.
@@ -197,10 +197,10 @@ Finally, we had #dgplug group photo, photo sessions and  goodbye with lots of me
     
     <item>
       <title>It&#39;s our time Now !!! PythonPune July Meetup</title>
-      <link>https://belikesuraj.github.io/post/blog15/</link>
+      <link>https://surajnarwade.github.io/post/blog15/</link>
       <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog15/</guid>
+      <guid>https://surajnarwade.github.io/post/blog15/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/events/232609681/&#34;&gt;Python Pune July Meetup&lt;/a&gt; was held at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt;, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns.
 Around 40 pythonistas were present for meetups, some were students and some were professionals.
 Topics for the meetup were as below:&lt;/p&gt;
@@ -219,7 +219,7 @@ He explained about regex, it&amp;rsquo;s requirement,how to use it along with si
 
 &lt;p&gt;&lt;strong&gt;Rahul Talking about regex&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/rahul.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/rahul.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
@@ -236,7 +236,7 @@ He explained about regex, it&amp;rsquo;s requirement,how to use it along with si
 
 &lt;p&gt;&lt;strong&gt;Me talking about Automating Boring Stuff&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/suraj.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/suraj.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
@@ -248,14 +248,14 @@ He explained about regex, it&amp;rsquo;s requirement,how to use it along with si
 
 &lt;p&gt;&lt;strong&gt;Sudhir Talking on Unit Testing&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/sudhir.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/sudhir.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.
 Last Talk was Static vs. Dynamic Languages by &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;Ganesh Kadam&lt;/a&gt; , He talked about Why &lt;a href=&#34;http://blog.asciinema.org/&#34;&gt;AsciiNema&lt;/a&gt; ported back to python from Golang as well how language should be chosen depend on requirement. He also explained difference between static and dynamic languages. &lt;a href=&#34;https://docs.google.com/presentation/d/1Ier4vDqq3d9UAlyhJl5l-6dw4g_e-WH__xzhvqe0-bo/edit#slide=id.p&#34;&gt;Click here for his slides&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Ganesh Talking about Static &amp;amp; Dynamic Languages&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ganesh.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ganesh.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
@@ -263,16 +263,16 @@ Last Talk was Static vs. Dynamic Languages by &lt;a href=&#34;https://twitter.co
 
 &lt;p&gt;&lt;strong&gt;Python Pune July Meetup Group Photo&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pythonpune1.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/pythonpune1.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Jenkins Docker Integration along with Fedora Contribution</title>
-      <link>https://belikesuraj.github.io/post/blog14/</link>
+      <link>https://surajnarwade.github.io/post/blog14/</link>
       <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog14/</guid>
+      <guid>https://surajnarwade.github.io/post/blog14/</guid>
       <description>&lt;p&gt;Hello Everyone,
 From Past few days, I was studying  Jenkins,
 1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup.
@@ -293,7 +293,7 @@ provision slave
 run a single build
 tear down the slave&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/docker-jenkins.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/docker-jenkins.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Setting up the Docker host:&lt;/em&gt;&lt;/p&gt;
@@ -367,7 +367,7 @@ Creating Docker image:&lt;/p&gt;
 &lt;li&gt;&lt;p&gt;If everything sets up correctly, the &amp;ldquo;Test Connection&amp;rdquo; button should return the current version of Docker running on the host.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/screenshot.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/screenshot.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
 .&lt;/p&gt;
 
 &lt;ul&gt;
@@ -383,10 +383,10 @@ Creating Docker image:&lt;/p&gt;
     
     <item>
       <title>Why You Should Attend PyCon India 2016?</title>
-      <link>https://belikesuraj.github.io/post/blog13/</link>
+      <link>https://surajnarwade.github.io/post/blog13/</link>
       <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog13/</guid>
+      <guid>https://surajnarwade.github.io/post/blog13/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Because you are new to python&lt;/strong&gt;
 &lt;br /&gt;&lt;/li&gt;
@@ -394,7 +394,7 @@ Creating Docker image:&lt;/p&gt;
 
 &lt;p&gt;If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pycon16logo.png&#34; width=&#34;900&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/pycon16logo.png&#34; width=&#34;900&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Because you are hiring&lt;/strong&gt;
@@ -455,17 +455,17 @@ Meet new buddies, share ideas, interact with them, colloborate and work :)&lt;/p
     
     <item>
       <title>How to Setup Private Docker Registry in Fedora/CentOS ?</title>
-      <link>https://belikesuraj.github.io/post/blog11/</link>
+      <link>https://surajnarwade.github.io/post/blog11/</link>
       <pubDate>Mon, 27 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog11/</guid>
+      <guid>https://surajnarwade.github.io/post/blog11/</guid>
       <description>&lt;p&gt;When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. &lt;a href=&#34;https://hub.docker.com/&#34;&gt;Docker Hub Regitry&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;What is Private Docker Registry ?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/private.png&#34; width=&#34;500&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/private.png&#34; width=&#34;500&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;NOTE :- Docker is not required for Docker registry Server.&lt;/strong&gt;&lt;/p&gt;
 
@@ -507,7 +507,7 @@ $ systemctl enable docker-registry
 &lt;pre&gt;&lt;code&gt;$ systemctl status docker-registry
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/registry.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/registry.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Allow access to registry for Docker Client&lt;/strong&gt;&lt;/p&gt;
 
@@ -576,10 +576,10 @@ $ systemctl enable docker-registry
     
     <item>
       <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
-      <link>https://belikesuraj.github.io/post/blog12/</link>
+      <link>https://surajnarwade.github.io/post/blog12/</link>
       <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog12/</guid>
+      <guid>https://surajnarwade.github.io/post/blog12/</guid>
       <description>&lt;p&gt;Python Pune Meetup was held @ Red Hat, Pune  and that was about  Part III of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;Sudarshan Gadhave&lt;/a&gt; on 25th June 2016.&lt;/p&gt;
 
 &lt;p&gt;This time, along with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Me&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;ganesh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/s_satya4ever&#34;&gt;satyajit&lt;/a&gt; were the Event Host :)&lt;/p&gt;
@@ -621,21 +621,21 @@ Thank you !!!&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Data Science Enthusiast at Meetup:&lt;/em&gt;
 .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
-      <link>https://belikesuraj.github.io/post/blog10/</link>
+      <link>https://surajnarwade.github.io/post/blog10/</link>
       <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog10/</guid>
+      <guid>https://surajnarwade.github.io/post/blog10/</guid>
       <description>&lt;p&gt;&lt;strong&gt;What is Pycon India ?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pycon16logo.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/pycon16logo.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;When &amp;amp; Where it is happening ?&lt;/strong&gt;&lt;/p&gt;
 
@@ -687,10 +687,10 @@ New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
     
     <item>
       <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
-      <link>https://belikesuraj.github.io/post/blog9/</link>
+      <link>https://surajnarwade.github.io/post/blog9/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog9/</guid>
+      <guid>https://surajnarwade.github.io/post/blog9/</guid>
       <description>&lt;p&gt;Python Pune Meetup was held @ &lt;a href=&#34;http://amazatic.com/&#34;&gt;&lt;code&gt;Amazatic Solutions&lt;/code&gt;&lt;/a&gt;  and that was about  Part II of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;&lt;code&gt;Sudarshan Gadhave&lt;/code&gt;&lt;/a&gt; on 28th May 2016.
 Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.&lt;/p&gt;
 
@@ -762,22 +762,22 @@ Meetup was specifically targeted on python pandas as last meetup already covered
 
 &lt;p&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
-      <link>https://belikesuraj.github.io/post/blog8/</link>
+      <link>https://surajnarwade.github.io/post/blog8/</link>
       <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog8/</guid>
+      <guid>https://surajnarwade.github.io/post/blog8/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Kubernetes&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated.
 It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/kube7-logo.png&#34; width=&#34;600&#34; height=&#34;250&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/kube7-logo.png&#34; width=&#34;600&#34; height=&#34;250&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;.&lt;/p&gt;
 
@@ -839,7 +839,7 @@ $ systemctl disable firewalld
 
 &lt;p&gt;&lt;strong&gt;Setting up Kubernetes Minions (Nodes)&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/minion.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/minion.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now follow following steps to configure minion1, minion2 and minion3 .&lt;/p&gt;
 
@@ -1016,10 +1016,10 @@ For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
     
     <item>
       <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
-      <link>https://belikesuraj.github.io/post/blog7/</link>
+      <link>https://surajnarwade.github.io/post/blog7/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog7/</guid>
+      <guid>https://surajnarwade.github.io/post/blog7/</guid>
       <description>&lt;p&gt;Hello, after long time, I am writing for a good reason :P
 1. had participated in RDO bug triage day on 18th and 19th of May,
    For those who dont know what is bug triage,
@@ -1055,10 +1055,10 @@ So, I had created account on &lt;a href=&#34;http://bugzilla.redhat.com&#34;&gt;
     
     <item>
       <title>Machine Learning Begins Here !!! @ #pythonpune</title>
-      <link>https://belikesuraj.github.io/post/blog6/</link>
+      <link>https://surajnarwade.github.io/post/blog6/</link>
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog6/</guid>
+      <guid>https://surajnarwade.github.io/post/blog6/</guid>
       <description>&lt;p&gt;Data is present everywhere at malls, multiplexes, online shopping sites, dating sites, government intelligence almost everywhere that continuously needs to be monitor &amp;amp; analyse, which is very huge data, which cant be analysed by human, at that point machine learning came into picture.&lt;/p&gt;
 
 &lt;p&gt;For introduction to that &lt;em&gt;#PythonPune&lt;/em&gt; added new chapter  to its &lt;a href=&#34;http://www.meetup.com/PythonPune/events/230564006/&#34;&gt;Pythonpune Meetup&lt;/a&gt; which was held on 30 April 2016 at Red Hat office, Magarpatta.&lt;/p&gt;
@@ -1103,32 +1103,32 @@ we have used titanic data sets for example (&lt;a href=&#34;https://github.com/p
 
 &lt;p&gt;Satish Patil delivering Session on Machine Learning:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ml1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;*&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml5.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ml5.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;*&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ml3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Sudarshan Gadhave Talking about Machine Learning:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ml4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ChandanKumar talking about Fedora Scientific and OpenSource Contribution:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
-      <link>https://belikesuraj.github.io/post/blog5/</link>
+      <link>https://surajnarwade.github.io/post/blog5/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog5/</guid>
+      <guid>https://surajnarwade.github.io/post/blog5/</guid>
       <description>&lt;p&gt;April Fedora meetup was dedicated to “Unit testing”.&lt;/p&gt;
 
 &lt;p&gt;As I am into DevOps, usually i had seen various automated tests  that was carried out by jenkins are nothing but unit test but i  was always wondered what is this??
@@ -1171,8 +1171,8 @@ Kushal gave us brief idea about unit test :&lt;/p&gt;
 
 &lt;p&gt;This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/fedora.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
-&lt;img src=&#34;https://belikesuraj.github.io/fedora1.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://surajnarwade.github.io/fedora.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;img src=&#34;https://surajnarwade.github.io/fedora1.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;forget to mention above, we had tasty snacks and drinks too !!! :P
@@ -1186,10 +1186,10 @@ for more regarding unit tests, read here : &lt;a href=&#34;http://pymbook.readth
     
     <item>
       <title>Gerrit Error not Signed-off-by author/........ Resolved</title>
-      <link>https://belikesuraj.github.io/post/blog4/</link>
+      <link>https://surajnarwade.github.io/post/blog4/</link>
       <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog4/</guid>
+      <guid>https://surajnarwade.github.io/post/blog4/</guid>
       <description>&lt;p&gt;Yesterday, I was sending patch for review on gerrit, I commmited the code as follows,
 Everything works fine ;) ,&lt;/p&gt;
 
@@ -1262,10 +1262,10 @@ following error:&lt;/p&gt;
     
     <item>
       <title>So amazing when you&#39;re riding on a ray of sunshine.....</title>
-      <link>https://belikesuraj.github.io/post/blog3/</link>
+      <link>https://surajnarwade.github.io/post/blog3/</link>
       <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://belikesuraj.github.io/post/blog3/</guid>
+      <guid>https://surajnarwade.github.io/post/blog3/</guid>
       <description>&lt;p&gt;I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P.
    &lt;em&gt;‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’&lt;/em&gt;
    Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp;amp; awesome, I got to know new things every single day !!!&lt;/p&gt;

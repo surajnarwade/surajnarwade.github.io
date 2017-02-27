@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> So amazing when you&#39;re riding on a ray of sunshine..... &middot; Suraj Narwade </title>
+        <title> migration to hugo &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,44 +80,91 @@ ga('create', '75855569', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="https://surajnarwade.github.io/post/blog3/">So amazing when you&#39;re riding on a ray of sunshine.....</a></h1>
-            <span class="post-date">Mar 31, 2016 </span>
+            <h1><a href="https://surajnarwade.github.io/post/migration-to-hugo/">migration to hugo</a></h1>
+            <span class="post-date">Feb 27, 2017 </span>
             <div class="post-content">
-                <p>I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P.
-   <em>‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’</em>
-   Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp; awesome, I got to know new things every single day !!!</p>
+                <p>hello,
+I have migrated to my blog from pelican to hugo.</p>
 
-<p>Then I got a task to create Jenkins job using JJb for the unit test using nosetest,  pylint tests, I got stuck with one issue regarding master-slave handshake whereas Rishabh gave me only  hint EXPLORE THE SLAVE that was pretty awesome one. only one hint lead to clear all concepts around it. Thanks <em>Rishabh</em> for it.</p>
+<p>1.install hugo</p>
 
-<p>on 1st march, <em>Communication guidelines</em> session was taken by <em>Kushal das</em>.In this session , He told us about Netiquettes and other communication guidelines while having conversation on IRC or mailing list.</p>
+<pre><code>go get -v github.com/spf13/hugo
+</code></pre>
 
-<p>I also read <em>&ldquo;2015 Open Source Yearbook&rdquo;</em> in free time. I  got lots of ways to use ownCloud in creative ways, awesome Open hardware projects like Raspberry projects. Also, I got to know that even facebook also OpenSourcing many of their  projects like HHVM, React, RocksDB, etc. I suggest you,  go through it.</p>
+<p>2.add site</p>
 
-<p>Friday, 11 March, I had attended Tech Talk on <em>Jenkins Job Builder</em> by Anisha Narang, It was quite useful as she spoke about macros in Jenkins as well how to use the various plugins that was very useful in my projects. Thank you, <em>Anisha</em> :)</p>
+<pre><code>$ hugo new site myblog
+</code></pre>
 
-<p>In those days, I had read Ansible thoroughly Then I wrote ansible playbook , I found ansible quite beautiful tool for automation as well as it&rsquo;s very simple to use.</p>
+<p>3.check directory layout</p>
 
-<p>Tuesday 15th march, Delightful Pizza was there for Lunch, &amp; reason was for the farewell of <em>Robin Cain</em> (USA), she also shared her  past experiences with us and also guided us for our next journey.</p>
+<pre><code>$ cd myblog
+$ tree -a
+</code></pre>
 
-<p>In mid of March, Jenkins gates  were down somehow :( :( nothing gonna worked for few days. So those days, I worked on Pelican, ansible, JJB &amp;  tasty Raspberry Pi ;-)  :p</p>
+<p>4.add contents</p>
 
-<p>26 March, I was unable to attend python meetup because I had to travel to my hometown but,  fortunately, I got lucky to Attend <em>Docker birthday &amp; meetup</em> at <em>Unnati Computers, Aurangabad</em>. <em>Pushpendra Chavan</em> told briefly about docker, containers and Ashutosh Sir gave a demo of how to run a webserver using docker.</p>
+<pre><code>$ hugo new post/good-to-great.md
+</code></pre>
 
-<p>31 march, <em>Open Source</em> Session was organized by Kushal Das, Rupali Talwatkar.
-<em>Kushal Das</em>, <em>Pravin Kumar</em>, <em>Chandan Kumar</em> and <em>Rupali Talwatkar</em> shared their experiences that how they started contribution to Opensource with us which were very much motivating. they had shared very basic things like what is FAS account, how to open it, how to find your project for contribution.
-Kushal also told about why the blog is important and how it can be beneficial to maintain digital identity.</p>
+<p>5.create contents by</p>
 
-<p>I heard one good quote: <strong>Wissen ist Macht.  (Knowledge is power)</strong>     (obviously deutsch ;-) )</p>
+<pre><code>$ hugo
+</code></pre>
+
+<p>5.serve contents</p>
+
+<pre><code>hugo server
+</code></pre>
+
+<p>6.Add theme</p>
+
+<pre><code>cd themes
+</code></pre>
+
+<p>7.add your choice of theme</p>
+
+<pre><code>$ git clone https://github.com/LordMathis/hugo-theme-nix
+</code></pre>
+
+<p>8.Update <code>config.toml</code> file</p>
+
+<pre><code>[params]
+  GithubID = &quot;your_github&quot;
+  GitlabId = &quot;your_gitlab&quot;
+  TwitterID = &quot;your_twitter&quot;
+  LinkedInID = &quot;your_linkedin&quot;
+  GoogleplusID = &quot;your_googleplus&quot;
+  FacebookID = &quot;your_facebook&quot;
+  InstagramID = &quot;your instagram&quot;
+  Name = &quot;your_name&quot;
+  HeaderUsername = &quot;username&quot;
+  HeaderHostname = &quot;hostname&quot;
+  Email = &quot;your_email&quot;
+  About = &quot;info_about_you&quot;
+  ProfilePicture = &quot;profile_picture_url&quot;
+  GoogleAnalytics = &quot;your_google_analytics_id&quot;
+</code></pre>
+
+<p>9.Deploying blog to github</p>
+
+<pre><code>$ git clone git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git
+$ cp -r public/* &lt;username&gt;.github.io/
+$ cd &lt;username&gt;.github.io
+$ git add --all
+$ git commit -m'First commit'
+$ git push
+</code></pre>
 
             </div>
             
             <div class="post-comments">
                 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'surajnarwade-github-io';
-    var disqus_identifier = 'https:\/\/surajnarwade.github.io\/post\/blog3\/';
-    var disqus_title = 'So amazing when you\x27re riding on a ray of sunshine.....';
-    var disqus_url = 'https:\/\/surajnarwade.github.io\/post\/blog3\/';
+    var disqus_shortname = 'Hackers Villa';
+    var disqus_identifier = 'https:\/\/surajnarwade.github.io\/post\/migration-to-hugo\/';
+    var disqus_title = 'migration to hugo';
+    var disqus_url = 'https:\/\/surajnarwade.github.io\/post\/migration-to-hugo\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
