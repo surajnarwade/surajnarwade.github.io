@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Gerrit Error not Signed-off-by author/........ Resolved &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://belikesuraj.github.io/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://belikesuraj.github.io/>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://belikesuraj.github.io/">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://belikesuraj.github.io/post/blog4/">Gerrit Error not Signed-off-by author/........ Resolved</a></h1>
+            <span class="post-date">Apr 15, 2016 </span>
+            <div class="post-content">
+                <p>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows,
+Everything works fine ;) ,</p>
+
+<pre><code> [user@localhost project]$ git commit --amend
+ [project d9593ab] &lt;commit message here&gt;
+ Date: Thu Apr 14 17:34:53 2016 +0530
+ 1. file changed, 75 insertions(+)
+   create mode 100644 project/file.py
+</code></pre>
+
+<p>While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o
+following error:</p>
+
+<pre><code> [user@localhost project]$ git review develop
+ remote: Processing changes: refs: 1, done.
+ To ssh://user@xxxxxxxxxxxxxxxxxxxxxxxx.com:22/project
+ ! [remote rejected] HEAD -&gt; refs/publish/develop/project (not Signed-off-by author/committer/uploader in  commit message footer)
+ error: failed to push some refs to 'ssh://user@xxxxxxxxxxxxxxxxxxxxxxxxx.com:22/project'
+</code></pre>
+
+<p>After trying different methods for half an hour, we have checked commit which was as below:</p>
+
+<pre><code> &lt;commit messgae here&gt;
+ Change-Id: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+ # Please enter the commit message for your changes. Lines starting
+ # with '#' will be ignored, and an empty message aborts the commit.
+ #
+ # Date:      Thu Apr 14 17:34:53 2016 +0530
+ #
+ # On branch project
+ # Your branch is ahead of 'origin/develop' by 1 commit.
+ #   (use &quot;git push&quot; to publish your local commits)
+ #
+ # Changes to be committed:
+ #       new file:   project/file.py
+</code></pre>
+
+<p>After that we had removed Change-Id for patch set and added Signed-off-by line along with username and email id as shown below:</p>
+
+<pre><code> &lt;commit message here&gt;
+ Signed-off-by: username &lt;userid@xyz.com&gt;
+ # Please enter the commit message for your changes. Lines starting
+ # with '#' will be ignored, and an empty message aborts the commit.
+ #
+ # Date:      Thu Apr 14 17:34:53 2016 +0530
+ #
+ # On branch project
+ # Your branch is ahead of 'origin/develop' by 1 commit.
+ #   (use &quot;git push&quot; to publish your local commits)
+ #
+ # Changes to be committed:
+ #       new file:   project/file.py
+</code></pre>
+
+<p><strong>And yippee, it works !!! :-) :-)</strong></p>
+
+<pre><code> [user@localhost project]$ git review develop
+ remote: Processing changes: new: 1, refs: 1, done
+ remote:
+ remote: New Changes:
+ remote:   https://xxxxxxxxxxxxxxxxxxxx.com/gerrit/00000 &lt;commit message here&gt;
+ remote:
+ To ssh://user@xxxxxxxxxxxxxxxxxxxxxx.com:22/project
+- [new branch]      HEAD -&gt; refs/publish/develop/project
+</code></pre>
+
+<p>Thank you, <a href="https://twitter.com/ciypro">ChandanKumar</a> ++</p>
+
+            </div>
+            
+            <div class="post-comments">
+                
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

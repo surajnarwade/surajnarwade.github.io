@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> How to Setup Private Docker Registry in Fedora/CentOS ? &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://belikesuraj.github.io/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://belikesuraj.github.io/>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://belikesuraj.github.io/">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://belikesuraj.github.io/post/blog11/">How to Setup Private Docker Registry in Fedora/CentOS ?</a></h1>
+            <span class="post-date">Jun 27, 2016 </span>
+            <div class="post-content">
+                <p>When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. <a href="https://hub.docker.com/">Docker Hub Regitry</a></p>
+
+<p><strong>What is Private Docker Registry ?</strong></p>
+
+<p><em>If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.</em></p>
+
+<p><img src="/private.png" width="500" height="300" /></p>
+
+<p><strong>NOTE :- Docker is not required for Docker registry Server.</strong></p>
+
+<p>Following example shows how to deploy Docker registry on fedora(22 or later):</p>
+
+<p><strong>Setting Up a Docker Registry in Fedora</strong></p>
+
+<ul>
+<li>Install docker registry package:
+<br /></li>
+</ul>
+
+<pre><code>$ dnf install docker-registry
+</code></pre>
+
+<ul>
+<li>You may need to open TCP port 5000 to allow access to Docker registry service, assuming that you are using firewalld service.
+<br /></li>
+</ul>
+
+<pre><code>$ firewall-cmd --permanent --add-port=5000/tcp
+$ firewall-cmd --reload
+</code></pre>
+
+<ul>
+<li>Start and Enable service and begin using it.
+<br /></li>
+</ul>
+
+<pre><code>$ systemctl start docker-registry
+$ systemctl enable docker-registry
+</code></pre>
+
+<ul>
+<li>Check status of service by following command, if its active and running, then it means that docker registry is properly up and running.
+<br /></li>
+</ul>
+
+<pre><code>$ systemctl status docker-registry
+</code></pre>
+
+<p><img src="/registry.png" width="600" height="400" /></p>
+
+<p><strong>Allow access to registry for Docker Client</strong></p>
+
+<ul>
+<li>Allow docker client to access registry by making changes in <em>/etc/sysconfig/docker</em> file as following lines (As We have not used any SSL security certificate here, hence we are adding it to insecure registry field)
+<br /></li>
+</ul>
+
+<pre><code> ADD_REGISTRY='--add-registry localhost:5000'
+ INSECURE_REGISTRY='--insecure-registry localhost:5000'
+</code></pre>
+
+<ul>
+<li>Now, restart docker service:
+<br /></li>
+</ul>
+
+<pre><code>$ systemctl restart docker
+</code></pre>
+
+<ul>
+<li>Tag your private image, so that you can push it to local/private docker registry(For ex.image name is private-image)
+<br /></li>
+</ul>
+
+<pre><code>$ docker tag private-image localhost:5000/private-image:latest
+</code></pre>
+
+<ul>
+<li>Push the private image into local docker registry by typing following commands:
+<br /></li>
+</ul>
+
+<pre><code>$ docker push localhost:5000/private-image:latest
+</code></pre>
+
+<ul>
+<li>To make sure you can properly pull image from private registry, remove current image from system.
+<br /></li>
+</ul>
+
+<pre><code>$ docker rmi private-image localhost:5000/private-image:latest
+</code></pre>
+
+<ul>
+<li>Now, Try to pull image from private registry.
+<br /></li>
+</ul>
+
+<pre><code>$ docker pull localhost:5000/private-image:latest
+</code></pre>
+
+<ul>
+<li>Check Image is downloaded or not by following command &amp; it should show output as below:
+<br /></li>
+</ul>
+
+<pre><code> $ docker images
+ REPOSITORY              TAG    IMAGE ID     CREATED     VIRTUAL SIZE
+ localhost:5000/private-image latest 91c95931e552 5 weeks ago 910 B
+</code></pre>
+
+<p>Thank you !!!</p>
+
+            </div>
+            
+            <div class="post-comments">
+                
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

@@ -1,0 +1,1298 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Suraj Narwade</title>
+    <link>https://belikesuraj.github.io/post/index.xml</link>
+    <description>Recent content in Posts on Suraj Narwade</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 03 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://belikesuraj.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to install OpenStack-packstack from source and test individual patches locally!</title>
+      <link>https://belikesuraj.github.io/post/blog17/</link>
+      <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog17/</guid>
+      <description>&lt;p&gt;Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following &lt;a href=&#34;https://www.rdoproject.org/install/quickstart/&#34;&gt;RDO doc&lt;/a&gt;. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch &lt;a href=&#34;https://review.openstack.org/#/c/360388/&#34;&gt;https://review.openstack.org/#/c/360388/&lt;/a&gt;  about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan Kumar&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/fj_pena&#34;&gt;Javier Peña&lt;/a&gt;
+1. have used centos 7 box for this purpose.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Installation&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ sudo yum install -y git python-pip
+ $ git clone git://github.com/openstack/packstack.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then, I have to download that patchset, for that, I installed git-review&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ sudo pip install git-review
+ $ cd packstack
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Make sure you have configured your gerrit credentails on &lt;a href=&#34;review.openstack.org&#34;&gt;OpenStack Gerrit&lt;/a&gt; for reference, &lt;a href=&#34;http://docs.openstack.org/infra/manual/developers.html&#34;&gt;http://docs.openstack.org/infra/manual/developers.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ git remote -s # It will ask for openstack gerrit username
+ $ git review -d &amp;lt;change-id of patchset&amp;gt;
+ $ git rebase -i master
+ $ sudo python setup.py install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;installation of OpenStack-puppet-modules&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ export GEM_HOME=/tmp/somedir
+ $ sudo yum install rubygems -y
+ $ gem install r10k
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We have used sudo -E, because it preserves environment variables as we declared GEM_HOME&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ sudo -E /tmp/somedir/bin/r10k puppetfile install -v
+ $ sudo cp -r packstack/puppet/modules/packstack /usr/share/openstack-puppet/modules
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now it&amp;rsquo;s time to generate answer file and edit the  contents:
+as my target was Magnum component,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; # packstack -d --gen-answer-file=answerfile.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt; # Specify &#39;y&#39; to install OpenStack Container Service (magnum). [&#39;y&#39;,
+ # &#39;n&#39;]
+ CONFIG_MAGNUM_INSTALL=y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Run the packstack by giving path of answerfile&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; # packstack -d  --answer-file=answerfile.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this way, I tested patch with packstack locally. I will write about Magnum component in next blog post.&lt;/p&gt;
+
+&lt;p&gt;Happy Hacking!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PyCon India 2016 - Weekend I’ll never forget</title>
+      <link>https://belikesuraj.github.io/post/blog16/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog16/</guid>
+      <description>&lt;p&gt;Woo! It was so exciting, because It was my First &lt;a href=&#34;https://in.pycon.org/2016/&amp;gt;`_&#34;&gt;PyCon&lt;/a&gt; ,First conference, First flight and  First time Delhi.
+1. Was so excited to meet all new people who were known  over IRC,dgplug and social media volunteer(PyCon) only.
+   We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point &lt;a href=&#34;https://www.airbnb.co.in/rooms/9891304?checkin=15-11-2016&amp;amp;checkout=26-11-2016&amp;amp;guests=10&amp;amp;s=nJSEVSE5&#34;&gt;Mulberry house&lt;/a&gt; (one of my memorable places in Delhi) :P&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Day1&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;We reached the venue early to have delicious breakfast (Since PyCon is known for its food too) and setting up for volunteering. I volunteered &lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/demystifying-the-django-rest-framework~dBNxd/&#34;&gt;“Demystifying the Django REST Framework: Web Development”&lt;/a&gt; By &lt;a href=&#34;https://twitter.com/harisibrahimkv&#34;&gt;Haris Ibrahim K. V&lt;/a&gt;. The strength of the hall was quite good :). The workshop was really helpful as I get to know about Django also.&lt;/p&gt;
+
+&lt;p&gt;Then, we headed up for lunch. In the afternoon session, I was the volunteer lead for &lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/scaling-django-with-kubernetes~boONb/&#34;&gt;“Scaling Django with Kubernetes: Infrastructure”&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/5aket&#34;&gt;Saket Bhushan&lt;/a&gt;, I introduced Saket to the crowd and handed over the stage to him. I was aware of kubernetes, but got to know about how Django app is deployed with kubernetes as well as how to deploy kubernetes UI which helps in monitoring over the cluster. We also had hands-on session in the workshop.
+Devsprints also started on the Day1, there were lots of projects like pagure, ansible containers, sympy etc.
+Unfortunately, I was unable to attend the dev sprint due to some other work.
+The day ended with volunteer gathering, feedback session and next day planning :)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Day2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Day2 started with KG award(one of the prestigious awards in community ) felicitation ceremony to &lt;a href=&#34;https://in.pycon.org/blog/2016/Winner-of-Kenneth-Gonsalves-Award-2016.html&#34;&gt;Dr Ajith Kumar B.P&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now It was time to encourage, appreciate the efforts of &lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express&lt;/a&gt; volunteers. We all gathered on the stage. It was an awesome feeling( huge round of applause) :).  We, volunteers conducted Around 88 workshops in 11 states in this python month(10th august to 10th September). Thinking of such grand success, we have decided to run this python express for all 365 days.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Much awaited keynote was delivered by &lt;a href=&#34;https://twitter.com/ghoseb&#34;&gt;Baishampayan Ghose&lt;/a&gt;, known as B.G. is the CTO of Helpshift,Inc. He discussed lots of things regarding programmer, systems, etc some of his key points were:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Programmer think like bricklayers”&lt;/li&gt;
+&lt;li&gt;“The world is not a program, it&amp;rsquo;s a system&amp;hellip; and it&amp;rsquo;s distributed”
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, I was at Red Hat booth too, we distributed lots of stickers as well as we also introduced &lt;a href=&#34;https://www.rdoproject.org/&#34;&gt;RDO&lt;/a&gt; for the first time in a conference in India&lt;/p&gt;
+
+&lt;p&gt;Lots of geeks were gathered and crowded  Red Hat booth, were curious about RedHat , RDOproject, solved some there queries too :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;It was around 4.30 pm and it was time for our 2nd keynote speaker, &lt;a href=&#34;https://twitter.com/vanl&#34;&gt;Van Lindberg&lt;/a&gt; , Vice President of RackSpace.
+Some of the Key points from his talk :
+We should discuss failure also because it also plays essential role in software development
+as failure is the source of GROWTH and responding to failure is a personal responsibility.&lt;/p&gt;
+
+&lt;p&gt;Things that PyCon makes better:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Come to Contribute&lt;/li&gt;
+&lt;li&gt;Meet someone new&lt;/li&gt;
+&lt;li&gt;Say Thanks!
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dealing with failure:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Increase skill or capacity&lt;/li&gt;
+&lt;li&gt;Increase domain knowledge&lt;/li&gt;
+&lt;li&gt;Think more clearly and powerfully
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Avoiding Failure:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make our assumptions explicit&lt;/li&gt;
+&lt;li&gt;Test our assumptions&lt;/li&gt;
+&lt;li&gt;Embrace change
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;Day 2 ended with PyCon India Dinner Party for volunteers and speakers at BBQ Nation Vasant Kunj, Delhi, It was full of fun and enjoyment. Meanwhile, I found something interesting near BBQ, MINI cooper on a wall :)&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p2-5.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Day3&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Started with the keynote of &lt;a href=&#34;https://twitter.com/amuellerml&#34;&gt;Andreas Mueller&lt;/a&gt; (Research Engineer at the NYU Center for Data Science)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p3-1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;As per Andreas,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Machine learning is everywhere.&lt;/li&gt;
+&lt;li&gt;He discussed how machine learning is important for user experience in online shopping.&lt;/li&gt;
+&lt;li&gt;He also talked about the past, present, future also scikit-learn to package, how open source tools are changing machine learning
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In afternoon, we had &lt;a href=&#34;https://dgplug.org/&#34;&gt;dgplug&lt;/a&gt; staircase(actually ramp :P) meeting which takes place every year in PyCon India :), &lt;a href=&#34;https://twitter.com/kushaldas&#34;&gt;Kushal&lt;/a&gt; took feedback regarding summer training program. Lots of discussion happened regarding how dgplug can be better, IRC, why to contribute to opensource.
+Kushal introduced us to his mentor, &lt;a href=&#34;http://www.sirtaj.net/&#34;&gt;Sirtaj Singh Kang&lt;/a&gt; who helped him to get started with python
+After that, Kushal presented Red Hat sponsored talk on “Python in Red Hat family”, How python plays important role in Red Hat’s Opensource projects like Anaconda, RDO, ansible, etc(Pythonistas by heart)
+Vote of thanks was given by anuvrat Parashar, and announcement of Next PyCon was done.
+Finally, we had #dgplug group photo, photo sessions and  goodbye with lots of memories and a good stock of knowledge, new friends. Finally thanked to my social media volunteer colleagues Shashank Aryan and Shweta Suman.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/p3-2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;Thanks, Sayan, Kushal  for awesome clicks.
+&lt;a href=&#34;https://photos.google.com/share/AF1QipN3KFNwlrek7-YTu63RFOQ9hAdcO6VZWKOy68hrn0KUgo85PGAu8dkAKeAaQzEETQ?key=UFI3RVFuVWR3aUlUSnBsX3c5YlVJay1hR1ctUkd3&#34;&gt;Click here for photo collection from all volunteer and attendees&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Click for &lt;a href=&#34;https://www.flickr.com/photos/kushaldas/albums/72157674568352675&#34;&gt;Kushal das&amp;rsquo;s&lt;/a&gt; and &lt;a href=&#34;https://www.flickr.com/photos/sayanchowdhury/albums/72157674406421245&#34;&gt;Sayan Chowdhary&amp;rsquo;s&lt;/a&gt; clicks.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>It&#39;s our time Now !!! PythonPune July Meetup</title>
+      <link>https://belikesuraj.github.io/post/blog15/</link>
+      <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog15/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/events/232609681/&#34;&gt;Python Pune July Meetup&lt;/a&gt; was held at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt;, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns.
+Around 40 pythonistas were present for meetups, some were students and some were professionals.
+Topics for the meetup were as below:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;How do I automate boring stuff using Python?&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj Narwade&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Writing unit tests for any Python Script&lt;/em&gt; by &lt;a href=&#34;https://www.facebook.com/sudhirvverma&#34;&gt;Sudhir Verma&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Static v/s Dynamically typed languages&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;Ganesh Kadam&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Regular Expressions in Python&lt;/em&gt; by &lt;a href=&#34;https://www.facebook.com/rahul.bajaj.7568596?fref=ts&#34;&gt;Rahul Bajaj&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.
+He explained about regex, it&amp;rsquo;s requirement,how to use it along with simple examples.
+&lt;a href=&#34;https://rahulbajaj05.files.wordpress.com/2016/08/regular_expression_python_pune.pdf&#34;&gt;Click here for Rahul&amp;rsquo;s slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rahul Talking about regex&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/rahul.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;I explained about how I automate daily boring stuffs as well as I explained how I automate Pycon India volunteering tasks (in which python script automatically tweets about talk proposal voting every 2 hour as well as retweet PyCon tweets automatically),&lt;/p&gt;
+
+&lt;p&gt;Links  for my talk:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Script for volunteering PyCon India&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/surajnarwade/&#34;&gt;Gist of all small scripts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1DyM4B2blTCUkzsg9vGfSBQx_KUlVGTj_31v6JMt7KLk/edit?usp=sharing&#34;&gt;sildes&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Me talking about Automating Boring Stuff&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/suraj.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt; extended my topic and asked pythonistas to share their ideas regarding  boring stuff in their day to day life. we collected those ideas in etherpad and will work on it soon. &lt;a href=&#34;https://etherpad.openstack.org/p/boring_scripts&#34;&gt;Click here for etherpad&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As Unit Testing is known as important part of software development process, We can determine the working of code and how it will react to various inputs. It is an excellent way to detect defects and refactor the code. &lt;a href=&#34;https://www.facebook.com/sudhirvvermaa&#34;&gt;Sudhir&lt;/a&gt; explained unit test, its working along with simple &lt;a href=&#34;https://github.com/sudhirverma/unittest&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1A0Ccay1D2oHg5m3uxyDgiI27KgFyMrBaCj6uxSjV1-s/edit#slide=id.g16008e6350_0_47&#34;&gt;Click Here for his slides.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sudhir Talking on Unit Testing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/sudhir.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.
+Last Talk was Static vs. Dynamic Languages by &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;Ganesh Kadam&lt;/a&gt; , He talked about Why &lt;a href=&#34;http://blog.asciinema.org/&#34;&gt;AsciiNema&lt;/a&gt; ported back to python from Golang as well how language should be chosen depend on requirement. He also explained difference between static and dynamic languages. &lt;a href=&#34;https://docs.google.com/presentation/d/1Ier4vDqq3d9UAlyhJl5l-6dw4g_e-WH__xzhvqe0-bo/edit#slide=id.p&#34;&gt;Click here for his slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ganesh Talking about Static &amp;amp; Dynamic Languages&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ganesh.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally Chandan told about Openstack community and took positive feedbacks regarding meetup from attendees and discussed about upcoming meetups. Thank You &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat Pune&lt;/a&gt; for organizing this meetup.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Python Pune July Meetup Group Photo&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pythonpune1.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Docker Integration along with Fedora Contribution</title>
+      <link>https://belikesuraj.github.io/post/blog14/</link>
+      <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog14/</guid>
+      <description>&lt;p&gt;Hello Everyone,
+From Past few days, I was studying  Jenkins,
+1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup.
+   So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.I have experimented it and I managed to contributr Jenkins fedora slave image to Fedora Cloud, &lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Few Reasons for Container based slaves:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Each image provides a clean environment in which a build can be run.&lt;/li&gt;
+&lt;li&gt;They are relatively lightweight (compared to a full VM&lt;/li&gt;
+&lt;li&gt;They can be saved/tagged to provide a record of the resulting build output
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What Jenkins docker plugin does ?
+it will able to use docker host so that it will dynamically
+provision slave
+run a single build
+tear down the slave&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/docker-jenkins.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Setting up the Docker host:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure that Firewall is disabled
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; sudo systemctl stop firewalld
+ sudo systemctl disable firewalld
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install docker engine
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; sudo dnf update -y
+ sudo dnf install docker -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Replace following lines with &amp;ldquo;ExecStart&amp;rdquo; under [Service] section in &lt;em&gt;/usr/lib/systemd/system/docker.service&lt;/em&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; ExecStart=
+ ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2376
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start Docker daemon
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;dl&gt;
+  &lt;dt&gt; :  : &lt;/dt&gt;
+  &lt;dd&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    sudo systemctl daemon-reload
+    sudo systemctl start docker
+    sudo systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+Creating Docker image:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recently, I have submitted docker image in dockerhub, so you can pull that image using following command,
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; docker pull surajnarwade/jenkins-fedora-slave
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Same image(Dockerfile) I requested to merge in Fedora-cloud, and the community happily accepted it, Hence my first Fedora Contribution :)&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Click Here&lt;/a&gt; to access my contributed Dockerfile on fedora cloud.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Download &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin&#34;&gt;Jenkins Docker plugin&lt;/a&gt; in Jenkins, goto &amp;ldquo;Manage Jenkins&amp;rdquo;-&amp;gt;&amp;ldquo;Configure System&amp;rdquo;, Scroll Down to bottom of the page, you should find an option to &amp;ldquo;Add a new cloud&amp;rdquo;, Click on it and select Docker option.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Docker URL should point to IP address of Docker host.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put name of Docker image in ID field.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put &amp;lsquo;label&amp;rsquo; Labels field, so that Jenkins projects identify this as docker cloud provider.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If everything sets up correctly, the &amp;ldquo;Test Connection&amp;rdquo; button should return the current version of Docker running on the host.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/screenshot.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Put label of Docker Cloud in Label Expression field in Project configurations, so now Jenkins should start up a new Docker container, run the build, and then shut down the container.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Conclusion&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The integration between Jenkins and Docker is still at development stage, so it may take some time and efforts to get them working nicely together. Capability to start new build from clean image is very important thing when it comes to point of reproducible builds.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Why You Should Attend PyCon India 2016?</title>
+      <link>https://belikesuraj.github.io/post/blog13/</link>
+      <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog13/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Because you are new to python&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pycon16logo.png&#34; width=&#34;900&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Because you are hiring&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.
+Sponsering PyCon india is the best way to get noticed by these pythonistas.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Because you want to meet pythonist whom you just know by IRC nick&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Come out of your cubicle/from your dark room and meet those people whom you just know by IRC nick, people who solved your queries once ! :)
+Meet new buddies, share ideas, interact with them, colloborate and work :)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Because you want to know what are the latest trends that pythonists are working on&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Excellent talks will be presented which will let you know about latest trends, also you will get to know various interesting, new things at PyCon india.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;click here to vote for your favourite proposal&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Because it&amp;rsquo;s time for Delhi&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Awesome place, crowdy, delicious street foods and it&amp;rsquo;s capital city  :)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Last but not the least, Because you want to taste Delicious Food&lt;/strong&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Don&amp;rsquo;t miss delicious food, which will keep you up for whole day event :P&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Follow&lt;/strong&gt; &lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Pycon India&lt;/a&gt;  &lt;strong&gt;on twitter for more upcoming updates&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;If you havn&amp;rsquo;t registered yet for PyCon India&lt;/strong&gt;, &lt;a href=&#34;https://in.explara.com/e/pycon-india-2016&#34;&gt;Click here to grab your ticket&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Me ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Suraj Narwade&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Proudly, OpenSource Contributor and Volunteer for PyCon India 2016&lt;/p&gt;
+
+&lt;p&gt;IRC nick - snarwade&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to Setup Private Docker Registry in Fedora/CentOS ?</title>
+      <link>https://belikesuraj.github.io/post/blog11/</link>
+      <pubDate>Mon, 27 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog11/</guid>
+      <description>&lt;p&gt;When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. &lt;a href=&#34;https://hub.docker.com/&#34;&gt;Docker Hub Regitry&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What is Private Docker Registry ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/private.png&#34; width=&#34;500&#34; height=&#34;300&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE :- Docker is not required for Docker registry Server.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Following example shows how to deploy Docker registry on fedora(22 or later):&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setting Up a Docker Registry in Fedora&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install docker registry package:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ dnf install docker-registry
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You may need to open TCP port 5000 to allow access to Docker registry service, assuming that you are using firewalld service.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ firewall-cmd --permanent --add-port=5000/tcp
+$ firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start and Enable service and begin using it.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ systemctl start docker-registry
+$ systemctl enable docker-registry
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check status of service by following command, if its active and running, then it means that docker registry is properly up and running.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ systemctl status docker-registry
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/registry.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Allow access to registry for Docker Client&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Allow docker client to access registry by making changes in &lt;em&gt;/etc/sysconfig/docker&lt;/em&gt; file as following lines (As We have not used any SSL security certificate here, hence we are adding it to insecure registry field)
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; ADD_REGISTRY=&#39;--add-registry localhost:5000&#39;
+ INSECURE_REGISTRY=&#39;--insecure-registry localhost:5000&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now, restart docker service:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tag your private image, so that you can push it to local/private docker registry(For ex.image name is private-image)
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker tag private-image localhost:5000/private-image:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Push the private image into local docker registry by typing following commands:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker push localhost:5000/private-image:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To make sure you can properly pull image from private registry, remove current image from system.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker rmi private-image localhost:5000/private-image:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now, Try to pull image from private registry.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker pull localhost:5000/private-image:latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check Image is downloaded or not by following command &amp;amp; it should show output as below:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; $ docker images
+ REPOSITORY              TAG    IMAGE ID     CREATED     VIRTUAL SIZE
+ localhost:5000/private-image latest 91c95931e552 5 weeks ago 910 B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thank you !!!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
+      <link>https://belikesuraj.github.io/post/blog12/</link>
+      <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog12/</guid>
+      <description>&lt;p&gt;Python Pune Meetup was held @ Red Hat, Pune  and that was about  Part III of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;Sudarshan Gadhave&lt;/a&gt; on 25th June 2016.&lt;/p&gt;
+
+&lt;p&gt;This time, along with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Me&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;ganesh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/s_satya4ever&#34;&gt;satyajit&lt;/a&gt; were the Event Host :)&lt;/p&gt;
+
+&lt;p&gt;Meetup was specifically targeted as hackathon based on python pandas and numpy what we have covered in previous meetup.&lt;/p&gt;
+
+&lt;p&gt;Meetup was titled as &lt;em&gt;Data DOJO&lt;/em&gt;,(a bit weird) it means practicing and developing skills along with brainstorming ideas, real time problems to solve.&lt;/p&gt;
+
+&lt;p&gt;Around 25 peoples were there, some were to new, some were intermediate for data science. But, most of the people were familiar with python. We at DATA DOJO, gave them opportunity to learn python-pandas, matplotlib, basic data science operations.&lt;/p&gt;
+
+&lt;p&gt;Few Peoples presented their work on data sets, and got awesome goodies too :)
+we have used following data sets for example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;Adult Data Setshttp://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data&#34;&gt;Adult data Set&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://data.gov.in/resources/indian-railways-time-table-trains-available-reservation-03082015/download&#34;&gt;Train Data set&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Links for work done by attendees as following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/vksgaikwad3/pypunedojo&#34;&gt;Vikas Gaikwad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ketulgupta1995/Python-Data-Dojo&#34;&gt;Ketul Gupta&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/chaiku/PyPuneDataDojo2016&#34;&gt;Chaitanya Kukde&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tanayseven/python_data_dojo&#34;&gt;Tanay Prabhudesai&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Congrats people :)&lt;/p&gt;
+
+&lt;p&gt;Those who missed previous meetups can follow these links : &lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Our next meetup will be last part of Data science series based on &lt;a href=&#34;http://scikit-learn.org/stable/&#34;&gt;scikit-learn&lt;/a&gt;
+Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!
+If any suggestions are there, Feel free to contact us !!!
+Thank you !!!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Data Science Enthusiast at Meetup:&lt;/em&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
+      <link>https://belikesuraj.github.io/post/blog10/</link>
+      <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog10/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;What is Pycon India ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/pycon16logo.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;When &amp;amp; Where it is happening ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;23-25 Sepetember 2016&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Convention Centre
+Jawahar Lal Nehru University,
+New Mehrauli Road, Near Munirka,
+New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why to Sponser Us ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;dl&gt;
+  &lt;dt&gt;The attendees of PyCon India will include professional developers from large enterprises and smaller firms as well as people from academia. Delegates come to present their latest developments. With Python already becoming a major enterprise programming language and platform, sponsoring PyCon India 2016 is an excellent opportunity to demonstrate industry leadership in this part of the world. The attendance of PyCon India 2016 is expected to be between 1200 and 1350 delegates.&lt;/dt&gt;
+  &lt;dd&gt;PyCon India attendees sometimes require assistance with expenses especially student attendees, and sponsorship enables us to support those who would otherwise be unable to attend.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Are you Pythonist, wanna talk, Submit proposal NOW !!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CFP for #pyconindia are open! Following is link to submit talk proposal as well as guidelines are also provided.
+&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;Click here to submit your talk proposal&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(Last date for submission is 29th June, 2016)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Before you submit, Have a look at this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=uH_-_mrksV4&amp;amp;feature=youtu.be&#34;&gt;A Hypocrite’s Guide to Public Speaking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL6GW05BfqWIe6rMoFFWmllPegB2gU069m&#34;&gt;Pycon India 2015 talks&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;For more contact&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IRC - &lt;a href=&#34;https://webchat.freenode.net/?channels=%23python-india&#34;&gt;#python-india&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mail.python.org/mailman/listinfo/inpycon&#34;&gt;Subscribe to Mailing List&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.facebook.com/PyConIndia/?fref=ts&#34;&gt;Facebook&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Who Am I ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Pycon India Social Media Volunteer&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
+      <link>https://belikesuraj.github.io/post/blog9/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog9/</guid>
+      <description>&lt;p&gt;Python Pune Meetup was held @ &lt;a href=&#34;http://amazatic.com/&#34;&gt;&lt;code&gt;Amazatic Solutions&lt;/code&gt;&lt;/a&gt;  and that was about  Part II of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;&lt;code&gt;Sudarshan Gadhave&lt;/code&gt;&lt;/a&gt; on 28th May 2016.
+Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.&lt;/p&gt;
+
+&lt;p&gt;Sudarshan started from Required tools/libraries for machine learning :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ipython&lt;/li&gt;
+&lt;li&gt;numpy&lt;/li&gt;
+&lt;li&gt;python-pandas&lt;/li&gt;
+&lt;li&gt;python-scikit-learn&lt;/li&gt;
+&lt;li&gt;matplotlib
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;These are best opensource alternatives to softwares like MATLAB !!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Machine learning is all about technical,business and statistics. if there is small data sets. that can be done manually, but if there are thousands of rows and columns in data stats, then what ? most of the time of Data Scientists is consumed to get the data,analyze the data,sepeartion of data,and cleaning of data, that means almost 70% of the total work in intial phase. Later comes the actual business logic and model building.&lt;/p&gt;
+
+&lt;p&gt;we have used titanic data sets for example (&lt;a href=&#34;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&#34;&gt;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Then, Following things we have covered:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Numpy basics&lt;/li&gt;
+&lt;li&gt;Pandas Data Structures and basics&lt;/li&gt;
+&lt;li&gt;Data Loading&lt;/li&gt;
+&lt;li&gt;Data Wrangling (Clean, Transform, Merge)&lt;/li&gt;
+&lt;li&gt;Data Aggregation and grouping operations&lt;/li&gt;
+&lt;li&gt;Exploratory Data Analysis and Descriptive Statistics&lt;/li&gt;
+&lt;li&gt;Plotting and Visualization
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Features/comarison of Numpy &amp;amp; pandas:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;numpy:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;built for fast array processing, vector operations&lt;/li&gt;
+&lt;li&gt;15 times faster then list&lt;/li&gt;
+&lt;li&gt;made for scientific calculations
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;python pandas :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Datastructure series - 1d numpy array stores data. its like column in dataframe context&lt;/li&gt;
+&lt;li&gt;series also has the index and the value&lt;/li&gt;
+&lt;li&gt;We can change the values in series using index&lt;/li&gt;
+&lt;li&gt;Dataframe is collection of series like excel sheet&lt;/li&gt;
+&lt;li&gt;More the memory More data can be analysed in python pandas
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/version/0.15.2/tutorials.html&#34;&gt;Click Here to know more about pandas from beginning&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We also discussed about the Matplotlib,Matplotlib is the library used to mainly produce the charts related to the data. You can generate plots, histograms, power spectra, bar charts, errorcharts, scatterplots, etc, with just a few lines of code. I found this as good and free alternative to MATLAB.&lt;/p&gt;
+
+&lt;p&gt;Sudarshan Suggested to go through this book to know more &amp;amp; from very basics towards machine learning as well Data science:
+&lt;a href=&#34;http://www.cin.ufpe.br/~embat/Python%20for%20Data%20Analysis.pdf&#34;&gt;Python for data Analysis&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Those who missed meetup can follow these links :
+&lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thank you &lt;a href=&#34;http://amazatic.com/&#34;&gt;Amazatic Solutions&lt;/a&gt;, and Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Selfie @meetup @Amazatic by Sudarshan:&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
+      <link>https://belikesuraj.github.io/post/blog8/</link>
+      <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Kubernetes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated.
+It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/kube7-logo.png&#34; width=&#34;600&#34; height=&#34;250&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this blog post, we’ll install a Kubernetes cluster with three minions on Fedora 23, we will also see example on how to manage pods.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt;
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ systemctl stop firewalld
+$ systemctl disable firewalld
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Setting up the Kubernetes Master&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1.Install etcd and kubernetes using dnf
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ dnf -y install etcd kubernetes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.Configure etcd to listen all IP addresses, Following lines are to be uncommented and assigned with respective values in  /etc/etcd/etcd.conf:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ETCD_NAME=default
+ ETCD_DATA_DIR=&amp;quot;/var/lib/etcd/default.etcd&amp;quot;
+ ETCD_LISTEN_CLIENT_URLS=&amp;quot;http://0.0.0.0:2379&amp;quot;
+ ETCD_ADVERTISE_CLIENT_URLS=&amp;quot;http://localhost:2379
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.Configure Kubernetes API server by editing /etc/kubernetes/apiserver as below:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; KUBE_API_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
+ KUBE_API_PORT=&amp;quot;--port=8080&amp;quot;
+ KUBELET_PORT=&amp;quot;--kubelet_port=10250&amp;quot;
+ KUBE_ETCD_SERVERS=&amp;quot;--etcd_servers=http://127.0.0.1:2379&amp;quot;
+ KUBE_SERVICE_ADDRESSES=&amp;quot;--service-cluster-ip-range=10.254.0.0/16&amp;quot;
+ KUBE_ADMISSION_CONTROL=&amp;quot;--admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota&amp;quot;
+ KUBE_API_ARGS=&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.We have to Start and enable these servies; etcd, kube-apiserver, kube-controller-manager and kube-scheduler:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   $ for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler; do
+    systemctl restart $SERVICES
+    systemctl enable $SERVICES
+    systemctl status $SERVICES
+    done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;5.We have to Define flannel network configuration in etcd. This configuration will be pulled by flannel service on minions, it is used for internetwork communication in containers:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ etcdctl mk /atomic.io/network/config &#39;{&amp;quot;Network&amp;quot;:&amp;quot;172.17.0.0/16&amp;quot;}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setting up Kubernetes Minions (Nodes)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/minion.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now follow following steps to configure minion1, minion2 and minion3 .&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install flannel and Kubernetes using dnf:
+::
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ dnf -y install flannel kubernetes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Update the following line in /etc/sysconfig/flanneld to connect to the respective master(via flannel service):
+::
+&lt;code&gt;
+FLANNEL_ETCD=&amp;quot;http://10.3.3.171:2379&amp;quot;
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Update KUBE_MASTER in /etc/kubernetes/config to Kubernetes master API server for connection:
+::
+&lt;code&gt;
+KUBE_MASTER=&amp;quot;--master=http://10.3.13.171:8080&amp;quot;
+&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;4.Configure kubelet service by editing  /etc/kubernetes/kubelet on each minion as following:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Minion1:&lt;/em&gt;
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
+ KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
+ # change the hostname to this host’s IP address
+ KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.172&amp;quot;
+ KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
+ KUBELET_ARGS=&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Minion2:&lt;/em&gt;
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
+ KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
+ # change the hostname to this host’s IP address
+ KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.173&amp;quot;
+ KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
+ KUBELET_ARGS=&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Minion3:&lt;/em&gt;
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
+ KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
+ # change the hostname to this host’s IP address
+ KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.174&amp;quot;
+ KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
+ KUBELET_ARGS=&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;We have to Start and enable kube-proxy, kubelet, docker and flanneld services on each minion:
+::
+&lt;code&gt;
+ $ for SERVICES in kube-proxy kubelet docker flanneld; do
+   systemctl restart $SERVICES
+systemctl enable $SERVICES
+systemctl status $SERVICES
+done
+&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;On each minion, you can check that you will have two new interfaces added, docker0 and flannel0. You can check different range of IP addresses on flannel0 interface on each minion, you can check it by following command on each minion:
+::
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ip a | grep flannel | grep inet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;if all the services are started correctly, Hence, Everything is set now, we can check minion status as following:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ kubectl get nodes
+ NAME          STATUS    AGE
+ 10.3.3.172   Ready     10m
+ 10.3.3.173   Ready     12m
+ 10.3.3.174   Ready     15m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will create a simple pod definition like this below(pod is nothing but group of containers)
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; #pod-nginx.yaml
+ apiVersion: v1
+ kind: Pod
+   metadata : 
+  name: nginx
+   spec : 
+    containers:
+    - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a pod containing an nginx server (pod-nginx.yaml):
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ kubectl create -f ./pod-nginx.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can check output at:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ curl http://$(kubectl get pod nginx -o go-template={{.status.podIP}})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To List all pods:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ kubectl get pods
+ NAME          READY     STATUS    RESTARTS   AGE
+ nginx         1/1       Running   0          2m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To replicate the container, for example:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; apiVersion: v1
+ kind: ReplicationController
+ metadata : 
+  name: nginx
+  spec : 
+    replicas: 3
+    selector:
+    app: nginx
+    template:
+    metadata:
+    labels:
+    app: nginx
+    spec:
+    containers:
+    - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then pods will be listed as,(containers will be spinned on all minions in cluster way)
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ sudo kubectl get pods
+ NAME          READY     STATUS    RESTARTS   AGE
+ nginx-1z3lw   1/1       Running   0          3m
+ nginx-343jk   1/1       Running   0          3m
+ nginx-s9gt8   1/1       Running   0          3m
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can Delete the pod by name as following:
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ kubectl delete pod nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can check all logs(events) as following :
+::&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; $ kubectl get events
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thank You !!!
+For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
+      <link>https://belikesuraj.github.io/post/blog7/</link>
+      <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog7/</guid>
+      <description>&lt;p&gt;Hello, after long time, I am writing for a good reason :P
+1. had participated in RDO bug triage day on 18th and 19th of May,
+   For those who dont know what is bug triage,
+   Have a look at it:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.rdoproject.org/community/rdo-bugtriage/&#34;&gt;https://www.rdoproject.org/community/rdo-bugtriage/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;(I also came to know it just day before yesterday :-))&lt;/p&gt;
+
+&lt;p&gt;As a newbie to RDO community, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/matrunge&#34;&gt;Matthias Runge&lt;/a&gt; guided me to what to do there.
+So, I had created account on &lt;a href=&#34;http://bugzilla.redhat.com&#34;&gt;http://bugzilla.redhat.com&lt;/a&gt;, Then I joined &lt;em&gt;#rdo&lt;/em&gt;, people out there also helped me in getting things done.&lt;/p&gt;
+
+&lt;p&gt;So I reviewed few bugs and then &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; told me, how to triaged it. Mostly I picked  following bugs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Almost one bug for each component like cinder, glance, keystone and heat.
+1. found one missing dependency So I got to fix that bug. So, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;  helped me to setup DLRN which maintains yum repositories of Openstack upstream (RDO).
+   And for one bug &lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;, I have sent patch which is under review(&lt;a href=&#34;https://review.rdoproject.org/r/#/c/1172/&#34;&gt;https://review.rdoproject.org/r/#/c/1172/&lt;/a&gt;) right now.
+   Once it approves, this will be my first contribution to RDO project. :-)
+2. have learnt alot in these two days as where is Openstack repositories is maintained and how dependencies are kept. Now, onwards, I will regularly participate in bug triage days.&lt;/p&gt;
+
+&lt;p&gt;My next blog will be on how to setup &lt;a href=&#34;http://dlrn.readthedocs.io/en/latest/&#34;&gt;DLRN&lt;/a&gt; to Contribute in RDO, Till then, Stay tuned. Be happy. Contribute to OPenSource. :P&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here !!! @ #pythonpune</title>
+      <link>https://belikesuraj.github.io/post/blog6/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog6/</guid>
+      <description>&lt;p&gt;Data is present everywhere at malls, multiplexes, online shopping sites, dating sites, government intelligence almost everywhere that continuously needs to be monitor &amp;amp; analyse, which is very huge data, which cant be analysed by human, at that point machine learning came into picture.&lt;/p&gt;
+
+&lt;p&gt;For introduction to that &lt;em&gt;#PythonPune&lt;/em&gt; added new chapter  to its &lt;a href=&#34;http://www.meetup.com/PythonPune/events/230564006/&#34;&gt;Pythonpune Meetup&lt;/a&gt; which was held on 30 April 2016 at Red Hat office, Magarpatta.&lt;/p&gt;
+
+&lt;p&gt;Almost 70-80 peoples were there(which was unexpected for us). :P&lt;/p&gt;
+
+&lt;p&gt;Very few peoples which were present who know machine learning. Rest of people doesn&amp;rsquo;t know but interested to learn . I was also interested to learn machine learning after watching blockbuster &amp;ldquo;person of Interest&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Speakers of meetup were &lt;a href=&#34;https://twitter.com/DataGeekSatish&#34;&gt;Satish Patil&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/sudarshan1989&#34;&gt;Sudarshan Gadhave&lt;/a&gt;  who gave Introduction on Machine Learning.
+Satish is a founder and chief data scientist of Lemoxo Technologies, where he advises companies large and small on their data strategy.
+He holds a Ph.D. from the University of Minnesota, USA. Over the last 4 years, Satish has helped global pharma, e-commerce giants &amp;amp; startups to solve complex data problems to drive the meaningful business outcome.
+His core competency lies in applied math and statistical modelling, machine learning, deep learning and data visualisation.
+Satish is passionate about applying math, technology, design thinking and cognitive science to better understand, predict and improve business functions.
+Sudarshan  works @ NEC as data scientist.&lt;/p&gt;
+
+&lt;p&gt;Machine learning is all about technical,business and statistics.
+In this session, we learnt basics of machine learning and how to implement machine learning algorithms on your data sets using Python and Scikit-Learn. also we learnt:
+The Black Box of Machine Learning,features,tupules,training and test data set,classification,clustering,pure &amp;amp; impure states,entropy,decision tree, supervised and unsupervised learning, market basket analysis, data pre-processing, K means algorithm.
+we have used titanic data sets for example (&lt;a href=&#34;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&#34;&gt;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Required tools/libraries for machine learning :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;numpy&lt;/li&gt;
+&lt;li&gt;python-pandas&lt;/li&gt;
+&lt;li&gt;python-scikit-learn&lt;/li&gt;
+&lt;li&gt;ipython
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; talked about &lt;a href=&#34;https://labs.fedoraproject.org/&#34;&gt;Fedora Labs&lt;/a&gt;. Fedora labs have the selection of curated bundles of purpose-driven software and content as curated and maintained by members of the Fedora Community. These may be installed as standalone full versions of Fedora or as add-ons to existing Fedora installations. From fedora-labs, we were focused on &lt;a href=&#34;https://labs.fedoraproject.org/en/scientific/&#34;&gt;Fedora Scientific&lt;/a&gt; (open source software computing) which comes with featured application like ipython, pandas, Gnuplot, Matplotlib, R , latex, etc can be useful for machine learning.&lt;/p&gt;
+
+&lt;p&gt;To download fedora Scientific, &lt;a href=&#34;https://download.fedoraproject.org/pub/alt/releases/23/Spins/x86_64/Fedora-Live-Scientific_KDE-x86_64-23-10.iso&#34;&gt;Click Here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you need any help, you can ping on &lt;em&gt;#fedora-science&lt;/em&gt; channel on Freenode in IRC.&lt;/p&gt;
+
+&lt;p&gt;Red Hat was sponser for food, beverages, and venue. Thanks to &lt;a href=&#34;https://twitter.com/DataGeekSatish&#34;&gt;Satish Patil&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/sudarshan1989&#34;&gt;Sudarshan Gadhave&lt;/a&gt; for conducting an interesting workshop! We hope to see more such workshops by you in upcoming meetups.&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;Praveen Kumar&lt;/a&gt;  for organising such interesting meetups !!!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Still from Meetup :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Satish Patil delivering Session on Machine Learning:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;*&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml5.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;*&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sudarshan Gadhave Talking about Machine Learning:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ChandanKumar talking about Fedora Scientific and OpenSource Contribution:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
+      <link>https://belikesuraj.github.io/post/blog5/</link>
+      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog5/</guid>
+      <description>&lt;p&gt;April Fedora meetup was dedicated to “Unit testing”.&lt;/p&gt;
+
+&lt;p&gt;As I am into DevOps, usually i had seen various automated tests  that was carried out by jenkins are nothing but unit test but i  was always wondered what is this??
+Kushal gave us brief idea about unit test :&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;as well unit test gives you opportunity to scrutinize your own code for proper operation.&lt;/p&gt;
+
+&lt;p&gt;And also he gave an example of unit test for ‘cat’ command, for that we cloned &lt;a href=&#34;https://github.com/kushaldas/tunirtests&#34;&gt;https://github.com/kushaldas/tunirtests&lt;/a&gt; ( as we had to used some functions from these files )&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; import unittest
+ from testutils import system
+ class Firetest(unittest.TestCase): 
+    def test_cat(self):
+    	out,err,retcode= system(&amp;quot;cat /etc/fedora-release&amp;quot;)
+    	out = out.decode(&#39;utf-8&#39;)
+    	self.assertIn(&#39;Fedora&#39;,out)
+ if __name__ == &#39;__main__&#39; :
+     unittest.main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, Kushal and Pravin gave different test cases to each one of us, I got test case to check selinux context of file ( i.e. restorecon command ) whether we are getting same result after &amp;lsquo;restorecon&amp;rsquo; or not:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; import unittest
+ from testutils import system
+ class Firetest(unittest.TestCase) : 
+    def test_selinux(self):
+        out,err,retcode= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
+        out = out.decode(&#39;utf-8&#39;)
+        out1,err1,retcode1= system(&amp;quot;restorecon -v /var/www/html/index.html&amp;quot;)
+        out2,err2,retcode2= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
+        out2 = out2.decode(&#39;utf-8&#39;)
+        self.assertEqual(out,out2)
+ if __name__ == &#39;__main__&#39; : 
+    unittest.main()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As I was new to fedora meetup, i got connected with new friends too.&lt;/p&gt;
+
+&lt;p&gt;This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://belikesuraj.github.io/fedora.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
+&lt;img src=&#34;https://belikesuraj.github.io/fedora1.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;forget to mention above, we had tasty snacks and drinks too !!! :P
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kushaldas&#34;&gt;Kushal Das&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;PravinKumar&lt;/a&gt; and all !!!
+for more regarding unit tests, read here : &lt;a href=&#34;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&#34;&gt;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gerrit Error not Signed-off-by author/........ Resolved</title>
+      <link>https://belikesuraj.github.io/post/blog4/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog4/</guid>
+      <description>&lt;p&gt;Yesterday, I was sending patch for review on gerrit, I commmited the code as follows,
+Everything works fine ;) ,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git commit --amend
+ [project d9593ab] &amp;lt;commit message here&amp;gt;
+ Date: Thu Apr 14 17:34:53 2016 +0530
+ 1. file changed, 75 insertions(+)
+   create mode 100644 project/file.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o
+following error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git review develop
+ remote: Processing changes: refs: 1, done.
+ To ssh://user@xxxxxxxxxxxxxxxxxxxxxxxx.com:22/project
+ ! [remote rejected] HEAD -&amp;gt; refs/publish/develop/project (not Signed-off-by author/committer/uploader in  commit message footer)
+ error: failed to push some refs to &#39;ssh://user@xxxxxxxxxxxxxxxxxxxxxxxxx.com:22/project&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After trying different methods for half an hour, we have checked commit which was as below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;commit messgae here&amp;gt;
+ Change-Id: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+ # Please enter the commit message for your changes. Lines starting
+ # with &#39;#&#39; will be ignored, and an empty message aborts the commit.
+ #
+ # Date:      Thu Apr 14 17:34:53 2016 +0530
+ #
+ # On branch project
+ # Your branch is ahead of &#39;origin/develop&#39; by 1 commit.
+ #   (use &amp;quot;git push&amp;quot; to publish your local commits)
+ #
+ # Changes to be committed:
+ #       new file:   project/file.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that we had removed Change-Id for patch set and added Signed-off-by line along with username and email id as shown below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;commit message here&amp;gt;
+ Signed-off-by: username &amp;lt;userid@xyz.com&amp;gt;
+ # Please enter the commit message for your changes. Lines starting
+ # with &#39;#&#39; will be ignored, and an empty message aborts the commit.
+ #
+ # Date:      Thu Apr 14 17:34:53 2016 +0530
+ #
+ # On branch project
+ # Your branch is ahead of &#39;origin/develop&#39; by 1 commit.
+ #   (use &amp;quot;git push&amp;quot; to publish your local commits)
+ #
+ # Changes to be committed:
+ #       new file:   project/file.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;And yippee, it works !!! :-) :-)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git review develop
+ remote: Processing changes: new: 1, refs: 1, done
+ remote:
+ remote: New Changes:
+ remote:   https://xxxxxxxxxxxxxxxxxxxx.com/gerrit/00000 &amp;lt;commit message here&amp;gt;
+ remote:
+ To ssh://user@xxxxxxxxxxxxxxxxxxxxxx.com:22/project
+- [new branch]      HEAD -&amp;gt; refs/publish/develop/project
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; ++&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>So amazing when you&#39;re riding on a ray of sunshine.....</title>
+      <link>https://belikesuraj.github.io/post/blog3/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://belikesuraj.github.io/post/blog3/</guid>
+      <description>&lt;p&gt;I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P.
+   &lt;em&gt;‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’&lt;/em&gt;
+   Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp;amp; awesome, I got to know new things every single day !!!&lt;/p&gt;
+
+&lt;p&gt;Then I got a task to create Jenkins job using JJb for the unit test using nosetest,  pylint tests, I got stuck with one issue regarding master-slave handshake whereas Rishabh gave me only  hint EXPLORE THE SLAVE that was pretty awesome one. only one hint lead to clear all concepts around it. Thanks &lt;em&gt;Rishabh&lt;/em&gt; for it.&lt;/p&gt;
+
+&lt;p&gt;on 1st march, &lt;em&gt;Communication guidelines&lt;/em&gt; session was taken by &lt;em&gt;Kushal das&lt;/em&gt;.In this session , He told us about Netiquettes and other communication guidelines while having conversation on IRC or mailing list.&lt;/p&gt;
+
+&lt;p&gt;I also read &lt;em&gt;&amp;ldquo;2015 Open Source Yearbook&amp;rdquo;&lt;/em&gt; in free time. I  got lots of ways to use ownCloud in creative ways, awesome Open hardware projects like Raspberry projects. Also, I got to know that even facebook also OpenSourcing many of their  projects like HHVM, React, RocksDB, etc. I suggest you,  go through it.&lt;/p&gt;
+
+&lt;p&gt;Friday, 11 March, I had attended Tech Talk on &lt;em&gt;Jenkins Job Builder&lt;/em&gt; by Anisha Narang, It was quite useful as she spoke about macros in Jenkins as well how to use the various plugins that was very useful in my projects. Thank you, &lt;em&gt;Anisha&lt;/em&gt; :)&lt;/p&gt;
+
+&lt;p&gt;In those days, I had read Ansible thoroughly Then I wrote ansible playbook , I found ansible quite beautiful tool for automation as well as it&amp;rsquo;s very simple to use.&lt;/p&gt;
+
+&lt;p&gt;Tuesday 15th march, Delightful Pizza was there for Lunch, &amp;amp; reason was for the farewell of &lt;em&gt;Robin Cain&lt;/em&gt; (USA), she also shared her  past experiences with us and also guided us for our next journey.&lt;/p&gt;
+
+&lt;p&gt;In mid of March, Jenkins gates  were down somehow :( :( nothing gonna worked for few days. So those days, I worked on Pelican, ansible, JJB &amp;amp;  tasty Raspberry Pi ;-)  :p&lt;/p&gt;
+
+&lt;p&gt;26 March, I was unable to attend python meetup because I had to travel to my hometown but,  fortunately, I got lucky to Attend &lt;em&gt;Docker birthday &amp;amp; meetup&lt;/em&gt; at &lt;em&gt;Unnati Computers, Aurangabad&lt;/em&gt;. &lt;em&gt;Pushpendra Chavan&lt;/em&gt; told briefly about docker, containers and Ashutosh Sir gave a demo of how to run a webserver using docker.&lt;/p&gt;
+
+&lt;p&gt;31 march, &lt;em&gt;Open Source&lt;/em&gt; Session was organized by Kushal Das, Rupali Talwatkar.
+&lt;em&gt;Kushal Das&lt;/em&gt;, &lt;em&gt;Pravin Kumar&lt;/em&gt;, &lt;em&gt;Chandan Kumar&lt;/em&gt; and &lt;em&gt;Rupali Talwatkar&lt;/em&gt; shared their experiences that how they started contribution to Opensource with us which were very much motivating. they had shared very basic things like what is FAS account, how to open it, how to find your project for contribution.
+Kushal also told about why the blog is important and how it can be beneficial to maintain digital identity.&lt;/p&gt;
+
+&lt;p&gt;I heard one good quote: &lt;strong&gt;Wissen ist Macht.  (Knowledge is power)&lt;/strong&gt;     (obviously deutsch ;-) )&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> How to install OpenStack-packstack from source and test individual patches locally! &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://belikesuraj.github.io/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://belikesuraj.github.io/>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://belikesuraj.github.io/">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://belikesuraj.github.io/post/blog17/">How to install OpenStack-packstack from source and test individual patches locally!</a></h1>
+            <span class="post-date">Nov 3, 2016 </span>
+            <div class="post-content">
+                <p>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following <a href="https://www.rdoproject.org/install/quickstart/">RDO doc</a>. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch <a href="https://review.openstack.org/#/c/360388/">https://review.openstack.org/#/c/360388/</a>  about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with <a href="https://twitter.com/ciypro">Chandan Kumar</a> and <a href="https://twitter.com/fj_pena">Javier Peña</a>
+1. have used centos 7 box for this purpose.</p>
+
+<p><em>Installation</em></p>
+
+<pre><code> $ sudo yum install -y git python-pip
+ $ git clone git://github.com/openstack/packstack.git
+</code></pre>
+
+<p>then, I have to download that patchset, for that, I installed git-review</p>
+
+<pre><code> $ sudo pip install git-review
+ $ cd packstack
+</code></pre>
+
+<p>Make sure you have configured your gerrit credentails on <a href="review.openstack.org">OpenStack Gerrit</a> for reference, <a href="http://docs.openstack.org/infra/manual/developers.html">http://docs.openstack.org/infra/manual/developers.html</a></p>
+
+<pre><code> $ git remote -s # It will ask for openstack gerrit username
+ $ git review -d &lt;change-id of patchset&gt;
+ $ git rebase -i master
+ $ sudo python setup.py install
+</code></pre>
+
+<p>installation of OpenStack-puppet-modules</p>
+
+<pre><code> $ export GEM_HOME=/tmp/somedir
+ $ sudo yum install rubygems -y
+ $ gem install r10k
+</code></pre>
+
+<p>We have used sudo -E, because it preserves environment variables as we declared GEM_HOME</p>
+
+<pre><code> $ sudo -E /tmp/somedir/bin/r10k puppetfile install -v
+ $ sudo cp -r packstack/puppet/modules/packstack /usr/share/openstack-puppet/modules
+</code></pre>
+
+<p>Now it&rsquo;s time to generate answer file and edit the  contents:
+as my target was Magnum component,</p>
+
+<pre><code> # packstack -d --gen-answer-file=answerfile.txt
+</code></pre>
+
+<pre><code> # Specify 'y' to install OpenStack Container Service (magnum). ['y',
+ # 'n']
+ CONFIG_MAGNUM_INSTALL=y
+</code></pre>
+
+<p>Run the packstack by giving path of answerfile</p>
+
+<pre><code> # packstack -d  --answer-file=answerfile.txt
+</code></pre>
+
+<p>In this way, I tested patch with packstack locally. I will write about Magnum component in next blog post.</p>
+
+<p>Happy Hacking!</p>
+
+            </div>
+            
+            <div class="post-comments">
+                
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>
