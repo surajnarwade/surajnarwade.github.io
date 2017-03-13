@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> migration to hugo &middot; Suraj Narwade </title>
+        <title> Migration to Hugo &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -20,7 +20,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="https://surajnarwade.github.io/css/nix.css">
+<link rel="stylesheet" href="https://suraj.pro/css/nix.css">
 
  
 <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
@@ -52,14 +52,14 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://surajnarwade.github.io/>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://surajnarwade.github.io/">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/snarwade</a>
 				</li>
 				
 				
@@ -80,56 +80,111 @@ ga('create', '75855569', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="https://surajnarwade.github.io/post/migration-to-hugo/">migration to hugo</a></h1>
-            <span class="post-date">Feb 27, 2017 </span>
+            <h1><a href="https://suraj.pro/post/migration-to-hugo/">Migration to Hugo</a></h1>
+            <span class="post-date">Mar 13, 2017 </span>
             <div class="post-content">
-                <p>hello,
-I have migrated to my blog from pelican to hugo.</p>
+                
 
-<p>1.install hugo</p>
+<p>Hello guys, its been so long, I havn&rsquo;t written any post.
+Recently, I have migrated my blog from <a href="https://blog.getpelican.com/">Pelican</a>(python based static site generator) to <a href="https://gohugo.io/">Hugo</a>(GO based static site generator).
+Today, I will write about it. You can explore my blog at <a href="https://surajnarwade.github.io">surajnarwade.github.io</a></p>
 
-<pre><code>go get -v github.com/spf13/hugo
+<h2 id="installing-hugo"><em>Installing Hugo</em></h2>
+
+<p>.</p>
+
+<ul>
+<li>Install hugo</li>
+</ul>
+
+<pre><code>$ go get -v github.com/spf13/hugo
 </code></pre>
 
-<p>2.add site</p>
+<ul>
+<li>Check whether it is properly installed or not</li>
+</ul>
+
+<pre><code>$ hugo help
+</code></pre>
+
+<h2 id="using-hugo"><em>Using Hugo</em></h2>
+
+<p>.</p>
+
+<ul>
+<li>We need to tell hugo to generate blog skeleton, type following command for that:</li>
+</ul>
 
 <pre><code>$ hugo new site myblog
 </code></pre>
 
-<p>3.check directory layout</p>
+<ul>
+<li><code>myblog</code> directory will be created, checkout into directory:</li>
+</ul>
 
 <pre><code>$ cd myblog
-$ tree -a
+$ tree 
+.
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+├── static
+└── themes
+
 </code></pre>
 
-<p>4.add contents</p>
+<ul>
+<li>Now its time to write to post. following command will create a post with predefined skeleton. you can create your own archtypes for this.
+Edit the post with markdown syntax. Click <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">here</a> for markdown cheatsheet.</li>
+</ul>
 
 <pre><code>$ hugo new post/good-to-great.md
 </code></pre>
 
-<p>5.create contents by</p>
+<ul>
+<li>Compile the blog using following command and our website will be generated under <code>public/</code> directory.</li>
+</ul>
 
 <pre><code>$ hugo
 </code></pre>
 
-<p>5.serve contents</p>
+<ul>
+<li>Hugo comes with server while reloads your browser live as soon as there&rsquo;s change in a file so, you will get a instant feedback.</li>
+</ul>
 
-<pre><code>hugo server
+<pre><code>$ hugo server
+...
+....
+Watching for changes in /home/snarwade/myblog/{data,content,layouts,static,themes}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+
 </code></pre>
 
-<p>6.Add theme</p>
+<ul>
+<li><p>Now Open <a href="localhost:1313">localhost:1313</a> on your browser to see the website. you can make changes to blogpost file to see live changes.</p></li>
 
-<pre><code>cd themes
+<li><p>I have used <a href="https://github.com/LordMathis/hugo-theme-nix">nix</a> theme for my blog, but there are bunch of beautiful themes for hugo from which you can choose, Click <a href="http://themes.gohugo.io/">here</a> to get browse hugo themes.</p></li>
+</ul>
+
+<pre><code>$ cd themes
+$ git clone https://github.com/LordMathis/hugo-theme-nix
 </code></pre>
 
-<p>7.add your choice of theme</p>
+<ul>
+<li>Update <code>config.toml</code> file</li>
+</ul>
 
-<pre><code>$ git clone https://github.com/LordMathis/hugo-theme-nix
-</code></pre>
+<pre><code>languageCode = &quot;en-us&quot;
+title = &quot;&lt;your title&gt;&quot;
+baseURL = &quot;https://&lt;username&gt;.github.io/&quot;
+theme = &quot;your theme name&quot;
+disqusShortname = &quot;your disqus shortname&quot;
 
-<p>8.Update <code>config.toml</code> file</p>
-
-<pre><code>[params]
+[params]
   GithubID = &quot;your_github&quot;
   GitlabId = &quot;your_gitlab&quot;
   TwitterID = &quot;your_twitter&quot;
@@ -146,25 +201,41 @@ $ tree -a
   GoogleAnalytics = &quot;your_google_analytics_id&quot;
 </code></pre>
 
-<p>9.Deploying blog to github</p>
+<h2 id="deploying-blog-to-github"><em>Deploying blog to Github</em></h2>
+
+<ul>
+<li>Create repository named as <username>.github.io, this will be the URL for your blog. Here, Master branch will serve contents for the blog.</li>
+</ul>
 
 <pre><code>$ git clone git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git
-$ cp -r public/* &lt;username&gt;.github.io/
+</code></pre>
+
+<ul>
+<li><p>Copy the contents from public directory to repository and push the contents to github</p>
+
+<pre><code>$ cp -r public/* &lt;username&gt;.github.io/
 $ cd &lt;username&gt;.github.io
 $ git add --all
-$ git commit -m'First commit'
+$ git commit -m 'First commit'
 $ git push
-</code></pre>
+</code></pre></li>
+
+<li><p>You will have your own new blog at <code>&lt;username&gt;.github.io</code></p></li>
+</ul>
+
+<p><code>Happy hacking || Happy writing !!!</code></p>
+
+<p>(Comments are most welcome)</p>
 
             </div>
             
             <div class="post-comments">
                 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'Hackers Villa';
-    var disqus_identifier = 'https:\/\/surajnarwade.github.io\/post\/migration-to-hugo\/';
-    var disqus_title = 'migration to hugo';
-    var disqus_url = 'https:\/\/surajnarwade.github.io\/post\/migration-to-hugo\/';
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'https:\/\/suraj.pro\/post\/migration-to-hugo\/';
+    var disqus_title = 'Migration to Hugo';
+    var disqus_url = 'https:\/\/suraj.pro\/post\/migration-to-hugo\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
