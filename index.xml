@@ -6,8 +6,182 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 21 Mar 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>What&#39;s new in Docker ?</title>
+      <link>http://suraj.pro/post/whats-new-in-docker/</link>
+      <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/whats-new-in-docker/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Docker version that I installed is 17.03.0-ce, &lt;a href=&#34;https://docs.docker.com/engine/installation/linux/fedora/&#34;&gt;Click here&lt;/a&gt; to know how to install Docker&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/docker.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --help
+
+Usage:	docker COMMAND
+
+A self-sufficient runtime for containers
+...
+...
+Management Commands:
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  volume      Manage volumes
+
+Commands:
+ ...
+ ...
+Run &#39;docker COMMAND --help&#39; for more information on a command.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For example, Under &lt;code&gt;docker container&lt;/code&gt;, all commands related to managing to containers are classified.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker container --help
+Usage:	docker container COMMAND
+
+Manage containers
+
+Options:
+      --help   Print usage
+
+Commands:
+  attach      Attach to a running container
+  commit      Create a new image from a container&#39;s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  ...
+  ...
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run &#39;docker container COMMAND --help&#39; for more information on a command.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There is new feature here, which makes plugin management in docker easier, now we can easily install or delete or get information about plugins.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; $ docker plugin --help
+ Usage:	docker plugin COMMAND
+ 
+ Manage plugins
+ 
+ Options:
+       --help   Print usage
+ 
+ Commands:
+   create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+   disable     Disable a plugin
+   enable      Enable a plugin
+   inspect     Display detailed information on one or more plugins
+   install     Install a plugin
+   ls          List plugins
+   push        Push a plugin to a registry
+   rm          Remove one or more plugins
+   set         Change settings for a plugin
+   upgrade     Upgrade an existing plugin
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-aliases&#34;&gt;New Aliases:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker container ls&lt;/code&gt; is same as &lt;code&gt;docker ps&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker container ls -a
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS                          PORTS               NAMES
+66d17f3bc07e        hello-world         &amp;quot;/hello&amp;quot;            About a minute ago   Exited (0) About a minute ago                       ecstatic_lamarr 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker image ls&lt;/code&gt; is same as  &lt;code&gt;docker images&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+fedora              latest              0047cca29c6f        5 days ago          230 MB
+hello-world         latest              48b5124b2768        2 months ago        1.84 kB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-docker-system-command-added&#34;&gt;New &lt;code&gt;docker system&lt;/code&gt; command added:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker system df&lt;/code&gt; - &lt;em&gt;Show docker disk Usage&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# docker system df
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              1                   0                   1.84 kB             1.84 kB (100%)
+Containers          0                   0                   0 B                 0 B
+Local Volumes       0                   0                   0 B                 0 B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system events&lt;/code&gt; - &lt;em&gt;Get real time events (like oc get events in openshift)&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system info&lt;/code&gt; - &lt;em&gt;Displays System-wide information&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system prune&lt;/code&gt; - &lt;em&gt;Removes unused data&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;WARNING! This will remove:
+	- all stopped containers
+	- all volumes not used by at least one container
+	- all networks not used by at least one container
+	- all dangling images
+Are you sure you want to continue? [y/N]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-prune-feature-added&#34;&gt;New &lt;code&gt;prune&lt;/code&gt; feature added:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker container prune&lt;/code&gt; - &lt;em&gt;Remove all stopped containers&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker image prune&lt;/code&gt; - &lt;em&gt;Remove unused images&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker network prune&lt;/code&gt; - &lt;em&gt;Remove all unused networks&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker volume prune&lt;/code&gt; - &lt;em&gt;Remove all unused volumes&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;above all things can be achieved by using one command also,&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;docker system prune&lt;/code&gt;&lt;/strong&gt; (WARNING!, be careful with this command.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;#Reference:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/docker/&#34;&gt;Click here&lt;/a&gt; for more command line reference.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;thanks-happy-hacking&#34;&gt;Thanks, Happy Hacking !!!&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Migration to Hugo</title>
@@ -1416,67 +1590,6 @@ we have used titanic data sets for example (&lt;a href=&#34;https://github.com/p
 &lt;p&gt;ChandanKumar talking about Fedora Scientific and OpenSource Contribution:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
-      <link>http://suraj.pro/post/blog5/</link>
-      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog5/</guid>
-      <description>&lt;p&gt;April Fedora meetup was dedicated to “Unit testing”.&lt;/p&gt;
-
-&lt;p&gt;As I am into DevOps, usually i had seen various automated tests  that was carried out by jenkins are nothing but unit test but i  was always wondered what is this??
-Kushal gave us brief idea about unit test :&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;as well unit test gives you opportunity to scrutinize your own code for proper operation.&lt;/p&gt;
-
-&lt;p&gt;And also he gave an example of unit test for ‘cat’ command, for that we cloned &lt;a href=&#34;https://github.com/kushaldas/tunirtests&#34;&gt;https://github.com/kushaldas/tunirtests&lt;/a&gt; ( as we had to used some functions from these files )&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; import unittest
- from testutils import system
- class Firetest(unittest.TestCase): 
-    def test_cat(self):
-    	out,err,retcode= system(&amp;quot;cat /etc/fedora-release&amp;quot;)
-    	out = out.decode(&#39;utf-8&#39;)
-    	self.assertIn(&#39;Fedora&#39;,out)
- if __name__ == &#39;__main__&#39; :
-     unittest.main()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then, Kushal and Pravin gave different test cases to each one of us, I got test case to check selinux context of file ( i.e. restorecon command ) whether we are getting same result after &amp;lsquo;restorecon&amp;rsquo; or not:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; import unittest
- from testutils import system
- class Firetest(unittest.TestCase) : 
-    def test_selinux(self):
-        out,err,retcode= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
-        out = out.decode(&#39;utf-8&#39;)
-        out1,err1,retcode1= system(&amp;quot;restorecon -v /var/www/html/index.html&amp;quot;)
-        out2,err2,retcode2= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
-        out2 = out2.decode(&#39;utf-8&#39;)
-        self.assertEqual(out,out2)
- if __name__ == &#39;__main__&#39; : 
-    unittest.main()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As I was new to fedora meetup, i got connected with new friends too.&lt;/p&gt;
-
-&lt;p&gt;This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/fedora.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
-&lt;img src=&#34;http://suraj.pro/fedora1.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;forget to mention above, we had tasty snacks and drinks too !!! :P
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kushaldas&#34;&gt;Kushal Das&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;PravinKumar&lt;/a&gt; and all !!!
-for more regarding unit tests, read here : &lt;a href=&#34;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&#34;&gt;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

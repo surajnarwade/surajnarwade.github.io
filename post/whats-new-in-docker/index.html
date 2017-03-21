@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> What&#39;s new in Docker ? &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="http://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=http://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="http://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="http://suraj.pro/post/whats-new-in-docker/">What&#39;s new in Docker ?</a></h1>
+            <span class="post-date">Mar 21, 2017 </span>
+            <div class="post-content">
+                
+
+<ul>
+<li><p>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.</p></li>
+
+<li><p>Docker version that I installed is 17.03.0-ce, <a href="https://docs.docker.com/engine/installation/linux/fedora/">Click here</a> to know how to install Docker</p></li>
+</ul>
+
+<p><img src="/docker.png" width="400" height="300" align="middle"/></p>
+
+<ul>
+<li>As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.</li>
+</ul>
+
+<pre><code>$ docker --help
+
+Usage:	docker COMMAND
+
+A self-sufficient runtime for containers
+...
+...
+Management Commands:
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  volume      Manage volumes
+
+Commands:
+ ...
+ ...
+Run 'docker COMMAND --help' for more information on a command.
+</code></pre>
+
+<ul>
+<li>For example, Under <code>docker container</code>, all commands related to managing to containers are classified.</li>
+</ul>
+
+<pre><code>$ docker container --help
+Usage:	docker container COMMAND
+
+Manage containers
+
+Options:
+      --help   Print usage
+
+Commands:
+  attach      Attach to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  ...
+  ...
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker container COMMAND --help' for more information on a command.
+</code></pre>
+
+<ul>
+<li>There is new feature here, which makes plugin management in docker easier, now we can easily install or delete or get information about plugins.</li>
+</ul>
+
+<pre><code> $ docker plugin --help
+ Usage:	docker plugin COMMAND
+ 
+ Manage plugins
+ 
+ Options:
+       --help   Print usage
+ 
+ Commands:
+   create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+   disable     Disable a plugin
+   enable      Enable a plugin
+   inspect     Display detailed information on one or more plugins
+   install     Install a plugin
+   ls          List plugins
+   push        Push a plugin to a registry
+   rm          Remove one or more plugins
+   set         Change settings for a plugin
+   upgrade     Upgrade an existing plugin
+
+</code></pre>
+
+<h1 id="new-aliases">New Aliases:</h1>
+
+<ul>
+<li><code>docker container ls</code> is same as <code>docker ps</code></li>
+</ul>
+
+<pre><code>$ docker container ls -a
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS                          PORTS               NAMES
+66d17f3bc07e        hello-world         &quot;/hello&quot;            About a minute ago   Exited (0) About a minute ago                       ecstatic_lamarr 
+</code></pre>
+
+<ul>
+<li><code>docker image ls</code> is same as  <code>docker images</code></li>
+</ul>
+
+<pre><code># docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+fedora              latest              0047cca29c6f        5 days ago          230 MB
+hello-world         latest              48b5124b2768        2 months ago        1.84 kB
+</code></pre>
+
+<h1 id="new-docker-system-command-added">New <code>docker system</code> command added:</h1>
+
+<ul>
+<li><code>docker system df</code> - <em>Show docker disk Usage</em></li>
+</ul>
+
+<pre><code># docker system df
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              1                   0                   1.84 kB             1.84 kB (100%)
+Containers          0                   0                   0 B                 0 B
+Local Volumes       0                   0                   0 B                 0 B
+</code></pre>
+
+<ul>
+<li><p><code>docker system events</code> - <em>Get real time events (like oc get events in openshift)</em></p></li>
+
+<li><p><code>docker system info</code> - <em>Displays System-wide information</em></p></li>
+
+<li><p><code>docker system prune</code> - <em>Removes unused data</em></p></li>
+</ul>
+
+<pre><code>WARNING! This will remove:
+	- all stopped containers
+	- all volumes not used by at least one container
+	- all networks not used by at least one container
+	- all dangling images
+Are you sure you want to continue? [y/N]
+</code></pre>
+
+<h1 id="new-prune-feature-added">New <code>prune</code> feature added:</h1>
+
+<ul>
+<li><p><code>docker container prune</code> - <em>Remove all stopped containers</em></p></li>
+
+<li><p><code>docker image prune</code> - <em>Remove unused images</em></p></li>
+
+<li><p><code>docker network prune</code> - <em>Remove all unused networks</em></p></li>
+
+<li><p><code>docker volume prune</code> - <em>Remove all unused volumes</em></p></li>
+</ul>
+
+<p><strong>above all things can be achieved by using one command also,</strong></p>
+
+<ul>
+<li><strong><code>docker system prune</code></strong> (WARNING!, be careful with this command.)</li>
+</ul>
+
+<p>#Reference:</p>
+
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/commandline/docker/">Click here</a> for more command line reference.</li>
+</ul>
+
+<h2 id="thanks-happy-hacking">Thanks, Happy Hacking !!!</h2>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/whats-new-in-docker\/';
+    var disqus_title = 'What\x27s new in Docker ?';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/whats-new-in-docker\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

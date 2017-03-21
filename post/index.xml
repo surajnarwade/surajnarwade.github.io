@@ -6,8 +6,182 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 21 Mar 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>What&#39;s new in Docker ?</title>
+      <link>http://suraj.pro/post/whats-new-in-docker/</link>
+      <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/whats-new-in-docker/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Docker version that I installed is 17.03.0-ce, &lt;a href=&#34;https://docs.docker.com/engine/installation/linux/fedora/&#34;&gt;Click here&lt;/a&gt; to know how to install Docker&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/docker.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker --help
+
+Usage:	docker COMMAND
+
+A self-sufficient runtime for containers
+...
+...
+Management Commands:
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  volume      Manage volumes
+
+Commands:
+ ...
+ ...
+Run &#39;docker COMMAND --help&#39; for more information on a command.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;For example, Under &lt;code&gt;docker container&lt;/code&gt;, all commands related to managing to containers are classified.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker container --help
+Usage:	docker container COMMAND
+
+Manage containers
+
+Options:
+      --help   Print usage
+
+Commands:
+  attach      Attach to a running container
+  commit      Create a new image from a container&#39;s changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  ...
+  ...
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run &#39;docker container COMMAND --help&#39; for more information on a command.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There is new feature here, which makes plugin management in docker easier, now we can easily install or delete or get information about plugins.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt; $ docker plugin --help
+ Usage:	docker plugin COMMAND
+ 
+ Manage plugins
+ 
+ Options:
+       --help   Print usage
+ 
+ Commands:
+   create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+   disable     Disable a plugin
+   enable      Enable a plugin
+   inspect     Display detailed information on one or more plugins
+   install     Install a plugin
+   ls          List plugins
+   push        Push a plugin to a registry
+   rm          Remove one or more plugins
+   set         Change settings for a plugin
+   upgrade     Upgrade an existing plugin
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-aliases&#34;&gt;New Aliases:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker container ls&lt;/code&gt; is same as &lt;code&gt;docker ps&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker container ls -a
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS                          PORTS               NAMES
+66d17f3bc07e        hello-world         &amp;quot;/hello&amp;quot;            About a minute ago   Exited (0) About a minute ago                       ecstatic_lamarr 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker image ls&lt;/code&gt; is same as  &lt;code&gt;docker images&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# docker image ls
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+fedora              latest              0047cca29c6f        5 days ago          230 MB
+hello-world         latest              48b5124b2768        2 months ago        1.84 kB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-docker-system-command-added&#34;&gt;New &lt;code&gt;docker system&lt;/code&gt; command added:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker system df&lt;/code&gt; - &lt;em&gt;Show docker disk Usage&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# docker system df
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              1                   0                   1.84 kB             1.84 kB (100%)
+Containers          0                   0                   0 B                 0 B
+Local Volumes       0                   0                   0 B                 0 B
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system events&lt;/code&gt; - &lt;em&gt;Get real time events (like oc get events in openshift)&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system info&lt;/code&gt; - &lt;em&gt;Displays System-wide information&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system prune&lt;/code&gt; - &lt;em&gt;Removes unused data&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;WARNING! This will remove:
+	- all stopped containers
+	- all volumes not used by at least one container
+	- all networks not used by at least one container
+	- all dangling images
+Are you sure you want to continue? [y/N]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;new-prune-feature-added&#34;&gt;New &lt;code&gt;prune&lt;/code&gt; feature added:&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker container prune&lt;/code&gt; - &lt;em&gt;Remove all stopped containers&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker image prune&lt;/code&gt; - &lt;em&gt;Remove unused images&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker network prune&lt;/code&gt; - &lt;em&gt;Remove all unused networks&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;docker volume prune&lt;/code&gt; - &lt;em&gt;Remove all unused volumes&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;above all things can be achieved by using one command also,&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;docker system prune&lt;/code&gt;&lt;/strong&gt; (WARNING!, be careful with this command.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;#Reference:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/docker/&#34;&gt;Click here&lt;/a&gt; for more command line reference.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;thanks-happy-hacking&#34;&gt;Thanks, Happy Hacking !!!&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Migration to Hugo</title>
@@ -1333,82 +1507,6 @@ Kushal gave us brief idea about unit test :&lt;/p&gt;
 
 &lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kushaldas&#34;&gt;Kushal Das&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;PravinKumar&lt;/a&gt; and all !!!
 for more regarding unit tests, read here : &lt;a href=&#34;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&#34;&gt;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Gerrit Error not Signed-off-by author/........ Resolved</title>
-      <link>http://suraj.pro/post/blog4/</link>
-      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog4/</guid>
-      <description>&lt;p&gt;Yesterday, I was sending patch for review on gerrit, I commmited the code as follows,
-Everything works fine ;) ,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git commit --amend
- [project d9593ab] &amp;lt;commit message here&amp;gt;
- Date: Thu Apr 14 17:34:53 2016 +0530
- 1. file changed, 75 insertions(+)
-   create mode 100644 project/file.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o
-following error:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git review develop
- remote: Processing changes: refs: 1, done.
- To ssh://user@xxxxxxxxxxxxxxxxxxxxxxxx.com:22/project
- ! [remote rejected] HEAD -&amp;gt; refs/publish/develop/project (not Signed-off-by author/committer/uploader in  commit message footer)
- error: failed to push some refs to &#39;ssh://user@xxxxxxxxxxxxxxxxxxxxxxxxx.com:22/project&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After trying different methods for half an hour, we have checked commit which was as below:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; &amp;lt;commit messgae here&amp;gt;
- Change-Id: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
- # Please enter the commit message for your changes. Lines starting
- # with &#39;#&#39; will be ignored, and an empty message aborts the commit.
- #
- # Date:      Thu Apr 14 17:34:53 2016 +0530
- #
- # On branch project
- # Your branch is ahead of &#39;origin/develop&#39; by 1 commit.
- #   (use &amp;quot;git push&amp;quot; to publish your local commits)
- #
- # Changes to be committed:
- #       new file:   project/file.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that we had removed Change-Id for patch set and added Signed-off-by line along with username and email id as shown below:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; &amp;lt;commit message here&amp;gt;
- Signed-off-by: username &amp;lt;userid@xyz.com&amp;gt;
- # Please enter the commit message for your changes. Lines starting
- # with &#39;#&#39; will be ignored, and an empty message aborts the commit.
- #
- # Date:      Thu Apr 14 17:34:53 2016 +0530
- #
- # On branch project
- # Your branch is ahead of &#39;origin/develop&#39; by 1 commit.
- #   (use &amp;quot;git push&amp;quot; to publish your local commits)
- #
- # Changes to be committed:
- #       new file:   project/file.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;And yippee, it works !!! :-) :-)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; [user@localhost project]$ git review develop
- remote: Processing changes: new: 1, refs: 1, done
- remote:
- remote: New Changes:
- remote:   https://xxxxxxxxxxxxxxxxxxxx.com/gerrit/00000 &amp;lt;commit message here&amp;gt;
- remote:
- To ssh://user@xxxxxxxxxxxxxxxxxxxxxx.com:22/project
-- [new branch]      HEAD -&amp;gt; refs/publish/develop/project
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; ++&lt;/p&gt;
 </description>
     </item>
     
