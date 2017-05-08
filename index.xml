@@ -6,8 +6,52 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Mar 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 07 May 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The GO Workshop by Baiju</title>
+      <link>http://suraj.pro/post/goworkshop/</link>
+      <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/goworkshop/</guid>
+      <description>
+
+&lt;p&gt;A &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/events/238824064/&#34;&gt;golang hands-on workshop&lt;/a&gt; was organized under meetup group &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/&#34;&gt;&lt;em&gt;Practical Data Science&lt;/em&gt;&lt;/a&gt; on May 6th, 2017. It was run up event for &lt;a href=&#34;https://rootconf.talkfunnel.com/devconf-2017/&#34;&gt;Devconf India 2017&lt;/a&gt;. Around 60 people turned up. &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt;, who was workshop instructor, started with introduction of golang.&lt;/p&gt;
+
+&lt;p&gt;He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.&lt;/p&gt;
+
+&lt;p&gt;Workshop course material can be found &lt;a href=&#34;http://talks.godoc.org/github.com/baijum/presentation/golang_workshop/presentation.slide#1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/start.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Me(&lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;SurajN&lt;/a&gt;), &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; volunteered for the event. We helped attendees for installing golang and also helped them while they were solving exercises given by Baiju.&lt;/p&gt;
+
+&lt;p&gt;At around 1:15pm, we broke off for lunch.&lt;/p&gt;
+
+&lt;p&gt;People were eager to learn golang and the workshop was very interactive.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/attendee.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Post lunch &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; explained how golang and Data community converge and what could be the possible future of Data Science in his view.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/bargava.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt; passion for teaching golang was immense and that inspired folks to follow along.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju1.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; announced &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;Kubernetes 101 meetup&lt;/a&gt; which is going to happen on 20th May. Feel free to ping us if you have a venue for this event.&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&lt;/a&gt; for organizing such an awesome workshop, thanks to &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; for sponsoring Venue and food.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;upcoming meetups&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h1&gt;
+</description>
+    </item>
     
     <item>
       <title>What&#39;s new in Docker ?</title>
@@ -1520,76 +1564,6 @@ So, I had created account on &lt;a href=&#34;http://bugzilla.redhat.com&#34;&gt;
 2. have learnt alot in these two days as where is Openstack repositories is maintained and how dependencies are kept. Now, onwards, I will regularly participate in bug triage days.&lt;/p&gt;
 
 &lt;p&gt;My next blog will be on how to setup &lt;a href=&#34;http://dlrn.readthedocs.io/en/latest/&#34;&gt;DLRN&lt;/a&gt; to Contribute in RDO, Till then, Stay tuned. Be happy. Contribute to OPenSource. :P&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Begins Here !!! @ #pythonpune</title>
-      <link>http://suraj.pro/post/blog6/</link>
-      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog6/</guid>
-      <description>&lt;p&gt;Data is present everywhere at malls, multiplexes, online shopping sites, dating sites, government intelligence almost everywhere that continuously needs to be monitor &amp;amp; analyse, which is very huge data, which cant be analysed by human, at that point machine learning came into picture.&lt;/p&gt;
-
-&lt;p&gt;For introduction to that &lt;em&gt;#PythonPune&lt;/em&gt; added new chapter  to its &lt;a href=&#34;http://www.meetup.com/PythonPune/events/230564006/&#34;&gt;Pythonpune Meetup&lt;/a&gt; which was held on 30 April 2016 at Red Hat office, Magarpatta.&lt;/p&gt;
-
-&lt;p&gt;Almost 70-80 peoples were there(which was unexpected for us). :P&lt;/p&gt;
-
-&lt;p&gt;Very few peoples which were present who know machine learning. Rest of people doesn&amp;rsquo;t know but interested to learn . I was also interested to learn machine learning after watching blockbuster &amp;ldquo;person of Interest&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;Speakers of meetup were &lt;a href=&#34;https://twitter.com/DataGeekSatish&#34;&gt;Satish Patil&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/sudarshan1989&#34;&gt;Sudarshan Gadhave&lt;/a&gt;  who gave Introduction on Machine Learning.
-Satish is a founder and chief data scientist of Lemoxo Technologies, where he advises companies large and small on their data strategy.
-He holds a Ph.D. from the University of Minnesota, USA. Over the last 4 years, Satish has helped global pharma, e-commerce giants &amp;amp; startups to solve complex data problems to drive the meaningful business outcome.
-His core competency lies in applied math and statistical modelling, machine learning, deep learning and data visualisation.
-Satish is passionate about applying math, technology, design thinking and cognitive science to better understand, predict and improve business functions.
-Sudarshan  works @ NEC as data scientist.&lt;/p&gt;
-
-&lt;p&gt;Machine learning is all about technical,business and statistics.
-In this session, we learnt basics of machine learning and how to implement machine learning algorithms on your data sets using Python and Scikit-Learn. also we learnt:
-The Black Box of Machine Learning,features,tupules,training and test data set,classification,clustering,pure &amp;amp; impure states,entropy,decision tree, supervised and unsupervised learning, market basket analysis, data pre-processing, K means algorithm.
-we have used titanic data sets for example (&lt;a href=&#34;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&#34;&gt;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Required tools/libraries for machine learning :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;numpy&lt;/li&gt;
-&lt;li&gt;python-pandas&lt;/li&gt;
-&lt;li&gt;python-scikit-learn&lt;/li&gt;
-&lt;li&gt;ipython
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; talked about &lt;a href=&#34;https://labs.fedoraproject.org/&#34;&gt;Fedora Labs&lt;/a&gt;. Fedora labs have the selection of curated bundles of purpose-driven software and content as curated and maintained by members of the Fedora Community. These may be installed as standalone full versions of Fedora or as add-ons to existing Fedora installations. From fedora-labs, we were focused on &lt;a href=&#34;https://labs.fedoraproject.org/en/scientific/&#34;&gt;Fedora Scientific&lt;/a&gt; (open source software computing) which comes with featured application like ipython, pandas, Gnuplot, Matplotlib, R , latex, etc can be useful for machine learning.&lt;/p&gt;
-
-&lt;p&gt;To download fedora Scientific, &lt;a href=&#34;https://download.fedoraproject.org/pub/alt/releases/23/Spins/x86_64/Fedora-Live-Scientific_KDE-x86_64-23-10.iso&#34;&gt;Click Here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you need any help, you can ping on &lt;em&gt;#fedora-science&lt;/em&gt; channel on Freenode in IRC.&lt;/p&gt;
-
-&lt;p&gt;Red Hat was sponser for food, beverages, and venue. Thanks to &lt;a href=&#34;https://twitter.com/DataGeekSatish&#34;&gt;Satish Patil&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/sudarshan1989&#34;&gt;Sudarshan Gadhave&lt;/a&gt; for conducting an interesting workshop! We hope to see more such workshops by you in upcoming meetups.&lt;/p&gt;
-
-&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;Praveen Kumar&lt;/a&gt;  for organising such interesting meetups !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Still from Meetup :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Satish Patil delivering Session on Machine Learning:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml1.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;*&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml5.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;*&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml3.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sudarshan Gadhave Talking about Machine Learning:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml4.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ChandanKumar talking about Fedora Scientific and OpenSource Contribution:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

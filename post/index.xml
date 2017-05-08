@@ -6,8 +6,52 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Mar 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 07 May 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The GO Workshop by Baiju</title>
+      <link>http://suraj.pro/post/goworkshop/</link>
+      <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/goworkshop/</guid>
+      <description>
+
+&lt;p&gt;A &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/events/238824064/&#34;&gt;golang hands-on workshop&lt;/a&gt; was organized under meetup group &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/&#34;&gt;&lt;em&gt;Practical Data Science&lt;/em&gt;&lt;/a&gt; on May 6th, 2017. It was run up event for &lt;a href=&#34;https://rootconf.talkfunnel.com/devconf-2017/&#34;&gt;Devconf India 2017&lt;/a&gt;. Around 60 people turned up. &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt;, who was workshop instructor, started with introduction of golang.&lt;/p&gt;
+
+&lt;p&gt;He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.&lt;/p&gt;
+
+&lt;p&gt;Workshop course material can be found &lt;a href=&#34;http://talks.godoc.org/github.com/baijum/presentation/golang_workshop/presentation.slide#1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/start.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Me(&lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;SurajN&lt;/a&gt;), &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; volunteered for the event. We helped attendees for installing golang and also helped them while they were solving exercises given by Baiju.&lt;/p&gt;
+
+&lt;p&gt;At around 1:15pm, we broke off for lunch.&lt;/p&gt;
+
+&lt;p&gt;People were eager to learn golang and the workshop was very interactive.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/attendee.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Post lunch &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; explained how golang and Data community converge and what could be the possible future of Data Science in his view.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/bargava.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt; passion for teaching golang was immense and that inspired folks to follow along.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju1.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; announced &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;Kubernetes 101 meetup&lt;/a&gt; which is going to happen on 20th May. Feel free to ping us if you have a venue for this event.&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&lt;/a&gt; for organizing such an awesome workshop, thanks to &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; for sponsoring Venue and food.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned for &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;upcoming meetups&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h1&gt;
+</description>
+    </item>
     
     <item>
       <title>What&#39;s new in Docker ?</title>
@@ -1446,67 +1490,6 @@ we have used titanic data sets for example (&lt;a href=&#34;https://github.com/p
 &lt;p&gt;ChandanKumar talking about Fedora Scientific and OpenSource Contribution:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/ml2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
-      <link>http://suraj.pro/post/blog5/</link>
-      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog5/</guid>
-      <description>&lt;p&gt;April Fedora meetup was dedicated to “Unit testing”.&lt;/p&gt;
-
-&lt;p&gt;As I am into DevOps, usually i had seen various automated tests  that was carried out by jenkins are nothing but unit test but i  was always wondered what is this??
-Kushal gave us brief idea about unit test :&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;as well unit test gives you opportunity to scrutinize your own code for proper operation.&lt;/p&gt;
-
-&lt;p&gt;And also he gave an example of unit test for ‘cat’ command, for that we cloned &lt;a href=&#34;https://github.com/kushaldas/tunirtests&#34;&gt;https://github.com/kushaldas/tunirtests&lt;/a&gt; ( as we had to used some functions from these files )&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; import unittest
- from testutils import system
- class Firetest(unittest.TestCase): 
-    def test_cat(self):
-    	out,err,retcode= system(&amp;quot;cat /etc/fedora-release&amp;quot;)
-    	out = out.decode(&#39;utf-8&#39;)
-    	self.assertIn(&#39;Fedora&#39;,out)
- if __name__ == &#39;__main__&#39; :
-     unittest.main()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then, Kushal and Pravin gave different test cases to each one of us, I got test case to check selinux context of file ( i.e. restorecon command ) whether we are getting same result after &amp;lsquo;restorecon&amp;rsquo; or not:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; import unittest
- from testutils import system
- class Firetest(unittest.TestCase) : 
-    def test_selinux(self):
-        out,err,retcode= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
-        out = out.decode(&#39;utf-8&#39;)
-        out1,err1,retcode1= system(&amp;quot;restorecon -v /var/www/html/index.html&amp;quot;)
-        out2,err2,retcode2= system(&amp;quot;ls -lZ /var/www/html/index.html&amp;quot;)
-        out2 = out2.decode(&#39;utf-8&#39;)
-        self.assertEqual(out,out2)
- if __name__ == &#39;__main__&#39; : 
-    unittest.main()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As I was new to fedora meetup, i got connected with new friends too.&lt;/p&gt;
-
-&lt;p&gt;This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/fedora.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
-&lt;img src=&#34;http://suraj.pro/fedora1.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;forget to mention above, we had tasty snacks and drinks too !!! :P
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Thank you, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kushaldas&#34;&gt;Kushal Das&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/kumar_pravin&#34;&gt;PravinKumar&lt;/a&gt; and all !!!
-for more regarding unit tests, read here : &lt;a href=&#34;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&#34;&gt;http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
