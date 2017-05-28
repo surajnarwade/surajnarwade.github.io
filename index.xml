@@ -99,6 +99,159 @@ func main() {
     </item>
     
     <item>
+      <title>About Me</title>
+      <link>http://suraj.pro/about_me/</link>
+      <pubDate>Sun, 28 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://suraj.pro/about_me/</guid>
+      <description>
+
+&lt;h1 id=&#34;suraj-babulal-narwade&#34;&gt;Suraj Babulal Narwade&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Email: &lt;a href=&#34;mailto:surajnarwade353@gmail.com&#34;&gt;surajnarwade353@gmail.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Github: &lt;a href=&#34;https://github.com/surajnarwade&#34;&gt;https://github.com/surajnarwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Twitter: &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;https://twitter.com/red_suraj&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LinkedIn: &lt;a href=&#34;https://in.linkedin.com/in/suraj-narwade-85436a38&#34;&gt;https://in.linkedin.com/in/suraj-narwade-85436a38&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Stackoverflow: &lt;a href=&#34;https://stackoverflow.com/users/7804592/suraj-narwade&#34;&gt;https://stackoverflow.com/users/7804592/suraj-narwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FAs profile: &lt;a href=&#34;https://fedoraproject.org/wiki/User:Suraj353&#34;&gt;https://fedoraproject.org/wiki/User:Suraj353&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mobile: (+91)9762826464&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;work-experience&#34;&gt;Work Experience&lt;/h2&gt;
+
+&lt;p&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Working as &lt;em&gt;DevOps&lt;/em&gt; intern for maintaining CI/CD process using various tools like Jenkins, Ansible, Puppet, Docker, OpenStack, etc.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;opensource-contributions&#34;&gt;OpenSource Contributions&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Kubernetes-incubator&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kushaldas/tunirtests/blob/master/selinux.py&#34;&gt;Added selinux test case for fedora cloud and atomic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://fedoraproject.org/wiki/Test_Day:2016_05_10_Cloud&#34;&gt;Participated in fedora 24 cloud test day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Added Dockerfile for jenkins slave image in fedora-cloud&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;RDO&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://surajnarwade.github.io/rdo-bug-triage-day-first-step-towards-contribution.html&#34;&gt;Participated in RDO bug triage day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/reviewer:surajnarwade&#34;&gt;Done Code review&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/redhat-openstack/website/pulls?q=is%3Apr+author%3Asurajnarwade+is%3Aclosed&#34;&gt;RDO blog PR&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/status:merged+owner:surajnarwade&#34;&gt;Patchset gerrit link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;OpenStack&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://review.openstack.org/#/c/392574/&#34;&gt;Fixed puppetfile install step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Other Projects&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/stwitto&#34;&gt;Twitter CLI client&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Written pycon india scripts for automating volunteer work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Participated in &lt;a href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest 2016&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
+&lt;code&gt;Jenkins&lt;/code&gt;, &lt;code&gt;Ansible&lt;/code&gt;, &lt;code&gt;Puppet&lt;/code&gt;, &lt;code&gt;ShellScripting&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;, &lt;code&gt;Golang&lt;/code&gt;, &lt;code&gt;Kubernetes&lt;/code&gt;, &lt;code&gt;Openshift&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied Engineer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator in OpenStack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in configuration management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in containerized Application Development&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;as-a-speaker&#34;&gt;As a speaker&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express Workshop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune Monthly meetup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/&#34;&gt;Kubernetes Bangalore Meetup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;community-roles&#34;&gt;Community Roles&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;meetup.com/PythonPune/&#34;&gt;Python Pune meetup&lt;/a&gt; event host&lt;/li&gt;
+&lt;li&gt;Volunteer at &lt;a href=&#34;https://in.pycon.org/&#34;&gt;PyCon India, 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Volunteer at &lt;a href=&#34;http://pune.pycon.org/&#34;&gt;PyCon Pune 2017&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Conducting Python Express Workshop at various colleges&lt;/li&gt;
+&lt;li&gt;Participated in Docker Global Mentor Week as well as Docker Birthday as Mentor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;interests&#34;&gt;Interests:&lt;/h2&gt;
+
+&lt;p&gt;FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet | Alexa&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;education-details&#34;&gt;Education details&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Bachelor of Engineering&lt;/strong&gt; in Electronics &amp;amp; Communication Engineering from Deogiri Institute of Engineering &amp;amp; Management Studies, Aurangabad(&lt;em&gt;Aggregate: 81.85%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;HSC&lt;/strong&gt; from Bhaskaracharya junior College, Aurangabad(&lt;em&gt;Aggregate: 71.88%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;SSC&lt;/strong&gt; from Sarswati Bhuwan high school, Aurangabad(&lt;em&gt;Aggregate: 90%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>The GO Workshop by Baiju</title>
       <link>http://suraj.pro/post/goworkshop/</link>
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
@@ -465,150 +618,6 @@ $ git push
 &lt;p&gt;&lt;code&gt;Happy hacking || Happy writing !!!&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;(Comments are most welcome)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>http://suraj.pro/about_me/</link>
-      <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/about_me/</guid>
-      <description>
-
-&lt;h1 id=&#34;suraj-babulal-narwade&#34;&gt;Suraj Babulal Narwade&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Email: surajnarwade353@gmail.com&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Github: &lt;a href=&#34;https://github.com/surajnarwade&#34;&gt;https://github.com/surajnarwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Twitter: &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;https://twitter.com/red_suraj&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;LinkedIn: &lt;a href=&#34;https://in.linkedin.com/in/suraj-narwade-85436a38&#34;&gt;https://in.linkedin.com/in/suraj-narwade-85436a38&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Blog: &lt;a href=&#34;http://surajnarwade.github.io/&#34;&gt;http://surajnarwade.github.io/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;FAs profile: &lt;a href=&#34;https://fedoraproject.org/wiki/User:Suraj353&#34;&gt;https://fedoraproject.org/wiki/User:Suraj353&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Mobile: (+91)9762826464&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;work-experience&#34;&gt;Work Experience&lt;/h2&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Working as &lt;em&gt;DevOps&lt;/em&gt; intern for maintaining CI/CD process using various tools like Jenkins, Ansible, Puppet, Docker, OpenStack, etc.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;opensource-contributions&#34;&gt;OpenSource Contributions&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kushaldas/tunirtests/blob/master/selinux.py&#34;&gt;Added selinux test case for fedora cloud and atomic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://fedoraproject.org/wiki/Test_Day:2016_05_10_Cloud&#34;&gt;Participated in fedora 24 cloud test day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Added Dockerfile for jenkins slave image in fedora-cloud&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;RDO&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://surajnarwade.github.io/rdo-bug-triage-day-first-step-towards-contribution.html&#34;&gt;Participated in RDO bug triage day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/reviewer:surajnarwade&#34;&gt;Done Code review&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/redhat-openstack/website/pulls?q=is%3Apr+author%3Asurajnarwade+is%3Aclosed&#34;&gt;RDO blog PR&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/status:merged+owner:surajnarwade&#34;&gt;Patchset gerrit link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;OpenStack&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://review.openstack.org/#/c/392574/&#34;&gt;Fixed puppetfile install step&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Other Projects&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/stwitto&#34;&gt;Twitter CLI client&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Written pycon india scripts for automating volunteer work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Participated in &lt;a href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest 2016&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
-&lt;code&gt;Jenkins&lt;/code&gt;, &lt;code&gt;Ansible&lt;/code&gt;, &lt;code&gt;Puppet&lt;/code&gt;, &lt;code&gt;ShellScripting&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied Engineer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator in OpenStack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of expertise in configuration management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;as-a-speaker&#34;&gt;As a speaker&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express Workshop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune Monthly meetup&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;community-roles&#34;&gt;Community Roles&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;meetup.com/PythonPune/&#34;&gt;Python Pune meetup&lt;/a&gt; event host&lt;/li&gt;
-&lt;li&gt;Volunteer at &lt;a href=&#34;https://in.pycon.org/&#34;&gt;PyCon India, 2016&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Volunteer at &lt;a href=&#34;http://pune.pycon.org/&#34;&gt;PyCon Pune 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Conducting Python Express Workshop at various colleges&lt;/li&gt;
-&lt;li&gt;Participated in Docker Global Mentor Week as Mentor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;interests&#34;&gt;Interests:&lt;/h2&gt;
-
-&lt;p&gt;FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;education-details&#34;&gt;Education details&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Bachelor of Engineering&lt;/strong&gt; in Electronics &amp;amp; Communication Engineering from Deogiri Institute of Engineering &amp;amp; Management Studies, Aurangabad(&lt;em&gt;Aggregate: 81.85%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;HSC&lt;/strong&gt; from Bhaskaracharya junior College, Aurangabad(&lt;em&gt;Aggregate: 71.88%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;SSC&lt;/strong&gt; from Sarswati Bhuwan high school, Aurangabad(&lt;em&gt;Aggregate: 90%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
