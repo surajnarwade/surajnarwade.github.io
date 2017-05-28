@@ -90,6 +90,20 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="http://suraj.pro/post/golang_workaround/">Golang workaround for cannot assign to struct field in map</a></h4>
+							<h4 class="post-date">May 28, 2017</h4>
+						</div>
+						<div class="post-summary"><p>Yesterday, I was working one of the Kompose issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,
+package main import &quot;fmt&quot; type Animal struct { count int } func main() { m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}} fmt.Println(m) m[&quot;dog&quot;].count = 4 fmt.Println(m) }  so I got this error,...</p></div>
+						<div class="post-list-footer text-center">
+							<a href="http://suraj.pro/post/golang_workaround/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="http://suraj.pro/post/goworkshop/">The GO Workshop by Baiju</a></h4>
 							<h4 class="post-date">May 7, 2017</h4>
 						</div>

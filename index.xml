@@ -6,8 +6,97 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 07 May 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 28 May 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Golang workaround for cannot assign to struct field in map</title>
+      <link>http://suraj.pro/post/golang_workaround/</link>
+      <pubDate>Sun, 28 May 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/golang_workaround/</guid>
+      <description>
+
+&lt;p&gt;Yesterday, I was working one of the &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt; issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}}
+        fmt.Println(m)
+	m[&amp;quot;dog&amp;quot;].count = 4
+	
+	fmt.Println(m)
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;so I got this error,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tmp/sandbox728133053/main.go:12: cannot assign to struct field m[&amp;quot;dog&amp;quot;].count in map
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After googling for some time, I found this solution and I tried &amp;amp; it worked as below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}}
+
+	fmt.Println(m)
+
+	var x = m[&amp;quot;dog&amp;quot;]
+	x.count = 4
+	m[&amp;quot;dog&amp;quot;] = x
+
+	fmt.Println(m)
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I found one more way to do this by storing pointers as shown below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]*Animal{&amp;quot;cat&amp;quot;: &amp;amp;Animal{2}, &amp;quot;dog&amp;quot;: &amp;amp;Animal{3}, &amp;quot;mouse&amp;quot;: &amp;amp;Animal{5}}
+	fmt.Printf(&amp;quot;%#v\n&amp;quot;,m[&amp;quot;dog&amp;quot;])
+	
+	m[&amp;quot;dog&amp;quot;].count = 4
+
+	fmt.Printf(&amp;quot;%#v&amp;quot;, m[&amp;quot;dog&amp;quot;])
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/golang/go/issues/3117&#34;&gt;https://github.com/golang/go/issues/3117&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>The GO Workshop by Baiju</title>
@@ -1525,45 +1614,6 @@ done
 
 &lt;p&gt;Thank You !!!
 For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
-      <link>http://suraj.pro/post/blog7/</link>
-      <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog7/</guid>
-      <description>&lt;p&gt;Hello, after long time, I am writing for a good reason :P
-1. had participated in RDO bug triage day on 18th and 19th of May,
-   For those who dont know what is bug triage,
-   Have a look at it:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.rdoproject.org/community/rdo-bugtriage/&#34;&gt;https://www.rdoproject.org/community/rdo-bugtriage/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;(I also came to know it just day before yesterday :-))&lt;/p&gt;
-
-&lt;p&gt;As a newbie to RDO community, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/matrunge&#34;&gt;Matthias Runge&lt;/a&gt; guided me to what to do there.
-So, I had created account on &lt;a href=&#34;http://bugzilla.redhat.com&#34;&gt;http://bugzilla.redhat.com&lt;/a&gt;, Then I joined &lt;em&gt;#rdo&lt;/em&gt;, people out there also helped me in getting things done.&lt;/p&gt;
-
-&lt;p&gt;So I reviewed few bugs and then &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; told me, how to triaged it. Mostly I picked  following bugs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Almost one bug for each component like cinder, glance, keystone and heat.
-1. found one missing dependency So I got to fix that bug. So, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;  helped me to setup DLRN which maintains yum repositories of Openstack upstream (RDO).
-   And for one bug &lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;, I have sent patch which is under review(&lt;a href=&#34;https://review.rdoproject.org/r/#/c/1172/&#34;&gt;https://review.rdoproject.org/r/#/c/1172/&lt;/a&gt;) right now.
-   Once it approves, this will be my first contribution to RDO project. :-)
-2. have learnt alot in these two days as where is Openstack repositories is maintained and how dependencies are kept. Now, onwards, I will regularly participate in bug triage days.&lt;/p&gt;
-
-&lt;p&gt;My next blog will be on how to setup &lt;a href=&#34;http://dlrn.readthedocs.io/en/latest/&#34;&gt;DLRN&lt;/a&gt; to Contribute in RDO, Till then, Stay tuned. Be happy. Contribute to OPenSource. :P&lt;/p&gt;
 </description>
     </item>
     

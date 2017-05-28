@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Golang workaround for cannot assign to struct field in map &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="http://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=http://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="http://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="http://suraj.pro/post/golang_workaround/">Golang workaround for cannot assign to struct field in map</a></h1>
+            <span class="post-date">May 28, 2017 </span>
+            <div class="post-content">
+                
+
+<p>Yesterday, I was working one of the <a href="https://github.com/kubernetes-incubator/kompose">Kompose</a> issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}}
+        fmt.Println(m)
+	m[&quot;dog&quot;].count = 4
+	
+	fmt.Println(m)
+
+}
+</code></pre>
+
+<p>so I got this error,</p>
+
+<pre><code>tmp/sandbox728133053/main.go:12: cannot assign to struct field m[&quot;dog&quot;].count in map
+</code></pre>
+
+<p>After googling for some time, I found this solution and I tried &amp; it worked as below:</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}}
+
+	fmt.Println(m)
+
+	var x = m[&quot;dog&quot;]
+	x.count = 4
+	m[&quot;dog&quot;] = x
+
+	fmt.Println(m)
+
+
+}
+</code></pre>
+
+<p>I found one more way to do this by storing pointers as shown below:</p>
+
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+type Animal struct {
+	count int
+}
+
+func main() {
+	m := map[string]*Animal{&quot;cat&quot;: &amp;Animal{2}, &quot;dog&quot;: &amp;Animal{3}, &quot;mouse&quot;: &amp;Animal{5}}
+	fmt.Printf(&quot;%#v\n&quot;,m[&quot;dog&quot;])
+	
+	m[&quot;dog&quot;].count = 4
+
+	fmt.Printf(&quot;%#v&quot;, m[&quot;dog&quot;])
+
+}
+</code></pre>
+
+<p><code>Happy Hacking !!!</code></p>
+
+<h4 id="reference">Reference:</h4>
+
+<ul>
+<li><a href="https://github.com/golang/go/issues/3117">https://github.com/golang/go/issues/3117</a></li>
+</ul>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/golang_workaround\/';
+    var disqus_title = 'Golang workaround for cannot assign to struct field in map';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/golang_workaround\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>
