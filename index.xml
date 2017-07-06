@@ -6,8 +6,121 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 May 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 06 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tools to adopt best practices in golang</title>
+      <link>http://suraj.pro/post/gotools/</link>
+      <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/gotools/</guid>
+      <description>
+
+&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found some tools written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and amazing.
+I found some of them useful for me, so are they listed below.&lt;/p&gt;
+
+&lt;h3 id=&#34;static-check&#34;&gt;static check&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;applies tons of static analysis checks.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/staticcheck
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ statickcheck [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I tried it for kompose with some extra hacks:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do staticcheck &amp;quot;$pkg&amp;quot;; done
+cmd/completion.go:48:2: empty branch (SA9003)
+pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the &#39;!=&#39; operator (SA4000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gosimple&#34;&gt;gosimple&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;it gives suggestions for simplifying your code.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/gosimple
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ gosimple [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I tried it as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do gosimple &amp;quot;$pkg&amp;quot;; done
+pkg/transformer/utils.go:219:2: &#39;if err != nil { return err }; return nil&#39; can be simplified to &#39;return err&#39; (S1013)
+pkg/transformer/utils_test.go:115:4: the argument is already a string, there&#39;s no need to use fmt.Sprintf (S1025)
+pkg/transformer/kubernetes/k8sutils.go:346:3: should replace loop with volumes = append(volumes, TmpVolumes...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:349:3: should replace loop with volumesMount = append(volumesMount, TmpVolumesMount...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:414:6: should omit comparison to bool constant, can be simplified to service.Privileged (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:206:7: should omit comparison to bool constant, can be simplified to !hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:243:8: should omit comparison to bool constant, can be simplified to hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:275:5: should omit comparison to bool constant, can be simplified to !output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
+pkg/utils/docker/client.go:31:2: &#39;if err != nil { return client, err }; return client, nil&#39; can be simplified to &#39;return client, err&#39; (S1013)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;unused&#34;&gt;unused&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;it checks for unused constants, variables, functions and types.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/unused
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ unused [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;again, I tried it on kompose, purposefully I have added some unused type and function:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do unused &amp;quot;$pkg&amp;quot;; done
+pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
+pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h4 id=&#34;references&#34;&gt;References:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&#34;&gt;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;https://github.com/dominikh/go-tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Golang workaround for cannot assign to struct field in map</title>
@@ -128,12 +241,16 @@ func main() {
 
 &lt;h2 id=&#34;work-experience&#34;&gt;Work Experience&lt;/h2&gt;
 
-&lt;p&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Working as golang developer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Working as &lt;em&gt;DevOps&lt;/em&gt; intern for maintaining CI/CD process using various tools like Jenkins, Ansible, Puppet, Docker, OpenStack, etc.&lt;/p&gt;
@@ -142,10 +259,17 @@ func main() {
 
 &lt;h2 id=&#34;opensource-contributions&#34;&gt;OpenSource Contributions&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Kubernetes-incubator&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;Kubernetes-incubator&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/docker/libcompose&#34;&gt;Libcompose&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
@@ -190,12 +314,15 @@ func main() {
 
 &lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
+&lt;p&gt;&lt;br&gt;
+&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
 &lt;code&gt;Jenkins&lt;/code&gt;, &lt;code&gt;Ansible&lt;/code&gt;, &lt;code&gt;Puppet&lt;/code&gt;, &lt;code&gt;ShellScripting&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;, &lt;code&gt;Golang&lt;/code&gt;, &lt;code&gt;Kubernetes&lt;/code&gt;, &lt;code&gt;Openshift&lt;/code&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
@@ -213,6 +340,8 @@ func main() {
 
 &lt;h2 id=&#34;as-a-speaker&#34;&gt;As a speaker&lt;/h2&gt;
 
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express Workshop&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune Monthly meetup&lt;/a&gt;&lt;/li&gt;
@@ -222,6 +351,8 @@ func main() {
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;community-roles&#34;&gt;Community Roles&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;meetup.com/PythonPune/&#34;&gt;Python Pune meetup&lt;/a&gt; event host&lt;/li&gt;
@@ -235,11 +366,14 @@ func main() {
 
 &lt;h2 id=&#34;interests&#34;&gt;Interests:&lt;/h2&gt;
 
-&lt;p&gt;FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet | Alexa&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet | Alexa&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h2 id=&#34;education-details&#34;&gt;Education details&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Bachelor of Engineering&lt;/strong&gt; in Electronics &amp;amp; Communication Engineering from Deogiri Institute of Engineering &amp;amp; Management Studies, Aurangabad(&lt;em&gt;Aggregate: 81.85%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
@@ -1375,254 +1509,6 @@ Meetup was specifically targeted on python pandas as last meetup already covered
 &lt;p&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
-      <link>http://suraj.pro/post/blog8/</link>
-      <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog8/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Kubernetes&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated.
-It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/kube7-logo.png&#34; width=&#34;600&#34; height=&#34;250&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this blog post, we’ll install a Kubernetes cluster with three minions on Fedora 23, we will also see example on how to manage pods.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ systemctl stop firewalld
-$ systemctl disable firewalld
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Setting up the Kubernetes Master&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;1.Install etcd and kubernetes using dnf
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ dnf -y install etcd kubernetes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.Configure etcd to listen all IP addresses, Following lines are to be uncommented and assigned with respective values in  /etc/etcd/etcd.conf:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; ETCD_NAME=default
- ETCD_DATA_DIR=&amp;quot;/var/lib/etcd/default.etcd&amp;quot;
- ETCD_LISTEN_CLIENT_URLS=&amp;quot;http://0.0.0.0:2379&amp;quot;
- ETCD_ADVERTISE_CLIENT_URLS=&amp;quot;http://localhost:2379
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.Configure Kubernetes API server by editing /etc/kubernetes/apiserver as below:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBE_API_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBE_API_PORT=&amp;quot;--port=8080&amp;quot;
- KUBELET_PORT=&amp;quot;--kubelet_port=10250&amp;quot;
- KUBE_ETCD_SERVERS=&amp;quot;--etcd_servers=http://127.0.0.1:2379&amp;quot;
- KUBE_SERVICE_ADDRESSES=&amp;quot;--service-cluster-ip-range=10.254.0.0/16&amp;quot;
- KUBE_ADMISSION_CONTROL=&amp;quot;--admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota&amp;quot;
- KUBE_API_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4.We have to Start and enable these servies; etcd, kube-apiserver, kube-controller-manager and kube-scheduler:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;   $ for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler; do
-    systemctl restart $SERVICES
-    systemctl enable $SERVICES
-    systemctl status $SERVICES
-    done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;5.We have to Define flannel network configuration in etcd. This configuration will be pulled by flannel service on minions, it is used for internetwork communication in containers:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ etcdctl mk /atomic.io/network/config &#39;{&amp;quot;Network&amp;quot;:&amp;quot;172.17.0.0/16&amp;quot;}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Setting up Kubernetes Minions (Nodes)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/minion.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now follow following steps to configure minion1, minion2 and minion3 .&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Install flannel and Kubernetes using dnf:
-::
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;$ dnf -y install flannel kubernetes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Update the following line in /etc/sysconfig/flanneld to connect to the respective master(via flannel service):
-::
-&lt;code&gt;
-FLANNEL_ETCD=&amp;quot;http://10.3.3.171:2379&amp;quot;
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Update KUBE_MASTER in /etc/kubernetes/config to Kubernetes master API server for connection:
-::
-&lt;code&gt;
-KUBE_MASTER=&amp;quot;--master=http://10.3.13.171:8080&amp;quot;
-&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;4.Configure kubelet service by editing  /etc/kubernetes/kubelet on each minion as following:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Minion1:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.172&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Minion2:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.173&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Minion3:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.174&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;We have to Start and enable kube-proxy, kubelet, docker and flanneld services on each minion:
-::
-&lt;code&gt;
- $ for SERVICES in kube-proxy kubelet docker flanneld; do
-   systemctl restart $SERVICES
-systemctl enable $SERVICES
-systemctl status $SERVICES
-done
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;On each minion, you can check that you will have two new interfaces added, docker0 and flannel0. You can check different range of IP addresses on flannel0 interface on each minion, you can check it by following command on each minion:
-::
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ip a | grep flannel | grep inet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;if all the services are started correctly, Hence, Everything is set now, we can check minion status as following:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get nodes
- NAME          STATUS    AGE
- 10.3.3.172   Ready     10m
- 10.3.3.173   Ready     12m
- 10.3.3.174   Ready     15m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will create a simple pod definition like this below(pod is nothing but group of containers)
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; #pod-nginx.yaml
- apiVersion: v1
- kind: Pod
-   metadata : 
-  name: nginx
-   spec : 
-    containers:
-    - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create a pod containing an nginx server (pod-nginx.yaml):
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ kubectl create -f ./pod-nginx.yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can check output at:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ curl http://$(kubectl get pod nginx -o go-template={{.status.podIP}})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To List all pods:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get pods
- NAME          READY     STATUS    RESTARTS   AGE
- nginx         1/1       Running   0          2m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To replicate the container, for example:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; apiVersion: v1
- kind: ReplicationController
- metadata : 
-  name: nginx
-  spec : 
-    replicas: 3
-    selector:
-    app: nginx
-    template:
-    metadata:
-    labels:
-    app: nginx
-    spec:
-    containers:
-    - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then pods will be listed as,(containers will be spinned on all minions in cluster way)
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ sudo kubectl get pods
- NAME          READY     STATUS    RESTARTS   AGE
- nginx-1z3lw   1/1       Running   0          3m
- nginx-343jk   1/1       Running   0          3m
- nginx-s9gt8   1/1       Running   0          3m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can Delete the pod by name as following:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl delete pod nginx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can check all logs(events) as following :
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get events
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Thank You !!!
-For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
 </description>
     </item>
     

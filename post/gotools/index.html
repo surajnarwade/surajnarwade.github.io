@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> tools to adopt best practices in golang &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="http://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=http://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="http://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="http://suraj.pro/post/gotools/">tools to adopt best practices in golang</a></h1>
+            <span class="post-date">Jul 6, 2017 </span>
+            <div class="post-content">
+                
+
+<p>I went through internet yesterday regarding best practices with golang, I found some tools written by <a href="https://twitter.com/dominikhonnef">Dominik Honnef</a> which were pretty interesting and amazing.
+I found some of them useful for me, so are they listed below.</p>
+
+<h3 id="static-check">static check</h3>
+
+<ul>
+<li><p>applies tons of static analysis checks.</p></li>
+
+<li><p>it needs go 1.6 or later,</p></li>
+</ul>
+
+<pre><code>go get honnef.co/go/tools/cmd/staticcheck
+</code></pre>
+
+<ul>
+<li>syntax is:</li>
+</ul>
+
+<pre><code>$ statickcheck [pkg] or [directory]
+</code></pre>
+
+<ul>
+<li>I tried it for kompose with some extra hacks:</li>
+</ul>
+
+<pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do staticcheck &quot;$pkg&quot;; done
+cmd/completion.go:48:2: empty branch (SA9003)
+pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the '!=' operator (SA4000)
+</code></pre>
+
+<h3 id="gosimple">gosimple</h3>
+
+<ul>
+<li><p>it gives suggestions for simplifying your code.</p></li>
+
+<li><p>it needs go 1.6 or later:</p></li>
+</ul>
+
+<pre><code>go get honnef.co/go/tools/cmd/gosimple
+</code></pre>
+
+<ul>
+<li>syntax is:</li>
+</ul>
+
+<pre><code>$ gosimple [pkg] or [directory]
+</code></pre>
+
+<ul>
+<li>I tried it as follows:</li>
+</ul>
+
+<pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do gosimple &quot;$pkg&quot;; done
+pkg/transformer/utils.go:219:2: 'if err != nil { return err }; return nil' can be simplified to 'return err' (S1013)
+pkg/transformer/utils_test.go:115:4: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+pkg/transformer/kubernetes/k8sutils.go:346:3: should replace loop with volumes = append(volumes, TmpVolumes...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:349:3: should replace loop with volumesMount = append(volumesMount, TmpVolumesMount...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:414:6: should omit comparison to bool constant, can be simplified to service.Privileged (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:206:7: should omit comparison to bool constant, can be simplified to !hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:243:8: should omit comparison to bool constant, can be simplified to hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:275:5: should omit comparison to bool constant, can be simplified to !output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
+pkg/utils/docker/client.go:31:2: 'if err != nil { return client, err }; return client, nil' can be simplified to 'return client, err' (S1013)
+</code></pre>
+
+<h3 id="unused">unused</h3>
+
+<ul>
+<li><p>it checks for unused constants, variables, functions and types.</p></li>
+
+<li><p>it needs go 1.6 or later</p></li>
+</ul>
+
+<pre><code>go get honnef.co/go/tools/cmd/unused
+</code></pre>
+
+<ul>
+<li>syntax is:</li>
+</ul>
+
+<pre><code>$ unused [pkg] or [directory]
+</code></pre>
+
+<ul>
+<li>again, I tried it on kompose, purposefully I have added some unused type and function:</li>
+</ul>
+
+<pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do unused &quot;$pkg&quot;; done
+pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
+pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
+</code></pre>
+
+<h3 id="happy-hacking"><code>Happy Hacking !!!</code></h3>
+
+<h4 id="references">References:</h4>
+
+<ul>
+<li><a href="https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife">https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife</a></li>
+<li><a href="https://github.com/dominikh/go-tools">https://github.com/dominikh/go-tools</a></li>
+</ul>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/gotools\/';
+    var disqus_title = 'tools to adopt best practices in golang';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/gotools\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

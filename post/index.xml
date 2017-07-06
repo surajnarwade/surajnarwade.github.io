@@ -6,8 +6,121 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 May 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 06 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tools to adopt best practices in golang</title>
+      <link>http://suraj.pro/post/gotools/</link>
+      <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/gotools/</guid>
+      <description>
+
+&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found some tools written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and amazing.
+I found some of them useful for me, so are they listed below.&lt;/p&gt;
+
+&lt;h3 id=&#34;static-check&#34;&gt;static check&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;applies tons of static analysis checks.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/staticcheck
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ statickcheck [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I tried it for kompose with some extra hacks:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do staticcheck &amp;quot;$pkg&amp;quot;; done
+cmd/completion.go:48:2: empty branch (SA9003)
+pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the &#39;!=&#39; operator (SA4000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;gosimple&#34;&gt;gosimple&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;it gives suggestions for simplifying your code.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/gosimple
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ gosimple [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I tried it as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do gosimple &amp;quot;$pkg&amp;quot;; done
+pkg/transformer/utils.go:219:2: &#39;if err != nil { return err }; return nil&#39; can be simplified to &#39;return err&#39; (S1013)
+pkg/transformer/utils_test.go:115:4: the argument is already a string, there&#39;s no need to use fmt.Sprintf (S1025)
+pkg/transformer/kubernetes/k8sutils.go:346:3: should replace loop with volumes = append(volumes, TmpVolumes...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:349:3: should replace loop with volumesMount = append(volumesMount, TmpVolumesMount...) (S1011)
+pkg/transformer/kubernetes/k8sutils.go:414:6: should omit comparison to bool constant, can be simplified to service.Privileged (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:206:7: should omit comparison to bool constant, can be simplified to !hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:243:8: should omit comparison to bool constant, can be simplified to hostPid (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:275:5: should omit comparison to bool constant, can be simplified to !output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
+pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
+pkg/utils/docker/client.go:31:2: &#39;if err != nil { return client, err }; return client, nil&#39; can be simplified to &#39;return client, err&#39; (S1013)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;unused&#34;&gt;unused&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;it checks for unused constants, variables, functions and types.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;it needs go 1.6 or later&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/unused
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syntax is:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ unused [pkg] or [directory]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;again, I tried it on kompose, purposefully I have added some unused type and function:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do unused &amp;quot;$pkg&amp;quot;; done
+pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
+pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h4 id=&#34;references&#34;&gt;References:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&#34;&gt;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;https://github.com/dominikh/go-tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Golang workaround for cannot assign to struct field in map</title>
@@ -1470,45 +1583,6 @@ done
 
 &lt;p&gt;Thank You !!!
 For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
-      <link>http://suraj.pro/post/blog7/</link>
-      <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog7/</guid>
-      <description>&lt;p&gt;Hello, after long time, I am writing for a good reason :P
-1. had participated in RDO bug triage day on 18th and 19th of May,
-   For those who dont know what is bug triage,
-   Have a look at it:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.rdoproject.org/community/rdo-bugtriage/&#34;&gt;https://www.rdoproject.org/community/rdo-bugtriage/&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;(I also came to know it just day before yesterday :-))&lt;/p&gt;
-
-&lt;p&gt;As a newbie to RDO community, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/matrunge&#34;&gt;Matthias Runge&lt;/a&gt; guided me to what to do there.
-So, I had created account on &lt;a href=&#34;http://bugzilla.redhat.com&#34;&gt;http://bugzilla.redhat.com&lt;/a&gt;, Then I joined &lt;em&gt;#rdo&lt;/em&gt;, people out there also helped me in getting things done.&lt;/p&gt;
-
-&lt;p&gt;So I reviewed few bugs and then &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt; told me, how to triaged it. Mostly I picked  following bugs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1205645&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1195977&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1213545&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1301158&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Almost one bug for each component like cinder, glance, keystone and heat.
-1. found one missing dependency So I got to fix that bug. So, &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;ChandanKumar&lt;/a&gt;  helped me to setup DLRN which maintains yum repositories of Openstack upstream (RDO).
-   And for one bug &lt;a href=&#34;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&#34;&gt;https://bugzilla.redhat.com/show_bug.cgi?id=1212899&lt;/a&gt;, I have sent patch which is under review(&lt;a href=&#34;https://review.rdoproject.org/r/#/c/1172/&#34;&gt;https://review.rdoproject.org/r/#/c/1172/&lt;/a&gt;) right now.
-   Once it approves, this will be my first contribution to RDO project. :-)
-2. have learnt alot in these two days as where is Openstack repositories is maintained and how dependencies are kept. Now, onwards, I will regularly participate in bug triage days.&lt;/p&gt;
-
-&lt;p&gt;My next blog will be on how to setup &lt;a href=&#34;http://dlrn.readthedocs.io/en/latest/&#34;&gt;DLRN&lt;/a&gt; to Contribute in RDO, Till then, Stay tuned. Be happy. Contribute to OPenSource. :P&lt;/p&gt;
 </description>
     </item>
     
