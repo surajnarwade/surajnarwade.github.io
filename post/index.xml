@@ -17,7 +17,7 @@
       <guid>http://suraj.pro/post/gotools/</guid>
       <description>
 
-&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found some tools written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and amazing.
+&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found &lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;go-tools&lt;/a&gt;  written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and can be .
 I found some of them useful for me, so are they listed below.&lt;/p&gt;
 
 &lt;h3 id=&#34;static-check&#34;&gt;static check&lt;/h3&gt;
