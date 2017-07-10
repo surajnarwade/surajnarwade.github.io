@@ -6,8 +6,66 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes Pune Meetup - July 2017</title>
+      <link>http://suraj.pro/post/k8s-pune-meetup/</link>
+      <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/k8s-pune-meetup/</guid>
+      <description>&lt;p&gt;It was beautiful Saturday morning and we were at yet another chapter of  &lt;a href=&#34;https://www.meetup.com/Kubernetes-Pune/events/240840502/&#34;&gt;kubernetes Pune meetup&lt;/a&gt;.
+Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/harshal2623&#34;&gt;Harshal Shah&lt;/a&gt; started the  Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Now Harshal is talking about &amp;#39;Birth of a pod&amp;#39;  &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Pune meetup. &lt;a href=&#34;https://t.co/t5tP7DvOtt&#34;&gt;pic.twitter.com/t5tP7DvOtt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Praveen Kumar (@kumar_pravin) &lt;a href=&#34;https://twitter.com/kumar_pravin/status/883555317283381248&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, in the queue, there was a talk on “Making Kubernetes simpler with Kompose” by Pradeepto and Suraj which was a mind blowing thing for some attendees. Pradeepto spoke about the problem statement that Kompose is trying to solve followed by  Kompose’s journey to where it is now. He mentioned how we at Red Hat Developer Engineering became a part of it. Then he elaborated the architecture of Kompose and gave the stage to Suraj.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; passionately explaining docker-compose lovers K8S problem at &lt;a href=&#34;https://twitter.com/hashtag/kubernetespune?src=hash&#34;&gt;#kubernetespune&lt;/a&gt; meetup with &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; &lt;a href=&#34;https://t.co/LQWhC8xmNu&#34;&gt;pic.twitter.com/LQWhC8xmNu&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883585280724291585&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Following by a short discussion regarding Kompose and its features, Suraj demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Kompose talk at &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Meetup Pune by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; His Kompose demo is dope! &lt;a href=&#34;https://t.co/ekbs2a2QqW&#34;&gt;pic.twitter.com/ekbs2a2QqW&lt;/a&gt;&lt;/p&gt;&amp;mdash; Pradeepto B. (@pradeepto) &lt;a href=&#34;https://twitter.com/pradeepto/status/883568343591997440&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; with &lt;a href=&#34;https://twitter.com/hashtag/kompose?src=hash&#34;&gt;#kompose&lt;/a&gt; session in .&lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; pune meetup. &lt;a href=&#34;https://t.co/usOdl03RTS&#34;&gt;pic.twitter.com/usOdl03RTS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Budhram (@budhrg) &lt;a href=&#34;https://twitter.com/budhrg/status/883560902188048384&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;We got a lot of questions around Kompose and its features. After the demo, Pradeepto concluded the talk with future for the Kompose and quick introduction to &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;kedgeproject&lt;/a&gt;, also he urged attendees to try out both projects and give feedbacks or file issues.&lt;/p&gt;
+
+&lt;p&gt;By the way, &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;Kedge&lt;/a&gt; is a simple and easy way to define and deploy applications to Kubernetes by writing very concise application definitions. Please give it a spin.&lt;/p&gt;
+
+&lt;p&gt;After a heavy discussion and demos, we had short snacks break over a tasty samosa and cup of tea. This break seems to be good opportunity to interact with people and networking.&lt;/p&gt;
+
+&lt;p&gt;Last but not the least, &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;Rahul Mahale&lt;/a&gt;  shared his experience with deploying Rails app using kubernetes. He also discussed problems he faced and how he overcome it with the help of tools such as Prometheus, graphana, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/kubernetes?src=hash&#34;&gt;#kubernetes&lt;/a&gt; meetup Pune #7 &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;@Rahul_Mahale&lt;/a&gt; Rails apps on K8S, a big thanks to &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;@BigBinary&lt;/a&gt; &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;@_cha1tanya&lt;/a&gt; for hosting &lt;a href=&#34;https://twitter.com/infracloudio&#34;&gt;@infracloudio&lt;/a&gt; &lt;a href=&#34;https://t.co/EumiMMFpjA&#34;&gt;pic.twitter.com/EumiMMFpjA&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883584956038955008&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to all speakers for making this meetup as a great place to learn, &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;Prathmesh&lt;/a&gt; and  &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;Bigbinary&lt;/a&gt;  for the venue and constant support for hosting the &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;Kubernetes&lt;/a&gt; Meetup Pune. Please stay tuned to the meetup page, we will have our next meetup on August 5th possibly at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; Pune office. See you there.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>tools to adopt best practices in golang</title>
@@ -1335,254 +1393,6 @@ Meetup was specifically targeted on python pandas as last meetup already covered
 &lt;p&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
-      <link>http://suraj.pro/post/blog8/</link>
-      <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog8/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Kubernetes&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated.
-It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/kube7-logo.png&#34; width=&#34;600&#34; height=&#34;250&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this blog post, we’ll install a Kubernetes cluster with three minions on Fedora 23, we will also see example on how to manage pods.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Prerequisites&lt;/strong&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ systemctl stop firewalld
-$ systemctl disable firewalld
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Setting up the Kubernetes Master&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;1.Install etcd and kubernetes using dnf
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ dnf -y install etcd kubernetes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;2.Configure etcd to listen all IP addresses, Following lines are to be uncommented and assigned with respective values in  /etc/etcd/etcd.conf:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; ETCD_NAME=default
- ETCD_DATA_DIR=&amp;quot;/var/lib/etcd/default.etcd&amp;quot;
- ETCD_LISTEN_CLIENT_URLS=&amp;quot;http://0.0.0.0:2379&amp;quot;
- ETCD_ADVERTISE_CLIENT_URLS=&amp;quot;http://localhost:2379
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;3.Configure Kubernetes API server by editing /etc/kubernetes/apiserver as below:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBE_API_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBE_API_PORT=&amp;quot;--port=8080&amp;quot;
- KUBELET_PORT=&amp;quot;--kubelet_port=10250&amp;quot;
- KUBE_ETCD_SERVERS=&amp;quot;--etcd_servers=http://127.0.0.1:2379&amp;quot;
- KUBE_SERVICE_ADDRESSES=&amp;quot;--service-cluster-ip-range=10.254.0.0/16&amp;quot;
- KUBE_ADMISSION_CONTROL=&amp;quot;--admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota&amp;quot;
- KUBE_API_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;4.We have to Start and enable these servies; etcd, kube-apiserver, kube-controller-manager and kube-scheduler:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;   $ for SERVICES in etcd kube-apiserver kube-controller-manager kube-scheduler; do
-    systemctl restart $SERVICES
-    systemctl enable $SERVICES
-    systemctl status $SERVICES
-    done
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;5.We have to Define flannel network configuration in etcd. This configuration will be pulled by flannel service on minions, it is used for internetwork communication in containers:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ etcdctl mk /atomic.io/network/config &#39;{&amp;quot;Network&amp;quot;:&amp;quot;172.17.0.0/16&amp;quot;}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Setting up Kubernetes Minions (Nodes)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/minion.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now follow following steps to configure minion1, minion2 and minion3 .&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Install flannel and Kubernetes using dnf:
-::
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;$ dnf -y install flannel kubernetes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Update the following line in /etc/sysconfig/flanneld to connect to the respective master(via flannel service):
-::
-&lt;code&gt;
-FLANNEL_ETCD=&amp;quot;http://10.3.3.171:2379&amp;quot;
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Update KUBE_MASTER in /etc/kubernetes/config to Kubernetes master API server for connection:
-::
-&lt;code&gt;
-KUBE_MASTER=&amp;quot;--master=http://10.3.13.171:8080&amp;quot;
-&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;4.Configure kubelet service by editing  /etc/kubernetes/kubelet on each minion as following:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Minion1:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.172&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Minion2:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.173&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Minion3:&lt;/em&gt;
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; KUBELET_ADDRESS=&amp;quot;--address=0.0.0.0&amp;quot;
- KUBELET_PORT=&amp;quot;--port=10250&amp;quot;
- # change the hostname to this host’s IP address
- KUBELET_HOSTNAME=&amp;quot;--hostname_override=10.3.3.174&amp;quot;
- KUBELET_API_SERVER=&amp;quot;--api_servers=http://10.3.3.171:8080&amp;quot;
- KUBELET_ARGS=&amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;We have to Start and enable kube-proxy, kubelet, docker and flanneld services on each minion:
-::
-&lt;code&gt;
- $ for SERVICES in kube-proxy kubelet docker flanneld; do
-   systemctl restart $SERVICES
-systemctl enable $SERVICES
-systemctl status $SERVICES
-done
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;On each minion, you can check that you will have two new interfaces added, docker0 and flannel0. You can check different range of IP addresses on flannel0 interface on each minion, you can check it by following command on each minion:
-::
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ip a | grep flannel | grep inet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;if all the services are started correctly, Hence, Everything is set now, we can check minion status as following:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get nodes
- NAME          STATUS    AGE
- 10.3.3.172   Ready     10m
- 10.3.3.173   Ready     12m
- 10.3.3.174   Ready     15m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will create a simple pod definition like this below(pod is nothing but group of containers)
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; #pod-nginx.yaml
- apiVersion: v1
- kind: Pod
-   metadata : 
-  name: nginx
-   spec : 
-    containers:
-    - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create a pod containing an nginx server (pod-nginx.yaml):
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ kubectl create -f ./pod-nginx.yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can check output at:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ curl http://$(kubectl get pod nginx -o go-template={{.status.podIP}})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To List all pods:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get pods
- NAME          READY     STATUS    RESTARTS   AGE
- nginx         1/1       Running   0          2m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To replicate the container, for example:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; apiVersion: v1
- kind: ReplicationController
- metadata : 
-  name: nginx
-  spec : 
-    replicas: 3
-    selector:
-    app: nginx
-    template:
-    metadata:
-    labels:
-    app: nginx
-    spec:
-    containers:
-    - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then pods will be listed as,(containers will be spinned on all minions in cluster way)
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ sudo kubectl get pods
- NAME          READY     STATUS    RESTARTS   AGE
- nginx-1z3lw   1/1       Running   0          3m
- nginx-343jk   1/1       Running   0          3m
- nginx-s9gt8   1/1       Running   0          3m
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can Delete the pod by name as following:
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl delete pod nginx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can check all logs(events) as following :
-::&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; $ kubectl get events
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Thank You !!!
-For any query or any suggestion, Comments are most welcome !!!&lt;/p&gt;
 </description>
     </item>
     

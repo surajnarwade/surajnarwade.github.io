@@ -6,8 +6,66 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes Pune Meetup - July 2017</title>
+      <link>http://suraj.pro/post/k8s-pune-meetup/</link>
+      <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/k8s-pune-meetup/</guid>
+      <description>&lt;p&gt;It was beautiful Saturday morning and we were at yet another chapter of  &lt;a href=&#34;https://www.meetup.com/Kubernetes-Pune/events/240840502/&#34;&gt;kubernetes Pune meetup&lt;/a&gt;.
+Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/harshal2623&#34;&gt;Harshal Shah&lt;/a&gt; started the  Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Now Harshal is talking about &amp;#39;Birth of a pod&amp;#39;  &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Pune meetup. &lt;a href=&#34;https://t.co/t5tP7DvOtt&#34;&gt;pic.twitter.com/t5tP7DvOtt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Praveen Kumar (@kumar_pravin) &lt;a href=&#34;https://twitter.com/kumar_pravin/status/883555317283381248&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Next, in the queue, there was a talk on “Making Kubernetes simpler with Kompose” by Pradeepto and Suraj which was a mind blowing thing for some attendees. Pradeepto spoke about the problem statement that Kompose is trying to solve followed by  Kompose’s journey to where it is now. He mentioned how we at Red Hat Developer Engineering became a part of it. Then he elaborated the architecture of Kompose and gave the stage to Suraj.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; passionately explaining docker-compose lovers K8S problem at &lt;a href=&#34;https://twitter.com/hashtag/kubernetespune?src=hash&#34;&gt;#kubernetespune&lt;/a&gt; meetup with &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; &lt;a href=&#34;https://t.co/LQWhC8xmNu&#34;&gt;pic.twitter.com/LQWhC8xmNu&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883585280724291585&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Following by a short discussion regarding Kompose and its features, Suraj demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Kompose talk at &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Meetup Pune by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; His Kompose demo is dope! &lt;a href=&#34;https://t.co/ekbs2a2QqW&#34;&gt;pic.twitter.com/ekbs2a2QqW&lt;/a&gt;&lt;/p&gt;&amp;mdash; Pradeepto B. (@pradeepto) &lt;a href=&#34;https://twitter.com/pradeepto/status/883568343591997440&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; with &lt;a href=&#34;https://twitter.com/hashtag/kompose?src=hash&#34;&gt;#kompose&lt;/a&gt; session in .&lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; pune meetup. &lt;a href=&#34;https://t.co/usOdl03RTS&#34;&gt;pic.twitter.com/usOdl03RTS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Budhram (@budhrg) &lt;a href=&#34;https://twitter.com/budhrg/status/883560902188048384&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;We got a lot of questions around Kompose and its features. After the demo, Pradeepto concluded the talk with future for the Kompose and quick introduction to &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;kedgeproject&lt;/a&gt;, also he urged attendees to try out both projects and give feedbacks or file issues.&lt;/p&gt;
+
+&lt;p&gt;By the way, &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;Kedge&lt;/a&gt; is a simple and easy way to define and deploy applications to Kubernetes by writing very concise application definitions. Please give it a spin.&lt;/p&gt;
+
+&lt;p&gt;After a heavy discussion and demos, we had short snacks break over a tasty samosa and cup of tea. This break seems to be good opportunity to interact with people and networking.&lt;/p&gt;
+
+&lt;p&gt;Last but not the least, &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;Rahul Mahale&lt;/a&gt;  shared his experience with deploying Rails app using kubernetes. He also discussed problems he faced and how he overcome it with the help of tools such as Prometheus, graphana, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/kubernetes?src=hash&#34;&gt;#kubernetes&lt;/a&gt; meetup Pune #7 &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;@Rahul_Mahale&lt;/a&gt; Rails apps on K8S, a big thanks to &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;@BigBinary&lt;/a&gt; &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;@_cha1tanya&lt;/a&gt; for hosting &lt;a href=&#34;https://twitter.com/infracloudio&#34;&gt;@infracloudio&lt;/a&gt; &lt;a href=&#34;https://t.co/EumiMMFpjA&#34;&gt;pic.twitter.com/EumiMMFpjA&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883584956038955008&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to all speakers for making this meetup as a great place to learn, &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;Prathmesh&lt;/a&gt; and  &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;Bigbinary&lt;/a&gt;  for the venue and constant support for hosting the &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;Kubernetes&lt;/a&gt; Meetup Pune. Please stay tuned to the meetup page, we will have our next meetup on August 5th possibly at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; Pune office. See you there.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>tools to adopt best practices in golang</title>
@@ -1428,87 +1486,6 @@ New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Who Am I ?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Pycon India Social Media Volunteer&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
-      <link>http://suraj.pro/post/blog9/</link>
-      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog9/</guid>
-      <description>&lt;p&gt;Python Pune Meetup was held @ &lt;a href=&#34;http://amazatic.com/&#34;&gt;&lt;code&gt;Amazatic Solutions&lt;/code&gt;&lt;/a&gt;  and that was about  Part II of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;&lt;code&gt;Sudarshan Gadhave&lt;/code&gt;&lt;/a&gt; on 28th May 2016.
-Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.&lt;/p&gt;
-
-&lt;p&gt;Sudarshan started from Required tools/libraries for machine learning :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ipython&lt;/li&gt;
-&lt;li&gt;numpy&lt;/li&gt;
-&lt;li&gt;python-pandas&lt;/li&gt;
-&lt;li&gt;python-scikit-learn&lt;/li&gt;
-&lt;li&gt;matplotlib
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;These are best opensource alternatives to softwares like MATLAB !!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Machine learning is all about technical,business and statistics. if there is small data sets. that can be done manually, but if there are thousands of rows and columns in data stats, then what ? most of the time of Data Scientists is consumed to get the data,analyze the data,sepeartion of data,and cleaning of data, that means almost 70% of the total work in intial phase. Later comes the actual business logic and model building.&lt;/p&gt;
-
-&lt;p&gt;we have used titanic data sets for example (&lt;a href=&#34;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&#34;&gt;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Then, Following things we have covered:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Numpy basics&lt;/li&gt;
-&lt;li&gt;Pandas Data Structures and basics&lt;/li&gt;
-&lt;li&gt;Data Loading&lt;/li&gt;
-&lt;li&gt;Data Wrangling (Clean, Transform, Merge)&lt;/li&gt;
-&lt;li&gt;Data Aggregation and grouping operations&lt;/li&gt;
-&lt;li&gt;Exploratory Data Analysis and Descriptive Statistics&lt;/li&gt;
-&lt;li&gt;Plotting and Visualization
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Features/comarison of Numpy &amp;amp; pandas:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;numpy:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;built for fast array processing, vector operations&lt;/li&gt;
-&lt;li&gt;15 times faster then list&lt;/li&gt;
-&lt;li&gt;made for scientific calculations
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;python pandas :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Datastructure series - 1d numpy array stores data. its like column in dataframe context&lt;/li&gt;
-&lt;li&gt;series also has the index and the value&lt;/li&gt;
-&lt;li&gt;We can change the values in series using index&lt;/li&gt;
-&lt;li&gt;Dataframe is collection of series like excel sheet&lt;/li&gt;
-&lt;li&gt;More the memory More data can be analysed in python pandas
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/version/0.15.2/tutorials.html&#34;&gt;Click Here to know more about pandas from beginning&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We also discussed about the Matplotlib,Matplotlib is the library used to mainly produce the charts related to the data. You can generate plots, histograms, power spectra, bar charts, errorcharts, scatterplots, etc, with just a few lines of code. I found this as good and free alternative to MATLAB.&lt;/p&gt;
-
-&lt;p&gt;Sudarshan Suggested to go through this book to know more &amp;amp; from very basics towards machine learning as well Data science:
-&lt;a href=&#34;http://www.cin.ufpe.br/~embat/Python%20for%20Data%20Analysis.pdf&#34;&gt;Python for data Analysis&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Those who missed meetup can follow these links :
-&lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Thank you &lt;a href=&#34;http://amazatic.com/&#34;&gt;Amazatic Solutions&lt;/a&gt;, and Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Selfie @meetup @Amazatic by Sudarshan:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
