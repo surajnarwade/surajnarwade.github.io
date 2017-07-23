@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://suraj.pro/post/videoguideline/</loc>
+    <lastmod>2017-07-23T21:21:49+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>http://suraj.pro/post/k8s-pune-meetup/</loc>
     <lastmod>2017-07-10T21:21:49+05:30</lastmod>
   </url>
@@ -123,13 +128,13 @@
   
   <url>
     <loc>http://suraj.pro/post/</loc>
-    <lastmod>2017-07-10T21:21:49+05:30</lastmod>
+    <lastmod>2017-07-23T21:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://suraj.pro/</loc>
-    <lastmod>2017-07-10T21:21:49+05:30</lastmod>
+    <lastmod>2017-07-23T21:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   

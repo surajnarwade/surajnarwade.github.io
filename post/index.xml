@@ -6,8 +6,74 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Remove white noise from Videos</title>
+      <link>http://suraj.pro/post/videoguideline/</link>
+      <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/videoguideline/</guid>
+      <description>
+
+&lt;p&gt;May times, We have to create demos for projects for which we use various desktop screen recorders
+along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.&lt;/p&gt;
+
+&lt;p&gt;Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.&lt;/p&gt;
+
+&lt;p&gt;I surfed on the internet and found some relevant solutionsm which we will discuss today.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;First a fall, we need to separate audio from video, for which we need to run following commands,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;ffmpeg&lt;/code&gt; package,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ sudo dnf install ffmpeg -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Run this command for separating audio from video,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It will create &lt;code&gt;output.mp3&lt;/code&gt; as audio file.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install audacity for audio processing,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo dnf install audacity -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open &lt;code&gt;output.mp3&lt;/code&gt; audio file in audacity,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc1.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;select any area of noise where there&amp;rsquo;s no talking, (low frequency)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;Get noise profile&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc2.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Now Select whole audio (Ctrl + A) and goto &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;OK&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now goto &lt;code&gt;File&lt;/code&gt; &amp;gt; &lt;code&gt;Export Audio&lt;/code&gt; and save it in format of your choice.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer &lt;a href=&#34;http://www.openshot.org/&#34;&gt;OpenShot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Kubernetes Pune Meetup - July 2017</title>
@@ -34,7 +100,7 @@ Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;Following by a short discussion regarding Kompose and its features, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Following by a short discussion regarding Kompose and its features, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
@@ -1312,87 +1378,6 @@ New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Who Am I ?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Pycon India Social Media Volunteer&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
-      <link>http://suraj.pro/post/blog9/</link>
-      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog9/</guid>
-      <description>&lt;p&gt;Python Pune Meetup was held @ &lt;a href=&#34;http://amazatic.com/&#34;&gt;&lt;code&gt;Amazatic Solutions&lt;/code&gt;&lt;/a&gt;  and that was about  Part II of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;&lt;code&gt;Sudarshan Gadhave&lt;/code&gt;&lt;/a&gt; on 28th May 2016.
-Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.&lt;/p&gt;
-
-&lt;p&gt;Sudarshan started from Required tools/libraries for machine learning :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Ipython&lt;/li&gt;
-&lt;li&gt;numpy&lt;/li&gt;
-&lt;li&gt;python-pandas&lt;/li&gt;
-&lt;li&gt;python-scikit-learn&lt;/li&gt;
-&lt;li&gt;matplotlib
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;These are best opensource alternatives to softwares like MATLAB !!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Machine learning is all about technical,business and statistics. if there is small data sets. that can be done manually, but if there are thousands of rows and columns in data stats, then what ? most of the time of Data Scientists is consumed to get the data,analyze the data,sepeartion of data,and cleaning of data, that means almost 70% of the total work in intial phase. Later comes the actual business logic and model building.&lt;/p&gt;
-
-&lt;p&gt;we have used titanic data sets for example (&lt;a href=&#34;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&#34;&gt;https://github.com/pcsanwald/kaggle-titanic/blob/master/train.csv&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Then, Following things we have covered:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Numpy basics&lt;/li&gt;
-&lt;li&gt;Pandas Data Structures and basics&lt;/li&gt;
-&lt;li&gt;Data Loading&lt;/li&gt;
-&lt;li&gt;Data Wrangling (Clean, Transform, Merge)&lt;/li&gt;
-&lt;li&gt;Data Aggregation and grouping operations&lt;/li&gt;
-&lt;li&gt;Exploratory Data Analysis and Descriptive Statistics&lt;/li&gt;
-&lt;li&gt;Plotting and Visualization
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Features/comarison of Numpy &amp;amp; pandas:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;numpy:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;built for fast array processing, vector operations&lt;/li&gt;
-&lt;li&gt;15 times faster then list&lt;/li&gt;
-&lt;li&gt;made for scientific calculations
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;python pandas :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Datastructure series - 1d numpy array stores data. its like column in dataframe context&lt;/li&gt;
-&lt;li&gt;series also has the index and the value&lt;/li&gt;
-&lt;li&gt;We can change the values in series using index&lt;/li&gt;
-&lt;li&gt;Dataframe is collection of series like excel sheet&lt;/li&gt;
-&lt;li&gt;More the memory More data can be analysed in python pandas
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://pandas.pydata.org/pandas-docs/version/0.15.2/tutorials.html&#34;&gt;Click Here to know more about pandas from beginning&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We also discussed about the Matplotlib,Matplotlib is the library used to mainly produce the charts related to the data. You can generate plots, histograms, power spectra, bar charts, errorcharts, scatterplots, etc, with just a few lines of code. I found this as good and free alternative to MATLAB.&lt;/p&gt;
-
-&lt;p&gt;Sudarshan Suggested to go through this book to know more &amp;amp; from very basics towards machine learning as well Data science:
-&lt;a href=&#34;http://www.cin.ufpe.br/~embat/Python%20for%20Data%20Analysis.pdf&#34;&gt;Python for data Analysis&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Those who missed meetup can follow these links :
-&lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Thank you &lt;a href=&#34;http://amazatic.com/&#34;&gt;Amazatic Solutions&lt;/a&gt;, and Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Selfie @meetup @Amazatic by Sudarshan:&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/meetup2.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

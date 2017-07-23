@@ -6,8 +6,74 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jul 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Remove white noise from Videos</title>
+      <link>http://suraj.pro/post/videoguideline/</link>
+      <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/videoguideline/</guid>
+      <description>
+
+&lt;p&gt;May times, We have to create demos for projects for which we use various desktop screen recorders
+along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.&lt;/p&gt;
+
+&lt;p&gt;Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.&lt;/p&gt;
+
+&lt;p&gt;I surfed on the internet and found some relevant solutionsm which we will discuss today.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;First a fall, we need to separate audio from video, for which we need to run following commands,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;code&gt;ffmpeg&lt;/code&gt; package,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;    $ sudo dnf install ffmpeg -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Run this command for separating audio from video,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It will create &lt;code&gt;output.mp3&lt;/code&gt; as audio file.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install audacity for audio processing,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo dnf install audacity -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open &lt;code&gt;output.mp3&lt;/code&gt; audio file in audacity,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc1.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;select any area of noise where there&amp;rsquo;s no talking, (low frequency)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Click &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;Get noise profile&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc2.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Now Select whole audio (Ctrl + A) and goto &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;OK&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now goto &lt;code&gt;File&lt;/code&gt; &amp;gt; &lt;code&gt;Export Audio&lt;/code&gt; and save it in format of your choice.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer &lt;a href=&#34;http://www.openshot.org/&#34;&gt;OpenShot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Kubernetes Pune Meetup - July 2017</title>
@@ -34,7 +100,7 @@ Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;Following by a short discussion regarding Kompose and its features, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Following by a short discussion regarding Kompose and its features, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
@@ -1426,66 +1492,6 @@ Thank you !!!&lt;/p&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
-      <link>http://suraj.pro/post/blog10/</link>
-      <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog10/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;What is Pycon India ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/pycon16logo.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;When &amp;amp; Where it is happening ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;23-25 Sepetember 2016&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Convention Centre
-Jawahar Lal Nehru University,
-New Mehrauli Road, Near Munirka,
-New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Why to Sponser Us ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;dl&gt;
-  &lt;dt&gt;The attendees of PyCon India will include professional developers from large enterprises and smaller firms as well as people from academia. Delegates come to present their latest developments. With Python already becoming a major enterprise programming language and platform, sponsoring PyCon India 2016 is an excellent opportunity to demonstrate industry leadership in this part of the world. The attendance of PyCon India 2016 is expected to be between 1200 and 1350 delegates.&lt;/dt&gt;
-  &lt;dd&gt;PyCon India attendees sometimes require assistance with expenses especially student attendees, and sponsorship enables us to support those who would otherwise be unable to attend.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Are you Pythonist, wanna talk, Submit proposal NOW !!!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CFP for #pyconindia are open! Following is link to submit talk proposal as well as guidelines are also provided.
-&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;Click here to submit your talk proposal&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Last date for submission is 29th June, 2016)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Before you submit, Have a look at this:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=uH_-_mrksV4&amp;amp;feature=youtu.be&#34;&gt;A Hypocrite’s Guide to Public Speaking&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL6GW05BfqWIe6rMoFFWmllPegB2gU069m&#34;&gt;Pycon India 2015 talks&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;For more contact&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;IRC - &lt;a href=&#34;https://webchat.freenode.net/?channels=%23python-india&#34;&gt;#python-india&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://mail.python.org/mailman/listinfo/inpycon&#34;&gt;Subscribe to Mailing List&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.facebook.com/PyConIndia/?fref=ts&#34;&gt;Facebook&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Who Am I ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Pycon India Social Media Volunteer&lt;/p&gt;
 </description>
     </item>
     
