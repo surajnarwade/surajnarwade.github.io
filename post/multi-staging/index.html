@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Multistage build in Docker &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="http://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=http://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="http://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/about_me">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="http://suraj.pro/post/multi-staging/">Multistage build in Docker</a></h1>
+            <span class="post-date">Sep 13, 2017 </span>
+            <div class="post-content">
+                
+
+<p><br></p>
+
+<h3 id="example-use-cases">Example Use Cases</h3>
+
+<p>When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…</p>
+
+<ul>
+<li><p>Java apps using WAR files</p>
+
+<ul>
+<li>First stage uses a container with Maven to compile, test, and build the war file</li>
+<li>Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.)</li>
+</ul></li>
+
+<li><p>Golang apps with standalone binaries</p>
+
+<ul>
+<li>First stage uses a container with golang SDK to build the binary</li>
+<li>Second stage copies the binary into an image</li>
+</ul></li>
+
+<li><p>Node.js app needing processed JavaScript for client</p>
+
+<ul>
+<li>First stage uses a Node container, installs dev dependencies, and performs a build (maybe compiling Typescript, Webpack-ify, etc.)</li>
+<li>Second stage also uses a Node container, installs only prod dependencies (like Express), and copies the distributable from stage one</li>
+</ul></li>
+</ul>
+
+<p><br></p>
+
+<p>Here, we will take simple <code>hello-world</code> golang program to illustrate single-stage build vs multi-stage build:</p>
+
+<pre><code>$ cat main.go 
+package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;Hello World!&quot;)
+}
+
+</code></pre>
+
+<h3 id="single-stage-build">Single stage build</h3>
+
+<p>Usually for static type langauge as golang, derive Dockerfile from golang SDk, add source, do a build and push it to dockerhub, unfortuantely size was very huge. for example, basic <code>golang:alpine</code> image is of size 257 MB, it increases further more.</p>
+
+<p>workaround was :
+Derive from a Golang base image with the whole runtime/SDK (Dockerfile.build)
+Add source code
+Produce a statically-linked binary
+Copy the static binary from the image to the host (docker create, docker cp)
+Derive from SCRATCH or some other light-weight image such as alpine (Dockerfile)
+Add the binary back in
+Push a tiny image to the Docker Hub</p>
+
+<ul>
+<li><p>that means having two separate Dockerfiles and shell script to control it</p></li>
+
+<li><p>Dockerfile.singlestage</p></li>
+</ul>
+
+<pre><code>FROM golang:alpine
+WORKDIR /app
+ADD . /app
+RUN cd /app &amp;&amp; go build -o app
+ENTRYPOINT ./app
+</code></pre>
+
+<ul>
+<li>now build the dockerfile and run it using following commands,</li>
+</ul>
+
+<pre><code>$ docker build -t surajnarwade/go-singlestage-app .
+$ docker run --rm surajnarwade/go-singlestage-app
+</code></pre>
+
+<ul>
+<li>You can check docker image size which is only <strong>259MB</strong>:</li>
+</ul>
+
+<pre><code>$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-singlestage-app               latest              bb2594c6d2fd        3 days ago          259MB
+</code></pre>
+
+<h3 id="multistage-build">Multistage build</h3>
+
+<ul>
+<li><p>It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile</p></li>
+
+<li><p>syntax is very simple, we will give label to stages as</p></li>
+</ul>
+
+<pre><code>FROM &lt;image&gt; as &lt;label&gt;
+</code></pre>
+
+<ul>
+<li>and then use it in another stage to copy artifacts as,</li>
+</ul>
+
+<pre><code>COPY --from=&lt;label&gt;
+</code></pre>
+
+<ul>
+<li>whichever is last FROM statement, that is the final base image</li>
+<li>Dockerfile.multistage</li>
+</ul>
+
+<pre><code># build stage
+FROM golang:alpine AS build-env
+ADD . /src
+RUN cd /src &amp;&amp; go build -o app
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/app /app/
+ENTRYPOINT ./app
+</code></pre>
+
+<p>now build the dockerfile and run it using following commands,</p>
+
+<pre><code>$ docker build -t surajnarwade/go-multistage-app .
+$ docker run --rm surajnarwade/go-multistage-app
+</code></pre>
+
+<ul>
+<li>you can see docker image size is reduced which is only approximately <strong>6 MB</strong>:</li>
+</ul>
+
+<pre><code>$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-multistage-app                latest              975ef40d39ee        3 days ago          5.52MB
+</code></pre>
+
+<h4 id="reference">Reference:</h4>
+
+<ul>
+<li><a href="https://blog.alexellis.io/mutli-stage-docker-builds/">https://blog.alexellis.io/mutli-stage-docker-builds/</a></li>
+<li><a href="https://github.com/appleboy/docker-multi-stage-build">https://github.com/appleboy/docker-multi-stage-build</a></li>
+<li><a href="https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/">https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/</a></li>
+</ul>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/multi-staging\/';
+    var disqus_title = 'Multistage build in Docker';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/multi-staging\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2017 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

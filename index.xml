@@ -6,8 +6,163 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 13 Sep 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Multistage build in Docker</title>
+      <link>http://suraj.pro/post/multi-staging/</link>
+      <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/multi-staging/</guid>
+      <description>
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;example-use-cases&#34;&gt;Example Use Cases&lt;/h3&gt;
+
+&lt;p&gt;When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Java apps using WAR files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a container with Maven to compile, test, and build the war file&lt;/li&gt;
+&lt;li&gt;Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Golang apps with standalone binaries&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a container with golang SDK to build the binary&lt;/li&gt;
+&lt;li&gt;Second stage copies the binary into an image&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Node.js app needing processed JavaScript for client&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a Node container, installs dev dependencies, and performs a build (maybe compiling Typescript, Webpack-ify, etc.)&lt;/li&gt;
+&lt;li&gt;Second stage also uses a Node container, installs only prod dependencies (like Express), and copies the distributable from stage one&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we will take simple &lt;code&gt;hello-world&lt;/code&gt; golang program to illustrate single-stage build vs multi-stage build:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat main.go 
+package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	fmt.Println(&amp;quot;Hello World!&amp;quot;)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;single-stage-build&#34;&gt;Single stage build&lt;/h3&gt;
+
+&lt;p&gt;Usually for static type langauge as golang, derive Dockerfile from golang SDk, add source, do a build and push it to dockerhub, unfortuantely size was very huge. for example, basic &lt;code&gt;golang:alpine&lt;/code&gt; image is of size 257 MB, it increases further more.&lt;/p&gt;
+
+&lt;p&gt;workaround was :
+Derive from a Golang base image with the whole runtime/SDK (Dockerfile.build)
+Add source code
+Produce a statically-linked binary
+Copy the static binary from the image to the host (docker create, docker cp)
+Derive from SCRATCH or some other light-weight image such as alpine (Dockerfile)
+Add the binary back in
+Push a tiny image to the Docker Hub&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;that means having two separate Dockerfiles and shell script to control it&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dockerfile.singlestage&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM golang:alpine
+WORKDIR /app
+ADD . /app
+RUN cd /app &amp;amp;&amp;amp; go build -o app
+ENTRYPOINT ./app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;now build the dockerfile and run it using following commands,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-singlestage-app .
+$ docker run --rm surajnarwade/go-singlestage-app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can check docker image size which is only &lt;strong&gt;259MB&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-singlestage-app               latest              bb2594c6d2fd        3 days ago          259MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;multistage-build&#34;&gt;Multistage build&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;syntax is very simple, we will give label to stages as&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; as &amp;lt;label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;and then use it in another stage to copy artifacts as,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;COPY --from=&amp;lt;label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;whichever is last FROM statement, that is the final base image&lt;/li&gt;
+&lt;li&gt;Dockerfile.multistage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# build stage
+FROM golang:alpine AS build-env
+ADD . /src
+RUN cd /src &amp;amp;&amp;amp; go build -o app
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/app /app/
+ENTRYPOINT ./app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;now build the dockerfile and run it using following commands,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-multistage-app .
+$ docker run --rm surajnarwade/go-multistage-app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can see docker image size is reduced which is only approximately &lt;strong&gt;6 MB&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-multistage-app                latest              975ef40d39ee        3 days ago          5.52MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.alexellis.io/mutli-stage-docker-builds/&#34;&gt;https://blog.alexellis.io/mutli-stage-docker-builds/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/appleboy/docker-multi-stage-build&#34;&gt;https://github.com/appleboy/docker-multi-stage-build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&#34;&gt;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Remove white noise from Videos</title>
@@ -1441,57 +1596,6 @@ $ systemctl enable docker-registry
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Thank you !!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
-      <link>http://suraj.pro/post/blog12/</link>
-      <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog12/</guid>
-      <description>&lt;p&gt;Python Pune Meetup was held @ Red Hat, Pune  and that was about  Part III of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;Sudarshan Gadhave&lt;/a&gt; on 25th June 2016.&lt;/p&gt;
-
-&lt;p&gt;This time, along with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Me&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;ganesh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/s_satya4ever&#34;&gt;satyajit&lt;/a&gt; were the Event Host :)&lt;/p&gt;
-
-&lt;p&gt;Meetup was specifically targeted as hackathon based on python pandas and numpy what we have covered in previous meetup.&lt;/p&gt;
-
-&lt;p&gt;Meetup was titled as &lt;em&gt;Data DOJO&lt;/em&gt;,(a bit weird) it means practicing and developing skills along with brainstorming ideas, real time problems to solve.&lt;/p&gt;
-
-&lt;p&gt;Around 25 peoples were there, some were to new, some were intermediate for data science. But, most of the people were familiar with python. We at DATA DOJO, gave them opportunity to learn python-pandas, matplotlib, basic data science operations.&lt;/p&gt;
-
-&lt;p&gt;Few Peoples presented their work on data sets, and got awesome goodies too :)
-we have used following data sets for example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;Adult Data Setshttp://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data&#34;&gt;Adult data Set&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://data.gov.in/resources/indian-railways-time-table-trains-available-reservation-03082015/download&#34;&gt;Train Data set&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Links for work done by attendees as following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/vksgaikwad3/pypunedojo&#34;&gt;Vikas Gaikwad&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ketulgupta1995/Python-Data-Dojo&#34;&gt;Ketul Gupta&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/chaiku/PyPuneDataDojo2016&#34;&gt;Chaitanya Kukde&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tanayseven/python_data_dojo&#34;&gt;Tanay Prabhudesai&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Congrats people :)&lt;/p&gt;
-
-&lt;p&gt;Those who missed previous meetups can follow these links : &lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Our next meetup will be last part of Data science series based on &lt;a href=&#34;http://scikit-learn.org/stable/&#34;&gt;scikit-learn&lt;/a&gt;
-Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!
-If any suggestions are there, Feel free to contact us !!!
-Thank you !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Data Science Enthusiast at Meetup:&lt;/em&gt;
-.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

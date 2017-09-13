@@ -6,8 +6,163 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jul 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 13 Sep 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Multistage build in Docker</title>
+      <link>http://suraj.pro/post/multi-staging/</link>
+      <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/multi-staging/</guid>
+      <description>
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;example-use-cases&#34;&gt;Example Use Cases&lt;/h3&gt;
+
+&lt;p&gt;When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Java apps using WAR files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a container with Maven to compile, test, and build the war file&lt;/li&gt;
+&lt;li&gt;Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Golang apps with standalone binaries&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a container with golang SDK to build the binary&lt;/li&gt;
+&lt;li&gt;Second stage copies the binary into an image&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Node.js app needing processed JavaScript for client&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First stage uses a Node container, installs dev dependencies, and performs a build (maybe compiling Typescript, Webpack-ify, etc.)&lt;/li&gt;
+&lt;li&gt;Second stage also uses a Node container, installs only prod dependencies (like Express), and copies the distributable from stage one&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, we will take simple &lt;code&gt;hello-world&lt;/code&gt; golang program to illustrate single-stage build vs multi-stage build:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat main.go 
+package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+	fmt.Println(&amp;quot;Hello World!&amp;quot;)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;single-stage-build&#34;&gt;Single stage build&lt;/h3&gt;
+
+&lt;p&gt;Usually for static type langauge as golang, derive Dockerfile from golang SDk, add source, do a build and push it to dockerhub, unfortuantely size was very huge. for example, basic &lt;code&gt;golang:alpine&lt;/code&gt; image is of size 257 MB, it increases further more.&lt;/p&gt;
+
+&lt;p&gt;workaround was :
+Derive from a Golang base image with the whole runtime/SDK (Dockerfile.build)
+Add source code
+Produce a statically-linked binary
+Copy the static binary from the image to the host (docker create, docker cp)
+Derive from SCRATCH or some other light-weight image such as alpine (Dockerfile)
+Add the binary back in
+Push a tiny image to the Docker Hub&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;that means having two separate Dockerfiles and shell script to control it&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dockerfile.singlestage&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM golang:alpine
+WORKDIR /app
+ADD . /app
+RUN cd /app &amp;amp;&amp;amp; go build -o app
+ENTRYPOINT ./app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;now build the dockerfile and run it using following commands,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-singlestage-app .
+$ docker run --rm surajnarwade/go-singlestage-app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can check docker image size which is only &lt;strong&gt;259MB&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-singlestage-app               latest              bb2594c6d2fd        3 days ago          259MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;multistage-build&#34;&gt;Multistage build&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;syntax is very simple, we will give label to stages as&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; as &amp;lt;label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;and then use it in another stage to copy artifacts as,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;COPY --from=&amp;lt;label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;whichever is last FROM statement, that is the final base image&lt;/li&gt;
+&lt;li&gt;Dockerfile.multistage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# build stage
+FROM golang:alpine AS build-env
+ADD . /src
+RUN cd /src &amp;amp;&amp;amp; go build -o app
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/app /app/
+ENTRYPOINT ./app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;now build the dockerfile and run it using following commands,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-multistage-app .
+$ docker run --rm surajnarwade/go-multistage-app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can see docker image size is reduced which is only approximately &lt;strong&gt;6 MB&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker images
+REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
+go-multistage-app                latest              975ef40d39ee        3 days ago          5.52MB
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.alexellis.io/mutli-stage-docker-builds/&#34;&gt;https://blog.alexellis.io/mutli-stage-docker-builds/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/appleboy/docker-multi-stage-build&#34;&gt;https://github.com/appleboy/docker-multi-stage-build&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&#34;&gt;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Remove white noise from Videos</title>
@@ -1318,66 +1473,6 @@ Thank you !!!&lt;/p&gt;
 .&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
-      <link>http://suraj.pro/post/blog10/</link>
-      <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog10/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;What is Pycon India ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/pycon16logo.png&#34; alt=&#34;Image&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;When &amp;amp; Where it is happening ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;23-25 Sepetember 2016&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Convention Centre
-Jawahar Lal Nehru University,
-New Mehrauli Road, Near Munirka,
-New Delhi - 110067&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Why to Sponser Us ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;dl&gt;
-  &lt;dt&gt;The attendees of PyCon India will include professional developers from large enterprises and smaller firms as well as people from academia. Delegates come to present their latest developments. With Python already becoming a major enterprise programming language and platform, sponsoring PyCon India 2016 is an excellent opportunity to demonstrate industry leadership in this part of the world. The attendance of PyCon India 2016 is expected to be between 1200 and 1350 delegates.&lt;/dt&gt;
-  &lt;dd&gt;PyCon India attendees sometimes require assistance with expenses especially student attendees, and sponsorship enables us to support those who would otherwise be unable to attend.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Are you Pythonist, wanna talk, Submit proposal NOW !!!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;CFP for #pyconindia are open! Following is link to submit talk proposal as well as guidelines are also provided.
-&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;Click here to submit your talk proposal&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;(Last date for submission is 29th June, 2016)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Before you submit, Have a look at this:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=uH_-_mrksV4&amp;amp;feature=youtu.be&#34;&gt;A Hypocrite’s Guide to Public Speaking&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL6GW05BfqWIe6rMoFFWmllPegB2gU069m&#34;&gt;Pycon India 2015 talks&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;For more contact&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;IRC - &lt;a href=&#34;https://webchat.freenode.net/?channels=%23python-india&#34;&gt;#python-india&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://mail.python.org/mailman/listinfo/inpycon&#34;&gt;Subscribe to Mailing List&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.facebook.com/PyConIndia/?fref=ts&#34;&gt;Facebook&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Who Am I ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Pycon India Social Media Volunteer&lt;/p&gt;
 </description>
     </item>
     
