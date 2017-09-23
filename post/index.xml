@@ -6,8 +6,106 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Sep 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 23 Sep 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Running static pod using standalone kubelet on fedora</title>
+      <link>http://suraj.pro/post/static-pod/</link>
+      <pubDate>Sat, 23 Sep 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/static-pod/</guid>
+      <description>
+
+&lt;p&gt;Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.&lt;/p&gt;
+
+&lt;p&gt;One of the use case for static pod might be for storage like &lt;a href=&#34;https://www.gluster.org/&#34;&gt;gluster&lt;/a&gt; on each minion or maybe for
+os level debugging on OS like atomic host.&lt;/p&gt;
+
+&lt;p&gt;For testing it, I referred &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;kelseyhightower&amp;rsquo;s&lt;/a&gt; standalone kubelet guide.&lt;/p&gt;
+
+&lt;p&gt;To install kubelet, we can either download &lt;code&gt;kubelet&lt;/code&gt; binary and set it up manually or we can get it from &lt;code&gt;kubernetes-node&lt;/code&gt; package,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dnf install -y kubernetes-node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we need to add Path to the directory containing pod manifest files to run, or the path to a single pod manifest file.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code&gt;/etc/kubernetes/kubelet&lt;/code&gt; and add &lt;code&gt;--pod-manifest-path=&amp;lt;manifest_path&amp;gt;&lt;/code&gt;, In my case, it&amp;rsquo;s &lt;code&gt;/home/vagrant&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;so it will look like,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd --pod-manifest-path=/home/vagrant/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can mention &lt;code&gt;--manifest-url=&amp;lt;URL&amp;gt;&lt;/code&gt; as well, so kubelet will download that manifest file from URL and will apply the changes.&lt;/p&gt;
+
+&lt;p&gt;Also, set &lt;code&gt;--allow-privileged&lt;/code&gt; flag to true in &lt;code&gt;/etc/kubernetes/config&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=true&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reload the daemon&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Start the service&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo systemctl restart kubelet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enable the service&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo systemctl enable kubelet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Check whether kubelet is running or not,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo systemctl status kubelet
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;running-a-static-pod&#34;&gt;Running a static pod&lt;/h3&gt;
+
+&lt;p&gt;I am taking example from official documentation,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1 
+kind: Pod 
+metadata: 
+ name: static-web 
+ labels:
+   role: myrole 
+spec: 
+ containers: 
+ - name: web 
+   image: nginx 
+ ports: 
+  - name: web 
+    containerPort: 80 
+    protocol: TCP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As soon as, we put this manifests in /home/vagrant, kubelet will automatically detect it and will start the containers.&lt;/p&gt;
+
+&lt;p&gt;You can check running containers by &lt;code&gt;docker ps&lt;/code&gt;,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ docker ps
+CONTAINER ID        IMAGE                                                                                     COMMAND                  CREATED             STATUS              PORTS               NAMES
+bd4e42a51f4c        docker.io/nginx@sha256:aa1c5b5f864508ef5ad472c45c8d3b6ba34e5c0fb34aaea24acf4b0cee33187e   &amp;quot;nginx -g &#39;daemon ...&amp;quot;   4 minutes ago       Up 4 minutes                            k8s_web_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
+c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                                                  &amp;quot;/pause&amp;quot;                 5 minutes ago       Up 5 minutes                            k8s_POD_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For more, you can follow kelsey hightower&amp;rsquo;s &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;reference&#34;&gt;Reference:&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/static-pod/&#34;&gt;Static Pods&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;Standalone Kubelet Tutorial by kelsey hightower&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/kubernetes/pull/10093&#34;&gt;issue 10093 on kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Multistage build in Docker</title>
@@ -1422,57 +1520,6 @@ $ systemctl enable docker-registry
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Thank you !!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
-      <link>http://suraj.pro/post/blog12/</link>
-      <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog12/</guid>
-      <description>&lt;p&gt;Python Pune Meetup was held @ Red Hat, Pune  and that was about  Part III of Machine learning by &lt;a href=&#34;https://twitter.com/sudarshan1&#34;&gt;Sudarshan Gadhave&lt;/a&gt; on 25th June 2016.&lt;/p&gt;
-
-&lt;p&gt;This time, along with &lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Me&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;ganesh&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/s_satya4ever&#34;&gt;satyajit&lt;/a&gt; were the Event Host :)&lt;/p&gt;
-
-&lt;p&gt;Meetup was specifically targeted as hackathon based on python pandas and numpy what we have covered in previous meetup.&lt;/p&gt;
-
-&lt;p&gt;Meetup was titled as &lt;em&gt;Data DOJO&lt;/em&gt;,(a bit weird) it means practicing and developing skills along with brainstorming ideas, real time problems to solve.&lt;/p&gt;
-
-&lt;p&gt;Around 25 peoples were there, some were to new, some were intermediate for data science. But, most of the people were familiar with python. We at DATA DOJO, gave them opportunity to learn python-pandas, matplotlib, basic data science operations.&lt;/p&gt;
-
-&lt;p&gt;Few Peoples presented their work on data sets, and got awesome goodies too :)
-we have used following data sets for example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;Adult Data Setshttp://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data&#34;&gt;Adult data Set&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://data.gov.in/resources/indian-railways-time-table-trains-available-reservation-03082015/download&#34;&gt;Train Data set&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Links for work done by attendees as following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/vksgaikwad3/pypunedojo&#34;&gt;Vikas Gaikwad&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ketulgupta1995/Python-Data-Dojo&#34;&gt;Ketul Gupta&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/chaiku/PyPuneDataDojo2016&#34;&gt;Chaitanya Kukde&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tanayseven/python_data_dojo&#34;&gt;Tanay Prabhudesai&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Congrats people :)&lt;/p&gt;
-
-&lt;p&gt;Those who missed previous meetups can follow these links : &lt;a href=&#34;https://github.com/sudarshan1413/python_pandas_meetup_2016&#34;&gt;https://github.com/sudarshan1413/python_pandas_meetup_2016&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Our next meetup will be last part of Data science series based on &lt;a href=&#34;http://scikit-learn.org/stable/&#34;&gt;scikit-learn&lt;/a&gt;
-Stay Connected to &lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune&lt;/a&gt; for upcoming meetups !!!
-If any suggestions are there, Feel free to contact us !!!
-Thank you !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Data Science Enthusiast at Meetup:&lt;/em&gt;
-.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/dojo.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
