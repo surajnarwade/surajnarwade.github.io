@@ -90,6 +90,21 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="http://suraj.pro/post/kubectl/">Easter eggs in kubectl</a></h4>
+							<h4 class="post-date">Sep 26, 2017</h4>
+						</div>
+						<div class="post-summary"><p>I was watching video about kubectl by janakiram and surprising I found there is also world of commands rather than create, delete, get. kubectl has lots of interesting easter eggs.
+Some of the cool things I found as below,
+ List pod along with node name on which they are running  kubectl get pods -o wide   If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)  kubectl get pod web -o=yaml/json   CLI hacks to retrieve minimal information (In this case, pod name and node name)  kubectl get pod -o wide | awk {'print $1&quot; &quot; $7'} | column -t   you can directly edit configurations  kubectl edit pod/web   You can mention editor of your choice using KUBE_EDITOR variable,  KUBE_EDITOR=&quot;sublime&quot; kubectl edit pod/web   If we want to get any specific thing from configurations  kubectl get pods web -o jsonpath={....</p></div>
+						<div class="post-list-footer text-center">
+							<a href="http://suraj.pro/post/kubectl/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="http://suraj.pro/post/static-pod/">Running static pod using standalone kubelet on fedora</a></h4>
 							<h4 class="post-date">Sep 23, 2017</h4>
 						</div>

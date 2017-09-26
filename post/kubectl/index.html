@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> Running static pod using standalone kubelet on fedora &middot; Suraj Narwade </title>
+        <title> Easter eggs in kubectl &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,97 +80,128 @@ ga('create', '75855569', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="http://suraj.pro/post/static-pod/">Running static pod using standalone kubelet on fedora</a></h1>
-            <span class="post-date">Sep 23, 2017 </span>
+            <h1><a href="http://suraj.pro/post/kubectl/">Easter eggs in kubectl</a></h1>
+            <span class="post-date">Sep 26, 2017 </span>
             <div class="post-content">
                 
 
-<p>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.</p>
+<p>I was watching video about kubectl by <a href="https://twitter.com/janakiramm">janakiram</a> and surprising I found there is also world of commands rather than <code>create</code>, <code>delete</code>, <code>get</code>. <code>kubectl</code> has lots of interesting easter eggs.</p>
 
-<p>One of the use case for static pod might be for storage like gluster on each minion or maybe for
-os level debugging on OS like atomic host.</p>
-
-<p>For testing it, I referred <a href="https://twitter.com/kelseyhightower">kelseyhightower&rsquo;s</a> standalone kubelet guide.</p>
-
-<p>To install kubelet, we can either download <code>kubelet</code> binary and set it up manually or we can get it from <code>kubernetes-node</code> package,</p>
-
-<pre><code>sudo dnf install -y kubernetes-node
-</code></pre>
-
-<p>Now, we need to add Path to to the directory containing pod manifest files to run, or the path to a single pod manifest file.</p>
-
-<p>Open <code>/etc/kubernetes/kubelet</code> and add <code>--pod-manifest-path=&lt;manifest_path&gt;</code>, In my case, it&rsquo;s <code>/home/vagrant</code></p>
-
-<p>so it will look like,</p>
-
-<pre><code>KUBELET_ARGS=&quot;--cgroup-driver=systemd --pod-manifest-path=/home/vagrant/&quot;
-</code></pre>
-
-<p>You can mention <code>--manifest-url=&lt;URL&gt;</code> as well, so kubelet will download that manifest file from URL and will apply the changes.</p>
-
-<p>Also, set <code>--allow-privileged</code> flag to true in <code>/etc/kubernetes/config</code></p>
-
-<pre><code>KUBE_ALLOW_PRIV=&quot;--allow-privileged=true&quot;
-</code></pre>
-
-<p>Reload the daemon</p>
-
-<pre><code>systemctl daemon-reload
-</code></pre>
-
-<p>Start the service</p>
-
-<pre><code>sudo systemctl restart kubelet
-</code></pre>
-
-<p>Enable the service</p>
-
-<pre><code>sudo systemctl enable kubelet
-</code></pre>
-
-<p>Check whether kubelet is running or not,</p>
-
-<pre><code>sudo systemctl status kubelet
-</code></pre>
-
-<h3 id="running-a-static-pod">Running a static pod</h3>
-
-<p>I am taking example from official documentation,</p>
-
-<pre><code>apiVersion: v1 
-kind: Pod 
-metadata: 
- name: static-web 
- labels:
-   role: myrole 
-spec: 
- containers: 
- - name: web 
-   image: nginx 
- ports: 
-  - name: web 
-    containerPort: 80 
-    protocol: TCP
-</code></pre>
-
-<p>As soon as, we put this manifests in /home/vagrant, kubelet will automatically detect it and will start the containers.</p>
-
-<p>You can check running containers by <code>docker ps</code>,</p>
-
-<pre><code>$ docker ps
-CONTAINER ID        IMAGE                                                                                     COMMAND                  CREATED             STATUS              PORTS               NAMES
-bd4e42a51f4c        docker.io/nginx@sha256:aa1c5b5f864508ef5ad472c45c8d3b6ba34e5c0fb34aaea24acf4b0cee33187e   &quot;nginx -g 'daemon ...&quot;   4 minutes ago       Up 4 minutes                            k8s_web_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
-c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                                                  &quot;/pause&quot;                 5 minutes ago       Up 5 minutes                            k8s_POD_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
-</code></pre>
-
-<p>For more, you can follow kelsey hightower&rsquo;s <a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial">tutorial</a>.</p>
-
-<h3 id="reference">Reference:</h3>
+<p>Some of the cool things I found as below,</p>
 
 <ul>
-<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/static-pod/">Static Pods</a></li>
-<li><a href="https://github.com/kelseyhightower/standalone-kubelet-tutorial">Standalone Kubelet Tutorial by kelsey hightower</a></li>
-<li><a href="https://github.com/kubernetes/kubernetes/pull/10093">issue 10093 on kubernetes</a></li>
+<li>List pod along with node name on which they are running</li>
+</ul>
+
+<pre><code>kubectl get pods -o wide
+</code></pre>
+
+<ul>
+<li>If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)</li>
+</ul>
+
+<pre><code>kubectl get pod web -o=yaml/json
+</code></pre>
+
+<ul>
+<li>CLI hacks to retrieve minimal information (In this case, pod name and node name)</li>
+</ul>
+
+<pre><code>kubectl get pod -o wide | awk {'print $1&quot; &quot; $7'} | column -t
+</code></pre>
+
+<ul>
+<li>you can directly edit configurations</li>
+</ul>
+
+<pre><code>kubectl edit pod/web
+</code></pre>
+
+<ul>
+<li>You can mention editor of your choice using <code>KUBE_EDITOR</code> variable,</li>
+</ul>
+
+<pre><code>KUBE_EDITOR=&quot;sublime&quot; kubectl edit pod/web
+</code></pre>
+
+<ul>
+<li>If we want to get any specific thing from configurations</li>
+</ul>
+
+<pre><code>kubectl get pods web -o jsonpath={.spec.containers[*].name}
+</code></pre>
+
+<ul>
+<li><code>cordon</code> will mark node as unschedulable</li>
+</ul>
+
+<pre><code>kubectl cordon &lt;ip-of-node&gt; 
+</code></pre>
+
+<ul>
+<li><code>uncordon</code> will mark node as schedulable again</li>
+</ul>
+
+<pre><code>kubectl uncordon &lt;ip-of-node&gt;  
+</code></pre>
+
+<ul>
+<li>The given node will be marked unschedulable to prevent new pods from arriving. &lsquo;drain&rsquo; evicts the pods . Otherwise, The &lsquo;drain&rsquo; evicts or deletes all pods except replicationcontrollers pods, etc</li>
+</ul>
+
+<pre><code>kubectl drain &lt;node&gt;
+</code></pre>
+
+<ul>
+<li>Drain node &ldquo;foo&rdquo;, even if there are pods not managed by a ReplicationController, ReplicaSet,
+Job, DaemonSet or StatefulSet on it</li>
+</ul>
+
+<pre><code>kubectl drain &lt;node&gt; --force
+</code></pre>
+
+<ul>
+<li>Create proxy server between <code>localhost</code> and kubernetes API server</li>
+</ul>
+
+<pre><code>kubectl proxy 
+</code></pre>
+
+<ul>
+<li>you can mention port of your choice as well,</li>
+</ul>
+
+<pre><code>kubectl proxy --port=8000
+</code></pre>
+
+<ul>
+<li>We can forward local ports to pod (useful for debugging frontend application)</li>
+</ul>
+
+<pre><code>kubectl port-forward &lt;pod_name&gt; &lt;host_port&gt;:&lt;container_port&gt;
+</code></pre>
+
+<ul>
+<li>Copy files to and from container to our machine</li>
+</ul>
+
+<pre><code>kubectl cp &lt;file&gt; &lt;podname&gt;:&lt;path&gt;
+</code></pre>
+
+<ul>
+<li>Sometime you need shortcuts to increase your speed, productivity something like <code>po</code> for <code>pods</code>, <code>deploy</code> for <code>deployments</code>, you can find all shortcuts here,</li>
+</ul>
+
+<pre><code>kubectl explain
+</code></pre>
+
+<p>Thanks <a href="https://twitter.com/janakiramm">janakiram</a> for awesome tutorial.</p>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=BadzJOlSn24">https://www.youtube.com/watch?v=BadzJOlSn24</a></li>
+<li><a href="https://twitter.com/janakiramm">https://twitter.com/janakiramm</a></li>
 </ul>
 
             </div>
@@ -179,9 +210,9 @@ c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                    
                 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'surajnarwade-github-io';
-    var disqus_identifier = 'http:\/\/suraj.pro\/post\/static-pod\/';
-    var disqus_title = 'Running static pod using standalone kubelet on fedora';
-    var disqus_url = 'http:\/\/suraj.pro\/post\/static-pod\/';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/kubectl\/';
+    var disqus_title = 'Easter eggs in kubectl';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/kubectl\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

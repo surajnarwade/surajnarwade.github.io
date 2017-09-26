@@ -6,8 +6,137 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Sep 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 26 Sep 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Easter eggs in kubectl</title>
+      <link>http://suraj.pro/post/kubectl/</link>
+      <pubDate>Tue, 26 Sep 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/kubectl/</guid>
+      <description>
+
+&lt;p&gt;I was watching video about kubectl by &lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;janakiram&lt;/a&gt; and surprising I found there is also world of commands rather than &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;. &lt;code&gt;kubectl&lt;/code&gt; has lots of interesting easter eggs.&lt;/p&gt;
+
+&lt;p&gt;Some of the cool things I found as below,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List pod along with node name on which they are running&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get pods -o wide
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get pod web -o=yaml/json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CLI hacks to retrieve minimal information (In this case, pod name and node name)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get pod -o wide | awk {&#39;print $1&amp;quot; &amp;quot; $7&#39;} | column -t
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can directly edit configurations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl edit pod/web
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can mention editor of your choice using &lt;code&gt;KUBE_EDITOR&lt;/code&gt; variable,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;KUBE_EDITOR=&amp;quot;sublime&amp;quot; kubectl edit pod/web
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If we want to get any specific thing from configurations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl get pods web -o jsonpath={.spec.containers[*].name}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cordon&lt;/code&gt; will mark node as unschedulable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl cordon &amp;lt;ip-of-node&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;uncordon&lt;/code&gt; will mark node as schedulable again&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl uncordon &amp;lt;ip-of-node&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The given node will be marked unschedulable to prevent new pods from arriving. &amp;lsquo;drain&amp;rsquo; evicts the pods . Otherwise, The &amp;lsquo;drain&amp;rsquo; evicts or deletes all pods except replicationcontrollers pods, etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl drain &amp;lt;node&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Drain node &amp;ldquo;foo&amp;rdquo;, even if there are pods not managed by a ReplicationController, ReplicaSet,
+Job, DaemonSet or StatefulSet on it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl drain &amp;lt;node&amp;gt; --force
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create proxy server between &lt;code&gt;localhost&lt;/code&gt; and kubernetes API server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl proxy 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can mention port of your choice as well,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl proxy --port=8000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;We can forward local ports to pod (useful for debugging frontend application)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl port-forward &amp;lt;pod_name&amp;gt; &amp;lt;host_port&amp;gt;:&amp;lt;container_port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Copy files to and from container to our machine&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl cp &amp;lt;file&amp;gt; &amp;lt;podname&amp;gt;:&amp;lt;path&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sometime you need shortcuts to increase your speed, productivity something like &lt;code&gt;po&lt;/code&gt; for &lt;code&gt;pods&lt;/code&gt;, &lt;code&gt;deploy&lt;/code&gt; for &lt;code&gt;deployments&lt;/code&gt;, you can find all shortcuts here,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl explain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thanks &lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;janakiram&lt;/a&gt; for awesome tutorial.&lt;/p&gt;
+
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=BadzJOlSn24&#34;&gt;https://www.youtube.com/watch?v=BadzJOlSn24&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;https://twitter.com/janakiramm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Running static pod using standalone kubelet on fedora</title>
@@ -19,7 +148,7 @@
 
 &lt;p&gt;Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.&lt;/p&gt;
 
-&lt;p&gt;One of the use case for static pod might be for storage like &lt;a href=&#34;https://www.gluster.org/&#34;&gt;gluster&lt;/a&gt; on each minion or maybe for
+&lt;p&gt;One of the use case for static pod might be for storage like gluster on each minion or maybe for
 os level debugging on OS like atomic host.&lt;/p&gt;
 
 &lt;p&gt;For testing it, I referred &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;kelseyhightower&amp;rsquo;s&lt;/a&gt; standalone kubelet guide.&lt;/p&gt;
@@ -29,7 +158,7 @@ os level debugging on OS like atomic host.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo dnf install -y kubernetes-node
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now, we need to add Path to the directory containing pod manifest files to run, or the path to a single pod manifest file.&lt;/p&gt;
+&lt;p&gt;Now, we need to add Path to to the directory containing pod manifest files to run, or the path to a single pod manifest file.&lt;/p&gt;
 
 &lt;p&gt;Open &lt;code&gt;/etc/kubernetes/kubelet&lt;/code&gt; and add &lt;code&gt;--pod-manifest-path=&amp;lt;manifest_path&amp;gt;&lt;/code&gt;, In my case, it&amp;rsquo;s &lt;code&gt;/home/vagrant&lt;/code&gt;&lt;/p&gt;
 
@@ -1501,78 +1630,6 @@ Creating Docker image:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Conclusion&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The integration between Jenkins and Docker is still at development stage, so it may take some time and efforts to get them working nicely together. Capability to start new build from clean image is very important thing when it comes to point of reproducible builds.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Why You Should Attend PyCon India 2016?</title>
-      <link>http://suraj.pro/post/blog13/</link>
-      <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog13/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you are new to python&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/pycon16logo.png&#34; width=&#34;900&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you are hiring&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.
-Sponsering PyCon india is the best way to get noticed by these pythonistas.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you want to meet pythonist whom you just know by IRC nick&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Come out of your cubicle/from your dark room and meet those people whom you just know by IRC nick, people who solved your queries once ! :)
-Meet new buddies, share ideas, interact with them, colloborate and work :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you want to know what are the latest trends that pythonists are working on&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Excellent talks will be presented which will let you know about latest trends, also you will get to know various interesting, new things at PyCon india.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;click here to vote for your favourite proposal&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because it&amp;rsquo;s time for Delhi&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Awesome place, crowdy, delicious street foods and it&amp;rsquo;s capital city  :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Last but not the least, Because you want to taste Delicious Food&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Don&amp;rsquo;t miss delicious food, which will keep you up for whole day event :P&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Follow&lt;/strong&gt; &lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Pycon India&lt;/a&gt;  &lt;strong&gt;on twitter for more upcoming updates&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;If you havn&amp;rsquo;t registered yet for PyCon India&lt;/strong&gt;, &lt;a href=&#34;https://in.explara.com/e/pycon-india-2016&#34;&gt;Click here to grab your ticket&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Me ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Suraj Narwade&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Proudly, OpenSource Contributor and Volunteer for PyCon India 2016&lt;/p&gt;
-
-&lt;p&gt;IRC nick - snarwade&lt;/p&gt;
 </description>
     </item>
     
