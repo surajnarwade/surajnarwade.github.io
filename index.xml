@@ -6,8 +6,53 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Sep 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 27 Nov 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to split commits in git</title>
+      <link>http://suraj.pro/post/git/</link>
+      <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/git/</guid>
+      <description>
+
+&lt;p&gt;I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?&lt;/p&gt;
+
+&lt;p&gt;To split your last or recent commit, simply do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But I wanted to break 3rd commit and split it into two commits, then I did as following way,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase -i HEAD~3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;if you dont know the number you can also mention &lt;code&gt;SHA1&lt;/code&gt; of that commit as well,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase master -i xyz^
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then rebase screen will appear, replace &lt;code&gt;pick&lt;/code&gt; with &lt;code&gt;edit&lt;/code&gt; and save it and do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now Commit the individual files and create as much commit as you want and finally do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase --continue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&#34;&gt;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Easter eggs in kubectl</title>
@@ -1516,120 +1561,6 @@ Last Talk was Static vs. Dynamic Languages by &lt;a href=&#34;https://twitter.co
 &lt;p&gt;&lt;strong&gt;Python Pune July Meetup Group Photo&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://suraj.pro/pythonpune1.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Jenkins Docker Integration along with Fedora Contribution</title>
-      <link>http://suraj.pro/post/blog14/</link>
-      <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog14/</guid>
-      <description>&lt;p&gt;Hello Everyone,
-From Past few days, I was studying  Jenkins,
-1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup.
-   So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.I have experimented it and I managed to contributr Jenkins fedora slave image to Fedora Cloud, &lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Few Reasons for Container based slaves:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Each image provides a clean environment in which a build can be run.&lt;/li&gt;
-&lt;li&gt;They are relatively lightweight (compared to a full VM&lt;/li&gt;
-&lt;li&gt;They can be saved/tagged to provide a record of the resulting build output
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;What Jenkins docker plugin does ?
-it will able to use docker host so that it will dynamically
-provision slave
-run a single build
-tear down the slave&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/docker-jenkins.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
-.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Setting up the Docker host:&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Make sure that Firewall is disabled
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt; sudo systemctl stop firewalld
- sudo systemctl disable firewalld
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install docker engine
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt; sudo dnf update -y
- sudo dnf install docker -y
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Replace following lines with &amp;ldquo;ExecStart&amp;rdquo; under [Service] section in &lt;em&gt;/usr/lib/systemd/system/docker.service&lt;/em&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt; ExecStart=
- ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2376
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Start Docker daemon
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;dl&gt;
-  &lt;dt&gt; :  : &lt;/dt&gt;
-  &lt;dd&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    sudo systemctl daemon-reload
-    sudo systemctl start docker
-    sudo systemctl enable docker
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-Creating Docker image:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Recently, I have submitted docker image in dockerhub, so you can pull that image using following command,
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt; docker pull surajnarwade/jenkins-fedora-slave
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Same image(Dockerfile) I requested to merge in Fedora-cloud, and the community happily accepted it, Hence my first Fedora Contribution :)&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Click Here&lt;/a&gt; to access my contributed Dockerfile on fedora cloud.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Download &lt;a href=&#34;https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin&#34;&gt;Jenkins Docker plugin&lt;/a&gt; in Jenkins, goto &amp;ldquo;Manage Jenkins&amp;rdquo;-&amp;gt;&amp;ldquo;Configure System&amp;rdquo;, Scroll Down to bottom of the page, you should find an option to &amp;ldquo;Add a new cloud&amp;rdquo;, Click on it and select Docker option.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Docker URL should point to IP address of Docker host.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Put name of Docker image in ID field.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Put &amp;lsquo;label&amp;rsquo; Labels field, so that Jenkins projects identify this as docker cloud provider.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;If everything sets up correctly, the &amp;ldquo;Test Connection&amp;rdquo; button should return the current version of Docker running on the host.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/screenshot.png&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;
-.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Put label of Docker Cloud in Label Expression field in Project configurations, so now Jenkins should start up a new Docker container, run the build, and then shut down the container.
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Conclusion&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The integration between Jenkins and Docker is still at development stage, so it may take some time and efforts to get them working nicely together. Capability to start new build from clean image is very important thing when it comes to point of reproducible builds.&lt;/p&gt;
 </description>
     </item>
     

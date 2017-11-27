@@ -6,8 +6,53 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Sep 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 27 Nov 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to split commits in git</title>
+      <link>http://suraj.pro/post/git/</link>
+      <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/git/</guid>
+      <description>
+
+&lt;p&gt;I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?&lt;/p&gt;
+
+&lt;p&gt;To split your last or recent commit, simply do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But I wanted to break 3rd commit and split it into two commits, then I did as following way,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase -i HEAD~3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;if you dont know the number you can also mention &lt;code&gt;SHA1&lt;/code&gt; of that commit as well,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase master -i xyz^
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then rebase screen will appear, replace &lt;code&gt;pick&lt;/code&gt; with &lt;code&gt;edit&lt;/code&gt; and save it and do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now Commit the individual files and create as much commit as you want and finally do,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git rebase --continue
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&#34;&gt;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Easter eggs in kubectl</title>
@@ -1456,78 +1501,6 @@ Creating Docker image:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Conclusion&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;The integration between Jenkins and Docker is still at development stage, so it may take some time and efforts to get them working nicely together. Capability to start new build from clean image is very important thing when it comes to point of reproducible builds.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Why You Should Attend PyCon India 2016?</title>
-      <link>http://suraj.pro/post/blog13/</link>
-      <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog13/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you are new to python&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/pycon16logo.png&#34; width=&#34;900&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you are hiring&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.
-Sponsering PyCon india is the best way to get noticed by these pythonistas.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/2016/sponsorship-prospectus.pdf&#34;&gt;Click here to Download Sponsership Prospectus&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you want to meet pythonist whom you just know by IRC nick&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Come out of your cubicle/from your dark room and meet those people whom you just know by IRC nick, people who solved your queries once ! :)
-Meet new buddies, share ideas, interact with them, colloborate and work :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because you want to know what are the latest trends that pythonists are working on&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Excellent talks will be presented which will let you know about latest trends, also you will get to know various interesting, new things at PyCon india.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://in.pycon.org/cfp/2016/proposals/&#34;&gt;click here to vote for your favourite proposal&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Because it&amp;rsquo;s time for Delhi&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Awesome place, crowdy, delicious street foods and it&amp;rsquo;s capital city  :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Last but not the least, Because you want to taste Delicious Food&lt;/strong&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Don&amp;rsquo;t miss delicious food, which will keep you up for whole day event :P&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Follow&lt;/strong&gt; &lt;a href=&#34;https://twitter.com/pyconindia&#34;&gt;Pycon India&lt;/a&gt;  &lt;strong&gt;on twitter for more upcoming updates&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;If you havn&amp;rsquo;t registered yet for PyCon India&lt;/strong&gt;, &lt;a href=&#34;https://in.explara.com/e/pycon-india-2016&#34;&gt;Click here to grab your ticket&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Me ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Suraj Narwade&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Proudly, OpenSource Contributor and Volunteer for PyCon India 2016&lt;/p&gt;
-
-&lt;p&gt;IRC nick - snarwade&lt;/p&gt;
 </description>
     </item>
     
