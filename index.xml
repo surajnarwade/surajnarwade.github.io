@@ -6,8 +6,98 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Nov 2017 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 09 Dec 2017 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mounting host folders in minikube</title>
+      <link>http://suraj.pro/post/hostmount-minikube/</link>
+      <pubDate>Sat, 09 Dec 2017 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/hostmount-minikube/</guid>
+      <description>
+
+&lt;p&gt;supports PV of type &lt;code&gt;hostpath&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;minikube is configured to persist files stored under following directories.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/data&lt;/li&gt;
+&lt;li&gt;/var/lib/localkube&lt;/li&gt;
+&lt;li&gt;/var/lib/docker&lt;/li&gt;
+&lt;li&gt;/tmp/hostpath_pv&lt;/li&gt;
+&lt;li&gt;/tmp/hostpath-provisioner&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;any other directory will not persist the data after reboot.&lt;/p&gt;
+
+&lt;p&gt;To mount host directory inside minikube,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ minikube mount /host-mount-path:/vm-mount-path
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;for example,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ minikube mount ~/mount-dir:/mountexample
+Mounting /home/user/mount-dir/ into /mountexample on the minikubeVM
+This daemon process needs to stay alive for the mount to still be accessible...
+ufs starting
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This process has to stay open, so open another terminal (if you want more than one mountpath, open one more terminal follow the above procedure)&lt;/p&gt;
+
+&lt;p&gt;Mounting inside container,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: centos
+spec:
+  containers:
+  - name: centos
+    image: centos
+    args:
+    - bash
+    stdin: true
+    stdinOnce: true
+    tty: true
+    workingDir: &amp;quot;/mountexample&amp;quot;
+    volumeMounts:
+    - mountPath: &amp;quot;/mountexample&amp;quot;
+      name: host-mount
+  volumes:
+  - name: host-mount
+    hostPath:
+      path: &amp;quot;/mountexample&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another way is to create PV using following YAML and then you can map your host directory path to this directory path,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /data/pv0001/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Run &lt;code&gt;kubectl create -f &amp;lt;above yaml file&amp;gt;&lt;/code&gt; to create PV.&lt;/p&gt;
+
+&lt;p&gt;As of now, only &lt;code&gt;hostpath&lt;/code&gt; and accessmode (read write once) are supported.&lt;/p&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/minikube/&#34;&gt;https://kubernetes.io/docs/getting-started-guides/minikube/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>How to split commits in git</title>
@@ -1489,78 +1579,6 @@ Finally, we had #dgplug group photo, photo sessions and  goodbye with lots of me
 &lt;a href=&#34;https://photos.google.com/share/AF1QipN3KFNwlrek7-YTu63RFOQ9hAdcO6VZWKOy68hrn0KUgo85PGAu8dkAKeAaQzEETQ?key=UFI3RVFuVWR3aUlUSnBsX3c5YlVJay1hR1ctUkd3&#34;&gt;Click here for photo collection from all volunteer and attendees&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Click for &lt;a href=&#34;https://www.flickr.com/photos/kushaldas/albums/72157674568352675&#34;&gt;Kushal das&amp;rsquo;s&lt;/a&gt; and &lt;a href=&#34;https://www.flickr.com/photos/sayanchowdhury/albums/72157674406421245&#34;&gt;Sayan Chowdhary&amp;rsquo;s&lt;/a&gt; clicks.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>It&#39;s our time Now !!! PythonPune July Meetup</title>
-      <link>http://suraj.pro/post/blog15/</link>
-      <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/post/blog15/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/events/232609681/&#34;&gt;Python Pune July Meetup&lt;/a&gt; was held at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt;, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns.
-Around 40 pythonistas were present for meetups, some were students and some were professionals.
-Topics for the meetup were as below:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;em&gt;How do I automate boring stuff using Python?&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj Narwade&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Writing unit tests for any Python Script&lt;/em&gt; by &lt;a href=&#34;https://www.facebook.com/sudhirvverma&#34;&gt;Sudhir Verma&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Static v/s Dynamically typed languages&lt;/em&gt; by &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;Ganesh Kadam&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Regular Expressions in Python&lt;/em&gt; by &lt;a href=&#34;https://www.facebook.com/rahul.bajaj.7568596?fref=ts&#34;&gt;Rahul Bajaj&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.
-He explained about regex, it&amp;rsquo;s requirement,how to use it along with simple examples.
-&lt;a href=&#34;https://rahulbajaj05.files.wordpress.com/2016/08/regular_expression_python_pune.pdf&#34;&gt;Click here for Rahul&amp;rsquo;s slides&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Rahul Talking about regex&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/rahul.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;I explained about how I automate daily boring stuffs as well as I explained how I automate Pycon India volunteering tasks (in which python script automatically tweets about talk proposal voting every 2 hour as well as retweet PyCon tweets automatically),&lt;/p&gt;
-
-&lt;p&gt;Links  for my talk:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Script for volunteering PyCon India&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://gist.github.com/surajnarwade/&#34;&gt;Gist of all small scripts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1DyM4B2blTCUkzsg9vGfSBQx_KUlVGTj_31v6JMt7KLk/edit?usp=sharing&#34;&gt;sildes&lt;/a&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Me talking about Automating Boring Stuff&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/suraj.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/ciypro&#34;&gt;Chandan&lt;/a&gt; extended my topic and asked pythonistas to share their ideas regarding  boring stuff in their day to day life. we collected those ideas in etherpad and will work on it soon. &lt;a href=&#34;https://etherpad.openstack.org/p/boring_scripts&#34;&gt;Click here for etherpad&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As Unit Testing is known as important part of software development process, We can determine the working of code and how it will react to various inputs. It is an excellent way to detect defects and refactor the code. &lt;a href=&#34;https://www.facebook.com/sudhirvvermaa&#34;&gt;Sudhir&lt;/a&gt; explained unit test, its working along with simple &lt;a href=&#34;https://github.com/sudhirverma/unittest&#34;&gt;examples&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1A0Ccay1D2oHg5m3uxyDgiI27KgFyMrBaCj6uxSjV1-s/edit#slide=id.g16008e6350_0_47&#34;&gt;Click Here for his slides.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sudhir Talking on Unit Testing&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sudhir.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.
-Last Talk was Static vs. Dynamic Languages by &lt;a href=&#34;https://twitter.com/meganeshkadam&#34;&gt;Ganesh Kadam&lt;/a&gt; , He talked about Why &lt;a href=&#34;http://blog.asciinema.org/&#34;&gt;AsciiNema&lt;/a&gt; ported back to python from Golang as well how language should be chosen depend on requirement. He also explained difference between static and dynamic languages. &lt;a href=&#34;https://docs.google.com/presentation/d/1Ier4vDqq3d9UAlyhJl5l-6dw4g_e-WH__xzhvqe0-bo/edit#slide=id.p&#34;&gt;Click here for his slides&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Ganesh Talking about Static &amp;amp; Dynamic Languages&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/ganesh.jpg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;p&gt;Finally Chandan told about Openstack community and took positive feedbacks regarding meetup from attendees and discussed about upcoming meetups. Thank You &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat Pune&lt;/a&gt; for organizing this meetup.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Python Pune July Meetup Group Photo&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/pythonpune1.jpeg&#34; width=&#34;600&#34; height=&#34;400&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
