@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> Remove white noise from Videos &middot; Suraj Narwade </title>
+        <title> Mounting host folders in minishift &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,66 +80,31 @@ ga('create', '75855569', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="http://suraj.pro/post/videoguideline/">Remove white noise from Videos</a></h1>
-            <span class="post-date">Jul 23, 2017 </span>
+            <h1><a href="http://suraj.pro/post/hostmount-minishift/">Mounting host folders in minishift</a></h1>
+            <span class="post-date">Dec 13, 2017 </span>
             <div class="post-content">
-                
+                <p>Make sure <code>sshd</code> service is running on your host.</p>
 
-<p>May times, We have to create demos for projects for which we use various desktop screen recorders
-along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.</p>
+<pre><code>$ sudo systemctl status sshd
+● sshd.service - OpenSSH server daemon
+   Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Wed 2017-12-13 18:23:09 IST; 4min 14s ago
+     Docs: man:sshd(8)
+           man:sshd_config(5)
+ Main PID: 11319 (sshd)
+    Tasks: 1 (limit: 4915)
+   Memory: 4.9M
+      CPU: 333ms
+   CGroup: /system.slice/sshd.service
+           └─11319 /usr/sbin/sshd -D
 
-<p>Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.</p>
-
-<p>I surfed on the internet and found some relevant solutionsm which we will discuss today.</p>
-
-<ul>
-<li><p>First a fall, we need to separate audio from video, for which we need to run following commands,</p>
-
-<ul>
-<li>Install <code>ffmpeg</code> package,</li>
-</ul>
-
-<pre><code>    $ sudo dnf install ffmpeg -y
+Dec 13 18:23:09 localhost.localdomain systemd[1]: Starting OpenSSH server daemon...
+Dec 13 18:23:09 localhost.localdomain sshd[11319]: Server listening on 0.0.0.0 port 22.
+Dec 13 18:23:09 localhost.localdomain sshd[11319]: Server listening on :: port 22.
+Dec 13 18:23:09 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
 </code></pre>
 
-<ul>
-<li>Run this command for separating audio from video,</li>
-</ul>
-
-<pre><code>$ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
-</code></pre>
-
-<p>It will create <code>output.mp3</code> as audio file.</p></li>
-
-<li><p>Install audacity for audio processing,</p></li>
-</ul>
-
-<pre><code>$ sudo dnf install audacity -y
-</code></pre>
-
-<ul>
-<li>Open <code>output.mp3</code> audio file in audacity,</li>
-</ul>
-
-<p><img src="/sc1.png" width="400" height="300" align="middle"/></p>
-
-<ul>
-<li><p>select any area of noise where there&rsquo;s no talking, (low frequency)</p></li>
-
-<li><p>Click <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>Get noise profile</code></p></li>
-</ul>
-
-<p><img src="/sc2.png" width="400" height="300" align="middle"/></p>
-
-<ul>
-<li><p>Now Select whole audio (Ctrl + A) and goto <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>OK</code></p></li>
-
-<li><p>Now goto <code>File</code> &gt; <code>Export Audio</code> and save it in format of your choice.</p></li>
-
-<li><p>Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer <a href="http://www.openshot.org/">OpenShot</a>)</p></li>
-</ul>
-
-<h2 id="happy-hacking"><code>*Happy Hacking !!!*</code></h2>
+<p>Create</p>
 
             </div>
             
@@ -147,9 +112,9 @@ along with normal earphones with mic for audio. But, It causes a lot of white/ba
                 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'surajnarwade-github-io';
-    var disqus_identifier = 'http:\/\/suraj.pro\/post\/videoguideline\/';
-    var disqus_title = 'Remove white noise from Videos';
-    var disqus_url = 'http:\/\/suraj.pro\/post\/videoguideline\/';
+    var disqus_identifier = 'http:\/\/suraj.pro\/post\/hostmount-minishift\/';
+    var disqus_title = 'Mounting host folders in minishift';
+    var disqus_url = 'http:\/\/suraj.pro\/post\/hostmount-minishift\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
