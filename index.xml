@@ -6,8 +6,270 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Mar 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 13 Aug 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Play with OpenShift Internal Docker Registry and imagestreams</title>
+      <link>http://suraj.pro/post/access-minishift-registry/</link>
+      <pubDate>Mon, 13 Aug 2018 21:21:49 +0530</pubDate>
+      
+      <guid>http://suraj.pro/post/access-minishift-registry/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Configure your shell to use docker daemon of Minishift&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;eval $(minishift docker-env)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;export user token registry URL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;export TOKEN=$(oc whoami -t)
+export REGISTRY_URL=$(minishift openshift registry)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Logging in to Registry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;docker login -u developer -p $TOKEN $REGISTRY_URL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;we can use directly as,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can tag images, push it to respective project to create imagestream&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;docker tag mynodejs $(minishift openshift registry)/myproject/nodejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Push the docker image to registry so that it will create imagestream automatically,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;docker push $(minishift openshift registry)/myproject/nodejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now you can create application using the new imagestream,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;oc new-app --image-stream=nodejs --name app
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://suraj.pro/about_me/</link>
+      <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://suraj.pro/about_me/</guid>
+      <description>
+
+&lt;h1 id=&#34;suraj-babulal-narwade&#34;&gt;Suraj Babulal Narwade&lt;/h1&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Email: &lt;a href=&#34;mailto:surajnarwade353@gmail.com&#34;&gt;surajnarwade353@gmail.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Github: &lt;a href=&#34;https://github.com/surajnarwade&#34;&gt;https://github.com/surajnarwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Twitter: &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;https://twitter.com/red_suraj&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LinkedIn: &lt;a href=&#34;https://www.linkedin.com/in/surajnarwade/&#34;&gt;https://www.linkedin.com/in/surajnarwade/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Stackoverflow: &lt;a href=&#34;https://stackoverflow.com/users/7804592/suraj-narwade&#34;&gt;https://stackoverflow.com/users/7804592/suraj-narwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FAS profile: &lt;a href=&#34;https://fedoraproject.org/wiki/User:Suraj353&#34;&gt;https://fedoraproject.org/wiki/User:Suraj353&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mobile: (+91)9762826464&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;work-experience&#34;&gt;Work Experience&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Currently working on Odo a developer focussed CLI tool for OpenShift which helps them to start developing apps with OpenShift easily without prior knowledge about OpenShift&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Contributed to Kompose which helps to convert Docker Compose file format to Kubernetes or OpenShift which helps developers to onboard Kubernetes with ease. Also, I helped Kompose to graduate from Kubernetes Incubator to main Kubernetes GitHub organization&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Contributed to Kedge  which is a Kubernetes native declarative application definition which lets developers write Kubernetes manifests without an overhead of a DSL&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Contributed to OpenCompose which is simple DSL to define application on Kubernetes/OpenShift&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Worked as a DevOps engineer to maintain and enhance CI process in Red Hat Certification Engineering&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dealt with various tools such as Jenkins, Git, Gerrit and automation with Python and Shell&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Worked extensively with configuration Management tools like Ansible, Puppet&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Worked on OpenStack to provision instances&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Done PoC work about Jenkins &amp;amp; Docker, Kubernetes Integrations&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;opensource-contributions&#34;&gt;OpenSource Contributions&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;strong&gt;Kubernetes-incubator&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/docker/libcompose&#34;&gt;Libcompose&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kushaldas/tunirtests/blob/master/selinux.py&#34;&gt;Added selinux test case for fedora cloud and atomic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://fedoraproject.org/wiki/Test_Day:2016_05_10_Cloud&#34;&gt;Participated in fedora 24 cloud test day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Added Dockerfile for jenkins slave image in fedora-cloud&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;RDO&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://surajnarwade.github.io/rdo-bug-triage-day-first-step-towards-contribution.html&#34;&gt;Participated in RDO bug triage day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/reviewer:surajnarwade&#34;&gt;Done Code review&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/redhat-openstack/website/pulls?q=is%3Apr+author%3Asurajnarwade+is%3Aclosed&#34;&gt;RDO blog PR&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/status:merged+owner:surajnarwade&#34;&gt;Patchset gerrit link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;OpenStack&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://review.openstack.org/#/c/392574/&#34;&gt;Fixed puppetfile install step&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Other Projects&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/stwitto&#34;&gt;Twitter CLI client&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Written pycon india scripts for automating volunteer work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Participated in &lt;a href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest 2016&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;
+&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
+&lt;code&gt;Jenkins&lt;/code&gt;, &lt;code&gt;Ansible&lt;/code&gt;, &lt;code&gt;Puppet&lt;/code&gt;, &lt;code&gt;ShellScripting&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;, &lt;code&gt;Golang&lt;/code&gt;, &lt;code&gt;Kubernetes&lt;/code&gt;, &lt;code&gt;Openshift&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in containerized Application Development&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in configuration management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator in OpenStack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certified Engineer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;as-a-speaker&#34;&gt;As a speaker&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Conferences: FOSSASIA Singapore, CentOS DOJO Singapore, DevOpsDays India&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Meetups: Kubernauts online, Kubernetes Bangalore, Kubernetes Pune, Kubernetes Singapore, Python Pune, Python Aurangabad&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Recordings are &lt;a href=&#34;https://gist.github.com/surajnarwade/30c26799ebd7390195c550c98cf7840b&#34;&gt;here&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;community-roles&#34;&gt;Community Roles&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Co-Organizer at &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/&#34;&gt;Kubernetes Bangalore Meetup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Co-Organizer at &lt;a href=&#34;https://devconf.info/in&#34;&gt;DevConf India&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Volunteer at &lt;a href=&#34;https://in.pycon.org/&#34;&gt;PyCon India&lt;/a&gt; &amp;amp; &lt;a href=&#34;http://pune.pycon.org/&#34;&gt;PyCon Pune&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Mentor at &lt;a href=&#34;http://www.meetup.com/Docker-Aurangabad/events/235259225/&#34;&gt;Docker Global Mentor Week&lt;/a&gt; &amp;amp; Docker Birthday&lt;/li&gt;
+&lt;li&gt;Conducted &lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express Workshop&lt;/a&gt; at various colleges&lt;/li&gt;
+&lt;li&gt;Attendee of Golang &amp;amp; Docker meetup, Bangalore&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;interests&#34;&gt;Interests:&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;
+FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet | Alexa&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;education-details&#34;&gt;Education details&lt;/h2&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Deogiri Institute of Engineering &amp;amp; Management Studies&lt;/strong&gt; &lt;br /&gt;
+&lt;em&gt;Bachelor of Engineering, Electronics &amp;amp; Communications&lt;/em&gt;&lt;br /&gt;
+2011 - 2015, Aurangabad, Maharashtra&lt;br /&gt;
+Aggregate: 81.85 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Bhaskaracharya Junior College&lt;/strong&gt; &lt;br /&gt;
+&lt;em&gt;Higher Secondary Education&lt;/em&gt;&lt;br /&gt;
+2009 - 2011, Aurangabad, Maharashtra&lt;br /&gt;
+Aggregate: 71.88 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Saraswati Bhuvan High-School&lt;/strong&gt; &lt;br /&gt;
+&lt;em&gt;Secondary Education&lt;/em&gt;&lt;br /&gt;
+2011 - 2015, Aurangabad, Maharashtra&lt;br /&gt;
+Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>FOSSASIA Summit 2018-Event Report</title>
@@ -1283,180 +1545,6 @@ func main() {
     </item>
     
     <item>
-      <title>About Me</title>
-      <link>http://suraj.pro/about_me/</link>
-      <pubDate>Sun, 28 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://suraj.pro/about_me/</guid>
-      <description>
-
-&lt;h1 id=&#34;suraj-babulal-narwade&#34;&gt;Suraj Babulal Narwade&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Email: &lt;a href=&#34;mailto:surajnarwade353@gmail.com&#34;&gt;surajnarwade353@gmail.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Github: &lt;a href=&#34;https://github.com/surajnarwade&#34;&gt;https://github.com/surajnarwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Twitter: &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;https://twitter.com/red_suraj&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;LinkedIn: &lt;a href=&#34;https://in.linkedin.com/in/suraj-narwade-85436a38&#34;&gt;https://in.linkedin.com/in/suraj-narwade-85436a38&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Stackoverflow: &lt;a href=&#34;https://stackoverflow.com/users/7804592/suraj-narwade&#34;&gt;https://stackoverflow.com/users/7804592/suraj-narwade&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;FAs profile: &lt;a href=&#34;https://fedoraproject.org/wiki/User:Suraj353&#34;&gt;https://fedoraproject.org/wiki/User:Suraj353&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Mobile: (+91)9762826464&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;work-experience&#34;&gt;Work Experience&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Associate Software Engineer, Red Hat, Jan 2017 - Present&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Working as golang developer&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Software Engineering Intern, Red Hat, Feb 2016 - Jan 2017&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Working as &lt;em&gt;DevOps&lt;/em&gt; intern for maintaining CI/CD process using various tools like Jenkins, Ansible, Puppet, Docker, OpenStack, etc.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;opensource-contributions&#34;&gt;OpenSource Contributions&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;
-&lt;strong&gt;Kubernetes-incubator&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Docker&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/docker/libcompose&#34;&gt;Libcompose&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kushaldas/tunirtests/blob/master/selinux.py&#34;&gt;Added selinux test case for fedora cloud and atomic&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://fedoraproject.org/wiki/Test_Day:2016_05_10_Cloud&#34;&gt;Participated in fedora 24 cloud test day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave&#34;&gt;Added Dockerfile for jenkins slave image in fedora-cloud&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;RDO&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://surajnarwade.github.io/rdo-bug-triage-day-first-step-towards-contribution.html&#34;&gt;Participated in RDO bug triage day&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/reviewer:surajnarwade&#34;&gt;Done Code review&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/redhat-openstack/website/pulls?q=is%3Apr+author%3Asurajnarwade+is%3Aclosed&#34;&gt;RDO blog PR&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://review.rdoproject.org/r/#/q/status:merged+owner:surajnarwade&#34;&gt;Patchset gerrit link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;OpenStack&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://review.openstack.org/#/c/392574/&#34;&gt;Fixed puppetfile install step&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Other Projects&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/stwitto&#34;&gt;Twitter CLI client&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/surajnarwade/pycon-india-scripts&#34;&gt;Written pycon india scripts for automating volunteer work&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Participated in &lt;a href=&#34;https://hacktoberfest.digitalocean.com/&#34;&gt;Hacktoberfest 2016&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;skills&#34;&gt;Skills&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;
-&lt;code&gt;OpenStack&lt;/code&gt;, &lt;code&gt;Docker&lt;/code&gt;, &lt;code&gt;Git&lt;/code&gt;, &lt;code&gt;Linux&lt;/code&gt;, &lt;code&gt;Gerrit&lt;/code&gt;,
-&lt;code&gt;Jenkins&lt;/code&gt;, &lt;code&gt;Ansible&lt;/code&gt;, &lt;code&gt;Puppet&lt;/code&gt;, &lt;code&gt;ShellScripting&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;, &lt;code&gt;Golang&lt;/code&gt;, &lt;code&gt;Kubernetes&lt;/code&gt;, &lt;code&gt;Openshift&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied Engineer&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certfied System Administrator in OpenStack&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in configuration management&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.redhat.com/wapps/training/certification/verify.html?certNumber=150-179-117&amp;amp;isSearch=False&amp;amp;verify=Verify&#34;&gt;Red Hat Certificate of Expertise in containerized Application Development&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;as-a-speaker&#34;&gt;As a speaker&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://pythonexpress.in/&#34;&gt;Python Express Workshop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.meetup.com/PythonPune/&#34;&gt;Python Pune Monthly meetup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/&#34;&gt;Kubernetes Bangalore Meetup&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;community-roles&#34;&gt;Community Roles&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;meetup.com/PythonPune/&#34;&gt;Python Pune meetup&lt;/a&gt; event host&lt;/li&gt;
-&lt;li&gt;Volunteer at &lt;a href=&#34;https://in.pycon.org/&#34;&gt;PyCon India, 2016&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Volunteer at &lt;a href=&#34;http://pune.pycon.org/&#34;&gt;PyCon Pune 2017&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Conducting Python Express Workshop at various colleges&lt;/li&gt;
-&lt;li&gt;Participated in Docker Global Mentor Week as well as Docker Birthday as Mentor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;interests&#34;&gt;Interests:&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;
-FOSS | DevOps | Automation | Blogging | Knowledge Sharing | Embedded System | Surfing Internet | Alexa&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;education-details&#34;&gt;Education details&lt;/h2&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Bachelor of Engineering&lt;/strong&gt; in Electronics &amp;amp; Communication Engineering from Deogiri Institute of Engineering &amp;amp; Management Studies, Aurangabad(&lt;em&gt;Aggregate: 81.85%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;HSC&lt;/strong&gt; from Bhaskaracharya junior College, Aurangabad(&lt;em&gt;Aggregate: 71.88%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;SSC&lt;/strong&gt; from Sarswati Bhuwan high school, Aurangabad(&lt;em&gt;Aggregate: 90%&lt;/em&gt;)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
       <title>The GO Workshop by Baiju</title>
       <link>http://suraj.pro/post/goworkshop/</link>
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
@@ -1671,158 +1759,6 @@ Are you sure you want to continue? [y/N]
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;thanks-happy-hacking&#34;&gt;Thanks, Happy Hacking !!!&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Migration to Hugo</title>
-      <link>http://suraj.pro/post/migration-to-hugo/</link>
-      <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
-      
-      <guid>http://suraj.pro/post/migration-to-hugo/</guid>
-      <description>
-
-&lt;p&gt;Hello guys, its been so long, I havn&amp;rsquo;t written any post.
-Recently, I have migrated my blog from &lt;a href=&#34;https://blog.getpelican.com/&#34;&gt;Pelican&lt;/a&gt;(python based static site generator) to &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;(GO based static site generator).
-Today, I will write about it. You can explore my blog at &lt;a href=&#34;https://surajnarwade.github.io&#34;&gt;surajnarwade.github.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-hugo&#34;&gt;&lt;em&gt;Installing Hugo&lt;/em&gt;&lt;/h2&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install hugo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ go get -v github.com/spf13/hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Check whether it is properly installed or not&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo help
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;using-hugo&#34;&gt;&lt;em&gt;Using Hugo&lt;/em&gt;&lt;/h2&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;We need to tell hugo to generate blog skeleton, type following command for that:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new site myblog
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;myblog&lt;/code&gt; directory will be created, checkout into directory:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd myblog
-$ tree 
-.
-├── archetypes
-├── config.toml
-├── content
-├── data
-├── layouts
-├── static
-└── themes
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now its time to write to post. following command will create a post with predefined skeleton. you can create your own archtypes for this.
-Edit the post with markdown syntax. Click &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34;&gt;here&lt;/a&gt; for markdown cheatsheet.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new post/good-to-great.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Compile the blog using following command and our website will be generated under &lt;code&gt;public/&lt;/code&gt; directory.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hugo comes with server while reloads your browser live as soon as there&amp;rsquo;s change in a file so, you will get a instant feedback.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo server
-...
-....
-Watching for changes in /home/snarwade/myblog/{data,content,layouts,static,themes}
-Serving pages from memory
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Now Open &lt;a href=&#34;localhost:1313&#34;&gt;localhost:1313&lt;/a&gt; on your browser to see the website. you can make changes to blogpost file to see live changes.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;I have used &lt;a href=&#34;https://github.com/LordMathis/hugo-theme-nix&#34;&gt;nix&lt;/a&gt; theme for my blog, but there are bunch of beautiful themes for hugo from which you can choose, Click &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;here&lt;/a&gt; to get browse hugo themes.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd themes
-$ git clone https://github.com/LordMathis/hugo-theme-nix
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Update &lt;code&gt;config.toml&lt;/code&gt; file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;languageCode = &amp;quot;en-us&amp;quot;
-title = &amp;quot;&amp;lt;your title&amp;gt;&amp;quot;
-baseURL = &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;
-theme = &amp;quot;your theme name&amp;quot;
-disqusShortname = &amp;quot;your disqus shortname&amp;quot;
-
-[params]
-  GithubID = &amp;quot;your_github&amp;quot;
-  GitlabId = &amp;quot;your_gitlab&amp;quot;
-  TwitterID = &amp;quot;your_twitter&amp;quot;
-  LinkedInID = &amp;quot;your_linkedin&amp;quot;
-  GoogleplusID = &amp;quot;your_googleplus&amp;quot;
-  FacebookID = &amp;quot;your_facebook&amp;quot;
-  InstagramID = &amp;quot;your instagram&amp;quot;
-  Name = &amp;quot;your_name&amp;quot;
-  HeaderUsername = &amp;quot;username&amp;quot;
-  HeaderHostname = &amp;quot;hostname&amp;quot;
-  Email = &amp;quot;your_email&amp;quot;
-  About = &amp;quot;info_about_you&amp;quot;
-  ProfilePicture = &amp;quot;profile_picture_url&amp;quot;
-  GoogleAnalytics = &amp;quot;your_google_analytics_id&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;deploying-blog-to-github&#34;&gt;&lt;em&gt;Deploying blog to Github&lt;/em&gt;&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create repository named as &lt;username&gt;.github.io, this will be the URL for your blog. Here, Master branch will serve contents for the blog.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Copy the contents from public directory to repository and push the contents to github&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cp -r public/* &amp;lt;username&amp;gt;.github.io/
-$ cd &amp;lt;username&amp;gt;.github.io
-$ git add --all
-$ git commit -m &#39;First commit&#39;
-$ git push
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;You will have your own new blog at &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;Happy hacking || Happy writing !!!&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;(Comments are most welcome)&lt;/p&gt;
 </description>
     </item>
     
