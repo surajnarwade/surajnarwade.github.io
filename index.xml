@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Suraj Narwade</title>
-    <link>http://suraj.pro/index.xml</link>
+    <link>https://suraj.pro/index.xml</link>
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 13 Aug 2018 21:21:49 +0530</lastBuildDate>
-    <atom:link href="http://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Play with OpenShift Internal Docker Registry and imagestreams</title>
-      <link>http://suraj.pro/post/access-minishift-registry/</link>
+      <link>https://suraj.pro/post/access-minishift-registry/</link>
       <pubDate>Mon, 13 Aug 2018 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/access-minishift-registry/</guid>
+      <guid>https://suraj.pro/post/access-minishift-registry/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;Configure your shell to use docker daemon of Minishift&lt;/li&gt;
 &lt;/ul&gt;
@@ -69,10 +69,10 @@ export REGISTRY_URL=$(minishift openshift registry)
     
     <item>
       <title>About Me</title>
-      <link>http://suraj.pro/about_me/</link>
+      <link>https://suraj.pro/about_me/</link>
       <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://suraj.pro/about_me/</guid>
+      <guid>https://suraj.pro/about_me/</guid>
       <description>
 
 &lt;h1 id=&#34;suraj-babulal-narwade&#34;&gt;Suraj Babulal Narwade&lt;/h1&gt;
@@ -273,10 +273,10 @@ Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
     
     <item>
       <title>FOSSASIA Summit 2018-Event Report</title>
-      <link>http://suraj.pro/post/fossasia18/</link>
+      <link>https://suraj.pro/post/fossasia18/</link>
       <pubDate>Sat, 31 Mar 2018 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/fossasia18/</guid>
+      <guid>https://suraj.pro/post/fossasia18/</guid>
       <description>
 
 &lt;hr /&gt;
@@ -612,7 +612,7 @@ Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/daminis.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/daminis.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -622,7 +622,7 @@ Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/harishp.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/harishp.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -630,7 +630,7 @@ Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/hongphucdang.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/hongphucdang.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -672,10 +672,10 @@ Aggregate: 90 %&lt;br /&gt;&lt;/p&gt;&lt;/li&gt;
     
     <item>
       <title>Mounting host folders in minishift</title>
-      <link>http://suraj.pro/post/hostmount-minishift/</link>
+      <link>https://suraj.pro/post/hostmount-minishift/</link>
       <pubDate>Wed, 13 Dec 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/hostmount-minishift/</guid>
+      <guid>https://suraj.pro/post/hostmount-minishift/</guid>
       <description>&lt;p&gt;Make sure &lt;code&gt;sshd&lt;/code&gt; service is running on your host.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo systemctl status sshd
@@ -703,10 +703,10 @@ Dec 13 18:23:09 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
     
     <item>
       <title>Mounting host folders in minikube</title>
-      <link>http://suraj.pro/post/hostmount-minikube/</link>
+      <link>https://suraj.pro/post/hostmount-minikube/</link>
       <pubDate>Sat, 09 Dec 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/hostmount-minikube/</guid>
+      <guid>https://suraj.pro/post/hostmount-minikube/</guid>
       <description>
 
 &lt;p&gt;supports PV of type &lt;code&gt;hostpath&lt;/code&gt;.&lt;/p&gt;
@@ -793,10 +793,10 @@ spec:
     
     <item>
       <title>How to split commits in git</title>
-      <link>http://suraj.pro/post/git/</link>
+      <link>https://suraj.pro/post/git/</link>
       <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/git/</guid>
+      <guid>https://suraj.pro/post/git/</guid>
       <description>
 
 &lt;p&gt;I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?&lt;/p&gt;
@@ -838,10 +838,10 @@ spec:
     
     <item>
       <title>Easter eggs in kubectl</title>
-      <link>http://suraj.pro/post/kubectl/</link>
+      <link>https://suraj.pro/post/kubectl/</link>
       <pubDate>Tue, 26 Sep 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/kubectl/</guid>
+      <guid>https://suraj.pro/post/kubectl/</guid>
       <description>
 
 &lt;p&gt;I was watching video about kubectl by &lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;janakiram&lt;/a&gt; and surprising I found there is also world of commands rather than &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;. &lt;code&gt;kubectl&lt;/code&gt; has lots of interesting easter eggs.&lt;/p&gt;
@@ -967,10 +967,10 @@ Job, DaemonSet or StatefulSet on it&lt;/li&gt;
     
     <item>
       <title>Running static pod using standalone kubelet on fedora</title>
-      <link>http://suraj.pro/post/static-pod/</link>
+      <link>https://suraj.pro/post/static-pod/</link>
       <pubDate>Sat, 23 Sep 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/static-pod/</guid>
+      <guid>https://suraj.pro/post/static-pod/</guid>
       <description>
 
 &lt;p&gt;Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.&lt;/p&gt;
@@ -1065,10 +1065,10 @@ c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                    
     
     <item>
       <title>Multistage build in Docker</title>
-      <link>http://suraj.pro/post/multi-staging/</link>
+      <link>https://suraj.pro/post/multi-staging/</link>
       <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/multi-staging/</guid>
+      <guid>https://suraj.pro/post/multi-staging/</guid>
       <description>
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
@@ -1220,10 +1220,10 @@ go-multistage-app                latest              975ef40d39ee        3 days 
     
     <item>
       <title>Remove white noise from Videos</title>
-      <link>http://suraj.pro/post/videoguideline/</link>
+      <link>https://suraj.pro/post/videoguideline/</link>
       <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/videoguideline/</guid>
+      <guid>https://suraj.pro/post/videoguideline/</guid>
       <description>
 
 &lt;p&gt;May times, We have to create demos for projects for which we use various desktop screen recorders
@@ -1262,7 +1262,7 @@ along with normal earphones with mic for audio. But, It causes a lot of white/ba
 &lt;li&gt;Open &lt;code&gt;output.mp3&lt;/code&gt; audio file in audacity,&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc1.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/sc1.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;select any area of noise where there&amp;rsquo;s no talking, (low frequency)&lt;/p&gt;&lt;/li&gt;
@@ -1270,7 +1270,7 @@ along with normal earphones with mic for audio. But, It causes a lot of white/ba
 &lt;li&gt;&lt;p&gt;Click &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;Get noise profile&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/sc2.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/sc2.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Now Select whole audio (Ctrl + A) and goto &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;OK&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
@@ -1286,10 +1286,10 @@ along with normal earphones with mic for audio. But, It causes a lot of white/ba
     
     <item>
       <title>Kubernetes Pune Meetup - July 2017</title>
-      <link>http://suraj.pro/post/k8s-pune-meetup/</link>
+      <link>https://suraj.pro/post/k8s-pune-meetup/</link>
       <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/k8s-pune-meetup/</guid>
+      <guid>https://suraj.pro/post/k8s-pune-meetup/</guid>
       <description>&lt;p&gt;It was beautiful Saturday morning and we were at yet another chapter of  &lt;a href=&#34;https://www.meetup.com/Kubernetes-Pune/events/240840502/&#34;&gt;kubernetes Pune meetup&lt;/a&gt;.
 Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&gt;
 
@@ -1344,10 +1344,10 @@ Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&
     
     <item>
       <title>tools to adopt best practices in golang</title>
-      <link>http://suraj.pro/post/gotools/</link>
+      <link>https://suraj.pro/post/gotools/</link>
       <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/gotools/</guid>
+      <guid>https://suraj.pro/post/gotools/</guid>
       <description>
 
 &lt;p&gt;I went through internet yesterday regarding best practices with golang, I found &lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;go-tools&lt;/a&gt;  written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and can be .
@@ -1457,10 +1457,10 @@ pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
     
     <item>
       <title>Golang workaround for cannot assign to struct field in map</title>
-      <link>http://suraj.pro/post/golang_workaround/</link>
+      <link>https://suraj.pro/post/golang_workaround/</link>
       <pubDate>Sun, 28 May 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/golang_workaround/</guid>
+      <guid>https://suraj.pro/post/golang_workaround/</guid>
       <description>
 
 &lt;p&gt;Yesterday, I was working one of the &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt; issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,&lt;/p&gt;
@@ -1546,10 +1546,10 @@ func main() {
     
     <item>
       <title>The GO Workshop by Baiju</title>
-      <link>http://suraj.pro/post/goworkshop/</link>
+      <link>https://suraj.pro/post/goworkshop/</link>
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/goworkshop/</guid>
+      <guid>https://suraj.pro/post/goworkshop/</guid>
       <description>
 
 &lt;p&gt;A &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/events/238824064/&#34;&gt;golang hands-on workshop&lt;/a&gt; was organized under meetup group &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/&#34;&gt;&lt;em&gt;Practical Data Science&lt;/em&gt;&lt;/a&gt; on May 6th, 2017. It was run up event for &lt;a href=&#34;https://rootconf.talkfunnel.com/devconf-2017/&#34;&gt;Devconf India 2017&lt;/a&gt;. Around 60 people turned up. &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt;, who was workshop instructor, started with introduction of golang.&lt;/p&gt;
@@ -1558,7 +1558,7 @@ func main() {
 
 &lt;p&gt;Workshop course material can be found &lt;a href=&#34;http://talks.godoc.org/github.com/baijum/presentation/golang_workshop/presentation.slide#1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/start.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/start.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Me(&lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;SurajN&lt;/a&gt;), &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; volunteered for the event. We helped attendees for installing golang and also helped them while they were solving exercises given by Baiju.&lt;/p&gt;
 
@@ -1566,15 +1566,15 @@ func main() {
 
 &lt;p&gt;People were eager to learn golang and the workshop was very interactive.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/attendee.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/attendee.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Post lunch &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; explained how golang and Data community converge and what could be the possible future of Data Science in his view.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/bargava.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/bargava.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt; passion for teaching golang was immense and that inspired folks to follow along.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju1.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/baiju1.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;Meanwhile, &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; announced &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;Kubernetes 101 meetup&lt;/a&gt; which is going to happen on 20th May. Feel free to ping us if you have a venue for this event.&lt;/p&gt;
 
@@ -1582,7 +1582,7 @@ func main() {
 
 &lt;p&gt;Stay tuned for &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;upcoming meetups&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h1&gt;
 </description>
@@ -1590,10 +1590,10 @@ func main() {
     
     <item>
       <title>What&#39;s new in Docker ?</title>
-      <link>http://suraj.pro/post/whats-new-in-docker/</link>
+      <link>https://suraj.pro/post/whats-new-in-docker/</link>
       <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
       
-      <guid>http://suraj.pro/post/whats-new-in-docker/</guid>
+      <guid>https://suraj.pro/post/whats-new-in-docker/</guid>
       <description>
 
 &lt;ul&gt;
@@ -1602,7 +1602,7 @@ func main() {
 &lt;li&gt;&lt;p&gt;Docker version that I installed is 17.03.0-ce, &lt;a href=&#34;https://docs.docker.com/engine/installation/linux/fedora/&#34;&gt;Click here&lt;/a&gt; to know how to install Docker&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://suraj.pro/docker.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://suraj.pro/docker.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.&lt;/li&gt;
