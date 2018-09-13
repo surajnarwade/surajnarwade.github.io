@@ -90,6 +90,20 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/install-minishift-fedora/">Installing Minishift on Fedora</a></h4>
+							<h4 class="post-date">Sep 13, 2018</h4>
+						</div>
+						<div class="post-summary"><p>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift  NOTE: Create ~/.local/bin if it&rsquo;s not present, it&rsquo;s already set in PATH variable.
+Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo usermod -a -G libvirt $USER  newgrp libvirt  Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm  Reference:  https://docs....</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/install-minishift-fedora/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/access-minishift-registry/">Play with OpenShift Internal Docker Registry and imagestreams</a></h4>
 							<h4 class="post-date">Aug 13, 2018</h4>
 						</div>

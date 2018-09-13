@@ -6,8 +6,59 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Aug 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 13 Sep 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Installing Minishift on Fedora</title>
+      <link>https://suraj.pro/post/install-minishift-fedora/</link>
+      <pubDate>Thu, 13 Sep 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/install-minishift-fedora/</guid>
+      <description>
+
+&lt;h2 id=&#34;check-for-latest-release-on-github&#34;&gt;Check for latest release on github:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check here: &lt;a href=&#34;https://github.com/minishift/minishift/releases&#34;&gt;https://github.com/minishift/minishift/releases&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;download-latest-binary&#34;&gt;Download latest binary&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz
+
+tar -xvf minishift-1.24.0-linux-amd64.tgz
+
+cp minishift ~/.local/bin/minishift
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;NOTE: Create &lt;code&gt;~/.local/bin&lt;/code&gt; if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.&lt;/p&gt;
+
+&lt;h2 id=&#34;setting-up-virtualization-environment&#34;&gt;Setting up Virtualization environment&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo dnf install libvirt qemu-kvm -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo usermod -a -G libvirt $USER
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;newgrp libvirt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;setting-the-kvm-driver&#34;&gt;Setting the KVM driver&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm
+sudo chmod +x /usr/local/bin/docker-machine-driver-kvm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.okd.io/latest/minishift/getting-started/installing.html&#34;&gt;https://docs.okd.io/latest/minishift/getting-started/installing.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html&#34;&gt;https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Play with OpenShift Internal Docker Registry and imagestreams</title>
@@ -1555,158 +1606,6 @@ Are you sure you want to continue? [y/N]
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;thanks-happy-hacking&#34;&gt;Thanks, Happy Hacking !!!&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Migration to Hugo</title>
-      <link>https://suraj.pro/post/migration-to-hugo/</link>
-      <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/migration-to-hugo/</guid>
-      <description>
-
-&lt;p&gt;Hello guys, its been so long, I havn&amp;rsquo;t written any post.
-Recently, I have migrated my blog from &lt;a href=&#34;https://blog.getpelican.com/&#34;&gt;Pelican&lt;/a&gt;(python based static site generator) to &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;(GO based static site generator).
-Today, I will write about it. You can explore my blog at &lt;a href=&#34;https://surajnarwade.github.io&#34;&gt;surajnarwade.github.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;installing-hugo&#34;&gt;&lt;em&gt;Installing Hugo&lt;/em&gt;&lt;/h2&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install hugo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ go get -v github.com/spf13/hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Check whether it is properly installed or not&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo help
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;using-hugo&#34;&gt;&lt;em&gt;Using Hugo&lt;/em&gt;&lt;/h2&gt;
-
-&lt;p&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;We need to tell hugo to generate blog skeleton, type following command for that:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new site myblog
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;myblog&lt;/code&gt; directory will be created, checkout into directory:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd myblog
-$ tree 
-.
-├── archetypes
-├── config.toml
-├── content
-├── data
-├── layouts
-├── static
-└── themes
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now its time to write to post. following command will create a post with predefined skeleton. you can create your own archtypes for this.
-Edit the post with markdown syntax. Click &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34;&gt;here&lt;/a&gt; for markdown cheatsheet.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo new post/good-to-great.md
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Compile the blog using following command and our website will be generated under &lt;code&gt;public/&lt;/code&gt; directory.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hugo comes with server while reloads your browser live as soon as there&amp;rsquo;s change in a file so, you will get a instant feedback.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ hugo server
-...
-....
-Watching for changes in /home/snarwade/myblog/{data,content,layouts,static,themes}
-Serving pages from memory
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Now Open &lt;a href=&#34;localhost:1313&#34;&gt;localhost:1313&lt;/a&gt; on your browser to see the website. you can make changes to blogpost file to see live changes.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;I have used &lt;a href=&#34;https://github.com/LordMathis/hugo-theme-nix&#34;&gt;nix&lt;/a&gt; theme for my blog, but there are bunch of beautiful themes for hugo from which you can choose, Click &lt;a href=&#34;http://themes.gohugo.io/&#34;&gt;here&lt;/a&gt; to get browse hugo themes.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd themes
-$ git clone https://github.com/LordMathis/hugo-theme-nix
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Update &lt;code&gt;config.toml&lt;/code&gt; file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;languageCode = &amp;quot;en-us&amp;quot;
-title = &amp;quot;&amp;lt;your title&amp;gt;&amp;quot;
-baseURL = &amp;quot;https://&amp;lt;username&amp;gt;.github.io/&amp;quot;
-theme = &amp;quot;your theme name&amp;quot;
-disqusShortname = &amp;quot;your disqus shortname&amp;quot;
-
-[params]
-  GithubID = &amp;quot;your_github&amp;quot;
-  GitlabId = &amp;quot;your_gitlab&amp;quot;
-  TwitterID = &amp;quot;your_twitter&amp;quot;
-  LinkedInID = &amp;quot;your_linkedin&amp;quot;
-  GoogleplusID = &amp;quot;your_googleplus&amp;quot;
-  FacebookID = &amp;quot;your_facebook&amp;quot;
-  InstagramID = &amp;quot;your instagram&amp;quot;
-  Name = &amp;quot;your_name&amp;quot;
-  HeaderUsername = &amp;quot;username&amp;quot;
-  HeaderHostname = &amp;quot;hostname&amp;quot;
-  Email = &amp;quot;your_email&amp;quot;
-  About = &amp;quot;info_about_you&amp;quot;
-  ProfilePicture = &amp;quot;profile_picture_url&amp;quot;
-  GoogleAnalytics = &amp;quot;your_google_analytics_id&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;deploying-blog-to-github&#34;&gt;&lt;em&gt;Deploying blog to Github&lt;/em&gt;&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create repository named as &lt;username&gt;.github.io, this will be the URL for your blog. Here, Master branch will serve contents for the blog.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git clone git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Copy the contents from public directory to repository and push the contents to github&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cp -r public/* &amp;lt;username&amp;gt;.github.io/
-$ cd &amp;lt;username&amp;gt;.github.io
-$ git add --all
-$ git commit -m &#39;First commit&#39;
-$ git push
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;You will have your own new blog at &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;Happy hacking || Happy writing !!!&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;(Comments are most welcome)&lt;/p&gt;
 </description>
     </item>
     
