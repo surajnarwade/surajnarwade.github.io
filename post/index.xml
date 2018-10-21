@@ -6,8 +6,188 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Sep 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 21 Oct 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Journey to the CKA</title>
+      <link>https://suraj.pro/post/journey-to-cka/</link>
+      <pubDate>Sun, 21 Oct 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/journey-to-cka/</guid>
+      <description>
+
+&lt;p&gt;Hello Folks,&lt;/p&gt;
+
+&lt;p&gt;I appeared for the exam on 19th October 2018 and  yesterday(20th Oct 2018), I got the result &amp;amp; I scored &lt;strong&gt;92%&lt;/strong&gt;, Yay :)&lt;/p&gt;
+
+&lt;p&gt;I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-bit-about-exam&#34;&gt;A bit about Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins)&lt;/li&gt;
+&lt;li&gt;Questions: 24&lt;/li&gt;
+&lt;li&gt;Clusters: 6&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.&lt;/p&gt;
+
+&lt;p&gt;to be specific, it&amp;rsquo;s browser based exam which is monitored by a proctor, where right half of the screen is your terminal and left half is your question pane.&lt;/p&gt;
+
+&lt;p&gt;Like Red Hat Exams, CKA is also hands-on exam which test your practical, troubleshooting knowledge with kubernetes.&lt;/p&gt;
+
+&lt;h1 id=&#34;beginning&#34;&gt;Beginning:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register for the exam &lt;a href=&#34;https://www.cncf.io/certification/cka/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Read &lt;a href=&#34;https://www.cncf.io/certification/candidate-handbook&#34;&gt;Candidate Handbook&lt;/a&gt; and &lt;a href=&#34;https://www.cncf.io/certification/tips&#34;&gt;exam tips&lt;/a&gt; carefully.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;preparing-for-the-exam-phase-1-kubernetes-knowledge&#34;&gt;Preparing for the Exam: Phase 1 (Kubernetes Knowledge):&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/walidshaari&#34;&gt;Walid Shaari&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;&gt;github repo&lt;/a&gt; is extremely useful entrypoint for getting starting around syllabus and many useful links and guide :)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create mind map of &lt;a href=&#34;https://kubernetes.io/docs/home&#34;&gt;Kubernetes docs&lt;/a&gt;, it will help you to find something quickly since you can use docs for the reference.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Get your hands dirty with &lt;a href=&#34;https://kubernetes.io/docs/tasks/&#34;&gt;&lt;code&gt;Kubernetes tasks&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go through &lt;a href=&#34;https://kubernetes.io/docs/concepts/&#34;&gt;&lt;code&gt;Kubernetes Concepts&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/reference/&#34;&gt;&lt;code&gt;Kubernetes Reference&lt;/code&gt;&lt;/a&gt; at least twice.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To utilise time wisely, familiar yourself with kubectl command the imperative way, that means, instead of writing yamls, try to generate it,
+Refer &lt;a href=&#34;https://kubernetes.io/docs/reference/kubectl/cheatsheet/&#34;&gt;&lt;code&gt;Kubectl Cheatsheet&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/object-management-kubectl/imperative-command/&#34;&gt;Managing Kubernetes Objects Using Imperative Commands&lt;/a&gt; for the same. You might also like to check out &lt;a href=&#34;https://suraj.pro/post/kubectl/&#34;&gt;blog&lt;/a&gt; post about &lt;code&gt;kubectl&lt;/code&gt; which I wrote last year.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;To generate pod defination, I will do,
+
+kubectl run mypod --image=busybox --generator=run-pod/v1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&#34;kubernetes-cluster&#34;&gt;Kubernetes Cluster:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kelseyhightower/kubernetes-the-hard-way/&#34;&gt;&lt;code&gt;Kubernetes the hard way&lt;/code&gt;&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;Kelsey Hightower&lt;/a&gt;,
+Please do these at least 5 times. This tutorial is performed on GCP, but you can do it locally as well.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/kinvolkio&#34;&gt;Kinvolk&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;https://github.com/kinvolk/kubernetes-the-hard-way-vagrant&#34;&gt;&lt;code&gt;Kubernetes The Hard way&lt;/code&gt;&lt;/a&gt; on vagrant is also useful to study.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;After learning the hard way, for practicing other topics, you can use same cluster or you can use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/minikube/&#34;&gt;minikube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.katacoda.com/courses/kubernetes/playground&#34;&gt;katacoda kubernetes playground&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;set up with &lt;a href=&#34;https://kubernetes.io/docs/setup/independent/install-kubeadm/&#34;&gt;kubeadm&lt;/a&gt; (it&amp;rsquo;s so simple)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h2 id=&#34;books&#34;&gt;Books:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specifically for the exam, I didn&amp;rsquo;t refer any books, but if you are newbie, it will be awesome if you go through following books:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Kubernetes: Up and Running: Dive into the Future of Infrastructure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Kubernetes in Action&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;preparing-for-the-exam-phase-2-supporting-knowledge&#34;&gt;Preparing for the Exam: Phase 2 (Supporting Knowledge):&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Learn &lt;code&gt;tmux&lt;/code&gt;. Since, exam provides only one terminal window, &lt;code&gt;tmux&lt;/code&gt; will help to split screen into panes and more windows, here&amp;rsquo;s my &lt;a href=&#34;https://gist.github.com/surajnarwade/2e398402960f6b0c1ed2daed681b934d&#34;&gt;&lt;code&gt;cheatsheet&lt;/code&gt;&lt;/a&gt; for tmux.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Learn how to work with systemd files,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# reloading the systemd daemon
+
+systemctl daemon-reload
+
+# starting and enabling the service
+
+systemctl restart &amp;lt;service&amp;gt;
+systemctl enable &amp;lt;service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Debugging systemd services:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl status &amp;lt;service&amp;gt;
+
+journalctl -u &amp;lt;service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;before-the-exam&#34;&gt;Before the Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Since you can give exam on chrome only, you have to be careful about &lt;code&gt;Ctrl+w&lt;/code&gt; which closes the current tab in chrome. To avoid this,&lt;/li&gt;
+&lt;li&gt;My friend Suraj Deshmukh (who also cleared CKA on the same time and his blog on  experience with CKA is &lt;a href=&#34;https://suraj.io/post/road-to-cka/&#34;&gt;here&lt;/a&gt; ) wrote a blog about disabling &lt;code&gt;Ctrl+w&lt;/code&gt; which you can find &lt;a href=&#34;https://suraj.io/post/disable-ctrl-w/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;first-minute-of-exam&#34;&gt;First Minute of Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make alias of few commands as per your convenience and put it in bashrc file,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;mine were,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k = &#39;kubectl&#39;
+kgp = &#39;kubectl get pods&#39;
+kgs = &#39;kubectl get svc&#39;
+kgc = &#39;kubectl get componentstatus&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kubectl autocompletion, it really helps :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;source &amp;lt;(kubectl completion bash)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;finally&#34;&gt;Finally&amp;hellip;&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/kubernauts&#34;&gt;@kubernauts&lt;/a&gt; community for all the guidance and help :)
+If you are preparing for CKA or if you deal with kubernetes, please join &lt;a href=&#34;https://kubernauts-slack-join.herokuapp.com/&#34;&gt;Kubernauts community slack&lt;/a&gt;, there are really lovely kubernauts who are ready to help you out :)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If you have any further query, feel free to reach out to me via &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; on twitter or &lt;a href=&#34;https://www.linkedin.com/in/surajnarwade/&#34;&gt;Suraj Narwade&lt;/a&gt; on linkedin.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Here&amp;rsquo;s my certificate:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Successfully completed the &lt;a href=&#34;https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw&#34;&gt;@CloudNativeFdn&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/CKA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#CKA&lt;/a&gt; :)&lt;br&gt;Thanks &lt;a href=&#34;https://twitter.com/kubernauts?ref_src=twsrc%5Etfw&#34;&gt;@kubernauts&lt;/a&gt; for all support :) &lt;a href=&#34;https://t.co/mmazHFBUSt&#34;&gt;pic.twitter.com/mmazHFBUSt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/1053706874917289984?ref_src=twsrc%5Etfw&#34;&gt;October 20, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;all-the-best&#34;&gt;All the Best :)&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Installing Minishift on Fedora</title>
@@ -1432,180 +1612,6 @@ func main() {
 &lt;p&gt;&lt;img src=&#34;https://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h1&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>What&#39;s new in Docker ?</title>
-      <link>https://suraj.pro/post/whats-new-in-docker/</link>
-      <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/whats-new-in-docker/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Docker version that I installed is 17.03.0-ce, &lt;a href=&#34;https://docs.docker.com/engine/installation/linux/fedora/&#34;&gt;Click here&lt;/a&gt; to know how to install Docker&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/docker.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker --help
-
-Usage:	docker COMMAND
-
-A self-sufficient runtime for containers
-...
-...
-Management Commands:
-  container   Manage containers
-  image       Manage images
-  network     Manage networks
-  node        Manage Swarm nodes
-  plugin      Manage plugins
-  secret      Manage Docker secrets
-  service     Manage services
-  stack       Manage Docker stacks
-  swarm       Manage Swarm
-  system      Manage Docker
-  volume      Manage volumes
-
-Commands:
- ...
- ...
-Run &#39;docker COMMAND --help&#39; for more information on a command.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;For example, Under &lt;code&gt;docker container&lt;/code&gt;, all commands related to managing to containers are classified.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker container --help
-Usage:	docker container COMMAND
-
-Manage containers
-
-Options:
-      --help   Print usage
-
-Commands:
-  attach      Attach to a running container
-  commit      Create a new image from a container&#39;s changes
-  cp          Copy files/folders between a container and the local filesystem
-  create      Create a new container
-  ...
-  ...
-  wait        Block until one or more containers stop, then print their exit codes
-
-Run &#39;docker container COMMAND --help&#39; for more information on a command.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There is new feature here, which makes plugin management in docker easier, now we can easily install or delete or get information about plugins.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt; $ docker plugin --help
- Usage:	docker plugin COMMAND
- 
- Manage plugins
- 
- Options:
-       --help   Print usage
- 
- Commands:
-   create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
-   disable     Disable a plugin
-   enable      Enable a plugin
-   inspect     Display detailed information on one or more plugins
-   install     Install a plugin
-   ls          List plugins
-   push        Push a plugin to a registry
-   rm          Remove one or more plugins
-   set         Change settings for a plugin
-   upgrade     Upgrade an existing plugin
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;new-aliases&#34;&gt;New Aliases:&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;docker container ls&lt;/code&gt; is same as &lt;code&gt;docker ps&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker container ls -a
-CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS                          PORTS               NAMES
-66d17f3bc07e        hello-world         &amp;quot;/hello&amp;quot;            About a minute ago   Exited (0) About a minute ago                       ecstatic_lamarr 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;docker image ls&lt;/code&gt; is same as  &lt;code&gt;docker images&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;# docker image ls
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-fedora              latest              0047cca29c6f        5 days ago          230 MB
-hello-world         latest              48b5124b2768        2 months ago        1.84 kB
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;new-docker-system-command-added&#34;&gt;New &lt;code&gt;docker system&lt;/code&gt; command added:&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;docker system df&lt;/code&gt; - &lt;em&gt;Show docker disk Usage&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;# docker system df
-TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
-Images              1                   0                   1.84 kB             1.84 kB (100%)
-Containers          0                   0                   0 B                 0 B
-Local Volumes       0                   0                   0 B                 0 B
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system events&lt;/code&gt; - &lt;em&gt;Get real time events (like oc get events in openshift)&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system info&lt;/code&gt; - &lt;em&gt;Displays System-wide information&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker system prune&lt;/code&gt; - &lt;em&gt;Removes unused data&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;WARNING! This will remove:
-	- all stopped containers
-	- all volumes not used by at least one container
-	- all networks not used by at least one container
-	- all dangling images
-Are you sure you want to continue? [y/N]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;new-prune-feature-added&#34;&gt;New &lt;code&gt;prune&lt;/code&gt; feature added:&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker container prune&lt;/code&gt; - &lt;em&gt;Remove all stopped containers&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker image prune&lt;/code&gt; - &lt;em&gt;Remove unused images&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker network prune&lt;/code&gt; - &lt;em&gt;Remove all unused networks&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;docker volume prune&lt;/code&gt; - &lt;em&gt;Remove all unused volumes&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;above all things can be achieved by using one command also,&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;docker system prune&lt;/code&gt;&lt;/strong&gt; (WARNING!, be careful with this command.)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;#Reference:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/docker/&#34;&gt;Click here&lt;/a&gt; for more command line reference.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;thanks-happy-hacking&#34;&gt;Thanks, Happy Hacking !!!&lt;/h2&gt;
 </description>
     </item>
     

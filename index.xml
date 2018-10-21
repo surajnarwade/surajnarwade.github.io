@@ -6,8 +6,188 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Sep 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 21 Oct 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Journey to the CKA</title>
+      <link>https://suraj.pro/post/journey-to-cka/</link>
+      <pubDate>Sun, 21 Oct 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/journey-to-cka/</guid>
+      <description>
+
+&lt;p&gt;Hello Folks,&lt;/p&gt;
+
+&lt;p&gt;I appeared for the exam on 19th October 2018 and  yesterday(20th Oct 2018), I got the result &amp;amp; I scored &lt;strong&gt;92%&lt;/strong&gt;, Yay :)&lt;/p&gt;
+
+&lt;p&gt;I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-bit-about-exam&#34;&gt;A bit about Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins)&lt;/li&gt;
+&lt;li&gt;Questions: 24&lt;/li&gt;
+&lt;li&gt;Clusters: 6&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.&lt;/p&gt;
+
+&lt;p&gt;to be specific, it&amp;rsquo;s browser based exam which is monitored by a proctor, where right half of the screen is your terminal and left half is your question pane.&lt;/p&gt;
+
+&lt;p&gt;Like Red Hat Exams, CKA is also hands-on exam which test your practical, troubleshooting knowledge with kubernetes.&lt;/p&gt;
+
+&lt;h1 id=&#34;beginning&#34;&gt;Beginning:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register for the exam &lt;a href=&#34;https://www.cncf.io/certification/cka/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Read &lt;a href=&#34;https://www.cncf.io/certification/candidate-handbook&#34;&gt;Candidate Handbook&lt;/a&gt; and &lt;a href=&#34;https://www.cncf.io/certification/tips&#34;&gt;exam tips&lt;/a&gt; carefully.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;preparing-for-the-exam-phase-1-kubernetes-knowledge&#34;&gt;Preparing for the Exam: Phase 1 (Kubernetes Knowledge):&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/walidshaari&#34;&gt;Walid Shaari&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;&gt;github repo&lt;/a&gt; is extremely useful entrypoint for getting starting around syllabus and many useful links and guide :)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Create mind map of &lt;a href=&#34;https://kubernetes.io/docs/home&#34;&gt;Kubernetes docs&lt;/a&gt;, it will help you to find something quickly since you can use docs for the reference.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Get your hands dirty with &lt;a href=&#34;https://kubernetes.io/docs/tasks/&#34;&gt;&lt;code&gt;Kubernetes tasks&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Go through &lt;a href=&#34;https://kubernetes.io/docs/concepts/&#34;&gt;&lt;code&gt;Kubernetes Concepts&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/reference/&#34;&gt;&lt;code&gt;Kubernetes Reference&lt;/code&gt;&lt;/a&gt; at least twice.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To utilise time wisely, familiar yourself with kubectl command the imperative way, that means, instead of writing yamls, try to generate it,
+Refer &lt;a href=&#34;https://kubernetes.io/docs/reference/kubectl/cheatsheet/&#34;&gt;&lt;code&gt;Kubectl Cheatsheet&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/object-management-kubectl/imperative-command/&#34;&gt;Managing Kubernetes Objects Using Imperative Commands&lt;/a&gt; for the same. You might also like to check out &lt;a href=&#34;https://suraj.pro/post/kubectl/&#34;&gt;blog&lt;/a&gt; post about &lt;code&gt;kubectl&lt;/code&gt; which I wrote last year.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;To generate pod defination, I will do,
+
+kubectl run mypod --image=busybox --generator=run-pod/v1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;h2 id=&#34;kubernetes-cluster&#34;&gt;Kubernetes Cluster:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kelseyhightower/kubernetes-the-hard-way/&#34;&gt;&lt;code&gt;Kubernetes the hard way&lt;/code&gt;&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;Kelsey Hightower&lt;/a&gt;,
+Please do these at least 5 times. This tutorial is performed on GCP, but you can do it locally as well.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/kinvolkio&#34;&gt;Kinvolk&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;https://github.com/kinvolk/kubernetes-the-hard-way-vagrant&#34;&gt;&lt;code&gt;Kubernetes The Hard way&lt;/code&gt;&lt;/a&gt; on vagrant is also useful to study.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;After learning the hard way, for practicing other topics, you can use same cluster or you can use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/minikube/&#34;&gt;minikube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.katacoda.com/courses/kubernetes/playground&#34;&gt;katacoda kubernetes playground&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;set up with &lt;a href=&#34;https://kubernetes.io/docs/setup/independent/install-kubeadm/&#34;&gt;kubeadm&lt;/a&gt; (it&amp;rsquo;s so simple)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;h2 id=&#34;books&#34;&gt;Books:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specifically for the exam, I didn&amp;rsquo;t refer any books, but if you are newbie, it will be awesome if you go through following books:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Kubernetes: Up and Running: Dive into the Future of Infrastructure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Kubernetes in Action&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;preparing-for-the-exam-phase-2-supporting-knowledge&#34;&gt;Preparing for the Exam: Phase 2 (Supporting Knowledge):&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Learn &lt;code&gt;tmux&lt;/code&gt;. Since, exam provides only one terminal window, &lt;code&gt;tmux&lt;/code&gt; will help to split screen into panes and more windows, here&amp;rsquo;s my &lt;a href=&#34;https://gist.github.com/surajnarwade/2e398402960f6b0c1ed2daed681b934d&#34;&gt;&lt;code&gt;cheatsheet&lt;/code&gt;&lt;/a&gt; for tmux.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Learn how to work with systemd files,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# reloading the systemd daemon
+
+systemctl daemon-reload
+
+# starting and enabling the service
+
+systemctl restart &amp;lt;service&amp;gt;
+systemctl enable &amp;lt;service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Debugging systemd services:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;systemctl status &amp;lt;service&amp;gt;
+
+journalctl -u &amp;lt;service&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;before-the-exam&#34;&gt;Before the Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Since you can give exam on chrome only, you have to be careful about &lt;code&gt;Ctrl+w&lt;/code&gt; which closes the current tab in chrome. To avoid this,&lt;/li&gt;
+&lt;li&gt;My friend Suraj Deshmukh (who also cleared CKA on the same time and his blog on  experience with CKA is &lt;a href=&#34;https://suraj.io/post/road-to-cka/&#34;&gt;here&lt;/a&gt; ) wrote a blog about disabling &lt;code&gt;Ctrl+w&lt;/code&gt; which you can find &lt;a href=&#34;https://suraj.io/post/disable-ctrl-w/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;first-minute-of-exam&#34;&gt;First Minute of Exam:&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make alias of few commands as per your convenience and put it in bashrc file,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;mine were,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;k = &#39;kubectl&#39;
+kgp = &#39;kubectl get pods&#39;
+kgs = &#39;kubectl get svc&#39;
+kgc = &#39;kubectl get componentstatus&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kubectl autocompletion, it really helps :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;source &amp;lt;(kubectl completion bash)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;finally&#34;&gt;Finally&amp;hellip;&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/kubernauts&#34;&gt;@kubernauts&lt;/a&gt; community for all the guidance and help :)
+If you are preparing for CKA or if you deal with kubernetes, please join &lt;a href=&#34;https://kubernauts-slack-join.herokuapp.com/&#34;&gt;Kubernauts community slack&lt;/a&gt;, there are really lovely kubernauts who are ready to help you out :)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If you have any further query, feel free to reach out to me via &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; on twitter or &lt;a href=&#34;https://www.linkedin.com/in/surajnarwade/&#34;&gt;Suraj Narwade&lt;/a&gt; on linkedin.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Here&amp;rsquo;s my certificate:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Successfully completed the &lt;a href=&#34;https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw&#34;&gt;@CloudNativeFdn&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/CKA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#CKA&lt;/a&gt; :)&lt;br&gt;Thanks &lt;a href=&#34;https://twitter.com/kubernauts?ref_src=twsrc%5Etfw&#34;&gt;@kubernauts&lt;/a&gt; for all support :) &lt;a href=&#34;https://t.co/mmazHFBUSt&#34;&gt;pic.twitter.com/mmazHFBUSt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/1053706874917289984?ref_src=twsrc%5Etfw&#34;&gt;October 20, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;all-the-best&#34;&gt;All the Best :)&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>Installing Minishift on Fedora</title>
@@ -1592,50 +1772,6 @@ func main() {
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/golang/go/issues/3117&#34;&gt;https://github.com/golang/go/issues/3117&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The GO Workshop by Baiju</title>
-      <link>https://suraj.pro/post/goworkshop/</link>
-      <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/goworkshop/</guid>
-      <description>
-
-&lt;p&gt;A &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/events/238824064/&#34;&gt;golang hands-on workshop&lt;/a&gt; was organized under meetup group &lt;a href=&#34;https://www.meetup.com/Practical-Data-Science-Workshops-Bangalore/&#34;&gt;&lt;em&gt;Practical Data Science&lt;/em&gt;&lt;/a&gt; on May 6th, 2017. It was run up event for &lt;a href=&#34;https://rootconf.talkfunnel.com/devconf-2017/&#34;&gt;Devconf India 2017&lt;/a&gt;. Around 60 people turned up. &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt;, who was workshop instructor, started with introduction of golang.&lt;/p&gt;
-
-&lt;p&gt;He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.&lt;/p&gt;
-
-&lt;p&gt;Workshop course material can be found &lt;a href=&#34;http://talks.godoc.org/github.com/baijum/presentation/golang_workshop/presentation.slide#1&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/start.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Me(&lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;SurajN&lt;/a&gt;), &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/zee_10000&#34;&gt;Zeeshan&lt;/a&gt; volunteered for the event. We helped attendees for installing golang and also helped them while they were solving exercises given by Baiju.&lt;/p&gt;
-
-&lt;p&gt;At around 1:15pm, we broke off for lunch.&lt;/p&gt;
-
-&lt;p&gt;People were eager to learn golang and the workshop was very interactive.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/attendee.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Post lunch &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; explained how golang and Data community converge and what could be the possible future of Data Science in his view.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/bargava.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&amp;rsquo;s&lt;/a&gt; passion for teaching golang was immense and that inspired folks to follow along.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/baiju1.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;Meanwhile, &lt;a href=&#34;https://twitter.com/surajd_&#34;&gt;SurajD&lt;/a&gt; announced &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;Kubernetes 101 meetup&lt;/a&gt; which is going to happen on 20th May. Feel free to ping us if you have a venue for this event.&lt;/p&gt;
-
-&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/bargava&#34;&gt;Bargava&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://twitter.com/nogenerics&#34;&gt;Baiju&lt;/a&gt; for organizing such an awesome workshop, thanks to &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; for sponsoring Venue and food.&lt;/p&gt;
-
-&lt;p&gt;Stay tuned for &lt;a href=&#34;https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/&#34;&gt;upcoming meetups&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/baiju.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h1&gt;
 </description>
     </item>
     

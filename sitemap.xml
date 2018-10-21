@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://suraj.pro/post/journey-to-cka/</loc>
+    <lastmod>2018-10-21T21:21:49+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://suraj.pro/post/install-minishift-fedora/</loc>
     <lastmod>2018-09-13T21:21:49+05:30</lastmod>
   </url>
@@ -173,13 +178,13 @@
   
   <url>
     <loc>https://suraj.pro/post/</loc>
-    <lastmod>2018-09-13T21:21:49+05:30</lastmod>
+    <lastmod>2018-10-21T21:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://suraj.pro/</loc>
-    <lastmod>2018-09-13T21:21:49+05:30</lastmod>
+    <lastmod>2018-10-21T21:21:49+05:30</lastmod>
     <priority>0</priority>
   </url>
   

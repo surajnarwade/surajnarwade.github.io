@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Journey to the CKA &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/surajnarwade.pdf">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://suraj.pro/post/journey-to-cka/">Journey to the CKA</a></h1>
+            <span class="post-date">Oct 21, 2018 </span>
+            <div class="post-content">
+                
+
+<p>Hello Folks,</p>
+
+<p>I appeared for the exam on 19th October 2018 and  yesterday(20th Oct 2018), I got the result &amp; I scored <strong>92%</strong>, Yay :)</p>
+
+<p>I got so many request about How to prepare for the exam, Here&rsquo;s my experience with preparation for the exam.</p>
+
+<h1 id="a-bit-about-exam">A bit about Exam:</h1>
+
+<p><br/></p>
+
+<ul>
+<li>Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins)</li>
+<li>Questions: 24</li>
+<li>Clusters: 6</li>
+</ul>
+
+<p>After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</p>
+
+<p>to be specific, it&rsquo;s browser based exam which is monitored by a proctor, where right half of the screen is your terminal and left half is your question pane.</p>
+
+<p>Like Red Hat Exams, CKA is also hands-on exam which test your practical, troubleshooting knowledge with kubernetes.</p>
+
+<h1 id="beginning">Beginning:</h1>
+
+<p><br/></p>
+
+<ul>
+<li>Register for the exam <a href="https://www.cncf.io/certification/cka/">here</a>.</li>
+<li>Read <a href="https://www.cncf.io/certification/candidate-handbook">Candidate Handbook</a> and <a href="https://www.cncf.io/certification/tips">exam tips</a> carefully.</li>
+</ul>
+
+<h1 id="preparing-for-the-exam-phase-1-kubernetes-knowledge">Preparing for the Exam: Phase 1 (Kubernetes Knowledge):</h1>
+
+<p><br/></p>
+
+<ul>
+<li><p><a href="https://twitter.com/walidshaari">Walid Shaari</a>&rsquo;s <a href="https://github.com/walidshaari/Kubernetes-Certified-Administrator">github repo</a> is extremely useful entrypoint for getting starting around syllabus and many useful links and guide :)</p></li>
+
+<li><p>Create mind map of <a href="https://kubernetes.io/docs/home">Kubernetes docs</a>, it will help you to find something quickly since you can use docs for the reference.</p></li>
+
+<li><p>Get your hands dirty with <a href="https://kubernetes.io/docs/tasks/"><code>Kubernetes tasks</code></a>.</p></li>
+
+<li><p>Go through <a href="https://kubernetes.io/docs/concepts/"><code>Kubernetes Concepts</code></a> and <a href="https://kubernetes.io/docs/reference/"><code>Kubernetes Reference</code></a> at least twice.</p></li>
+
+<li><p>To utilise time wisely, familiar yourself with kubectl command the imperative way, that means, instead of writing yamls, try to generate it,
+Refer <a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/"><code>Kubectl Cheatsheet</code></a> and <a href="https://kubernetes.io/docs/concepts/overview/object-management-kubectl/imperative-command/">Managing Kubernetes Objects Using Imperative Commands</a> for the same. You might also like to check out <a href="https://suraj.pro/post/kubectl/">blog</a> post about <code>kubectl</code> which I wrote last year.</p></li>
+</ul>
+
+<p>For example,</p>
+
+<pre><code>To generate pod defination, I will do,
+
+kubectl run mypod --image=busybox --generator=run-pod/v1
+</code></pre>
+
+<p><br/></p>
+
+<ul>
+<li><h2 id="kubernetes-cluster">Kubernetes Cluster:</h2>
+
+<ul>
+<li><p><a href="https://github.com/kelseyhightower/kubernetes-the-hard-way/"><code>Kubernetes the hard way</code></a> by <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>,
+Please do these at least 5 times. This tutorial is performed on GCP, but you can do it locally as well.</p></li>
+
+<li><p><a href="https://twitter.com/kinvolkio">Kinvolk&rsquo;s</a> <a href="https://github.com/kinvolk/kubernetes-the-hard-way-vagrant"><code>Kubernetes The Hard way</code></a> on vagrant is also useful to study.</p></li>
+
+<li><p>After learning the hard way, for practicing other topics, you can use same cluster or you can use:</p>
+
+<ul>
+<li><a href="https://github.com/kubernetes/minikube/">minikube</a></li>
+<li><a href="https://www.katacoda.com/courses/kubernetes/playground">katacoda kubernetes playground</a></li>
+<li>set up with <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">kubeadm</a> (it&rsquo;s so simple)</li>
+</ul></li>
+</ul></li>
+
+<li><h2 id="books">Books:</h2>
+
+<ul>
+<li>Specifically for the exam, I didn&rsquo;t refer any books, but if you are newbie, it will be awesome if you go through following books:
+
+<ul>
+<li><code>Kubernetes: Up and Running: Dive into the Future of Infrastructure</code></li>
+<li><code>Kubernetes in Action</code></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="preparing-for-the-exam-phase-2-supporting-knowledge">Preparing for the Exam: Phase 2 (Supporting Knowledge):</h1>
+
+<p><br/></p>
+
+<ul>
+<li><p>Learn <code>tmux</code>. Since, exam provides only one terminal window, <code>tmux</code> will help to split screen into panes and more windows, here&rsquo;s my <a href="https://gist.github.com/surajnarwade/2e398402960f6b0c1ed2daed681b934d"><code>cheatsheet</code></a> for tmux.</p></li>
+
+<li><p>Learn how to work with systemd files,</p></li>
+</ul>
+
+<pre><code># reloading the systemd daemon
+
+systemctl daemon-reload
+
+# starting and enabling the service
+
+systemctl restart &lt;service&gt;
+systemctl enable &lt;service&gt;
+</code></pre>
+
+<ul>
+<li>Debugging systemd services:</li>
+</ul>
+
+<pre><code>systemctl status &lt;service&gt;
+
+journalctl -u &lt;service&gt;
+</code></pre>
+
+<h1 id="before-the-exam">Before the Exam:</h1>
+
+<p><br/></p>
+
+<ul>
+<li>Since you can give exam on chrome only, you have to be careful about <code>Ctrl+w</code> which closes the current tab in chrome. To avoid this,</li>
+<li>My friend Suraj Deshmukh (who also cleared CKA on the same time and his blog on  experience with CKA is <a href="https://suraj.io/post/road-to-cka/">here</a> ) wrote a blog about disabling <code>Ctrl+w</code> which you can find <a href="https://suraj.io/post/disable-ctrl-w/">here</a>.</li>
+</ul>
+
+<h1 id="first-minute-of-exam">First Minute of Exam:</h1>
+
+<p><br/></p>
+
+<ul>
+<li>Make alias of few commands as per your convenience and put it in bashrc file,</li>
+</ul>
+
+<p>mine were,</p>
+
+<pre><code>k = 'kubectl'
+kgp = 'kubectl get pods'
+kgs = 'kubectl get svc'
+kgc = 'kubectl get componentstatus'
+</code></pre>
+
+<ul>
+<li>kubectl autocompletion, it really helps :)</li>
+</ul>
+
+<pre><code>source &lt;(kubectl completion bash)
+</code></pre>
+
+<h1 id="finally">Finally&hellip;</h1>
+
+<p><br/></p>
+
+<ul>
+<li><p>Thanks to <a href="https://twitter.com/kubernauts">@kubernauts</a> community for all the guidance and help :)
+If you are preparing for CKA or if you deal with kubernetes, please join <a href="https://kubernauts-slack-join.herokuapp.com/">Kubernauts community slack</a>, there are really lovely kubernauts who are ready to help you out :)</p></li>
+
+<li><p>If you have any further query, feel free to reach out to me via <a href="https://twitter.com/red_suraj">@red_suraj</a> on twitter or <a href="https://www.linkedin.com/in/surajnarwade/">Suraj Narwade</a> on linkedin.</p></li>
+
+<li><p>Here&rsquo;s my certificate:</p></li>
+</ul>
+
+<p><br/></p>
+
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Successfully completed the <a href="https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw">@CloudNativeFdn</a> <a href="https://twitter.com/hashtag/CKA?src=hash&amp;ref_src=twsrc%5Etfw">#CKA</a> :)<br>Thanks <a href="https://twitter.com/kubernauts?ref_src=twsrc%5Etfw">@kubernauts</a> for all support :) <a href="https://t.co/mmazHFBUSt">pic.twitter.com/mmazHFBUSt</a></p>&mdash; Suraj Narwade 🇮🇳 (@red_suraj) <a href="https://twitter.com/red_suraj/status/1053706874917289984?ref_src=twsrc%5Etfw">October 20, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p><br/></p>
+
+<h2 id="all-the-best">All the Best :)</h2>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'https:\/\/suraj.pro\/post\/journey-to-cka\/';
+    var disqus_title = 'Journey to the CKA';
+    var disqus_url = 'https:\/\/suraj.pro\/post\/journey-to-cka\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2018 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>
