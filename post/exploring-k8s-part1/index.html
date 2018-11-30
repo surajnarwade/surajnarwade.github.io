@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Exploring Kubernetes: Client-Go - part-1 &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://suraj.pro/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '75855569', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://suraj.pro">/home/snarwade</a>
+				</li>
+				
+				
+				<li >
+					<a href="/surajnarwade.pdf">~/about/me</a>
+				</li>
+				
+				
+				<li >
+					<a href="/post">~/posts</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://suraj.pro/post/exploring-k8s-part1/">Exploring Kubernetes: Client-Go - part-1</a></h1>
+            <span class="post-date">Nov 30, 2018 </span>
+            <div class="post-content">
+                
+
+<p><br/>
+Nowadays, I am learning advance <code>golang</code>, along with that knowledge, I am trying to understand kubernetes in more depth. I found <code>client-go</code> as goto thing to explore &amp; learn things. I am also putting respective client-go code links wherever needed.</p>
+
+<h2 id="what-s-client-go">What&rsquo;s client-go ?</h2>
+
+<p><br/>
+Simple, golang client library for talking to kubernetes cluster</p>
+
+<h2 id="where-s-client-go">Where&rsquo;s client-go ?</h2>
+
+<p><br/></p>
+
+<ul>
+<li>you can find it in <code>kubernetes/kubernetes/staging</code> directory and published by bot to <code>k8s.io/client-go</code>, kubernetes also uses client-go. it&rsquo;s interesting if you see <code>client-go</code> from kubernetes vendor, it  has symlinks to <code>kubernetes/kubernetes/staging</code></li>
+</ul>
+
+<p><br/>
+<br/></p>
+
+<h2 id="in-this-adventure-very-first-step-is-to-see-how-to-connect-to-api-server"><strong>In this Adventure, very first step is to see how to connect to API Server :)</strong></h2>
+
+<p><br/></p>
+
+<ul>
+<li><p><em>Connecting to API Server</em>
+<br/></p>
+
+<ul>
+<li><p>There are two ways to talk to cluster using any go program:</p>
+
+<ul>
+<li><p><strong>outside cluster</strong>: if your program is standalone and if you have either kubeconfig file or master URL.</p></li>
+
+<li><p><strong>inside cluster</strong>: if your program is supposed to run on kubernetes (for example, controller)</p></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><br/></p>
+
+<ul>
+<li>When your program runs on kubernetes, it uses service account token inside the pods <code>/var/run/secrets/kubernetes.io/serviceaccount</code> for auth and tls stuff.</li>
+</ul>
+
+<h2 id="connecting-to-cluster-using-client-go">Connecting to cluster using client-go</h2>
+
+<p><br/></p>
+
+<ul>
+<li>clientcmd holds the required code to configuring connection to the cluster using kubeconfig as well as about modification to kubeconfig. Code reference <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L546">here</a>.</li>
+</ul>
+
+<pre><code>import &quot;k8s.io/client-go/tools/clientcmd&quot;
+</code></pre>
+
+<ul>
+<li>if you have master URL and kubeconfig both:</li>
+</ul>
+
+<pre><code>config, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
+</code></pre>
+
+<ul>
+<li>if you have only have kubeconfig file:</li>
+</ul>
+
+<pre><code>config, err := clientcmd.BuildConfigFromFlags(&quot;&quot;, kubeconfig)
+</code></pre>
+
+<ul>
+<li>If you are running program on kubernetes, you don&rsquo;t need to provided parameters, it will automatically fetch details using serviceaccount tokens:</li>
+</ul>
+
+<pre><code>config, err := clientcmd.BuildConfigFromFlags(&quot;&quot;, &quot;&quot;)
+</code></pre>
+
+<ul>
+<li><p>If you don&rsquo;t provide any parameters, it fallbacks to <code>InClusterConfig</code>, even if it fails, it fallbacks to default configs which is either <code>KUBERNETES_MASTER</code> environment variable or simply <code>http://localhost:8080</code>, code reference <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L48">here.</a></p></li>
+
+<li><p>Directly use this (even above way internally uses this), Code Ref <a href="https://github.com/kubernetes/client-go/blob/master/rest/config.go#L315">here</a>.</p></li>
+</ul>
+
+<pre><code>import &quot;k8s.io/client-go/rest&quot;
+...
+config,err := rest.InClusterConfig()
+</code></pre>
+
+<p><br/></p>
+
+<p>This method basically gets <code>KUBERNETES_SERVICE_HOST</code> and <code>KUBERNETES_SERVICE_PORT</code> environment variables (which are injected into every pod) and service token to generate the config.</p>
+
+<p><br/></p>
+
+<ul>
+<li><code>config</code> has all necessary information to talk to the cluster from anywhere :) If you check struct defination <a href="https://github.com/kubernetes/client-go/blob/master/rest/config.go#L51">here</a></li>
+</ul>
+
+<p>it has fields like <code>Host, APIPath</code>, <code>Username, Password, BearerToken</code>, etc which are needed to talk to cluster</p>
+
+<ul>
+<li>If you explore more, you will see <code>clientcmd/api</code> has <code>Config</code> struct which is API resource for kubeconfig, code is <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29">here</a></li>
+</ul>
+
+<h2 id="tgif-enough-for-today-happy-weekend-stay-tuned"><em>TGIF, Enough for Today :)  Happy Weekend :) Stay Tuned :)</em></h2>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'surajnarwade-github-io';
+    var disqus_identifier = 'https:\/\/suraj.pro\/post\/exploring-k8s-part1\/';
+    var disqus_title = 'Exploring Kubernetes: Client-Go - part-1';
+    var disqus_url = 'https:\/\/suraj.pro\/post\/exploring-k8s-part1\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2018 Suraj Narwade -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

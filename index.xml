@@ -6,8 +6,214 @@
     <description>Recent content on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Oct 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 30 Nov 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Exploring Kubernetes: Client-Go - part-1</title>
+      <link>https://suraj.pro/post/exploring-k8s-part1/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/exploring-k8s-part1/</guid>
+      <description>
+
+&lt;p&gt;&lt;br/&gt;
+Nowadays, I am learning advance &lt;code&gt;golang&lt;/code&gt;, along with that knowledge, I am trying to understand kubernetes in more depth. I found &lt;code&gt;client-go&lt;/code&gt; as goto thing to explore &amp;amp; learn things. I am also putting respective client-go code links wherever needed.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-s-client-go&#34;&gt;What&amp;rsquo;s client-go ?&lt;/h2&gt;
+
+&lt;p&gt;&lt;br/&gt;
+Simple, golang client library for talking to kubernetes cluster&lt;/p&gt;
+
+&lt;h2 id=&#34;where-s-client-go&#34;&gt;Where&amp;rsquo;s client-go ?&lt;/h2&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you can find it in &lt;code&gt;kubernetes/kubernetes/staging&lt;/code&gt; directory and published by bot to &lt;code&gt;k8s.io/client-go&lt;/code&gt;, kubernetes also uses client-go. it&amp;rsquo;s interesting if you see &lt;code&gt;client-go&lt;/code&gt; from kubernetes vendor, it  has symlinks to &lt;code&gt;kubernetes/kubernetes/staging&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;in-this-adventure-very-first-step-is-to-see-how-to-connect-to-api-server&#34;&gt;&lt;strong&gt;In this Adventure, very first step is to see how to connect to API Server :)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;Connecting to API Server&lt;/em&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;There are two ways to talk to cluster using any go program:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;outside cluster&lt;/strong&gt;: if your program is standalone and if you have either kubeconfig file or master URL.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;inside cluster&lt;/strong&gt;: if your program is supposed to run on kubernetes (for example, controller)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;When your program runs on kubernetes, it uses service account token inside the pods &lt;code&gt;/var/run/secrets/kubernetes.io/serviceaccount&lt;/code&gt; for auth and tls stuff.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;connecting-to-cluster-using-client-go&#34;&gt;Connecting to cluster using client-go&lt;/h2&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clientcmd holds the required code to configuring connection to the cluster using kubeconfig as well as about modification to kubeconfig. Code reference &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L546&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;import &amp;quot;k8s.io/client-go/tools/clientcmd&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if you have master URL and kubeconfig both:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if you have only have kubeconfig file:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(&amp;quot;&amp;quot;, kubeconfig)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you are running program on kubernetes, you don&amp;rsquo;t need to provided parameters, it will automatically fetch details using serviceaccount tokens:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(&amp;quot;&amp;quot;, &amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;If you don&amp;rsquo;t provide any parameters, it fallbacks to &lt;code&gt;InClusterConfig&lt;/code&gt;, even if it fails, it fallbacks to default configs which is either &lt;code&gt;KUBERNETES_MASTER&lt;/code&gt; environment variable or simply &lt;code&gt;http://localhost:8080&lt;/code&gt;, code reference &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L48&#34;&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Directly use this (even above way internally uses this), Code Ref &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/rest/config.go#L315&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;import &amp;quot;k8s.io/client-go/rest&amp;quot;
+...
+config,err := rest.InClusterConfig()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;This method basically gets &lt;code&gt;KUBERNETES_SERVICE_HOST&lt;/code&gt; and &lt;code&gt;KUBERNETES_SERVICE_PORT&lt;/code&gt; environment variables (which are injected into every pod) and service token to generate the config.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;config&lt;/code&gt; has all necessary information to talk to the cluster from anywhere :) If you check struct defination &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/rest/config.go#L51&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;it has fields like &lt;code&gt;Host, APIPath&lt;/code&gt;, &lt;code&gt;Username, Password, BearerToken&lt;/code&gt;, etc which are needed to talk to cluster&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If you explore more, you will see &lt;code&gt;clientcmd/api&lt;/code&gt; has &lt;code&gt;Config&lt;/code&gt; struct which is API resource for kubeconfig, code is &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tgif-enough-for-today-happy-weekend-stay-tuned&#34;&gt;&lt;em&gt;TGIF, Enough for Today :)  Happy Weekend :) Stay Tuned :)&lt;/em&gt;&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>nmcli 101</title>
+      <link>https://suraj.pro/post/nmcli101/</link>
+      <pubDate>Thu, 15 Nov 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/nmcli101/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;To check devices:
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli device status
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Overall status of NetworkManager:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli general status
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Display connections:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli connection show
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;display only active connections:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli connection show --active
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;wi-fi&#34;&gt;WI-FI&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Check wifi status
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli radio wifi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Turn on the wifi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli radio wifi on
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Turn off the wifi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli radio wifi off
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List available wifi access points&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli device wifi list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Refresh the access point list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli device wifi rescan
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Connect to wifi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli device wifi connect &amp;lt;SSID&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Connect to password protected access point&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Journey to the CKA</title>
@@ -1570,208 +1776,6 @@ Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;Thanks to all speakers for making this meetup as a great place to learn, &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;Prathmesh&lt;/a&gt; and  &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;Bigbinary&lt;/a&gt;  for the venue and constant support for hosting the &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;Kubernetes&lt;/a&gt; Meetup Pune. Please stay tuned to the meetup page, we will have our next meetup on August 5th possibly at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; Pune office. See you there.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>tools to adopt best practices in golang</title>
-      <link>https://suraj.pro/post/gotools/</link>
-      <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/gotools/</guid>
-      <description>
-
-&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found &lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;go-tools&lt;/a&gt;  written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and can be .
-I found some of them useful for me, so are they listed below.&lt;/p&gt;
-
-&lt;h3 id=&#34;static-check&#34;&gt;static check&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;applies tons of static analysis checks.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later,&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/staticcheck
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ statickcheck [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I tried it for kompose with some extra hacks:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do staticcheck &amp;quot;$pkg&amp;quot;; done
-cmd/completion.go:48:2: empty branch (SA9003)
-pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the &#39;!=&#39; operator (SA4000)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;gosimple&#34;&gt;gosimple&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;it gives suggestions for simplifying your code.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/gosimple
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ gosimple [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I tried it as follows:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do gosimple &amp;quot;$pkg&amp;quot;; done
-pkg/transformer/utils.go:219:2: &#39;if err != nil { return err }; return nil&#39; can be simplified to &#39;return err&#39; (S1013)
-pkg/transformer/utils_test.go:115:4: the argument is already a string, there&#39;s no need to use fmt.Sprintf (S1025)
-pkg/transformer/kubernetes/k8sutils.go:346:3: should replace loop with volumes = append(volumes, TmpVolumes...) (S1011)
-pkg/transformer/kubernetes/k8sutils.go:349:3: should replace loop with volumesMount = append(volumesMount, TmpVolumesMount...) (S1011)
-pkg/transformer/kubernetes/k8sutils.go:414:6: should omit comparison to bool constant, can be simplified to service.Privileged (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:206:7: should omit comparison to bool constant, can be simplified to !hostPid (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:243:8: should omit comparison to bool constant, can be simplified to hostPid (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:275:5: should omit comparison to bool constant, can be simplified to !output (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to bool constant, can be simplified to output (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
-pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
-pkg/utils/docker/client.go:31:2: &#39;if err != nil { return client, err }; return client, nil&#39; can be simplified to &#39;return client, err&#39; (S1013)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;unused&#34;&gt;unused&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;it checks for unused constants, variables, functions and types.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/unused
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ unused [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;again, I tried it on kompose, purposefully I have added some unused type and function:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do unused &amp;quot;$pkg&amp;quot;; done
-pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
-pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;references&#34;&gt;References:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&#34;&gt;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;https://github.com/dominikh/go-tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Golang workaround for cannot assign to struct field in map</title>
-      <link>https://suraj.pro/post/golang_workaround/</link>
-      <pubDate>Sun, 28 May 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/golang_workaround/</guid>
-      <description>
-
-&lt;p&gt;Yesterday, I was working one of the &lt;a href=&#34;https://github.com/kubernetes-incubator/kompose&#34;&gt;Kompose&lt;/a&gt; issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import &amp;quot;fmt&amp;quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}}
-        fmt.Println(m)
-	m[&amp;quot;dog&amp;quot;].count = 4
-	
-	fmt.Println(m)
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;so I got this error,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tmp/sandbox728133053/main.go:12: cannot assign to struct field m[&amp;quot;dog&amp;quot;].count in map
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After googling for some time, I found this solution and I tried &amp;amp; it worked as below:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import &amp;quot;fmt&amp;quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}}
-
-	fmt.Println(m)
-
-	var x = m[&amp;quot;dog&amp;quot;]
-	x.count = 4
-	m[&amp;quot;dog&amp;quot;] = x
-
-	fmt.Println(m)
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I found one more way to do this by storing pointers as shown below:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import &amp;quot;fmt&amp;quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]*Animal{&amp;quot;cat&amp;quot;: &amp;amp;Animal{2}, &amp;quot;dog&amp;quot;: &amp;amp;Animal{3}, &amp;quot;mouse&amp;quot;: &amp;amp;Animal{5}}
-	fmt.Printf(&amp;quot;%#v\n&amp;quot;,m[&amp;quot;dog&amp;quot;])
-	
-	m[&amp;quot;dog&amp;quot;].count = 4
-
-	fmt.Printf(&amp;quot;%#v&amp;quot;, m[&amp;quot;dog&amp;quot;])
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/golang/go/issues/3117&#34;&gt;https://github.com/golang/go/issues/3117&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
