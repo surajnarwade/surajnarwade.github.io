@@ -90,6 +90,23 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/develop-go-minikube/">Local Development of golang app with minikube &amp; ko</a></h4>
+							<h4 class="post-date">Dec 5, 2018</h4>
+						</div>
+						<div class="post-summary"><p>While exploring, I came across ko tool by google &amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
+Pre-Flight Checks 
+ Installing ko  go get github.com/google/go-containerregistry/cmd/ko  That&rsquo;s it :)
+ Verify your installation by which ko
+ We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&rsquo;s docker daemon...</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/develop-go-minikube/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/exploring-k8s-part1/">Exploring Kubernetes: Client-Go - part-1</a></h4>
 							<h4 class="post-date">Nov 30, 2018</h4>
 						</div>
@@ -99,6 +116,38 @@ Where&rsquo;s client-go ?
  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s....</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/exploring-k8s-part1/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/exploring-k8s-part2/">Exploring Kubernetes: Client-Go - part-2</a></h4>
+							<h4 class="post-date">Nov 30, 2018</h4>
+						</div>
+						<div class="post-summary"><p>If you have kubeconfig file already in place,
+kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;clientcmd.ConfigOverrides{})  There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
+ Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()   REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()   if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig()  Here, kubeconfig is interface of following type:...</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/exploring-k8s-part2/">Read More</a>
+						</div>
+					</div>
+				</li>
+				
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/exploring-k8s-part3/">Exploring Kubernetes: Client-Go - part-3</a></h4>
+							<h4 class="post-date">Nov 30, 2018</h4>
+						</div>
+						<div class="post-summary"><p>we got restConfig and namespace, connection is set up Yay
+From this restconfig, Now we need to create respective clients for further operations
+we will need following package:
+import k8s.io/client-go/kubernetes   create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig)  it returns clients for APIgroups like: * Apps * CoreV1 * Batch * StorageV1
+If you have some custom controller, generated code will have NewForConfig function which you have call separately,...</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/exploring-k8s-part3/">Read More</a>
 						</div>
 					</div>
 				</li>

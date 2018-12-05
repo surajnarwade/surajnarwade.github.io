@@ -185,7 +185,7 @@ config,err := rest.InClusterConfig()
 <p>it has fields like <code>Host, APIPath</code>, <code>Username, Password, BearerToken</code>, etc which are needed to talk to cluster</p>
 
 <ul>
-<li>If you explore more, you will see <code>clientcmd/api</code> has <code>Config</code> struct which is API resource for kubeconfig, code is <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29">here</a></li>
+<li>If you explore more, you will see <code>clientcmd/api</code> has <code>Config</code> (<code>Kind: Config</code>) struct which is API resource for kubeconfig, code is <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29">here</a></li>
 </ul>
 
 <h2 id="tgif-enough-for-today-happy-weekend-stay-tuned"><em>TGIF, Enough for Today :)  Happy Weekend :) Stay Tuned :)</em></h2>

@@ -6,8 +6,135 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Nov 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 05 Dec 2018 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Local Development of golang app with minikube &amp; ko</title>
+      <link>https://suraj.pro/post/develop-go-minikube/</link>
+      <pubDate>Wed, 05 Dec 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/develop-go-minikube/</guid>
+      <description>
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;While exploring, I came across &lt;code&gt;ko&lt;/code&gt; tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily.
+This post is for minikube only since I am focussing on local development.&lt;/p&gt;
+
+&lt;h1 id=&#34;pre-flight-checks&#34;&gt;Pre-Flight Checks&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installing &lt;code&gt;ko&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/google/go-containerregistry/cmd/ko
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it :)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Verify your installation by &lt;code&gt;which ko&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We can mention any docker registry (local or remote) using &lt;code&gt;KO_DOCKER_REPO&lt;/code&gt; env variable, but as we are focussing on local development, we will publish images to minikube&amp;rsquo;s docker daemon&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;eval $(minikube docker-env)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;let-s-do-it&#34;&gt;Let&amp;rsquo;s do it&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;take sample go web application:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;package main
+
+import (
+	&amp;quot;fmt&amp;quot;
+	&amp;quot;log&amp;quot;
+	&amp;quot;net/http&amp;quot;
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, &amp;quot;Hi there&amp;quot;)
+}
+
+func main() {
+	http.HandleFunc(&amp;quot;/&amp;quot;, handler)
+	log.Fatal(http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now we need to write small &lt;code&gt;Deployment&lt;/code&gt; (config.yml) file, but here&amp;rsquo;s the magical part, instead of &lt;code&gt;image&lt;/code&gt; name, we will be mentioning import path of go code. Cick &lt;a href=&#34;https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md#determining-supported-import-paths&#34;&gt;here&lt;/a&gt; for allowed paths.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      foo: bar
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        foo: bar
+    spec:
+      containers:
+      - name: hello-world
+        # This is the import path for the Go binary to build and run.
+        image: github.com/surajnarwade/webapp
+        ports:
+        - containerPort: 8080
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;we also need to expose this deployment to access it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubectl expose deployment hello-world --type=NodePort
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;all set, now magic will begin,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;ko apply -L -f config.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-L&lt;/code&gt; indicates publishing images locally&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;check &lt;code&gt;minikube service hello-world&lt;/code&gt;, you will see the output &lt;code&gt;Hi there&lt;/code&gt;, isn&amp;rsquo;t it cool ?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Now you can make changes to code &amp;amp; again do &lt;code&gt;ko apply -L -f config.yml&lt;/code&gt;, you will see changes reflected :)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In this way, we can do local development of golang code with minikube, this looks cool but there&amp;rsquo;s scope of more improvement too :P&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;what-happens-behind-the-scene&#34;&gt;What happens behind the scene ?&lt;/h1&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ko&lt;/code&gt; takes the import path of go code from the deployment, it builds the go binary.&lt;/li&gt;
+&lt;li&gt;then, it creates new docker image with &lt;code&gt;distroless&lt;/code&gt; as a base image and copies binary into it.&lt;/li&gt;
+&lt;li&gt;it updates the deployment with this new image :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Happy Hacking :)&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Exploring Kubernetes: Client-Go - part-1</title>
@@ -117,10 +244,111 @@ config,err := rest.InClusterConfig()
 &lt;p&gt;it has fields like &lt;code&gt;Host, APIPath&lt;/code&gt;, &lt;code&gt;Username, Password, BearerToken&lt;/code&gt;, etc which are needed to talk to cluster&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;If you explore more, you will see &lt;code&gt;clientcmd/api&lt;/code&gt; has &lt;code&gt;Config&lt;/code&gt; struct which is API resource for kubeconfig, code is &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If you explore more, you will see &lt;code&gt;clientcmd/api&lt;/code&gt; has &lt;code&gt;Config&lt;/code&gt; (&lt;code&gt;Kind: Config&lt;/code&gt;) struct which is API resource for kubeconfig, code is &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;tgif-enough-for-today-happy-weekend-stay-tuned&#34;&gt;&lt;em&gt;TGIF, Enough for Today :)  Happy Weekend :) Stay Tuned :)&lt;/em&gt;&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploring Kubernetes: Client-Go - part-2</title>
+      <link>https://suraj.pro/post/exploring-k8s-part2/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/exploring-k8s-part2/</guid>
+      <description>&lt;p&gt;If you have kubeconfig file already in place,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is one more function &lt;code&gt;clientcmd.NewInteractiveDeferredLoadingClientConfig&lt;/code&gt; but as per code, we can use it only when password is allowed&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Namespace given by current context,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;namespace, _, err := kubeconfig.Namespace()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;REST config needed to operations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;restconfig, err := kubeconfig.ClientConfig()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if you want kubeconfig as a struct&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;clientcmdapi.Config, err := kubeconfig.RawConfig()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here, &lt;code&gt;kubeconfig&lt;/code&gt; is interface of following type:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// ClientConfig is used to make it easy to get an api server client
+type ClientConfig interface {
+	// RawConfig returns the merged result of all overrides
+	RawConfig() (clientcmdapi.Config, error)
+	// ClientConfig returns a complete client config
+	ClientConfig() (*restclient.Config, error)
+	// Namespace returns the namespace resulting from the merged
+	// result of all overrides and a boolean indicating if it was
+	// overridden
+	Namespace() (string, bool, error)
+	// ConfigAccess returns the rules for loading/persisting the config.
+	ConfigAccess() ConfigAccess
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;structs &lt;code&gt;NewNonInteractiveDeferredLoadingClientConfig&lt;/code&gt; &amp;amp; &lt;code&gt;inClusterClientConfig&lt;/code&gt; implements above interface and can be used as per requirements whether inside of cluster or outside.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploring Kubernetes: Client-Go - part-3</title>
+      <link>https://suraj.pro/post/exploring-k8s-part3/</link>
+      <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/exploring-k8s-part3/</guid>
+      <description>&lt;p&gt;we got &lt;code&gt;restConfig&lt;/code&gt; and &lt;code&gt;namespace&lt;/code&gt;, connection is set up Yay&lt;/p&gt;
+
+&lt;p&gt;From this restconfig, Now we need to create respective clients for further operations&lt;/p&gt;
+
+&lt;p&gt;we will need following package:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import k8s.io/client-go/kubernetes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;create basic kubernetes client:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;kubeClient, err := kubernetes.NewForConfig(restConfig)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;it returns clients for APIgroups like:
+* &lt;code&gt;Apps&lt;/code&gt;
+* &lt;code&gt;CoreV1&lt;/code&gt;
+* &lt;code&gt;Batch&lt;/code&gt;
+* &lt;code&gt;StorageV1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have some custom controller, generated code will have &lt;code&gt;NewForConfig&lt;/code&gt; function which you have call separately,&lt;/p&gt;
+
+&lt;p&gt;For example, In case of service catalog,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;serviceCatalogClient, err := servicecatalogclienset.NewForConfig(restConfig)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take an example for pod:&lt;/p&gt;
+
+&lt;p&gt;kubeClient.CoreV1().Pods(namespace).List&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;kubeClient is struct consist of all other apigroup clients with all structs unexported&lt;/li&gt;
+&lt;li&gt;so we will call method &lt;code&gt;CoreV1()&lt;/code&gt; which returns interface which has struct &lt;code&gt;c.coreV1&lt;/code&gt; and interface&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -1447,243 +1675,6 @@ go-multistage-app                latest              975ef40d39ee        3 days 
 &lt;li&gt;&lt;a href=&#34;https://blog.alexellis.io/mutli-stage-docker-builds/&#34;&gt;https://blog.alexellis.io/mutli-stage-docker-builds/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/appleboy/docker-multi-stage-build&#34;&gt;https://github.com/appleboy/docker-multi-stage-build&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&#34;&gt;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Remove white noise from Videos</title>
-      <link>https://suraj.pro/post/videoguideline/</link>
-      <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/videoguideline/</guid>
-      <description>
-
-&lt;p&gt;May times, We have to create demos for projects for which we use various desktop screen recorders
-along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.&lt;/p&gt;
-
-&lt;p&gt;Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.&lt;/p&gt;
-
-&lt;p&gt;I surfed on the internet and found some relevant solutionsm which we will discuss today.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;First a fall, we need to separate audio from video, for which we need to run following commands,&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install &lt;code&gt;ffmpeg&lt;/code&gt; package,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;    $ sudo dnf install ffmpeg -y
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Run this command for separating audio from video,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It will create &lt;code&gt;output.mp3&lt;/code&gt; as audio file.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Install audacity for audio processing,&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo dnf install audacity -y
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Open &lt;code&gt;output.mp3&lt;/code&gt; audio file in audacity,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/sc1.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;select any area of noise where there&amp;rsquo;s no talking, (low frequency)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Click &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;Get noise profile&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/sc2.png&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Now Select whole audio (Ctrl + A) and goto &lt;code&gt;Effects&lt;/code&gt; &amp;gt; &lt;code&gt;Noise Reduction&lt;/code&gt; &amp;gt; &lt;code&gt;OK&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Now goto &lt;code&gt;File&lt;/code&gt; &amp;gt; &lt;code&gt;Export Audio&lt;/code&gt; and save it in format of your choice.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer &lt;a href=&#34;http://www.openshot.org/&#34;&gt;OpenShot&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;*Happy Hacking !!!*&lt;/code&gt;&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes Pune Meetup - July 2017</title>
-      <link>https://suraj.pro/post/k8s-pune-meetup/</link>
-      <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/k8s-pune-meetup/</guid>
-      <description>&lt;p&gt;It was beautiful Saturday morning and we were at yet another chapter of  &lt;a href=&#34;https://www.meetup.com/Kubernetes-Pune/events/240840502/&#34;&gt;kubernetes Pune meetup&lt;/a&gt;.
-Meetup had a good turnaround of about 30 people, even it was the weekend.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/harshal2623&#34;&gt;Harshal Shah&lt;/a&gt; started the  Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Now Harshal is talking about &amp;#39;Birth of a pod&amp;#39;  &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Pune meetup. &lt;a href=&#34;https://t.co/t5tP7DvOtt&#34;&gt;pic.twitter.com/t5tP7DvOtt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Praveen Kumar (@kumar_pravin) &lt;a href=&#34;https://twitter.com/kumar_pravin/status/883555317283381248&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;Next, in the queue, there was a talk on “Making Kubernetes simpler with Kompose” by &lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;Pradeepto&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; which was a mind blowing thing for some attendees. Pradeepto spoke about the problem statement that Kompose is trying to solve followed by  Kompose’s journey to where it is now. He mentioned how we at Red Hat Developer Engineering became a part of it. Then he elaborated the architecture of Kompose and gave the stage to Suraj.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; passionately explaining docker-compose lovers K8S problem at &lt;a href=&#34;https://twitter.com/hashtag/kubernetespune?src=hash&#34;&gt;#kubernetespune&lt;/a&gt; meetup with &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; &lt;a href=&#34;https://t.co/LQWhC8xmNu&#34;&gt;pic.twitter.com/LQWhC8xmNu&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883585280724291585&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;Following by a short discussion regarding Kompose and its features, &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;Suraj&lt;/a&gt; demoed Kompose by deploying few applications and showed how easy it was to deploy microservices on Kubernetes using Kompose. He explained how Kompose converts artifacts for various providers. He also covered various scenarios and edge cases. Along with that, he explained the features of Kompose such as labels which are used for ingress(not supported in docker-compose) as well as build-push support. You can find his demo examples &lt;a href=&#34;https://github.com/surajnarwade/k8s_meetup_demo&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Kompose talk at &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; Meetup Pune by &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; His Kompose demo is dope! &lt;a href=&#34;https://t.co/ekbs2a2QqW&#34;&gt;pic.twitter.com/ekbs2a2QqW&lt;/a&gt;&lt;/p&gt;&amp;mdash; Pradeepto B. (@pradeepto) &lt;a href=&#34;https://twitter.com/pradeepto/status/883568343591997440&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;@pradeepto&lt;/a&gt; and &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; with &lt;a href=&#34;https://twitter.com/hashtag/kompose?src=hash&#34;&gt;#kompose&lt;/a&gt; session in .&lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;@kubernetesio&lt;/a&gt; pune meetup. &lt;a href=&#34;https://t.co/usOdl03RTS&#34;&gt;pic.twitter.com/usOdl03RTS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Budhram (@budhrg) &lt;a href=&#34;https://twitter.com/budhrg/status/883560902188048384&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;We got a lot of questions around Kompose and its features. After the demo, &lt;a href=&#34;https://twitter.com/pradeepto&#34;&gt;Pradeepto&lt;/a&gt; concluded the talk with future for the Kompose and quick introduction to &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;kedgeproject&lt;/a&gt;, also he urged attendees to try out both projects and give feedbacks or file issues.&lt;/p&gt;
-
-&lt;p&gt;By the way, &lt;a href=&#34;https://github.com/kedgeproject/kedge&#34;&gt;Kedge&lt;/a&gt; is a simple and easy way to define and deploy applications to Kubernetes by writing very concise application definitions. Please give it a spin.&lt;/p&gt;
-
-&lt;p&gt;After a heavy discussion and demos, we had short snacks break over a tasty samosa and cup of tea. This break seems to be good opportunity to interact with people and networking.&lt;/p&gt;
-
-&lt;p&gt;Last but not the least, &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;Rahul Mahale&lt;/a&gt;  shared his experience with deploying Rails app using kubernetes. He also discussed problems he faced and how he overcome it with the help of tools such as Prometheus, graphana, etc.&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/kubernetes?src=hash&#34;&gt;#kubernetes&lt;/a&gt; meetup Pune #7 &lt;a href=&#34;https://twitter.com/Rahul_Mahale&#34;&gt;@Rahul_Mahale&lt;/a&gt; Rails apps on K8S, a big thanks to &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;@BigBinary&lt;/a&gt; &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;@_cha1tanya&lt;/a&gt; for hosting &lt;a href=&#34;https://twitter.com/infracloudio&#34;&gt;@infracloudio&lt;/a&gt; &lt;a href=&#34;https://t.co/EumiMMFpjA&#34;&gt;pic.twitter.com/EumiMMFpjA&lt;/a&gt;&lt;/p&gt;&amp;mdash; Vishal Biyani (@vishal_biyani) &lt;a href=&#34;https://twitter.com/vishal_biyani/status/883584956038955008&#34;&gt;July 8, 2017&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;Thanks to all speakers for making this meetup as a great place to learn, &lt;a href=&#34;https://twitter.com/_cha1tanya&#34;&gt;Prathmesh&lt;/a&gt; and  &lt;a href=&#34;https://twitter.com/BigBinary&#34;&gt;Bigbinary&lt;/a&gt;  for the venue and constant support for hosting the &lt;a href=&#34;https://twitter.com/kubernetesio&#34;&gt;Kubernetes&lt;/a&gt; Meetup Pune. Please stay tuned to the meetup page, we will have our next meetup on August 5th possibly at &lt;a href=&#34;https://www.redhat.com/en&#34;&gt;Red Hat&lt;/a&gt; Pune office. See you there.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>tools to adopt best practices in golang</title>
-      <link>https://suraj.pro/post/gotools/</link>
-      <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/gotools/</guid>
-      <description>
-
-&lt;p&gt;I went through internet yesterday regarding best practices with golang, I found &lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;go-tools&lt;/a&gt;  written by &lt;a href=&#34;https://twitter.com/dominikhonnef&#34;&gt;Dominik Honnef&lt;/a&gt; which were pretty interesting and can be .
-I found some of them useful for me, so are they listed below.&lt;/p&gt;
-
-&lt;h3 id=&#34;static-check&#34;&gt;static check&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;applies tons of static analysis checks.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later,&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/staticcheck
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ statickcheck [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I tried it for kompose with some extra hacks:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do staticcheck &amp;quot;$pkg&amp;quot;; done
-cmd/completion.go:48:2: empty branch (SA9003)
-pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the &#39;!=&#39; operator (SA4000)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;gosimple&#34;&gt;gosimple&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;it gives suggestions for simplifying your code.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/gosimple
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ gosimple [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I tried it as follows:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do gosimple &amp;quot;$pkg&amp;quot;; done
-pkg/transformer/utils.go:219:2: &#39;if err != nil { return err }; return nil&#39; can be simplified to &#39;return err&#39; (S1013)
-pkg/transformer/utils_test.go:115:4: the argument is already a string, there&#39;s no need to use fmt.Sprintf (S1025)
-pkg/transformer/kubernetes/k8sutils.go:346:3: should replace loop with volumes = append(volumes, TmpVolumes...) (S1011)
-pkg/transformer/kubernetes/k8sutils.go:349:3: should replace loop with volumesMount = append(volumesMount, TmpVolumesMount...) (S1011)
-pkg/transformer/kubernetes/k8sutils.go:414:6: should omit comparison to bool constant, can be simplified to service.Privileged (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:206:7: should omit comparison to bool constant, can be simplified to !hostPid (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:243:8: should omit comparison to bool constant, can be simplified to hostPid (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:275:5: should omit comparison to bool constant, can be simplified to !output (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to bool constant, can be simplified to output (S1002)
-pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
-pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
-pkg/utils/docker/client.go:31:2: &#39;if err != nil { return client, err }; return client, nil&#39; can be simplified to &#39;return client, err&#39; (S1013)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;unused&#34;&gt;unused&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;it checks for unused constants, variables, functions and types.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;it needs go 1.6 or later&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get honnef.co/go/tools/cmd/unused
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;syntax is:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ unused [pkg] or [directory]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;again, I tried it on kompose, purposefully I have added some unused type and function:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ for pkg in $(go list -f &#39;{{ join .Deps  &amp;quot;\n&amp;quot;}}&#39; . | grep &#39;kompose/[^vendor]&#39;); do unused &amp;quot;$pkg&amp;quot;; done
-pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
-pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;happy-hacking&#34;&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;references&#34;&gt;References:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&#34;&gt;https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/dominikh/go-tools&#34;&gt;https://github.com/dominikh/go-tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
