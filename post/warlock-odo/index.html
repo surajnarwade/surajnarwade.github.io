@@ -85,38 +85,38 @@ ga('create', '75855569', 'auto');
             <div class="post-content">
                 
 
-<p>Once upon a time, there was a NodeJS developer whose name was Warlock. Recently, he joined his dream company as Enterprise Developer.</p>
+<p>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.</p>
 
-<p>On day1, His Boss gave him Code Repo &amp; OpenShift Platform Credentials and he left.</p>
+<p>On day 1, his boss gave him a Code Repository &amp; his OpenShift Platform Credentials to work his magic.</p>
 
 <p>Warlock got his code,</p>
 
 <pre><code>git clone https://github.com/sclorg/nodejs-ex
 </code></pre>
 
-<p>But Now he was confused because he knew about the code but no Idea about this OpenShift thing.
-then he went to OpenShift docs but he got confused and overwhelmed by all those new terminologies, DeploymentConfigs, Pods, Services, Routes. He got frustrated and hardly he could login into the cluster using <code>oc</code>.</p>
+<p>But was unclear about how to proceed  as he had no idea about OpenShift.
+He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it. He could barely login into the cluster using <code>oc</code> and thus got frustrated.</p>
 
-<p>Then, one of his friend suggested him to look at <a href="https://openshiftdo.org">ODO</a>, Warlock found it very simple because it had simple concepts like Application, Components, URLs.</p>
+<p>Then, one of his friend suggested that he take a look at <a href="https://openshiftdo.org">odo</a>, Warlock instantly took to it, as it had simple, easy to understand concepts like Application, Components, and URLs.</p>
 
-<p>He found it interesting and started reading the docs and using it.</p>
+<p>He found it interesting, read the docs further, and started using it.</p>
 
 <ul>
-<li>He logged into the cluster with creds given by his boss,</li>
+<li>He logged into the cluster with the credentials given by his boss,</li>
 </ul>
 
 <pre><code>odo login -u warlock@dream.company -p xxxxxxx
 </code></pre>
 
 <ul>
-<li>Warlock read the concept of application in odo &amp; created application:</li>
+<li>Warlock read the concept of an application in odo &amp; created an application:</li>
 </ul>
 
 <pre><code>odo app create myapp
 </code></pre>
 
 <ul>
-<li>He read about catalog and search whether NodeJS is available or not,</li>
+<li>He referred the odo catalog to check on the availability of NodeJS,</li>
 </ul>
 
 <pre><code>odo catalog list components
@@ -132,45 +132,41 @@ ruby        openshift     2.0,2.2,2.3,2.4,2.5,latest
 wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
 </code></pre>
 
-<ul>
-<li>Woo, Warlock was happy because NodeJS was available in cluster,</li>
-</ul>
+<p>Woo, Warlock was happy because NodeJS was available in the cluster.</p>
 
-<p>Since he has only one component of type nodejs, he did,</p>
+<p>Since he had only one component of the type nodejs, he created the application,</p>
 
 <pre><code>odo create nodejs
 </code></pre>
 
 <ul>
-<li>Now what ? Warlock needs URL to access his application,</li>
+<li>Now what? Warlock needed an URL to access his application, he tried:</li>
 </ul>
 
 <pre><code>odo url create
 </code></pre>
 
 <ul>
-<li>There’s nothing on URL, warlock got confused, then he realized, he didn’t pushed the code.</li>
+<li>There was nothing on the URL, warlock got confused, then he realized, he hadn’t pushed the code. So he pushed his code:</li>
 </ul>
 
 <pre><code>odo push
 </code></pre>
 
-<p>Tada, Now he can access his application, everytime he make some changes he did <code>odo push</code> and woah :)</p>
+<p>Tada, Now he could access his application, everytime he made some changes he did <code>odo push</code> and woah :)</p>
 
 <ul>
-<li>After some time, he got bored of this pushing again and again, then he explored holy odo docs and found watch feature, so he did <code>odo watch</code> in his repo and wooooot !!!!</li>
+<li>After a while, he got bored of pushing again and again. On further exploration of the hallowed odo docs he found the watch feature, and performed <code>odo watch</code> in his repo and wooooot !!!!</li>
 </ul>
 
 <pre><code>odo watch
 </code></pre>
 
-<ul>
-<li>Everytime he make changes in his code, he can see it on his URL, no need to manually push.</li>
-</ul>
+<p>Now everytime he changed his code, the changes were automatically reflected in the URL, he did not need to manually push each time.</p>
 
-<p>So In this way, Warlock the newbie used developed his NodeJS application on OpenShift Platform.</p>
+<p>In this way, Warlock the newbie developed his NodeJS application on OpenShift Platform.</p>
 
-<h1 id="now-warlock-uses-odo-warlock-is-happy-be-like-warlock-d">Now, Warlock uses ODO, Warlock is Happy, Be like Warlock :D</h1>
+<h1 id="now-warlock-always-uses-odo-warlock-is-happy-be-like-warlock-d">Now, Warlock always uses odo, Warlock is Happy, Be like Warlock :D</h1>
 
             </div>
             
