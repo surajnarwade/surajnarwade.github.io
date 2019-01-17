@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> So amazing when you&#39;re riding on a ray of sunshine..... &middot; Suraj Narwade </title>
+        <title> Story of Noob Developer on OpenShift &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -80,34 +80,97 @@ ga('create', '75855569', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="https://suraj.pro/post/blog3/">So amazing when you&#39;re riding on a ray of sunshine.....</a></h1>
-            <span class="post-date">Mar 31, 2016 </span>
+            <h1><a href="https://suraj.pro/post/warlock-odo/">Story of Noob Developer on OpenShift</a></h1>
+            <span class="post-date">Jan 17, 2019 </span>
             <div class="post-content">
-                <p>I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P.
-   <em>‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’</em>
-   Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp; awesome, I got to know new things every single day !!!</p>
+                
 
-<p>Then I got a task to create Jenkins job using JJb for the unit test using nosetest,  pylint tests, I got stuck with one issue regarding master-slave handshake whereas Rishabh gave me only  hint EXPLORE THE SLAVE that was pretty awesome one. only one hint lead to clear all concepts around it. Thanks <em>Rishabh</em> for it.</p>
+<p>Once upon a time, there was a NodeJS developer whose name was Warlock. Recently, he joined his dream company as Enterprise Developer.</p>
 
-<p>on 1st march, <em>Communication guidelines</em> session was taken by <em>Kushal das</em>.In this session , He told us about Netiquettes and other communication guidelines while having conversation on IRC or mailing list.</p>
+<p>On day1, His Boss gave him Code Repo &amp; OpenShift Platform Credentials and he left.</p>
 
-<p>I also read <em>&ldquo;2015 Open Source Yearbook&rdquo;</em> in free time. I  got lots of ways to use ownCloud in creative ways, awesome Open hardware projects like Raspberry projects. Also, I got to know that even facebook also OpenSourcing many of their  projects like HHVM, React, RocksDB, etc. I suggest you,  go through it.</p>
+<p>Warlock got his code,</p>
 
-<p>Friday, 11 March, I had attended Tech Talk on <em>Jenkins Job Builder</em> by Anisha Narang, It was quite useful as she spoke about macros in Jenkins as well how to use the various plugins that was very useful in my projects. Thank you, <em>Anisha</em> :)</p>
+<pre><code>git clone https://github.com/sclorg/nodejs-ex
+</code></pre>
 
-<p>In those days, I had read Ansible thoroughly Then I wrote ansible playbook , I found ansible quite beautiful tool for automation as well as it&rsquo;s very simple to use.</p>
+<p>But Now he was confused because he knew about the code but no Idea about this OpenShift thing.
+then he went to OpenShift docs but he got confused and overwhelmed by all those new terminologies, DeploymentConfigs, Pods, Services, Routes. He got frustrated and hardly he could login into the cluster using <code>oc</code>.</p>
 
-<p>Tuesday 15th march, Delightful Pizza was there for Lunch, &amp; reason was for the farewell of <em>Robin Cain</em> (USA), she also shared her  past experiences with us and also guided us for our next journey.</p>
+<p>Then, one of his friend suggested him to look at <a href="https://openshiftdo.org">ODO</a>, Warlock found it very simple because it had simple concepts like Application, Components, URLs.</p>
 
-<p>In mid of March, Jenkins gates  were down somehow :( :( nothing gonna worked for few days. So those days, I worked on Pelican, ansible, JJB &amp;  tasty Raspberry Pi ;-)  :p</p>
+<p>He found it interesting and started reading the docs and using it.</p>
 
-<p>26 March, I was unable to attend python meetup because I had to travel to my hometown but,  fortunately, I got lucky to Attend <em>Docker birthday &amp; meetup</em> at <em>Unnati Computers, Aurangabad</em>. <em>Pushpendra Chavan</em> told briefly about docker, containers and Ashutosh Sir gave a demo of how to run a webserver using docker.</p>
+<ul>
+<li>He logged into the cluster with creds given by his boss,</li>
+</ul>
 
-<p>31 march, <em>Open Source</em> Session was organized by Kushal Das, Rupali Talwatkar.
-<em>Kushal Das</em>, <em>Pravin Kumar</em>, <em>Chandan Kumar</em> and <em>Rupali Talwatkar</em> shared their experiences that how they started contribution to Opensource with us which were very much motivating. they had shared very basic things like what is FAS account, how to open it, how to find your project for contribution.
-Kushal also told about why the blog is important and how it can be beneficial to maintain digital identity.</p>
+<pre><code>odo login -u warlock@dream.company -p xxxxxxx
+</code></pre>
 
-<p>I heard one good quote: <strong>Wissen ist Macht.  (Knowledge is power)</strong>     (obviously deutsch ;-) )</p>
+<ul>
+<li>Warlock read the concept of application in odo &amp; created application:</li>
+</ul>
+
+<pre><code>odo app create myapp
+</code></pre>
+
+<ul>
+<li>He read about catalog and search whether NodeJS is available or not,</li>
+</ul>
+
+<pre><code>odo catalog list components
+NAME        PROJECT       TAGS
+dotnet      openshift     2.0,latest
+httpd       openshift     2.4,latest
+nginx       openshift     1.10,1.12,1.8,latest
+nodejs      openshift     0.10,10,4,6,8,8-RHOAR,latest
+perl        openshift     5.16,5.20,5.24,5.26,latest
+php         openshift     5.5,5.6,7.0,7.1,latest
+python      openshift     2.7,3.3,3.4,3.5,3.6,latest
+ruby        openshift     2.0,2.2,2.3,2.4,2.5,latest
+wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
+</code></pre>
+
+<ul>
+<li>Woo, Warlock was happy because NodeJS was available in cluster,</li>
+</ul>
+
+<p>Since he has only one component of type nodejs, he did,</p>
+
+<pre><code>odo create nodejs
+</code></pre>
+
+<ul>
+<li>Now what ? Warlock needs URL to access his application,</li>
+</ul>
+
+<pre><code>odo url create
+</code></pre>
+
+<ul>
+<li>There’s nothing on URL, warlock got confused, then he realized, he didn’t pushed the code.</li>
+</ul>
+
+<pre><code>odo push
+</code></pre>
+
+<p>Tada, Now he can access his application, everytime he make some changes he did <code>odo push</code> and woah :)</p>
+
+<ul>
+<li>After some time, he got bored of this pushing again and again, then he explored holy odo docs and found watch feature, so he did <code>odo watch</code> in his repo and wooooot !!!!</li>
+</ul>
+
+<pre><code>odo watch
+</code></pre>
+
+<ul>
+<li>Everytime he make changes in his code, he can see it on his URL, no need to manually push.</li>
+</ul>
+
+<p>So In this way, Warlock the newbie used developed his NodeJS application on OpenShift Platform.</p>
+
+<h1 id="now-warlock-uses-odo-warlock-is-happy-be-like-warlock-d">Now, Warlock uses ODO, Warlock is Happy, Be like Warlock :D</h1>
 
             </div>
             
@@ -115,9 +178,9 @@ Kushal also told about why the blog is important and how it can be beneficial to
                 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'surajnarwade-github-io';
-    var disqus_identifier = 'https:\/\/suraj.pro\/post\/blog3\/';
-    var disqus_title = 'So amazing when you\x27re riding on a ray of sunshine.....';
-    var disqus_url = 'https:\/\/suraj.pro\/post\/blog3\/';
+    var disqus_identifier = 'https:\/\/suraj.pro\/post\/warlock-odo\/';
+    var disqus_title = 'Story of Noob Developer on OpenShift';
+    var disqus_url = 'https:\/\/suraj.pro\/post\/warlock-odo\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

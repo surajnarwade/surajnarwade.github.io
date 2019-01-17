@@ -6,8 +6,105 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Dec 2018 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jan 2019 21:21:49 +0530</lastBuildDate>
     <atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Story of Noob Developer on OpenShift</title>
+      <link>https://suraj.pro/post/warlock-odo/</link>
+      <pubDate>Thu, 17 Jan 2019 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/warlock-odo/</guid>
+      <description>
+
+&lt;p&gt;Once upon a time, there was a NodeJS developer whose name was Warlock. Recently, he joined his dream company as Enterprise Developer.&lt;/p&gt;
+
+&lt;p&gt;On day1, His Boss gave him Code Repo &amp;amp; OpenShift Platform Credentials and he left.&lt;/p&gt;
+
+&lt;p&gt;Warlock got his code,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/sclorg/nodejs-ex
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But Now he was confused because he knew about the code but no Idea about this OpenShift thing.
+then he went to OpenShift docs but he got confused and overwhelmed by all those new terminologies, DeploymentConfigs, Pods, Services, Routes. He got frustrated and hardly he could login into the cluster using &lt;code&gt;oc&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, one of his friend suggested him to look at &lt;a href=&#34;https://openshiftdo.org&#34;&gt;ODO&lt;/a&gt;, Warlock found it very simple because it had simple concepts like Application, Components, URLs.&lt;/p&gt;
+
+&lt;p&gt;He found it interesting and started reading the docs and using it.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;He logged into the cluster with creds given by his boss,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo login -u warlock@dream.company -p xxxxxxx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Warlock read the concept of application in odo &amp;amp; created application:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo app create myapp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;He read about catalog and search whether NodeJS is available or not,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo catalog list components
+NAME        PROJECT       TAGS
+dotnet      openshift     2.0,latest
+httpd       openshift     2.4,latest
+nginx       openshift     1.10,1.12,1.8,latest
+nodejs      openshift     0.10,10,4,6,8,8-RHOAR,latest
+perl        openshift     5.16,5.20,5.24,5.26,latest
+php         openshift     5.5,5.6,7.0,7.1,latest
+python      openshift     2.7,3.3,3.4,3.5,3.6,latest
+ruby        openshift     2.0,2.2,2.3,2.4,2.5,latest
+wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Woo, Warlock was happy because NodeJS was available in cluster,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since he has only one component of type nodejs, he did,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;odo create nodejs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now what ? Warlock needs URL to access his application,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo url create
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There’s nothing on URL, warlock got confused, then he realized, he didn’t pushed the code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tada, Now he can access his application, everytime he make some changes he did &lt;code&gt;odo push&lt;/code&gt; and woah :)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;After some time, he got bored of this pushing again and again, then he explored holy odo docs and found watch feature, so he did &lt;code&gt;odo watch&lt;/code&gt; in his repo and wooooot !!!!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;odo watch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Everytime he make changes in his code, he can see it on his URL, no need to manually push.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So In this way, Warlock the newbie used developed his NodeJS application on OpenShift Platform.&lt;/p&gt;
+
+&lt;h1 id=&#34;now-warlock-uses-odo-warlock-is-happy-be-like-warlock-d&#34;&gt;Now, Warlock uses ODO, Warlock is Happy, Be like Warlock :D&lt;/h1&gt;
+</description>
+    </item>
     
     <item>
       <title>Local Development of golang app with minikube &amp; ko</title>
@@ -1530,161 +1627,6 @@ c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                    
 &lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/static-pod/&#34;&gt;Static Pods&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;Standalone Kubelet Tutorial by kelsey hightower&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/kubernetes/pull/10093&#34;&gt;issue 10093 on kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Multistage build in Docker</title>
-      <link>https://suraj.pro/post/multi-staging/</link>
-      <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
-      
-      <guid>https://suraj.pro/post/multi-staging/</guid>
-      <description>
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;example-use-cases&#34;&gt;Example Use Cases&lt;/h3&gt;
-
-&lt;p&gt;When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Java apps using WAR files&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;First stage uses a container with Maven to compile, test, and build the war file&lt;/li&gt;
-&lt;li&gt;Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Golang apps with standalone binaries&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;First stage uses a container with golang SDK to build the binary&lt;/li&gt;
-&lt;li&gt;Second stage copies the binary into an image&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Node.js app needing processed JavaScript for client&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;First stage uses a Node container, installs dev dependencies, and performs a build (maybe compiling Typescript, Webpack-ify, etc.)&lt;/li&gt;
-&lt;li&gt;Second stage also uses a Node container, installs only prod dependencies (like Express), and copies the distributable from stage one&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br&gt;&lt;/p&gt;
-
-&lt;p&gt;Here, we will take simple &lt;code&gt;hello-world&lt;/code&gt; golang program to illustrate single-stage build vs multi-stage build:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat main.go 
-package main
-
-import &amp;quot;fmt&amp;quot;
-
-func main() {
-	fmt.Println(&amp;quot;Hello World!&amp;quot;)
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;single-stage-build&#34;&gt;Single stage build&lt;/h3&gt;
-
-&lt;p&gt;Usually for static type langauge as golang, derive Dockerfile from golang SDk, add source, do a build and push it to dockerhub, unfortuantely size was very huge. for example, basic &lt;code&gt;golang:alpine&lt;/code&gt; image is of size 257 MB, it increases further more.&lt;/p&gt;
-
-&lt;p&gt;workaround was :
-Derive from a Golang base image with the whole runtime/SDK (Dockerfile.build)
-Add source code
-Produce a statically-linked binary
-Copy the static binary from the image to the host (docker create, docker cp)
-Derive from SCRATCH or some other light-weight image such as alpine (Dockerfile)
-Add the binary back in
-Push a tiny image to the Docker Hub&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;that means having two separate Dockerfiles and shell script to control it&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Dockerfile.singlestage&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM golang:alpine
-WORKDIR /app
-ADD . /app
-RUN cd /app &amp;amp;&amp;amp; go build -o app
-ENTRYPOINT ./app
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;now build the dockerfile and run it using following commands,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-singlestage-app .
-$ docker run --rm surajnarwade/go-singlestage-app
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You can check docker image size which is only &lt;strong&gt;259MB&lt;/strong&gt;:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker images
-REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
-go-singlestage-app               latest              bb2594c6d2fd        3 days ago          259MB
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;multistage-build&#34;&gt;Multistage build&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;syntax is very simple, we will give label to stages as&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; as &amp;lt;label&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;and then use it in another stage to copy artifacts as,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;COPY --from=&amp;lt;label&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;whichever is last FROM statement, that is the final base image&lt;/li&gt;
-&lt;li&gt;Dockerfile.multistage&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;# build stage
-FROM golang:alpine AS build-env
-ADD . /src
-RUN cd /src &amp;amp;&amp;amp; go build -o app
-
-# final stage
-FROM alpine
-WORKDIR /app
-COPY --from=build-env /src/app /app/
-ENTRYPOINT ./app
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;now build the dockerfile and run it using following commands,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker build -t surajnarwade/go-multistage-app .
-$ docker run --rm surajnarwade/go-multistage-app
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;you can see docker image size is reduced which is only approximately &lt;strong&gt;6 MB&lt;/strong&gt;:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker images
-REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
-go-multistage-app                latest              975ef40d39ee        3 days ago          5.52MB
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.alexellis.io/mutli-stage-docker-builds/&#34;&gt;https://blog.alexellis.io/mutli-stage-docker-builds/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/appleboy/docker-multi-stage-build&#34;&gt;https://github.com/appleboy/docker-multi-stage-build&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&#34;&gt;https://blog.mikesir87.io/2017/03/introducing-docker-multi-stage-builds/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
