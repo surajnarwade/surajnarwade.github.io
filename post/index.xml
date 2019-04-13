@@ -2,12 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Suraj Narwade</title>
-    <link>https://suraj.pro/post/index.xml</link>
+    <link>https://suraj.pro/post/</link>
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Jan 2019 21:21:49 +0530</lastBuildDate>
-    <atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Apr 2019 21:21:49 +0530</lastBuildDate>
+    
+	<atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Creating users on OpenShift 4</title>
+      <link>https://suraj.pro/post/user-on-os4/</link>
+      <pubDate>Sat, 13 Apr 2019 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/user-on-os4/</guid>
+      <description>It&amp;rsquo;s always bit of confusing about OpenShift 4 :D here&amp;rsquo;s how we can add user in OpenShift 4.
+ Create htpasswd file as below and users and their passwords,   $ htpasswd -cb users.htpasswd user1 user1pass  $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &amp;gt; Cluster Settings &amp;gt; Global Configuration
+ Click on Edit YAML in front of Oauth</description>
+    </item>
     
     <item>
       <title>Story of Noob Developer on OpenShift</title>
@@ -15,91 +28,10 @@
       <pubDate>Thu, 17 Jan 2019 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/warlock-odo/</guid>
-      <description>
-
-&lt;p&gt;A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.&lt;/p&gt;
-
-&lt;p&gt;On day 1, his boss gave him a Code Repository &amp;amp; his OpenShift Platform Credentials to work his magic.&lt;/p&gt;
-
-&lt;p&gt;Warlock got his code,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sclorg/nodejs-ex
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But was unclear about how to proceed  as he had no idea about OpenShift.
-He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it. He could barely login into the cluster using &lt;code&gt;oc&lt;/code&gt; and thus got frustrated.&lt;/p&gt;
-
-&lt;p&gt;Then, one of his friend suggested that he take a look at &lt;a href=&#34;https://openshiftdo.org&#34;&gt;odo&lt;/a&gt;, Warlock instantly took to it, as it had simple, easy to understand concepts like Application, Components, and URLs.&lt;/p&gt;
-
-&lt;p&gt;He found it interesting, read the docs further, and started using it.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;He logged into the cluster with the credentials given by his boss,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo login -u warlock@dream.company -p xxxxxxx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Warlock read the concept of an application in odo &amp;amp; created an application:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo app create myapp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;He referred the odo catalog to check on the availability of NodeJS,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo catalog list components
-NAME        PROJECT       TAGS
-dotnet      openshift     2.0,latest
-httpd       openshift     2.4,latest
-nginx       openshift     1.10,1.12,1.8,latest
-nodejs      openshift     0.10,10,4,6,8,8-RHOAR,latest
-perl        openshift     5.16,5.20,5.24,5.26,latest
-php         openshift     5.5,5.6,7.0,7.1,latest
-python      openshift     2.7,3.3,3.4,3.5,3.6,latest
-ruby        openshift     2.0,2.2,2.3,2.4,2.5,latest
-wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Woo, Warlock was happy because NodeJS was available in the cluster.&lt;/p&gt;
-
-&lt;p&gt;Since he had only one component of the type nodejs, he created the application,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;odo create nodejs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now what? Warlock needed an URL to access his application, he tried:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo url create
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There was nothing on the URL, warlock got confused, then he realized, he hadn’t pushed the code. So he pushed his code:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo push
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tada, Now he could access his application, everytime he made some changes he did &lt;code&gt;odo push&lt;/code&gt; and woah :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;After a while, he got bored of pushing again and again. On further exploration of the hallowed odo docs he found the watch feature, and performed &lt;code&gt;odo watch&lt;/code&gt; in his repo and wooooot !!!!&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;odo watch
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now everytime he changed his code, the changes were automatically reflected in the URL, he did not need to manually push each time.&lt;/p&gt;
-
-&lt;p&gt;In this way, Warlock the newbie developed his NodeJS application on OpenShift Platform.&lt;/p&gt;
-
-&lt;h1 id=&#34;now-warlock-always-uses-odo-warlock-is-happy-be-like-warlock-d&#34;&gt;Now, Warlock always uses odo, Warlock is Happy, Be like Warlock :D&lt;/h1&gt;
-</description>
+      <description>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.
+On day 1, his boss gave him a Code Repository &amp;amp; his OpenShift Platform Credentials to work his magic.
+Warlock got his code,
+git clone https://github.com/sclorg/nodejs-ex  But was unclear about how to proceed as he had no idea about OpenShift. He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it.</description>
     </item>
     
     <item>
@@ -108,135 +40,11 @@ wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
       <pubDate>Wed, 05 Dec 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/develop-go-minikube/</guid>
-      <description>
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;While exploring, I came across &lt;code&gt;ko&lt;/code&gt; tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily.
-This post is for minikube only since I am focussing on local development.&lt;/p&gt;
-
-&lt;h1 id=&#34;pre-flight-checks&#34;&gt;Pre-Flight Checks&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Installing &lt;code&gt;ko&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;go get github.com/google/go-containerregistry/cmd/ko
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;rsquo;s it :)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Verify your installation by &lt;code&gt;which ko&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;We can mention any docker registry (local or remote) using &lt;code&gt;KO_DOCKER_REPO&lt;/code&gt; env variable, but as we are focussing on local development, we will publish images to minikube&amp;rsquo;s docker daemon&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;eval $(minikube docker-env)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;let-s-do-it&#34;&gt;Let&amp;rsquo;s do it&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;take sample go web application:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-import (
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;log&amp;quot;
-	&amp;quot;net/http&amp;quot;
-)
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, &amp;quot;Hi there&amp;quot;)
-}
-
-func main() {
-	http.HandleFunc(&amp;quot;/&amp;quot;, handler)
-	log.Fatal(http.ListenAndServe(&amp;quot;:8080&amp;quot;, nil))
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now we need to write small &lt;code&gt;Deployment&lt;/code&gt; (config.yml) file, but here&amp;rsquo;s the magical part, instead of &lt;code&gt;image&lt;/code&gt; name, we will be mentioning import path of go code. Cick &lt;a href=&#34;https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md#determining-supported-import-paths&#34;&gt;here&lt;/a&gt; for allowed paths.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: hello-world
-spec:
-  selector:
-    matchLabels:
-      foo: bar
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        foo: bar
-    spec:
-      containers:
-      - name: hello-world
-        # This is the import path for the Go binary to build and run.
-        image: github.com/surajnarwade/webapp
-        ports:
-        - containerPort: 8080
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;we also need to expose this deployment to access it&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl expose deployment hello-world --type=NodePort
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;all set, now magic will begin,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;ko apply -L -f config.yml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;-L&lt;/code&gt; indicates publishing images locally&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;check &lt;code&gt;minikube service hello-world&lt;/code&gt;, you will see the output &lt;code&gt;Hi there&lt;/code&gt;, isn&amp;rsquo;t it cool ?&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Now you can make changes to code &amp;amp; again do &lt;code&gt;ko apply -L -f config.yml&lt;/code&gt;, you will see changes reflected :)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;In this way, we can do local development of golang code with minikube, this looks cool but there&amp;rsquo;s scope of more improvement too :P&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;what-happens-behind-the-scene&#34;&gt;What happens behind the scene ?&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ko&lt;/code&gt; takes the import path of go code from the deployment, it builds the go binary.&lt;/li&gt;
-&lt;li&gt;then, it creates new docker image with &lt;code&gt;distroless&lt;/code&gt; as a base image and copies binary into it.&lt;/li&gt;
-&lt;li&gt;it updates the deployment with this new image :)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md&#34;&gt;https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Happy Hacking :)&lt;/strong&gt;&lt;/p&gt;
-</description>
+      <description>While exploring, I came across ko tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
+Pre-Flight Checks 
+ Installing ko  go get github.com/google/go-containerregistry/cmd/ko  That&amp;rsquo;s it :)
+ Verify your installation by which ko
+ We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&amp;rsquo;s docker daemon</description>
     </item>
     
     <item>
@@ -245,113 +53,10 @@ spec:
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/exploring-k8s-part1/</guid>
-      <description>
-
-&lt;p&gt;&lt;br/&gt;
-Nowadays, I am learning advance &lt;code&gt;golang&lt;/code&gt;, along with that knowledge, I am trying to understand kubernetes in more depth. I found &lt;code&gt;client-go&lt;/code&gt; as goto thing to explore &amp;amp; learn things. I am also putting respective client-go code links wherever needed.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-s-client-go&#34;&gt;What&amp;rsquo;s client-go ?&lt;/h2&gt;
-
-&lt;p&gt;&lt;br/&gt;
-Simple, golang client library for talking to kubernetes cluster&lt;/p&gt;
-
-&lt;h2 id=&#34;where-s-client-go&#34;&gt;Where&amp;rsquo;s client-go ?&lt;/h2&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;you can find it in &lt;code&gt;kubernetes/kubernetes/staging&lt;/code&gt; directory and published by bot to &lt;code&gt;k8s.io/client-go&lt;/code&gt;, kubernetes also uses client-go. it&amp;rsquo;s interesting if you see &lt;code&gt;client-go&lt;/code&gt; from kubernetes vendor, it  has symlinks to &lt;code&gt;kubernetes/kubernetes/staging&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br/&gt;
-&lt;br/&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;in-this-adventure-very-first-step-is-to-see-how-to-connect-to-api-server&#34;&gt;&lt;strong&gt;In this Adventure, very first step is to see how to connect to API Server :)&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;em&gt;Connecting to API Server&lt;/em&gt;
-&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;There are two ways to talk to cluster using any go program:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;outside cluster&lt;/strong&gt;: if your program is standalone and if you have either kubeconfig file or master URL.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;inside cluster&lt;/strong&gt;: if your program is supposed to run on kubernetes (for example, controller)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;When your program runs on kubernetes, it uses service account token inside the pods &lt;code&gt;/var/run/secrets/kubernetes.io/serviceaccount&lt;/code&gt; for auth and tls stuff.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;connecting-to-cluster-using-client-go&#34;&gt;Connecting to cluster using client-go&lt;/h2&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;clientcmd holds the required code to configuring connection to the cluster using kubeconfig as well as about modification to kubeconfig. Code reference &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L546&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;import &amp;quot;k8s.io/client-go/tools/clientcmd&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;if you have master URL and kubeconfig both:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(masterURL, kubeconfig)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;if you have only have kubeconfig file:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(&amp;quot;&amp;quot;, kubeconfig)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If you are running program on kubernetes, you don&amp;rsquo;t need to provided parameters, it will automatically fetch details using serviceaccount tokens:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;config, err := clientcmd.BuildConfigFromFlags(&amp;quot;&amp;quot;, &amp;quot;&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;If you don&amp;rsquo;t provide any parameters, it fallbacks to &lt;code&gt;InClusterConfig&lt;/code&gt;, even if it fails, it fallbacks to default configs which is either &lt;code&gt;KUBERNETES_MASTER&lt;/code&gt; environment variable or simply &lt;code&gt;http://localhost:8080&lt;/code&gt;, code reference &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L48&#34;&gt;here.&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Directly use this (even above way internally uses this), Code Ref &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/rest/config.go#L315&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;import &amp;quot;k8s.io/client-go/rest&amp;quot;
-...
-config,err := rest.InClusterConfig()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;This method basically gets &lt;code&gt;KUBERNETES_SERVICE_HOST&lt;/code&gt; and &lt;code&gt;KUBERNETES_SERVICE_PORT&lt;/code&gt; environment variables (which are injected into every pod) and service token to generate the config.&lt;/p&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;config&lt;/code&gt; has all necessary information to talk to the cluster from anywhere :) If you check struct defination &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/rest/config.go#L51&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;it has fields like &lt;code&gt;Host, APIPath&lt;/code&gt;, &lt;code&gt;Username, Password, BearerToken&lt;/code&gt;, etc which are needed to talk to cluster&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If you explore more, you will see &lt;code&gt;clientcmd/api&lt;/code&gt; has &lt;code&gt;Config&lt;/code&gt; (&lt;code&gt;Kind: Config&lt;/code&gt;) struct which is API resource for kubeconfig, code is &lt;a href=&#34;https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/api/types.go#L29&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;tgif-enough-for-today-happy-weekend-stay-tuned&#34;&gt;&lt;em&gt;TGIF, Enough for Today :)  Happy Weekend :) Stay Tuned :)&lt;/em&gt;&lt;/h2&gt;
-</description>
+      <description>Nowadays, I am learning advance golang, along with that knowledge, I am trying to understand kubernetes in more depth. I found client-go as goto thing to explore &amp;amp; learn things. I am also putting respective client-go code links wherever needed.
+What&amp;rsquo;s client-go ?  Simple, golang client library for talking to kubernetes cluster
+Where&amp;rsquo;s client-go ? 
+ you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.</description>
     </item>
     
     <item>
@@ -360,53 +65,9 @@ config,err := rest.InClusterConfig()
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/exploring-k8s-part2/</guid>
-      <description>&lt;p&gt;If you have kubeconfig file already in place,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;There is one more function &lt;code&gt;clientcmd.NewInteractiveDeferredLoadingClientConfig&lt;/code&gt; but as per code, we can use it only when password is allowed&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Namespace given by current context,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;namespace, _, err := kubeconfig.Namespace()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;REST config needed to operations&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;restconfig, err := kubeconfig.ClientConfig()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;if you want kubeconfig as a struct&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;clientcmdapi.Config, err := kubeconfig.RawConfig()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here, &lt;code&gt;kubeconfig&lt;/code&gt; is interface of following type:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// ClientConfig is used to make it easy to get an api server client
-type ClientConfig interface {
-	// RawConfig returns the merged result of all overrides
-	RawConfig() (clientcmdapi.Config, error)
-	// ClientConfig returns a complete client config
-	ClientConfig() (*restclient.Config, error)
-	// Namespace returns the namespace resulting from the merged
-	// result of all overrides and a boolean indicating if it was
-	// overridden
-	Namespace() (string, bool, error)
-	// ConfigAccess returns the rules for loading/persisting the config.
-	ConfigAccess() ConfigAccess
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;structs &lt;code&gt;NewNonInteractiveDeferredLoadingClientConfig&lt;/code&gt; &amp;amp; &lt;code&gt;inClusterClientConfig&lt;/code&gt; implements above interface and can be used as per requirements whether inside of cluster or outside.&lt;/p&gt;
-</description>
+      <description>If you have kubeconfig file already in place,
+kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{})  There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
+ Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()   REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()   if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig()  Here, kubeconfig is interface of following type:</description>
     </item>
     
     <item>
@@ -415,44 +76,11 @@ type ClientConfig interface {
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/exploring-k8s-part3/</guid>
-      <description>&lt;p&gt;we got &lt;code&gt;restConfig&lt;/code&gt; and &lt;code&gt;namespace&lt;/code&gt;, connection is set up Yay&lt;/p&gt;
-
-&lt;p&gt;From this restconfig, Now we need to create respective clients for further operations&lt;/p&gt;
-
-&lt;p&gt;we will need following package:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import k8s.io/client-go/kubernetes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;create basic kubernetes client:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubeClient, err := kubernetes.NewForConfig(restConfig)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;it returns clients for APIgroups like:
-* &lt;code&gt;Apps&lt;/code&gt;
-* &lt;code&gt;CoreV1&lt;/code&gt;
-* &lt;code&gt;Batch&lt;/code&gt;
-* &lt;code&gt;StorageV1&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If you have some custom controller, generated code will have &lt;code&gt;NewForConfig&lt;/code&gt; function which you have call separately,&lt;/p&gt;
-
-&lt;p&gt;For example, In case of service catalog,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;serviceCatalogClient, err := servicecatalogclienset.NewForConfig(restConfig)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Let&amp;rsquo;s take an example for pod:&lt;/p&gt;
-
-&lt;p&gt;kubeClient.CoreV1().Pods(namespace).List&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;kubeClient is struct consist of all other apigroup clients with all structs unexported&lt;/li&gt;
-&lt;li&gt;so we will call method &lt;code&gt;CoreV1()&lt;/code&gt; which returns interface which has struct &lt;code&gt;c.coreV1&lt;/code&gt; and interface&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>we got restConfig and namespace, connection is set up Yay
+From this restconfig, Now we need to create respective clients for further operations
+we will need following package:
+import k8s.io/client-go/kubernetes   create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig)  it returns clients for APIgroups like: * Apps * CoreV1 * Batch * StorageV1
+If you have some custom controller, generated code will have NewForConfig function which you have call separately,</description>
     </item>
     
     <item>
@@ -461,89 +89,7 @@ type ClientConfig interface {
       <pubDate>Thu, 15 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/nmcli101/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;To check devices:
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device status
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Overall status of NetworkManager:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli general status
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Display connections:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli connection show
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;display only active connections:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli connection show --active
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;wi-fi&#34;&gt;WI-FI&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Check wifi status
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli radio wifi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Turn on the wifi&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli radio wifi on
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Turn off the wifi&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli radio wifi off
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;List available wifi access points&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi list
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Refresh the access point list&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi rescan
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Connect to wifi&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi connect &amp;lt;SSID&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Connect to password protected access point&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>  To check devices:   nmcli device status   Overall status of NetworkManager:  nmcli general status   Display connections:  nmcli connection show   display only active connections:  nmcli connection show --active  WI-FI  Check wifi status   nmcli radio wifi   Turn on the wifi  nmcli radio wifi on   Turn off the wifi  nmcli radio wifi off   List available wifi access points  nmcli device wifi list   Refresh the access point list  nmcli device wifi rescan   Connect to wifi  nmcli device wifi connect &amp;lt;SSID&amp;gt;   Connect to password protected access point  nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt;  </description>
     </item>
     
     <item>
@@ -552,178 +98,11 @@ type ClientConfig interface {
       <pubDate>Sun, 21 Oct 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/journey-to-cka/</guid>
-      <description>
-
-&lt;p&gt;Hello Folks,&lt;/p&gt;
-
-&lt;p&gt;I appeared for the exam on 19th October 2018 and  yesterday(20th Oct 2018), I got the result &amp;amp; I scored &lt;strong&gt;92%&lt;/strong&gt;, Yay :)&lt;/p&gt;
-
-&lt;p&gt;I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.&lt;/p&gt;
-
-&lt;h1 id=&#34;a-bit-about-exam&#34;&gt;A bit about Exam:&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins)&lt;/li&gt;
-&lt;li&gt;Questions: 24&lt;/li&gt;
-&lt;li&gt;Clusters: 6&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.&lt;/p&gt;
-
-&lt;p&gt;to be specific, it&amp;rsquo;s browser based exam which is monitored by a proctor, where right half of the screen is your terminal and left half is your question pane.&lt;/p&gt;
-
-&lt;p&gt;Like Red Hat Exams, CKA is also hands-on exam which test your practical, troubleshooting knowledge with kubernetes.&lt;/p&gt;
-
-&lt;h1 id=&#34;beginning&#34;&gt;Beginning:&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Register for the exam &lt;a href=&#34;https://www.cncf.io/certification/cka/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Read &lt;a href=&#34;https://www.cncf.io/certification/candidate-handbook&#34;&gt;Candidate Handbook&lt;/a&gt; and &lt;a href=&#34;https://www.cncf.io/certification/tips&#34;&gt;exam tips&lt;/a&gt; carefully.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;preparing-for-the-exam-phase-1-kubernetes-knowledge&#34;&gt;Preparing for the Exam: Phase 1 (Kubernetes Knowledge):&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/walidshaari&#34;&gt;Walid Shaari&lt;/a&gt;&amp;rsquo;s &lt;a href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;&gt;github repo&lt;/a&gt; is extremely useful entrypoint for getting starting around syllabus and many useful links and guide :)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create mind map of &lt;a href=&#34;https://kubernetes.io/docs/home&#34;&gt;Kubernetes docs&lt;/a&gt;, it will help you to find something quickly since you can use docs for the reference.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Get your hands dirty with &lt;a href=&#34;https://kubernetes.io/docs/tasks/&#34;&gt;&lt;code&gt;Kubernetes tasks&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Go through &lt;a href=&#34;https://kubernetes.io/docs/concepts/&#34;&gt;&lt;code&gt;Kubernetes Concepts&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/reference/&#34;&gt;&lt;code&gt;Kubernetes Reference&lt;/code&gt;&lt;/a&gt; at least twice.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;To utilise time wisely, familiar yourself with kubectl command the imperative way, that means, instead of writing yamls, try to generate it,
-Refer &lt;a href=&#34;https://kubernetes.io/docs/reference/kubectl/cheatsheet/&#34;&gt;&lt;code&gt;Kubectl Cheatsheet&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/object-management-kubectl/imperative-command/&#34;&gt;Managing Kubernetes Objects Using Imperative Commands&lt;/a&gt; for the same. You might also like to check out &lt;a href=&#34;https://suraj.pro/post/kubectl/&#34;&gt;blog&lt;/a&gt; post about &lt;code&gt;kubectl&lt;/code&gt; which I wrote last year.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For example,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;To generate pod defination, I will do,
-
-kubectl run mypod --image=busybox --generator=run-pod/v1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;h2 id=&#34;kubernetes-cluster&#34;&gt;Kubernetes Cluster:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/kelseyhightower/kubernetes-the-hard-way/&#34;&gt;&lt;code&gt;Kubernetes the hard way&lt;/code&gt;&lt;/a&gt; by &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;Kelsey Hightower&lt;/a&gt;,
-Please do these at least 5 times. This tutorial is performed on GCP, but you can do it locally as well.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://twitter.com/kinvolkio&#34;&gt;Kinvolk&amp;rsquo;s&lt;/a&gt; &lt;a href=&#34;https://github.com/kinvolk/kubernetes-the-hard-way-vagrant&#34;&gt;&lt;code&gt;Kubernetes The Hard way&lt;/code&gt;&lt;/a&gt; on vagrant is also useful to study.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;After learning the hard way, for practicing other topics, you can use same cluster or you can use:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/minikube/&#34;&gt;minikube&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.katacoda.com/courses/kubernetes/playground&#34;&gt;katacoda kubernetes playground&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;set up with &lt;a href=&#34;https://kubernetes.io/docs/setup/independent/install-kubeadm/&#34;&gt;kubeadm&lt;/a&gt; (it&amp;rsquo;s so simple)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;h2 id=&#34;books&#34;&gt;Books:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Specifically for the exam, I didn&amp;rsquo;t refer any books, but if you are newbie, it will be awesome if you go through following books:
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Kubernetes: Up and Running: Dive into the Future of Infrastructure&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Kubernetes in Action&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;preparing-for-the-exam-phase-2-supporting-knowledge&#34;&gt;Preparing for the Exam: Phase 2 (Supporting Knowledge):&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Learn &lt;code&gt;tmux&lt;/code&gt;. Since, exam provides only one terminal window, &lt;code&gt;tmux&lt;/code&gt; will help to split screen into panes and more windows, here&amp;rsquo;s my &lt;a href=&#34;https://gist.github.com/surajnarwade/2e398402960f6b0c1ed2daed681b934d&#34;&gt;&lt;code&gt;cheatsheet&lt;/code&gt;&lt;/a&gt; for tmux.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Learn how to work with systemd files,&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;# reloading the systemd daemon
-
-systemctl daemon-reload
-
-# starting and enabling the service
-
-systemctl restart &amp;lt;service&amp;gt;
-systemctl enable &amp;lt;service&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Debugging systemd services:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;systemctl status &amp;lt;service&amp;gt;
-
-journalctl -u &amp;lt;service&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;before-the-exam&#34;&gt;Before the Exam:&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Since you can give exam on chrome only, you have to be careful about &lt;code&gt;Ctrl+w&lt;/code&gt; which closes the current tab in chrome. To avoid this,&lt;/li&gt;
-&lt;li&gt;My friend Suraj Deshmukh (who also cleared CKA on the same time and his blog on  experience with CKA is &lt;a href=&#34;https://suraj.io/post/road-to-cka/&#34;&gt;here&lt;/a&gt; ) wrote a blog about disabling &lt;code&gt;Ctrl+w&lt;/code&gt; which you can find &lt;a href=&#34;https://suraj.io/post/disable-ctrl-w/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;first-minute-of-exam&#34;&gt;First Minute of Exam:&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Make alias of few commands as per your convenience and put it in bashrc file,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;mine were,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;k = &#39;kubectl&#39;
-kgp = &#39;kubectl get pods&#39;
-kgs = &#39;kubectl get svc&#39;
-kgc = &#39;kubectl get componentstatus&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;kubectl autocompletion, it really helps :)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;source &amp;lt;(kubectl completion bash)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;finally&#34;&gt;Finally&amp;hellip;&lt;/h1&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Thanks to &lt;a href=&#34;https://twitter.com/kubernauts&#34;&gt;@kubernauts&lt;/a&gt; community for all the guidance and help :)
-If you are preparing for CKA or if you deal with kubernetes, please join &lt;a href=&#34;https://kubernauts-slack-join.herokuapp.com/&#34;&gt;Kubernauts community slack&lt;/a&gt;, there are really lovely kubernauts who are ready to help you out :)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;If you have any further query, feel free to reach out to me via &lt;a href=&#34;https://twitter.com/red_suraj&#34;&gt;@red_suraj&lt;/a&gt; on twitter or &lt;a href=&#34;https://www.linkedin.com/in/surajnarwade/&#34;&gt;Suraj Narwade&lt;/a&gt; on linkedin.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Here&amp;rsquo;s my certificate:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Successfully completed the &lt;a href=&#34;https://twitter.com/CloudNativeFdn?ref_src=twsrc%5Etfw&#34;&gt;@CloudNativeFdn&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/CKA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#CKA&lt;/a&gt; :)&lt;br&gt;Thanks &lt;a href=&#34;https://twitter.com/kubernauts?ref_src=twsrc%5Etfw&#34;&gt;@kubernauts&lt;/a&gt; for all support :) &lt;a href=&#34;https://t.co/mmazHFBUSt&#34;&gt;pic.twitter.com/mmazHFBUSt&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/1053706874917289984?ref_src=twsrc%5Etfw&#34;&gt;October 20, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;all-the-best&#34;&gt;All the Best :)&lt;/h2&gt;
-</description>
+      <description>Hello Folks,
+I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp;amp; I scored 92%, Yay :)
+I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.
+A bit about Exam: 
+ Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</description>
     </item>
     
     <item>
@@ -732,49 +111,8 @@ If you are preparing for CKA or if you deal with kubernetes, please join &lt;a h
       <pubDate>Thu, 13 Sep 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/install-minishift-fedora/</guid>
-      <description>
-
-&lt;h2 id=&#34;check-for-latest-release-on-github&#34;&gt;Check for latest release on github:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Check here: &lt;a href=&#34;https://github.com/minishift/minishift/releases&#34;&gt;https://github.com/minishift/minishift/releases&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;download-latest-binary&#34;&gt;Download latest binary&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz
-
-tar -xvf minishift-1.24.0-linux-amd64.tgz
-
-cp minishift ~/.local/bin/minishift
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;NOTE: Create &lt;code&gt;~/.local/bin&lt;/code&gt; if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.&lt;/p&gt;
-
-&lt;h2 id=&#34;setting-up-virtualization-environment&#34;&gt;Setting up Virtualization environment&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dnf install libvirt qemu-kvm -y
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo usermod -a -G libvirt $USER
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;newgrp libvirt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;setting-the-kvm-driver&#34;&gt;Setting the KVM driver&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm
-sudo chmod +x /usr/local/bin/docker-machine-driver-kvm
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.okd.io/latest/minishift/getting-started/installing.html&#34;&gt;https://docs.okd.io/latest/minishift/getting-started/installing.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html&#34;&gt;https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift  NOTE: Create ~/.local/bin if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.
+Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo usermod -a -G libvirt $USER  newgrp libvirt  Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm  Reference:  https://docs.</description>
     </item>
     
     <item>
@@ -783,56 +121,8 @@ sudo chmod +x /usr/local/bin/docker-machine-driver-kvm
       <pubDate>Mon, 13 Aug 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/access-minishift-registry/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;Configure your shell to use docker daemon of Minishift&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;eval $(minishift docker-env)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;export user token registry URL&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;export TOKEN=$(oc whoami -t)
-export REGISTRY_URL=$(minishift openshift registry)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Logging in to Registry&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;docker login -u developer -p $TOKEN $REGISTRY_URL
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;OR&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;we can use directly as,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now you can tag images, push it to respective project to create imagestream&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;docker tag mynodejs $(minishift openshift registry)/myproject/nodejs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Push the docker image to registry so that it will create imagestream automatically,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;docker push $(minishift openshift registry)/myproject/nodejs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now you can create application using the new imagestream,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;oc new-app --image-stream=nodejs --name app
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Configure your shell to use docker daemon of Minishift  eval $(minishift docker-env)   export user token registry URL  export TOKEN=$(oc whoami -t) export REGISTRY_URL=$(minishift openshift registry)   Logging in to Registry  docker login -u developer -p $TOKEN $REGISTRY_URL  OR
+ we can use directly as,  docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)  Now you can tag images, push it to respective project to create imagestream</description>
     </item>
     
     <item>
@@ -841,397 +131,11 @@ export REGISTRY_URL=$(minishift openshift registry)
       <pubDate>Sat, 31 Mar 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/fossasia18/</guid>
-      <description>
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;day1&#34;&gt;Day1&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;I reached venue (LifeLong Learning Institute, Singapore) at around 10.30 am and volunteers were all set to welcome us with smile and welcome kit :)  Venue was awesome with multiple conf rooms and good facilities.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Harish Pillay&lt;/strong&gt;(Red Hat) &amp;amp; &lt;strong&gt;Damini Satya&lt;/strong&gt; (SalesForce) Kicked off the event with Awesome Keynote with introducing FOSSASIA, stats about FOSSASIA and schedule as well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;.&lt;a href=&#34;https://twitter.com/harishpillay?ref_src=twsrc%5Etfw&#34;&gt;@harishpillay&lt;/a&gt; started the event with lovely keynote :) &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt;  &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/EOeAS4DOfu&#34;&gt;pic.twitter.com/EOeAS4DOfu&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976689572003299328?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Followed by Keynote, &lt;strong&gt;Teo Ser Luck&lt;/strong&gt; (Member of Parliament, Singapore) expressed his thoughts about OpenSource and how it is helping Singapore Governance and Economy.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Open Tech in Singapore, how OpenSource is helping Singapore Economy by Teo Ser Luck &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/O8xGTDZiAG&#34;&gt;pic.twitter.com/O8xGTDZiAG&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976691131411873793?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Now it was time for &lt;strong&gt;Diamler&lt;/strong&gt; (Mercedes Benz) folks which was one the sponsors to Conference as well. They explained about how OpenSource is helping Mercedes to become Super Smart Car using technologies like containers, Kubernetes, OpenShift and BlockChain.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;und&#34; dir=&#34;ltr&#34;&gt;.&lt;a href=&#34;https://twitter.com/Daimler?ref_src=twsrc%5Etfw&#34;&gt;@Daimler&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/QOdm1ri0bM&#34;&gt;pic.twitter.com/QOdm1ri0bM&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976698067998081029?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Next Sponsor Keynote was by Google&amp;rsquo;s  &lt;strong&gt;Kazunori Sato&lt;/strong&gt;. it was about How Google Cloud is solving real life problems using AI/ML, it was quite interesting.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;.&lt;a href=&#34;https://twitter.com/kazunori_279?ref_src=twsrc%5Etfw&#34;&gt;@kazunori_279&lt;/a&gt; from &lt;a href=&#34;https://twitter.com/googlecloud?ref_src=twsrc%5Etfw&#34;&gt;@googlecloud&lt;/a&gt;  discussing awesome real life AI/ML problems and their solution &lt;a href=&#34;https://t.co/Zd0WJVOqjD&#34;&gt;pic.twitter.com/Zd0WJVOqjD&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976702490593734656?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There was Awesome Exhibition Area where all Sponsors had a booths and school students were demonstrating their exciting projects. I have written detail description of Exhibition Area at the end of this Blog. I met lots of people there including folks from &lt;strong&gt;platform.sh&lt;/strong&gt; which provides PaaS platform, &lt;strong&gt;gstar.ai&lt;/strong&gt; which is interesting startup which combines power of NLP (Natural Language Processing) and BlockChain.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;day2&#34;&gt;Day2&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I attended talk by &lt;strong&gt;Jan Peuker&lt;/strong&gt; (Google) which was about &lt;em&gt;system as choreographed behaviour with Kubernetes&lt;/em&gt;, whereas he explained about Kubernetes works and he also talked about it&amp;rsquo;s relavance with Borg.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;By &lt;a href=&#34;https://twitter.com/janpeuker?ref_src=twsrc%5Etfw&#34;&gt;@janpeuker&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/kubernetes?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#kubernetes&lt;/a&gt; &lt;a href=&#34;https://t.co/YbYm4e4qft&#34;&gt;pic.twitter.com/YbYm4e4qft&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977086109648805888?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;At the end of the day, &lt;strong&gt;Sudhir Varma&lt;/strong&gt; (Red Hat) about his work which is making easy Desktop Application easy with tools like DevSuite.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;My friend Sudhir Verma talking about Desktop Application Installation at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/H5IOjyR8lX&#34;&gt;pic.twitter.com/H5IOjyR8lX&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977110069937627137?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;During day 2, I met Chris from CNCF. I demoed Kedge, Kompsoe &amp;amp; Kubely to him. He was pretty impressed with projects. Also, I met a web developer. His perception was like, I am web developer, why should I care about containers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Then, I headed for the &lt;strong&gt;HonestBees Office&lt;/strong&gt; (45 mins away from Conference venue) for Local Singapore Kubernetes Meetup. After having snacks, we started with meetup.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;meetup&#34;&gt;MEETUP&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Seth Vargo (Google), started the first session of meetup with his talk, &lt;em&gt;&amp;ldquo;Secret Management in Kubernetes using Vault&amp;rdquo;&lt;/em&gt;  where he discussed about how we can effectively use vault for secrets in Kubernetes with cool demo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;.&lt;a href=&#34;https://twitter.com/sethvargo?ref_src=twsrc%5Etfw&#34;&gt;@sethvargo&lt;/a&gt; started the meetup with his awesome talk about secrets management &lt;a href=&#34;https://twitter.com/hashtag/Kubernetes?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#Kubernetes&lt;/a&gt;  &lt;a href=&#34;https://twitter.com/hashtag/Singapore?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#Singapore&lt;/a&gt; &lt;a href=&#34;https://t.co/oQCflf3Hly&#34;&gt;pic.twitter.com/oQCflf3Hly&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977142432411168768?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Me talked about &lt;strong&gt;Kedge&lt;/strong&gt;, &lt;strong&gt;Kompose&lt;/strong&gt; &amp;amp; My Personal project &lt;strong&gt;Kubely&lt;/strong&gt;. People loved those project, there were some question as well about how we are reducing number of lines in Kedge without compromising on it&amp;rsquo;s Power. But what I understood, People are happy with &lt;strong&gt;Helm&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;The second talk of the &lt;a href=&#34;https://twitter.com/kubernetesio?ref_src=twsrc%5Etfw&#34;&gt;@kubernetesio&lt;/a&gt; Singapore meetup…&lt;a href=&#34;https://twitter.com/red_suraj?ref_src=twsrc%5Etfw&#34;&gt;@red_suraj&lt;/a&gt; giving an introduction to Kedge &lt;a href=&#34;https://t.co/LwzabpX5vc&#34;&gt;pic.twitter.com/LwzabpX5vc&lt;/a&gt;&lt;/p&gt;&amp;mdash; Hunter Nield (@hunternield) &lt;a href=&#34;https://twitter.com/hunternield/status/977162321876238336?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Last session was by Michel Bright (Containous) about &lt;strong&gt;Traefik&lt;/strong&gt; Proxy in Kubernetes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;.&lt;a href=&#34;https://twitter.com/mjbright?ref_src=twsrc%5Etfw&#34;&gt;@mjbright&lt;/a&gt; demonstrating &lt;a href=&#34;https://twitter.com/traefikproxy?ref_src=twsrc%5Etfw&#34;&gt;@traefikproxy&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/engineersftw?ref_src=twsrc%5Etfw&#34;&gt;@engineersftw&lt;/a&gt; kubernetes meetup &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/eQEEiJTo01&#34;&gt;pic.twitter.com/eQEEiJTo01&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977163638657007618?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;At the end, we took awesome group photo of all meetup attendees.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;See you soon guys :)&lt;a href=&#34;https://twitter.com/hashtag/Singapore?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#Singapore&lt;/a&gt; &lt;a href=&#34;https://twitter.com/kubernetesio?ref_src=twsrc%5Etfw&#34;&gt;@kubernetesio&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/meetup?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#meetup&lt;/a&gt; &lt;a href=&#34;https://t.co/qDKj7fgwjG&#34;&gt;pic.twitter.com/qDKj7fgwjG&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977199285170192384?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;day3&#34;&gt;Day3&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;At 12 pm, all conference attendees gathered at ground floor for group photo. Here&amp;rsquo;s one of the group photo:&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;A big thank you to all of you for attending the &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt;&amp;#39;18 Summit at Lifelong Learning Institute! Please help us make the event even better in future by filling in the link below with your valuable feedback. We look forward to seeing y&amp;#39;all again soon! &lt;a href=&#34;https://t.co/SimDIBV8mq&#34;&gt;https://t.co/SimDIBV8mq&lt;/a&gt; &lt;a href=&#34;https://t.co/RfxDun9THD&#34;&gt;pic.twitter.com/RfxDun9THD&lt;/a&gt;&lt;/p&gt;&amp;mdash; FOSSASIA (@fossasia) &lt;a href=&#34;https://twitter.com/fossasia/status/979280590028472321?ref_src=twsrc%5Etfw&#34;&gt;March 29, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;After that, at 1 pm, it was time for my talk :)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/red_suraj?ref_src=twsrc%5Etfw&#34;&gt;@red_suraj&lt;/a&gt; is talking about &lt;a href=&#34;https://twitter.com/hashtag/kompose?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#kompose&lt;/a&gt; in &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; 2018 &lt;a href=&#34;https://t.co/x09KBsWs7Y&#34;&gt;pic.twitter.com/x09KBsWs7Y&lt;/a&gt;&lt;/p&gt;&amp;mdash; chandan kumar (@chkumar246) &lt;a href=&#34;https://twitter.com/chkumar246/status/977417848455798784?ref_src=twsrc%5Etfw&#34;&gt;March 24, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Then I talked to Ria Bhatia(works on virtual kubelet, amazing project) from Microsoft about kedge, She liked the idea of it.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;In the evening, there was social event with Live Music, Magic Show, Indian Classical Dance Performance along with good veg food and drinks. That was amazing.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;day4&#34;&gt;Day4&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This was last day at conference. I attended DevSevOps session by Chris van tuin (Who is Red Hatter). After his talk, I catched him in Speaker lounge and  showed him kedge, He kinda liked it. Later on, he  asked about OSIO access as well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://twitter.com/hashtag/Devops?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#Devops&lt;/a&gt; state of mind by &lt;a href=&#34;https://twitter.com/chrisvantuin?ref_src=twsrc%5Etfw&#34;&gt;@chrisvantuin&lt;/a&gt;, it&amp;#39;s about containers, &lt;a href=&#34;https://twitter.com/kubernetesio?ref_src=twsrc%5Etfw&#34;&gt;@kubernetesio&lt;/a&gt; and SECURITY &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/RedHat?ref_src=twsrc%5Etfw&#34;&gt;@RedHat&lt;/a&gt; &lt;a href=&#34;https://t.co/JY8ugF8nHG&#34;&gt;pic.twitter.com/JY8ugF8nHG&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977781030114312192?ref_src=twsrc%5Etfw&#34;&gt;March 25, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I also presented &lt;em&gt;Kedge&lt;/em&gt; at Centos DOJO event. Along with me Kamesh presented talk on &lt;em&gt;Serverles with OpenWhisk&lt;/em&gt;. In afternoon session, Chandan &amp;amp; Janki presented a talk on RDO OpenStack &amp;amp; Packaging as well.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Java journey into Serverless World :)&lt;br&gt;By &lt;a href=&#34;https://twitter.com/kamesh_sampath?ref_src=twsrc%5Etfw&#34;&gt;@kamesh_sampath&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/CentOSProject?ref_src=twsrc%5Etfw&#34;&gt;@CentOSProject&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/DOJO?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#DOJO&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/8UGskzOIiL&#34;&gt;pic.twitter.com/8UGskzOIiL&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977744390432133121?ref_src=twsrc%5Etfw&#34;&gt;March 25, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Next up, &lt;a href=&#34;https://twitter.com/red_suraj?ref_src=twsrc%5Etfw&#34;&gt;@red_suraj&lt;/a&gt; presenting Kedge at the &lt;a href=&#34;https://twitter.com/hashtag/centosdojo?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#centosdojo&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/fossasia?ref_src=twsrc%5Etfw&#34;&gt;@fossasia&lt;/a&gt; &lt;a href=&#34;https://t.co/OlOxfjsNtb&#34;&gt;pic.twitter.com/OlOxfjsNtb&lt;/a&gt;&lt;/p&gt;&amp;mdash; CentOS Project (@CentOSProject) &lt;a href=&#34;https://twitter.com/CentOSProject/status/977773925995372544?ref_src=twsrc%5Etfw&#34;&gt;March 25, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;fossasia-exhibition-hall&#34;&gt;FOSSASIA EXHIBITION HALL&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There were some students from ITE polytechnic, Singapore who created some awesome gadgets at their Maker Labs, like Light sabber and Thor Hammer (Electromagnetic Based)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Star wars, Thor hammer by awesome ELECTRONICS students from Singapore &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/mMP0haQB04&#34;&gt;pic.twitter.com/mMP0haQB04&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976733296167067648?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;und&#34; dir=&#34;ltr&#34;&gt;&lt;a href=&#34;https://t.co/38cIqvhhhN&#34;&gt;pic.twitter.com/38cIqvhhhN&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976733379356868608?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This was SUSI, an OpenSouce voice Assistant. It was so amazing. (I am gonna try that. Don&amp;rsquo;t tell Alexa ;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;in&#34; dir=&#34;ltr&#34;&gt;Meet Susi at &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/jwLumHgsmd&#34;&gt;pic.twitter.com/jwLumHgsmd&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976748309523062784?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;This kids were doing DIY Keychain workshop. I did it well ;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Electronics is back in business at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/9zVmT5E3Yv&#34;&gt;pic.twitter.com/9zVmT5E3Yv&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976767558341730304?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;So I made my own keychain with this kiddo &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/flpMIYQNeS&#34;&gt;pic.twitter.com/flpMIYQNeS&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976762151892279298?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Meanwhile, at conference :) (He is gentoo guy)&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Meanwhile at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; conference &lt;a href=&#34;https://twitter.com/hashtag/selinux?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#selinux&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/rVLw6hTlo6&#34;&gt;pic.twitter.com/rVLw6hTlo6&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/976774594320203777?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;There was continuous supply of coffee to awake developers by those amazing people :D&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Kudos to &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; organizers for ensuring we have proper coffee made, gratis. The piccolo lattes from Kafve Coffee are excellent. Thanks! &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA2018?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA2018&lt;/a&gt; &lt;a href=&#34;https://t.co/44AwQjLNJd&#34;&gt;pic.twitter.com/44AwQjLNJd&lt;/a&gt;&lt;/p&gt;&amp;mdash; Colin Charles (@bytebot) &lt;a href=&#34;https://twitter.com/bytebot/status/976750949208215552?ref_src=twsrc%5Etfw&#34;&gt;March 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;made-some-friends-at-fossasia&#34;&gt;&lt;strong&gt;Made some friends at FOSSASIA :)&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Was a pleasure meeting &lt;a href=&#34;https://twitter.com/red_suraj?ref_src=twsrc%5Etfw&#34;&gt;@red_suraj&lt;/a&gt;. Thanks for all the help :) &lt;a href=&#34;https://twitter.com/hashtag/FOSSAsia2018?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSAsia2018&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/iXjIsUKmUq&#34;&gt;pic.twitter.com/iXjIsUKmUq&lt;/a&gt;&lt;/p&gt;&amp;mdash; Sana Khan (@sanakhan_libre) &lt;a href=&#34;https://twitter.com/sanakhan_libre/status/977838795297992704?ref_src=twsrc%5Etfw&#34;&gt;March 25, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;He Serves for his nation and works on OpenSource on weekends (salute)&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;With &lt;a href=&#34;https://twitter.com/woohuiren?ref_src=twsrc%5Etfw&#34;&gt;@woohuiren&lt;/a&gt;, Friends of &lt;a href=&#34;https://twitter.com/fedora?ref_src=twsrc%5Etfw&#34;&gt;@fedora&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/3fDvgfPpAf&#34;&gt;pic.twitter.com/3fDvgfPpAf&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977559551237963776?ref_src=twsrc%5Etfw&#34;&gt;March 24, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;That&amp;#39;s cute one ;)&lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://t.co/d2T6ZUOHBi&#34;&gt;pic.twitter.com/d2T6ZUOHBi&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977484640180056064?ref_src=twsrc%5Etfw&#34;&gt;March 24, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;One with &lt;a href=&#34;https://twitter.com/kamesh_sampath?ref_src=twsrc%5Etfw&#34;&gt;@kamesh_sampath&lt;/a&gt; , &lt;a href=&#34;https://twitter.com/rbowen?ref_src=twsrc%5Etfw&#34;&gt;@rbowen&lt;/a&gt; &lt;a href=&#34;https://twitter.com/TheTechScribe?ref_src=twsrc%5Etfw&#34;&gt;@TheTechScribe&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/CentOSProject?ref_src=twsrc%5Etfw&#34;&gt;@CentOSProject&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/RedHat?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#RedHat&lt;/a&gt; &lt;a href=&#34;https://t.co/qvwRaN0LZZ&#34;&gt;pic.twitter.com/qvwRaN0LZZ&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977457558335111169?ref_src=twsrc%5Etfw&#34;&gt;March 24, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CNCF COO&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;One with &lt;a href=&#34;https://twitter.com/cra?ref_src=twsrc%5Etfw&#34;&gt;@cra&lt;/a&gt; at &lt;a href=&#34;https://twitter.com/fossasiasg?ref_src=twsrc%5Etfw&#34;&gt;@fossasiasg&lt;/a&gt; &lt;a href=&#34;https://twitter.com/hashtag/FOSSASIA?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#FOSSASIA&lt;/a&gt; &lt;a href=&#34;https://t.co/wBzGWEzwEd&#34;&gt;pic.twitter.com/wBzGWEzwEd&lt;/a&gt;&lt;/p&gt;&amp;mdash; Suraj Narwade 🇮🇳 (@red_suraj) &lt;a href=&#34;https://twitter.com/red_suraj/status/977160455436173312?ref_src=twsrc%5Etfw&#34;&gt;March 23, 2018&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;awesome-hosts&#34;&gt;&lt;strong&gt;Awesome Hosts&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Damini Satya&lt;/strong&gt; (Salesforce)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/daminis.jpg&#34; width=&#34;400&#34; height=&#34;300&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Harish Pillay&lt;/strong&gt; (Red Hat)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/harishp.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;lovely-person-behind-fossasia-hong-phuc-dang&#34;&gt;Lovely Person behind FOSSASIA :) &lt;strong&gt;Hong Phuc dang&lt;/strong&gt;&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://suraj.pro/hongphucdang.jpg&#34; width=&#34;400&#34; height=&#34;500&#34; align=&#34;middle&#34;/&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;important-links&#34;&gt;Important Links&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;FOSSASIA Talk Videos&lt;/strong&gt;: &lt;a href=&#34;https://www.youtube.com/watch?v=M4cMeKYS-0w&amp;amp;list=PLzZVLecTsGpKb1P8J5WLrONMLby5Dn1EV&#34;&gt;https://www.youtube.com/watch?v=M4cMeKYS-0w&amp;amp;list=PLzZVLecTsGpKb1P8J5WLrONMLby5Dn1EV&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;FOSSASIA Photo Gallery:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a data-flickr-embed=&#34;true&#34;  href=&#34;https://www.flickr.com/photos/fossasia/albums/72157691688169702&#34; title=&#34;FOSSASIA Summit 2018&#34;&gt;&lt;img src=&#34;https://farm1.staticflickr.com/786/40105650325_1971b92d09_z.jpg&#34; width=&#34;427&#34; height=&#34;640&#34; alt=&#34;FOSSASIA Summit 2018&#34;&gt;&lt;/a&gt;&lt;script async src=&#34;//embedr.flickr.com/assets/client-code.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;FOSSASIA Social Night Photo Gallery:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a data-flickr-embed=&#34;true&#34;  href=&#34;https://www.flickr.com/photos/fossasia/albums/72157667204515668&#34; title=&#34;FOSSASIA Summit 2018 Photobooth&#34;&gt;&lt;img src=&#34;https://farm1.staticflickr.com/866/39277504860_b078f1daf2_z.jpg&#34; width=&#34;640&#34; height=&#34;427&#34; alt=&#34;FOSSASIA Summit 2018 Photobooth&#34;&gt;&lt;/a&gt;&lt;script async src=&#34;//embedr.flickr.com/assets/client-code.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;thanks-fossasia-for-such-amazing-conference-looking-forward-to-fossasia-summit-2019&#34;&gt;Thanks FOSSASIA for such amazing conference :) Looking Forward to FOSSASIA Summit 2019&lt;/h1&gt;
-</description>
+      <description>Day1 
+I reached venue (LifeLong Learning Institute, Singapore) at around 10.30 am and volunteers were all set to welcome us with smile and welcome kit :) Venue was awesome with multiple conf rooms and good facilities.
+
+ Harish Pillay(Red Hat) &amp;amp; Damini Satya (SalesForce) Kicked off the event with Awesome Keynote with introducing FOSSASIA, stats about FOSSASIA and schedule as well.  
+.@harishpillay started the event with lovely keynote :) @fossasiasg #FOSSASIA pic.</description>
     </item>
     
     <item>
@@ -1240,29 +144,8 @@ export REGISTRY_URL=$(minishift openshift registry)
       <pubDate>Wed, 13 Dec 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/hostmount-minishift/</guid>
-      <description>&lt;p&gt;Make sure &lt;code&gt;sshd&lt;/code&gt; service is running on your host.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo systemctl status sshd
-● sshd.service - OpenSSH server daemon
-   Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; vendor preset: disabled)
-   Active: active (running) since Wed 2017-12-13 18:23:09 IST; 4min 14s ago
-     Docs: man:sshd(8)
-           man:sshd_config(5)
- Main PID: 11319 (sshd)
-    Tasks: 1 (limit: 4915)
-   Memory: 4.9M
-      CPU: 333ms
-   CGroup: /system.slice/sshd.service
-           └─11319 /usr/sbin/sshd -D
-
-Dec 13 18:23:09 localhost.localdomain systemd[1]: Starting OpenSSH server daemon...
-Dec 13 18:23:09 localhost.localdomain sshd[11319]: Server listening on 0.0.0.0 port 22.
-Dec 13 18:23:09 localhost.localdomain sshd[11319]: Server listening on :: port 22.
-Dec 13 18:23:09 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create&lt;/p&gt;
-</description>
+      <description>Make sure sshd service is running on your host.
+$ sudo systemctl status sshd ● sshd.service - OpenSSH server daemon Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; vendor preset: disabled) Active: active (running) since Wed 2017-12-13 18:23:09 IST; 4min 14s ago Docs: man:sshd(8) man:sshd_config(5) Main PID: 11319 (sshd) Tasks: 1 (limit: 4915) Memory: 4.9M CPU: 333ms CGroup: /system.slice/sshd.service └─11319 /usr/sbin/sshd -D Dec 13 18:23:09 localhost.localdomain systemd[1]: Starting OpenSSH server daemon... Dec 13 18:23:09 localhost.</description>
     </item>
     
     <item>
@@ -1271,88 +154,12 @@ Dec 13 18:23:09 localhost.localdomain systemd[1]: Started OpenSSH server daemon.
       <pubDate>Sat, 09 Dec 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/hostmount-minikube/</guid>
-      <description>
-
-&lt;p&gt;supports PV of type &lt;code&gt;hostpath&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;minikube is configured to persist files stored under following directories.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;/data&lt;/li&gt;
-&lt;li&gt;/var/lib/localkube&lt;/li&gt;
-&lt;li&gt;/var/lib/docker&lt;/li&gt;
-&lt;li&gt;/tmp/hostpath_pv&lt;/li&gt;
-&lt;li&gt;/tmp/hostpath-provisioner&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;any other directory will not persist the data after reboot.&lt;/p&gt;
-
-&lt;p&gt;To mount host directory inside minikube,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ minikube mount /host-mount-path:/vm-mount-path
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;for example,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ minikube mount ~/mount-dir:/mountexample
-Mounting /home/user/mount-dir/ into /mountexample on the minikubeVM
-This daemon process needs to stay alive for the mount to still be accessible...
-ufs starting
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This process has to stay open, so open another terminal (if you want more than one mountpath, open one more terminal follow the above procedure)&lt;/p&gt;
-
-&lt;p&gt;Mounting inside container,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
-apiVersion: v1
-kind: Pod
-metadata:
-  name: centos
-spec:
-  containers:
-  - name: centos
-    image: centos
-    args:
-    - bash
-    stdin: true
-    stdinOnce: true
-    tty: true
-    workingDir: &amp;quot;/mountexample&amp;quot;
-    volumeMounts:
-    - mountPath: &amp;quot;/mountexample&amp;quot;
-      name: host-mount
-  volumes:
-  - name: host-mount
-    hostPath:
-      path: &amp;quot;/mountexample&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Another way is to create PV using following YAML and then you can map your host directory path to this directory path,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv0001
-spec:
-  accessModes:
-    - ReadWriteOnce
-  capacity:
-    storage: 5Gi
-  hostPath:
-    path: /data/pv0001/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Run &lt;code&gt;kubectl create -f &amp;lt;above yaml file&amp;gt;&lt;/code&gt; to create PV.&lt;/p&gt;
-
-&lt;p&gt;As of now, only &lt;code&gt;hostpath&lt;/code&gt; and accessmode (read write once) are supported.&lt;/p&gt;
-
-&lt;h2 id=&#34;reference&#34;&gt;Reference:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/getting-started-guides/minikube/&#34;&gt;https://kubernetes.io/docs/getting-started-guides/minikube/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>supports PV of type hostpath.
+minikube is configured to persist files stored under following directories.
+ /data /var/lib/localkube /var/lib/docker /tmp/hostpath_pv /tmp/hostpath-provisioner  any other directory will not persist the data after reboot.
+To mount host directory inside minikube,
+$ minikube mount /host-mount-path:/vm-mount-path  for example,
+$ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /mountexample on the minikubeVM This daemon process needs to stay alive for the mount to still be accessible.</description>
     </item>
     
     <item>
@@ -1361,43 +168,10 @@ spec:
       <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/git/</guid>
-      <description>
-
-&lt;p&gt;I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?&lt;/p&gt;
-
-&lt;p&gt;To split your last or recent commit, simply do,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But I wanted to break 3rd commit and split it into two commits, then I did as following way,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git rebase -i HEAD~3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;if you dont know the number you can also mention &lt;code&gt;SHA1&lt;/code&gt; of that commit as well,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git rebase master -i xyz^
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then rebase screen will appear, replace &lt;code&gt;pick&lt;/code&gt; with &lt;code&gt;edit&lt;/code&gt; and save it and do,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git reset HEAD~
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now Commit the individual files and create as much commit as you want and finally do,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ git rebase --continue
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;Happy Hacking !!!&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;reference&#34;&gt;Reference:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&#34;&gt;https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?
+To split your last or recent commit, simply do,
+$ git reset HEAD~  But I wanted to break 3rd commit and split it into two commits, then I did as following way,
+$ git rebase -i HEAD~3  if you dont know the number you can also mention SHA1 of that commit as well,</description>
     </item>
     
     <item>
@@ -1406,127 +180,9 @@ spec:
       <pubDate>Tue, 26 Sep 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/kubectl/</guid>
-      <description>
-
-&lt;p&gt;I was watching video about kubectl by &lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;janakiram&lt;/a&gt; and surprising I found there is also world of commands rather than &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;get&lt;/code&gt;. &lt;code&gt;kubectl&lt;/code&gt; has lots of interesting easter eggs.&lt;/p&gt;
-
-&lt;p&gt;Some of the cool things I found as below,&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;List pod along with node name on which they are running&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl get pods -o wide
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl get pod web -o=yaml/json
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;CLI hacks to retrieve minimal information (In this case, pod name and node name)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl get pod -o wide | awk {&#39;print $1&amp;quot; &amp;quot; $7&#39;} | column -t
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;you can directly edit configurations&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl edit pod/web
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You can mention editor of your choice using &lt;code&gt;KUBE_EDITOR&lt;/code&gt; variable,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;KUBE_EDITOR=&amp;quot;sublime&amp;quot; kubectl edit pod/web
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If we want to get any specific thing from configurations&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl get pods web -o jsonpath={.spec.containers[*].name}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cordon&lt;/code&gt; will mark node as unschedulable&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl cordon &amp;lt;ip-of-node&amp;gt; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;uncordon&lt;/code&gt; will mark node as schedulable again&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl uncordon &amp;lt;ip-of-node&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The given node will be marked unschedulable to prevent new pods from arriving. &amp;lsquo;drain&amp;rsquo; evicts the pods . Otherwise, The &amp;lsquo;drain&amp;rsquo; evicts or deletes all pods except replicationcontrollers pods, etc&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl drain &amp;lt;node&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Drain node &amp;ldquo;foo&amp;rdquo;, even if there are pods not managed by a ReplicationController, ReplicaSet,
-Job, DaemonSet or StatefulSet on it&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl drain &amp;lt;node&amp;gt; --force
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Create proxy server between &lt;code&gt;localhost&lt;/code&gt; and kubernetes API server&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl proxy 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;you can mention port of your choice as well,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl proxy --port=8000
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;We can forward local ports to pod (useful for debugging frontend application)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl port-forward &amp;lt;pod_name&amp;gt; &amp;lt;host_port&amp;gt;:&amp;lt;container_port&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Copy files to and from container to our machine&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl cp &amp;lt;file&amp;gt; &amp;lt;podname&amp;gt;:&amp;lt;path&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Sometime you need shortcuts to increase your speed, productivity something like &lt;code&gt;po&lt;/code&gt; for &lt;code&gt;pods&lt;/code&gt;, &lt;code&gt;deploy&lt;/code&gt; for &lt;code&gt;deployments&lt;/code&gt;, you can find all shortcuts here,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;kubectl explain
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Thanks &lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;janakiram&lt;/a&gt; for awesome tutorial.&lt;/p&gt;
-
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=BadzJOlSn24&#34;&gt;https://www.youtube.com/watch?v=BadzJOlSn24&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/janakiramm&#34;&gt;https://twitter.com/janakiramm&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>I was watching video about kubectl by janakiram and surprising I found there is also world of commands rather than create, delete, get. kubectl has lots of interesting easter eggs.
+Some of the cool things I found as below,
+ List pod along with node name on which they are running  kubectl get pods -o wide   If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)  kubectl get pod web -o=yaml/json   CLI hacks to retrieve minimal information (In this case, pod name and node name)  kubectl get pod -o wide | awk {&#39;print $1&amp;quot; &amp;quot; $7&#39;} | column -t   you can directly edit configurations  kubectl edit pod/web   You can mention editor of your choice using KUBE_EDITOR variable,  KUBE_EDITOR=&amp;quot;sublime&amp;quot; kubectl edit pod/web   If we want to get any specific thing from configurations  kubectl get pods web -o jsonpath={.</description>
     </item>
     
     <item>
@@ -1535,96 +191,281 @@ Job, DaemonSet or StatefulSet on it&lt;/li&gt;
       <pubDate>Sat, 23 Sep 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/static-pod/</guid>
-      <description>
-
-&lt;p&gt;Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.&lt;/p&gt;
-
-&lt;p&gt;One of the use case for static pod might be for storage like gluster on each minion or maybe for
-os level debugging on OS like atomic host.&lt;/p&gt;
-
-&lt;p&gt;For testing it, I referred &lt;a href=&#34;https://twitter.com/kelseyhightower&#34;&gt;kelseyhightower&amp;rsquo;s&lt;/a&gt; standalone kubelet guide.&lt;/p&gt;
-
-&lt;p&gt;To install kubelet, we can either download &lt;code&gt;kubelet&lt;/code&gt; binary and set it up manually or we can get it from &lt;code&gt;kubernetes-node&lt;/code&gt; package,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dnf install -y kubernetes-node
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, we need to add Path to to the directory containing pod manifest files to run, or the path to a single pod manifest file.&lt;/p&gt;
-
-&lt;p&gt;Open &lt;code&gt;/etc/kubernetes/kubelet&lt;/code&gt; and add &lt;code&gt;--pod-manifest-path=&amp;lt;manifest_path&amp;gt;&lt;/code&gt;, In my case, it&amp;rsquo;s &lt;code&gt;/home/vagrant&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;so it will look like,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;KUBELET_ARGS=&amp;quot;--cgroup-driver=systemd --pod-manifest-path=/home/vagrant/&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can mention &lt;code&gt;--manifest-url=&amp;lt;URL&amp;gt;&lt;/code&gt; as well, so kubelet will download that manifest file from URL and will apply the changes.&lt;/p&gt;
-
-&lt;p&gt;Also, set &lt;code&gt;--allow-privileged&lt;/code&gt; flag to true in &lt;code&gt;/etc/kubernetes/config&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;KUBE_ALLOW_PRIV=&amp;quot;--allow-privileged=true&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Reload the daemon&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;systemctl daemon-reload
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Start the service&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo systemctl restart kubelet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Enable the service&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo systemctl enable kubelet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Check whether kubelet is running or not,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo systemctl status kubelet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;running-a-static-pod&#34;&gt;Running a static pod&lt;/h3&gt;
-
-&lt;p&gt;I am taking example from official documentation,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apiVersion: v1 
-kind: Pod 
-metadata: 
- name: static-web 
- labels:
-   role: myrole 
-spec: 
- containers: 
- - name: web 
-   image: nginx 
- ports: 
-  - name: web 
-    containerPort: 80 
-    protocol: TCP
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As soon as, we put this manifests in /home/vagrant, kubelet will automatically detect it and will start the containers.&lt;/p&gt;
-
-&lt;p&gt;You can check running containers by &lt;code&gt;docker ps&lt;/code&gt;,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ docker ps
-CONTAINER ID        IMAGE                                                                                     COMMAND                  CREATED             STATUS              PORTS               NAMES
-bd4e42a51f4c        docker.io/nginx@sha256:aa1c5b5f864508ef5ad472c45c8d3b6ba34e5c0fb34aaea24acf4b0cee33187e   &amp;quot;nginx -g &#39;daemon ...&amp;quot;   4 minutes ago       Up 4 minutes                            k8s_web_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
-c0c6c1106515        gcr.io/google_containers/pause-amd64:3.0                                                  &amp;quot;/pause&amp;quot;                 5 minutes ago       Up 5 minutes                            k8s_POD_static-web-127.0.0.1_default_2bdef00423eeb60e6edec38d373da61d_0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For more, you can follow kelsey hightower&amp;rsquo;s &lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;reference&#34;&gt;Reference:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/static-pod/&#34;&gt;Static Pods&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kelseyhightower/standalone-kubelet-tutorial&#34;&gt;Standalone Kubelet Tutorial by kelsey hightower&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kubernetes/kubernetes/pull/10093&#34;&gt;issue 10093 on kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.
+One of the use case for static pod might be for storage like gluster on each minion or maybe for os level debugging on OS like atomic host.
+For testing it, I referred kelseyhightower&amp;rsquo;s standalone kubelet guide.
+To install kubelet, we can either download kubelet binary and set it up manually or we can get it from kubernetes-node package,</description>
+    </item>
+    
+    <item>
+      <title>Multistage build in Docker</title>
+      <link>https://suraj.pro/post/multi-staging/</link>
+      <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/multi-staging/</guid>
+      <description>Example Use Cases When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…
+ Java apps using WAR files
+ First stage uses a container with Maven to compile, test, and build the war file Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.</description>
+    </item>
+    
+    <item>
+      <title>Remove white noise from Videos</title>
+      <link>https://suraj.pro/post/videoguideline/</link>
+      <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/videoguideline/</guid>
+      <description>May times, We have to create demos for projects for which we use various desktop screen recorders along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.
+Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Pune Meetup - July 2017</title>
+      <link>https://suraj.pro/post/k8s-pune-meetup/</link>
+      <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/k8s-pune-meetup/</guid>
+      <description>It was beautiful Saturday morning and we were at yet another chapter of kubernetes Pune meetup. Meetup had a good turnaround of about 30 people, even it was the weekend.
+Harshal Shah started the Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.</description>
+    </item>
+    
+    <item>
+      <title>tools to adopt best practices in golang</title>
+      <link>https://suraj.pro/post/gotools/</link>
+      <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/gotools/</guid>
+      <description>I went through internet yesterday regarding best practices with golang, I found go-tools written by Dominik Honnef which were pretty interesting and can be . I found some of them useful for me, so are they listed below.
+static check  applies tons of static analysis checks.
+ it needs go 1.6 or later,
+  go get honnef.co/go/tools/cmd/staticcheck   syntax is:  $ statickcheck [pkg] or [directory]   I tried it for kompose with some extra hacks:  $ for pkg in $(go list -f &#39;{{ join .</description>
+    </item>
+    
+    <item>
+      <title>Golang workaround for cannot assign to struct field in map</title>
+      <link>https://suraj.pro/post/golang_workaround/</link>
+      <pubDate>Sun, 28 May 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/golang_workaround/</guid>
+      <description>Yesterday, I was working one of the Kompose issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,
+package main import &amp;quot;fmt&amp;quot; type Animal struct { count int } func main() { m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}} fmt.Println(m) m[&amp;quot;dog&amp;quot;].count = 4 fmt.Println(m) }  so I got this error,</description>
+    </item>
+    
+    <item>
+      <title>The GO Workshop by Baiju</title>
+      <link>https://suraj.pro/post/goworkshop/</link>
+      <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/goworkshop/</guid>
+      <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&amp;rsquo;s, who was workshop instructor, started with introduction of golang.
+He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.
+Workshop course material can be found here.
+Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
+    </item>
+    
+    <item>
+      <title>What&#39;s new in Docker ?</title>
+      <link>https://suraj.pro/post/whats-new-in-docker/</link>
+      <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/whats-new-in-docker/</guid>
+      <description>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.
+ Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
+   As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.</description>
+    </item>
+    
+    <item>
+      <title>Migration to Hugo</title>
+      <link>https://suraj.pro/post/migration-to-hugo/</link>
+      <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/migration-to-hugo/</guid>
+      <description>Hello guys, its been so long, I havn&amp;rsquo;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
+Installing Hugo .
+ Install hugo  $ go get -v github.com/spf13/hugo   Check whether it is properly installed or not  $ hugo help  Using Hugo .</description>
+    </item>
+    
+    <item>
+      <title>How to install OpenStack-packstack from source and test individual patches locally!</title>
+      <link>https://suraj.pro/post/blog17/</link>
+      <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog17/</guid>
+      <description>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña 1. have used centos 7 box for this purpose.</description>
+    </item>
+    
+    <item>
+      <title>PyCon India 2016 - Weekend I’ll never forget</title>
+      <link>https://suraj.pro/post/blog16/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog16/</guid>
+      <description>Woo! It was so exciting, because It was my First PyCon ,First conference, First flight and First time Delhi. 1. Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P</description>
+    </item>
+    
+    <item>
+      <title>It&#39;s our time Now !!! PythonPune July Meetup</title>
+      <link>https://suraj.pro/post/blog15/</link>
+      <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog15/</guid>
+      <description>Python Pune July Meetup was held at Red Hat, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns. Around 40 pythonistas were present for meetups, some were students and some were professionals. Topics for the meetup were as below:
+ How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj   Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.</description>
+    </item>
+    
+    <item>
+      <title>Jenkins Docker Integration along with Fedora Contribution</title>
+      <link>https://suraj.pro/post/blog14/</link>
+      <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog14/</guid>
+      <description>Hello Everyone, From Past few days, I was studying Jenkins, 1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</description>
+    </item>
+    
+    <item>
+      <title>Why You Should Attend PyCon India 2016?</title>
+      <link>https://suraj.pro/post/blog13/</link>
+      <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog13/</guid>
+      <description>Because you are new to python   If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
+ Because you are hiring   Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</description>
+    </item>
+    
+    <item>
+      <title>How to Setup Private Docker Registry in Fedora/CentOS ?</title>
+      <link>https://suraj.pro/post/blog11/</link>
+      <pubDate>Mon, 27 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog11/</guid>
+      <description>When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. Docker Hub Regitry
+What is Private Docker Registry ?
+If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
+      <link>https://suraj.pro/post/blog12/</link>
+      <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog12/</guid>
+      <description>Python Pune Meetup was held @ Red Hat, Pune and that was about Part III of Machine learning by Sudarshan Gadhave on 25th June 2016.
+This time, along with Chandan, Me, ganesh and satyajit were the Event Host :)
+Meetup was specifically targeted as hackathon based on python pandas and numpy what we have covered in previous meetup.
+Meetup was titled as Data DOJO,(a bit weird) it means practicing and developing skills along with brainstorming ideas, real time problems to solve.</description>
+    </item>
+    
+    <item>
+      <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
+      <link>https://suraj.pro/post/blog10/</link>
+      <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog10/</guid>
+      <description>What is Pycon India ?
+PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.
+When &amp;amp; Where it is happening ?
+23-25 Sepetember 2016
+Convention Centre Jawahar Lal Nehru University, New Mehrauli Road, Near Munirka, New Delhi - 110067
+Why to Sponser Us ?</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
+      <link>https://suraj.pro/post/blog9/</link>
+      <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog9/</guid>
+      <description>Python Pune Meetup was held @ Amazatic Solutions and that was about Part II of Machine learning by Sudarshan Gadhave on 28th May 2016. Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.
+Sudarshan started from Required tools/libraries for machine learning :
+ Ipython numpy python-pandas python-scikit-learn matplotlib   These are best opensource alternatives to softwares like MATLAB !!
+Machine learning is all about technical,business and statistics.</description>
+    </item>
+    
+    <item>
+      <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
+      <link>https://suraj.pro/post/blog8/</link>
+      <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog8/</guid>
+      <description>Kubernetes
+Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated. It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;
+.
+In this blog post, we’ll install a Kubernetes cluster with three minions on Fedora 23, we will also see example on how to manage pods.</description>
+    </item>
+    
+    <item>
+      <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
+      <link>https://suraj.pro/post/blog7/</link>
+      <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog7/</guid>
+      <description>Hello, after long time, I am writing for a good reason :P 1. had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it:
+https://www.rdoproject.org/community/rdo-bugtriage/
+(I also came to know it just day before yesterday :-))
+As a newbie to RDO community, ChandanKumar and Matthias Runge guided me to what to do there. So, I had created account on http://bugzilla.</description>
+    </item>
+    
+    <item>
+      <title>Machine Learning Begins Here !!! @ #pythonpune</title>
+      <link>https://suraj.pro/post/blog6/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog6/</guid>
+      <description>Data is present everywhere at malls, multiplexes, online shopping sites, dating sites, government intelligence almost everywhere that continuously needs to be monitor &amp;amp; analyse, which is very huge data, which cant be analysed by human, at that point machine learning came into picture.
+For introduction to that #PythonPune added new chapter to its Pythonpune Meetup which was held on 30 April 2016 at Red Hat office, Magarpatta.
+Almost 70-80 peoples were there(which was unexpected for us).</description>
+    </item>
+    
+    <item>
+      <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
+      <link>https://suraj.pro/post/blog5/</link>
+      <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog5/</guid>
+      <description>April Fedora meetup was dedicated to “Unit testing”.
+As I am into DevOps, usually i had seen various automated tests that was carried out by jenkins are nothing but unit test but i was always wondered what is this?? Kushal gave us brief idea about unit test :
+unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.</description>
+    </item>
+    
+    <item>
+      <title>Gerrit Error not Signed-off-by author/........ Resolved</title>
+      <link>https://suraj.pro/post/blog4/</link>
+      <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog4/</guid>
+      <description>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows, Everything works fine ;) ,
+ [user@localhost project]$ git commit --amend [project d9593ab] &amp;lt;commit message here&amp;gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py  While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
+ [user@localhost project]$ git review develop remote: Processing changes: refs: 1, done.</description>
+    </item>
+    
+    <item>
+      <title>So amazing when you&#39;re riding on a ray of sunshine.....</title>
+      <link>https://suraj.pro/post/blog3/</link>
+      <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog3/</guid>
+      <description>I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P. ‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’ Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp;amp; awesome, I got to know new things every single day !</description>
+    </item>
+    
+    <item>
+      <title>Finally Interns family completed !</title>
+      <link>https://suraj.pro/post/blog2/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog2/</guid>
+      <description>Finally Interns family completed !
+It was 8 February, I came at office bit early ;) .
+Seema welcomed us(new joinees) &amp;amp; took care of all documentation process. Then, Manoj takes us for tour of whole office. It was awesome( Especially 5th floor) and then introduced me to Manager Devang Parikh, Mentor Rishabh Das and Team Lead Shrink ;)
+Then, Rishabh helped me to setup all things &amp;amp; told me about workflow in brief &amp;amp; also about CI/CD, Jenkins, Ansible, Openstack etc.</description>
+    </item>
+    
+    <item>
+      <title>Happiness is when @gmail.com changing to @redhat.com</title>
+      <link>https://suraj.pro/post/blog1/</link>
+      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://suraj.pro/post/blog1/</guid>
+      <description>On 3rd January 2016, I was practising in my institute for my RHCSA in OpenStack certification, it was around 11:45 pm and suddenly, My Instructor Ashutosh Sir told me regarding internship interview at Red Hat on 10th January. I started preparing for interview immediately . (First Job interview, little bit tension, few days left)
+Surprisingly, there was a call from Red Hat ( First Telephonic interview by Rishabh Das) on 7 Jan 2016 in morning, for a while I thought it was from GSS team, I cracked it and I got script( it was shell &amp;amp; python script) to write for second round of screening, I completed it and submitted on next day itself(one day before deadline because there was exam scheduled on next day)</description>
     </item>
     
   </channel>
