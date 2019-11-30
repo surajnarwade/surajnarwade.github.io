@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -91,16 +100,11 @@ ga('create', '75855569', 'auto');
             <span class="post-date">Apr 24, 2016 </span>
             <div class="post-content">
                 <p>April Fedora meetup was dedicated to “Unit testing”.</p>
-
 <p>As I am into DevOps, usually i had seen various automated tests  that was carried out by jenkins are nothing but unit test but i  was always wondered what is this??
 Kushal gave us brief idea about unit test :</p>
-
 <p><em>unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.</em></p>
-
 <p>as well unit test gives you opportunity to scrutinize your own code for proper operation.</p>
-
 <p>And also he gave an example of unit test for ‘cat’ command, for that we cloned <a href="https://github.com/kushaldas/tunirtests">https://github.com/kushaldas/tunirtests</a> ( as we had to used some functions from these files )</p>
-
 <pre><code> import unittest
  from testutils import system
  class Firetest(unittest.TestCase): 
@@ -110,10 +114,7 @@ Kushal gave us brief idea about unit test :</p>
     	self.assertIn('Fedora',out)
  if __name__ == '__main__' :
      unittest.main()
-</code></pre>
-
-<p>Then, Kushal and Pravin gave different test cases to each one of us, I got test case to check selinux context of file ( i.e. restorecon command ) whether we are getting same result after &lsquo;restorecon&rsquo; or not:</p>
-
+</code></pre><p>Then, Kushal and Pravin gave different test cases to each one of us, I got test case to check selinux context of file ( i.e. restorecon command ) whether we are getting same result after &lsquo;restorecon&rsquo; or not:</p>
 <pre><code> import unittest
  from testutils import system
  class Firetest(unittest.TestCase) : 
@@ -126,20 +127,13 @@ Kushal gave us brief idea about unit test :</p>
         self.assertEqual(out,out2)
  if __name__ == '__main__' : 
     unittest.main()
-</code></pre>
-
-<p>As I was new to fedora meetup, i got connected with new friends too.</p>
-
+</code></pre><p>As I was new to fedora meetup, i got connected with new friends too.</p>
 <p>This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.</p>
-
-<p><img src="/fedora.png" width="600" height="400" />
-<img src="/fedora1.png" width="600" height="400" /></p>
-
+<p><!-- raw HTML omitted -->
+<!-- raw HTML omitted --></p>
 <ol>
-<li>forget to mention above, we had tasty snacks and drinks too !!! :P
-<br /></li>
+<li>forget to mention above, we had tasty snacks and drinks too !!! :P</li>
 </ol>
-
 <p>Thank you, <a href="https://twitter.com/ciypro">ChandanKumar</a>, <a href="https://twitter.com/kushaldas">Kushal Das</a>, <a href="https://twitter.com/kumar_pravin">PravinKumar</a> and all !!!
 for more regarding unit tests, read here : <a href="http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing">http://pymbook.readthedocs.org/en/latest/testing.html#unit-testing</a></p>
 
@@ -171,7 +165,7 @@ for more regarding unit tests, read here : <a href="http://pymbook.readthedocs.o
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

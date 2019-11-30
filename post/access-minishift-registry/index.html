@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -93,53 +102,32 @@ ga('create', '75855569', 'auto');
                 <ul>
 <li>Configure your shell to use docker daemon of Minishift</li>
 </ul>
-
 <pre><code>eval $(minishift docker-env)
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>export user token registry URL</li>
 </ul>
-
 <pre><code>export TOKEN=$(oc whoami -t)
 export REGISTRY_URL=$(minishift openshift registry)
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Logging in to Registry</li>
 </ul>
-
 <pre><code>docker login -u developer -p $TOKEN $REGISTRY_URL
-</code></pre>
-
-<p>OR</p>
-
+</code></pre><p>OR</p>
 <ul>
 <li>we can use directly as,</li>
 </ul>
-
 <pre><code>docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)
-</code></pre>
-
-<p>Now you can tag images, push it to respective project to create imagestream</p>
-
+</code></pre><p>Now you can tag images, push it to respective project to create imagestream</p>
 <pre><code>docker tag mynodejs $(minishift openshift registry)/myproject/nodejs
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Push the docker image to registry so that it will create imagestream automatically,</li>
 </ul>
-
 <pre><code>docker push $(minishift openshift registry)/myproject/nodejs
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Now you can create application using the new imagestream,</li>
 </ul>
-
 <pre><code>oc new-app --image-stream=nodejs --name app
 </code></pre>
-
             </div>
             
             <div class="post-comments">
@@ -168,7 +156,7 @@ export REGISTRY_URL=$(minishift openshift registry)
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

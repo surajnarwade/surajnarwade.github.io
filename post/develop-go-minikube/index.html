@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,43 +99,30 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/develop-go-minikube/">Local Development of golang app with minikube &amp; ko</a></h1>
             <span class="post-date">Dec 5, 2018 </span>
             <div class="post-content">
-                
-
-<p><br/></p>
-
+                <!-- raw HTML omitted -->
 <p>While exploring, I came across <code>ko</code> tool by google &amp; found interesting since it buids and deploy golang applications to kubernetes easily.
 This post is for minikube only since I am focussing on local development.</p>
-
-<h1 id="pre-flight-checks">Pre-Flight Checks</h1>
-
-<p><br/></p>
-
+<h1 id="preflight-checks">Pre-Flight Checks</h1>
+<!-- raw HTML omitted -->
 <ul>
 <li>Installing <code>ko</code></li>
 </ul>
-
 <pre><code>go get github.com/google/go-containerregistry/cmd/ko
-</code></pre>
-
-<p>That&rsquo;s it :)</p>
-
+</code></pre><p>That's it :)</p>
 <ul>
-<li><p>Verify your installation by <code>which ko</code></p></li>
-
-<li><p>We can mention any docker registry (local or remote) using <code>KO_DOCKER_REPO</code> env variable, but as we are focussing on local development, we will publish images to minikube&rsquo;s docker daemon</p></li>
+<li>
+<p>Verify your installation by <code>which ko</code></p>
+</li>
+<li>
+<p>We can mention any docker registry (local or remote) using <code>KO_DOCKER_REPO</code> env variable, but as we are focussing on local development, we will publish images to minikube's docker daemon</p>
+</li>
 </ul>
-
 <pre><code>eval $(minikube docker-env)
-</code></pre>
-
-<h1 id="let-s-do-it">Let&rsquo;s do it</h1>
-
-<p><br/></p>
-
+</code></pre><h1 id="lets-do-it">Let's do it</h1>
+<!-- raw HTML omitted -->
 <ul>
 <li>take sample go web application:</li>
 </ul>
-
 <pre><code>package main
 
 import (
@@ -143,12 +139,9 @@ func main() {
 	http.HandleFunc(&quot;/&quot;, handler)
 	log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
 }
-</code></pre>
-
-<ul>
-<li>Now we need to write small <code>Deployment</code> (config.yml) file, but here&rsquo;s the magical part, instead of <code>image</code> name, we will be mentioning import path of go code. Cick <a href="https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md#determining-supported-import-paths">here</a> for allowed paths.</li>
+</code></pre><ul>
+<li>Now we need to write small <code>Deployment</code> (config.yml) file, but here's the magical part, instead of <code>image</code> name, we will be mentioning import path of go code. Cick <a href="https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md#determining-supported-import-paths">here</a> for allowed paths.</li>
 </ul>
-
 <pre><code>apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -169,54 +162,40 @@ spec:
         image: github.com/surajnarwade/webapp
         ports:
         - containerPort: 8080
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>we also need to expose this deployment to access it</li>
 </ul>
-
 <pre><code>kubectl expose deployment hello-world --type=NodePort
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>all set, now magic will begin,</li>
 </ul>
-
 <pre><code>ko apply -L -f config.yml
-</code></pre>
-
-<p><code>-L</code> indicates publishing images locally</p>
-
+</code></pre><p><code>-L</code> indicates publishing images locally</p>
 <ul>
-<li><p>check <code>minikube service hello-world</code>, you will see the output <code>Hi there</code>, isn&rsquo;t it cool ?</p></li>
-
-<li><p>Now you can make changes to code &amp; again do <code>ko apply -L -f config.yml</code>, you will see changes reflected :)</p></li>
-
-<li><p>In this way, we can do local development of golang code with minikube, this looks cool but there&rsquo;s scope of more improvement too :P</p></li>
+<li>
+<p>check <code>minikube service hello-world</code>, you will see the output <code>Hi there</code>, isn't it cool ?</p>
+</li>
+<li>
+<p>Now you can make changes to code &amp; again do <code>ko apply -L -f config.yml</code>, you will see changes reflected :)</p>
+</li>
+<li>
+<p>In this way, we can do local development of golang code with minikube, this looks cool but there's scope of more improvement too :P</p>
+</li>
 </ul>
-
-<h1 id="what-happens-behind-the-scene">What happens behind the scene ?</h1>
-
-<p><br/></p>
-
+<h1 id="what-happens-behind-the-scene-">What happens behind the scene ?</h1>
+<!-- raw HTML omitted -->
 <ul>
 <li><code>ko</code> takes the import path of go code from the deployment, it builds the go binary.</li>
 <li>then, it creates new docker image with <code>distroless</code> as a base image and copies binary into it.</li>
 <li>it updates the deployment with this new image :)</li>
 </ul>
-
-<p><br/></p>
-
+<!-- raw HTML omitted -->
 <h2 id="reference">Reference:</h2>
-
-<p><br/></p>
-
+<!-- raw HTML omitted -->
 <ul>
 <li><a href="https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md">https://github.com/google/go-containerregistry/blob/master/cmd/ko/README.md</a></li>
 </ul>
-
-<p><br/></p>
-
+<!-- raw HTML omitted -->
 <p><strong>Happy Hacking :)</strong></p>
 
             </div>
@@ -247,7 +226,7 @@ spec:
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

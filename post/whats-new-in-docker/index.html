@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,20 +99,18 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/whats-new-in-docker/">What&#39;s new in Docker ?</a></h1>
             <span class="post-date">Mar 21, 2017 </span>
             <div class="post-content">
-                
-
-<ul>
-<li><p>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.</p></li>
-
-<li><p>Docker version that I installed is 17.03.0-ce, <a href="https://docs.docker.com/engine/installation/linux/fedora/">Click here</a> to know how to install Docker</p></li>
+                <ul>
+<li>
+<p>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.</p>
+</li>
+<li>
+<p>Docker version that I installed is 17.03.0-ce, <a href="https://docs.docker.com/engine/installation/linux/fedora/">Click here</a> to know how to install Docker</p>
+</li>
 </ul>
-
-<p><img src="/docker.png" width="400" height="300" align="middle"/></p>
-
+<!-- raw HTML omitted -->
 <ul>
 <li>As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.</li>
 </ul>
-
 <pre><code>$ docker --help
 
 Usage:	docker COMMAND
@@ -128,12 +135,9 @@ Commands:
  ...
  ...
 Run 'docker COMMAND --help' for more information on a command.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>For example, Under <code>docker container</code>, all commands related to managing to containers are classified.</li>
 </ul>
-
 <pre><code>$ docker container --help
 Usage:	docker container COMMAND
 
@@ -152,109 +156,93 @@ Commands:
   wait        Block until one or more containers stop, then print their exit codes
 
 Run 'docker container COMMAND --help' for more information on a command.
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>There is new feature here, which makes plugin management in docker easier, now we can easily install or delete or get information about plugins.</li>
 </ul>
+<pre><code>$ docker plugin --help
+Usage:	docker plugin COMMAND
 
-<pre><code> $ docker plugin --help
- Usage:	docker plugin COMMAND
- 
- Manage plugins
- 
- Options:
-       --help   Print usage
- 
- Commands:
-   create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
-   disable     Disable a plugin
-   enable      Enable a plugin
-   inspect     Display detailed information on one or more plugins
-   install     Install a plugin
-   ls          List plugins
-   push        Push a plugin to a registry
-   rm          Remove one or more plugins
-   set         Change settings for a plugin
-   upgrade     Upgrade an existing plugin
+Manage plugins
 
-</code></pre>
+Options:
+      --help   Print usage
 
-<h1 id="new-aliases">New Aliases:</h1>
+Commands:
+  create      Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.
+  disable     Disable a plugin
+  enable      Enable a plugin
+  inspect     Display detailed information on one or more plugins
+  install     Install a plugin
+  ls          List plugins
+  push        Push a plugin to a registry
+  rm          Remove one or more plugins
+  set         Change settings for a plugin
+  upgrade     Upgrade an existing plugin
 
+</code></pre><h1 id="new-aliases">New Aliases:</h1>
 <ul>
 <li><code>docker container ls</code> is same as <code>docker ps</code></li>
 </ul>
-
 <pre><code>$ docker container ls -a
 CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS                          PORTS               NAMES
 66d17f3bc07e        hello-world         &quot;/hello&quot;            About a minute ago   Exited (0) About a minute ago                       ecstatic_lamarr 
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li><code>docker image ls</code> is same as  <code>docker images</code></li>
 </ul>
-
 <pre><code># docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 fedora              latest              0047cca29c6f        5 days ago          230 MB
 hello-world         latest              48b5124b2768        2 months ago        1.84 kB
-</code></pre>
-
-<h1 id="new-docker-system-command-added">New <code>docker system</code> command added:</h1>
-
+</code></pre><h1 id="new-docker-system-command-added">New <code>docker system</code> command added:</h1>
 <ul>
 <li><code>docker system df</code> - <em>Show docker disk Usage</em></li>
 </ul>
-
 <pre><code># docker system df
 TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
 Images              1                   0                   1.84 kB             1.84 kB (100%)
 Containers          0                   0                   0 B                 0 B
 Local Volumes       0                   0                   0 B                 0 B
-</code></pre>
-
-<ul>
-<li><p><code>docker system events</code> - <em>Get real time events (like oc get events in openshift)</em></p></li>
-
-<li><p><code>docker system info</code> - <em>Displays System-wide information</em></p></li>
-
-<li><p><code>docker system prune</code> - <em>Removes unused data</em></p></li>
+</code></pre><ul>
+<li>
+<p><code>docker system events</code> - <em>Get real time events (like oc get events in openshift)</em></p>
+</li>
+<li>
+<p><code>docker system info</code> - <em>Displays System-wide information</em></p>
+</li>
+<li>
+<p><code>docker system prune</code> - <em>Removes unused data</em></p>
+</li>
 </ul>
-
 <pre><code>WARNING! This will remove:
 	- all stopped containers
 	- all volumes not used by at least one container
 	- all networks not used by at least one container
 	- all dangling images
 Are you sure you want to continue? [y/N]
-</code></pre>
-
-<h1 id="new-prune-feature-added">New <code>prune</code> feature added:</h1>
-
+</code></pre><h1 id="new-prune-feature-added">New <code>prune</code> feature added:</h1>
 <ul>
-<li><p><code>docker container prune</code> - <em>Remove all stopped containers</em></p></li>
-
-<li><p><code>docker image prune</code> - <em>Remove unused images</em></p></li>
-
-<li><p><code>docker network prune</code> - <em>Remove all unused networks</em></p></li>
-
-<li><p><code>docker volume prune</code> - <em>Remove all unused volumes</em></p></li>
+<li>
+<p><code>docker container prune</code> - <em>Remove all stopped containers</em></p>
+</li>
+<li>
+<p><code>docker image prune</code> - <em>Remove unused images</em></p>
+</li>
+<li>
+<p><code>docker network prune</code> - <em>Remove all unused networks</em></p>
+</li>
+<li>
+<p><code>docker volume prune</code> - <em>Remove all unused volumes</em></p>
+</li>
 </ul>
-
 <p><strong>above all things can be achieved by using one command also,</strong></p>
-
 <ul>
 <li><strong><code>docker system prune</code></strong> (WARNING!, be careful with this command.)</li>
 </ul>
-
 <p>#Reference:</p>
-
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/commandline/docker/">Click here</a> for more command line reference.</li>
 </ul>
-
-<h2 id="thanks-happy-hacking">Thanks, Happy Hacking !!!</h2>
+<h2 id="thanks-happy-hacking-">Thanks, Happy Hacking !!!</h2>
 
             </div>
             
@@ -284,7 +272,7 @@ Are you sure you want to continue? [y/N]
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

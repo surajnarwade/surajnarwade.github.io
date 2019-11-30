@@ -6,7 +6,7 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
 	</head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -97,11 +106,27 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/gotools/">tools to adopt best practices in golang</a></h4>
+							<h4 class="post-date">Jul 6, 2017</h4>
+						</div>
+						<div class="post-summary"><p>I went through internet yesterday regarding best practices with golang, I found go-tools written by Dominik Honnef which were pretty interesting and can be . I found some of them useful for me, so are they listed below.
+static check   applies tons of static analysis checks.
+  it needs go 1.6 or later,
+  go get honnef.co/go/tools/cmd/staticcheck  syntax is:  $ statickcheck [pkg] or [directory]  I tried it for kompose with some extra hacks:  $ for pkg in $(go list -f '{{ join .</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/gotools/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/golang_workaround/">Golang workaround for cannot assign to struct field in map</a></h4>
 							<h4 class="post-date">May 28, 2017</h4>
 						</div>
 						<div class="post-summary"><p>Yesterday, I was working one of the Kompose issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,
-package main import &quot;fmt&quot; type Animal struct { count int } func main() { m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}} fmt.Println(m) m[&quot;dog&quot;].count = 4 fmt.Println(m) }  so I got this error,</p></div>
+package main import &quot;fmt&quot; type Animal struct { count int } func main() { m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}} fmt.Println(m) m[&quot;dog&quot;].count = 4 fmt.Println(m) } so I got this error,</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/golang_workaround/">Read More</a>
 						</div>
@@ -114,7 +139,7 @@ package main import &quot;fmt&quot; type Animal struct { count int } func main()
 							<h4 class="post-link"><a href="https://suraj.pro/post/goworkshop/">The GO Workshop by Baiju</a></h4>
 							<h4 class="post-date">May 7, 2017</h4>
 						</div>
-						<div class="post-summary"><p>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&rsquo;s, who was workshop instructor, started with introduction of golang.
+						<div class="post-summary"><p>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju's, who was workshop instructor, started with introduction of golang.
 He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.
 Workshop course material can be found here.
 Me(SurajN), SurajD and Zeeshan volunteered for the event.</p></div>
@@ -131,7 +156,7 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</p></div>
 							<h4 class="post-date">Mar 21, 2017</h4>
 						</div>
 						<div class="post-summary"><p>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.
- Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
+  Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
    As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/whats-new-in-docker/">Read More</a>
@@ -145,9 +170,9 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</p></div>
 							<h4 class="post-link"><a href="https://suraj.pro/post/migration-to-hugo/">Migration to Hugo</a></h4>
 							<h4 class="post-date">Mar 13, 2017</h4>
 						</div>
-						<div class="post-summary"><p>Hello guys, its been so long, I havn&rsquo;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
+						<div class="post-summary"><p>Hello guys, its been so long, I havn't written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
 Installing Hugo .
- Install hugo  $ go get -v github.com/spf13/hugo   Check whether it is properly installed or not  $ hugo help  Using Hugo .</p></div>
+ Install hugo  $ go get -v github.com/spf13/hugo  Check whether it is properly installed or not  $ hugo help Using Hugo .</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/migration-to-hugo/">Read More</a>
 						</div>
@@ -160,7 +185,8 @@ Installing Hugo .
 							<h4 class="post-link"><a href="https://suraj.pro/post/blog17/">How to install OpenStack-packstack from source and test individual patches locally!</a></h4>
 							<h4 class="post-date">Nov 3, 2016</h4>
 						</div>
-						<div class="post-summary"><p>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña 1. have used centos 7 box for this purpose.</p></div>
+						<div class="post-summary"><p>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña
+ have used centos 7 box for this purpose.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog17/">Read More</a>
 						</div>
@@ -173,7 +199,8 @@ Installing Hugo .
 							<h4 class="post-link"><a href="https://suraj.pro/post/blog16/">PyCon India 2016 - Weekend I’ll never forget</a></h4>
 							<h4 class="post-date">Oct 3, 2016</h4>
 						</div>
-						<div class="post-summary"><p>Woo! It was so exciting, because It was my First PyCon ,First conference, First flight and First time Delhi. 1. Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P</p></div>
+						<div class="post-summary"><p>Woo! It was so exciting, because It was my First [PyCon]( https://in.pycon.org/2016/`_) ,First conference, First flight and First time Delhi.
+ Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P  Day1</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog16/">Read More</a>
 						</div>
@@ -187,7 +214,7 @@ Installing Hugo .
 							<h4 class="post-date">Aug 1, 2016</h4>
 						</div>
 						<div class="post-summary"><p>Python Pune July Meetup was held at Red Hat, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns. Around 40 pythonistas were present for meetups, some were students and some were professionals. Topics for the meetup were as below:
- How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj   Meetup started with Rahul Bajaj&rsquo;s topic regarding Regular Expressions.</p></div>
+ How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj  Meetup started with Rahul Bajaj's topic regarding Regular Expressions.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog15/">Read More</a>
 						</div>
@@ -200,7 +227,8 @@ Installing Hugo .
 							<h4 class="post-link"><a href="https://suraj.pro/post/blog14/">Jenkins Docker Integration along with Fedora Contribution</a></h4>
 							<h4 class="post-date">Jul 11, 2016</h4>
 						</div>
-						<div class="post-summary"><p>Hello Everyone, From Past few days, I was studying Jenkins, 1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</p></div>
+						<div class="post-summary"><p>Hello Everyone, From Past few days, I was studying Jenkins,
+ have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog14/">Read More</a>
 						</div>
@@ -213,25 +241,10 @@ Installing Hugo .
 							<h4 class="post-link"><a href="https://suraj.pro/post/blog13/">Why You Should Attend PyCon India 2016?</a></h4>
 							<h4 class="post-date">Jul 5, 2016</h4>
 						</div>
-						<div class="post-summary"><p>Because you are new to python   If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
- Because you are hiring   Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</p></div>
+						<div class="post-summary"><p>Because you are new to python  If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
+ Because you are hiring  Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog13/">Read More</a>
-						</div>
-					</div>
-				</li>
-			
-				<li>
-					<div class="post-list-item">
-						<div class="post-header">
-							<h4 class="post-link"><a href="https://suraj.pro/post/blog11/">How to Setup Private Docker Registry in Fedora/CentOS ?</a></h4>
-							<h4 class="post-date">Jun 27, 2016</h4>
-						</div>
-						<div class="post-summary"><p>When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. Docker Hub Regitry
-What is Private Docker Registry ?
-If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.</p></div>
-						<div class="post-list-footer text-center">
-							<a href="https://suraj.pro/post/blog11/">Read More</a>
 						</div>
 					</div>
 				</li>
@@ -283,7 +296,7 @@ If you want to keep your images private to yourself only, instead of going them 
 			<div class="push"></div>
 		</div>
 		<footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

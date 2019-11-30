@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Suraj Narwade</title>
@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Apr 2019 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2020 21:21:49 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Unleashing the power of kubectl</title>
+      <link>https://suraj.pro/post/powerofkubectl/</link>
+      <pubDate>Thu, 13 Feb 2020 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/powerofkubectl/</guid>
+      <description>Continuing with previous post,
+kubectl explain --raw /  Editor of your choice  By default, kubectl uses default editor (which is most of the time vim or nano), you can set editor of your choice by setting the following environment variable with editor of you choice.
+export KUBE_EDITOR=`code --wait`  Edit while you create  You can edit the resource definition right before deploying whether from a file or remote link.</description>
+    </item>
     
     <item>
       <title>Creating users on OpenShift 4</title>
@@ -17,9 +28,10 @@
       <pubDate>Sat, 13 Apr 2019 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/user-on-os4/</guid>
-      <description>It&amp;rsquo;s always bit of confusing about OpenShift 4 :D here&amp;rsquo;s how we can add user in OpenShift 4.
- Create htpasswd file as below and users and their passwords,   $ htpasswd -cb users.htpasswd user1 user1pass  $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &amp;gt; Cluster Settings &amp;gt; Global Configuration
- Click on Edit YAML in front of Oauth</description>
+      <description>It&#39;s always bit of confusing about OpenShift 4 :D here&#39;s how we can add user in OpenShift 4.
+ Create htpasswd file as below and users and their passwords,  $ htpasswd -cb users.htpasswd user1 user1pass $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &amp;gt; Cluster Settings &amp;gt; Global Configuration
+  Click on Edit YAML in front of Oauth
+  Click on Overview, under Identity Providers section, Click on Add and select HTPasswd</description>
     </item>
     
     <item>
@@ -31,7 +43,7 @@
       <description>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.
 On day 1, his boss gave him a Code Repository &amp;amp; his OpenShift Platform Credentials to work his magic.
 Warlock got his code,
-git clone https://github.com/sclorg/nodejs-ex  But was unclear about how to proceed as he had no idea about OpenShift. He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it.</description>
+git clone https://github.com/sclorg/nodejs-ex But was unclear about how to proceed as he had no idea about OpenShift. He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it.</description>
     </item>
     
     <item>
@@ -41,10 +53,9 @@ git clone https://github.com/sclorg/nodejs-ex  But was unclear about how to proc
       
       <guid>https://suraj.pro/post/develop-go-minikube/</guid>
       <description>While exploring, I came across ko tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
-Pre-Flight Checks 
- Installing ko  go get github.com/google/go-containerregistry/cmd/ko  That&amp;rsquo;s it :)
- Verify your installation by which ko
- We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&amp;rsquo;s docker daemon</description>
+Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That&#39;s it :)
+  Verify your installation by which ko
+  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&#39;s docker daemon</description>
     </item>
     
     <item>
@@ -53,10 +64,7 @@ Pre-Flight Checks
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/exploring-k8s-part1/</guid>
-      <description>Nowadays, I am learning advance golang, along with that knowledge, I am trying to understand kubernetes in more depth. I found client-go as goto thing to explore &amp;amp; learn things. I am also putting respective client-go code links wherever needed.
-What&amp;rsquo;s client-go ?  Simple, golang client library for talking to kubernetes cluster
-Where&amp;rsquo;s client-go ? 
- you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.</description>
+      <description>What&#39;s client-go ? Where&#39;s client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it&#39;s interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</description>
     </item>
     
     <item>
@@ -66,8 +74,8 @@ Where&amp;rsquo;s client-go ?
       
       <guid>https://suraj.pro/post/exploring-k8s-part2/</guid>
       <description>If you have kubeconfig file already in place,
-kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{})  There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
- Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()   REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()   if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig()  Here, kubeconfig is interface of following type:</description>
+kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{}) There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
+ Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()  REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()  if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig() Here, kubeconfig is interface of following type:</description>
     </item>
     
     <item>
@@ -79,8 +87,9 @@ kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.N
       <description>we got restConfig and namespace, connection is set up Yay
 From this restconfig, Now we need to create respective clients for further operations
 we will need following package:
-import k8s.io/client-go/kubernetes   create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig)  it returns clients for APIgroups like: * Apps * CoreV1 * Batch * StorageV1
-If you have some custom controller, generated code will have NewForConfig function which you have call separately,</description>
+import k8s.io/client-go/kubernetes  create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig) it returns clients for APIgroups like:
+ Apps CoreV1 Batch StorageV1  If you have some custom controller, generated code will have NewForConfig function which you have call separately,
+For example, In case of service catalog,</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@ If you have some custom controller, generated code will have NewForConfig functi
       <pubDate>Thu, 15 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/nmcli101/</guid>
-      <description>  To check devices:   nmcli device status   Overall status of NetworkManager:  nmcli general status   Display connections:  nmcli connection show   display only active connections:  nmcli connection show --active  WI-FI  Check wifi status   nmcli radio wifi   Turn on the wifi  nmcli radio wifi on   Turn off the wifi  nmcli radio wifi off   List available wifi access points  nmcli device wifi list   Refresh the access point list  nmcli device wifi rescan   Connect to wifi  nmcli device wifi connect &amp;lt;SSID&amp;gt;   Connect to password protected access point  nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt;  </description>
+      <description> To check devices:  nmcli device status  Overall status of NetworkManager:  nmcli general status  Display connections:  nmcli connection show  display only active connections:  nmcli connection show --active WI-FI  Check wifi status  nmcli radio wifi  Turn on the wifi  nmcli radio wifi on  Turn off the wifi  nmcli radio wifi off  List available wifi access points  nmcli device wifi list  Refresh the access point list  nmcli device wifi rescan  Connect to wifi  nmcli device wifi connect &amp;lt;SSID&amp;gt;  Connect to password protected access point  nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt; </description>
     </item>
     
     <item>
@@ -100,9 +109,8 @@ If you have some custom controller, generated code will have NewForConfig functi
       <guid>https://suraj.pro/post/journey-to-cka/</guid>
       <description>Hello Folks,
 I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp;amp; I scored 92%, Yay :)
-I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.
-A bit about Exam: 
- Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</description>
+I got so many request about How to prepare for the exam, Here&#39;s my experience with preparation for the exam.
+A bit about Exam:  Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</description>
     </item>
     
     <item>
@@ -111,8 +119,8 @@ A bit about Exam:
       <pubDate>Thu, 13 Sep 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/install-minishift-fedora/</guid>
-      <description>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift  NOTE: Create ~/.local/bin if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.
-Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo usermod -a -G libvirt $USER  newgrp libvirt  Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm  Reference:  https://docs.</description>
+      <description>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it&#39;s not present, it&#39;s already set in PATH variable.
+Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference:  https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.</description>
     </item>
     
     <item>
@@ -121,8 +129,8 @@ Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo
       <pubDate>Mon, 13 Aug 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/access-minishift-registry/</guid>
-      <description>Configure your shell to use docker daemon of Minishift  eval $(minishift docker-env)   export user token registry URL  export TOKEN=$(oc whoami -t) export REGISTRY_URL=$(minishift openshift registry)   Logging in to Registry  docker login -u developer -p $TOKEN $REGISTRY_URL  OR
- we can use directly as,  docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)  Now you can tag images, push it to respective project to create imagestream</description>
+      <description>Configure your shell to use docker daemon of Minishift  eval $(minishift docker-env)  export user token registry URL  export TOKEN=$(oc whoami -t) export REGISTRY_URL=$(minishift openshift registry)  Logging in to Registry  docker login -u developer -p $TOKEN $REGISTRY_URL OR
+ we can use directly as,  docker login -u developer -p $(oc whoam -t) $(minishift openshift registry) Now you can tag images, push it to respective project to create imagestream</description>
     </item>
     
     <item>
@@ -131,11 +139,8 @@ Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo
       <pubDate>Sat, 31 Mar 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/fossasia18/</guid>
-      <description>Day1 
-I reached venue (LifeLong Learning Institute, Singapore) at around 10.30 am and volunteers were all set to welcome us with smile and welcome kit :) Venue was awesome with multiple conf rooms and good facilities.
-
- Harish Pillay(Red Hat) &amp;amp; Damini Satya (SalesForce) Kicked off the event with Awesome Keynote with introducing FOSSASIA, stats about FOSSASIA and schedule as well.  
-.@harishpillay started the event with lovely keynote :) @fossasiasg #FOSSASIA pic.</description>
+      <description>Day1 I reached venue (LifeLong Learning Institute, Singapore) at around 10.30 am and volunteers were all set to welcome us with smile and welcome kit :) Venue was awesome with multiple conf rooms and good facilities.
+ Harish Pillay(Red Hat) &amp;amp; Damini Satya (SalesForce) Kicked off the event with Awesome Keynote with introducing FOSSASIA, stats about FOSSASIA and schedule as well.   Followed by Keynote, Teo Ser Luck (Member of Parliament, Singapore) expressed his thoughts about OpenSource and how it is helping Singapore Governance and Economy.</description>
     </item>
     
     <item>
@@ -158,8 +163,8 @@ $ sudo systemctl status sshd ● sshd.service - OpenSSH server daemon Loaded: lo
 minikube is configured to persist files stored under following directories.
  /data /var/lib/localkube /var/lib/docker /tmp/hostpath_pv /tmp/hostpath-provisioner  any other directory will not persist the data after reboot.
 To mount host directory inside minikube,
-$ minikube mount /host-mount-path:/vm-mount-path  for example,
-$ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /mountexample on the minikubeVM This daemon process needs to stay alive for the mount to still be accessible.</description>
+$ minikube mount /host-mount-path:/vm-mount-path for example,
+$ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /mountexample on the minikubeVM This daemon process needs to stay alive for the mount to still be accessible... ufs starting This process has to stay open, so open another terminal (if you want more than one mountpath, open one more terminal follow the above procedure)</description>
     </item>
     
     <item>
@@ -168,10 +173,10 @@ $ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /
       <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/git/</guid>
-      <description>I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?
+      <description>I am very bad at git and I always forget the steps. It&#39;s always better to write it somewhere. Then why not a blog ?
 To split your last or recent commit, simply do,
-$ git reset HEAD~  But I wanted to break 3rd commit and split it into two commits, then I did as following way,
-$ git rebase -i HEAD~3  if you dont know the number you can also mention SHA1 of that commit as well,</description>
+$ git reset HEAD~ But I wanted to break 3rd commit and split it into two commits, then I did as following way,
+$ git rebase -i HEAD~3 if you dont know the number you can also mention SHA1 of that commit as well,</description>
     </item>
     
     <item>
@@ -182,7 +187,7 @@ $ git rebase -i HEAD~3  if you dont know the number you can also mention SHA1 of
       <guid>https://suraj.pro/post/kubectl/</guid>
       <description>I was watching video about kubectl by janakiram and surprising I found there is also world of commands rather than create, delete, get. kubectl has lots of interesting easter eggs.
 Some of the cool things I found as below,
- List pod along with node name on which they are running  kubectl get pods -o wide   If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)  kubectl get pod web -o=yaml/json   CLI hacks to retrieve minimal information (In this case, pod name and node name)  kubectl get pod -o wide | awk {&#39;print $1&amp;quot; &amp;quot; $7&#39;} | column -t   you can directly edit configurations  kubectl edit pod/web   You can mention editor of your choice using KUBE_EDITOR variable,  KUBE_EDITOR=&amp;quot;sublime&amp;quot; kubectl edit pod/web   If we want to get any specific thing from configurations  kubectl get pods web -o jsonpath={.</description>
+ List pod along with node name on which they are running  kubectl get pods -o wide  If you want yaml or json configurations of your application(maybe pod,deployment or service,etc)  kubectl get pod web -o=yaml/json  CLI hacks to retrieve minimal information (In this case, pod name and node name)  kubectl get pod -o wide | awk {&#39;print $1&amp;quot; &amp;quot; $7&#39;} | column -t  you can directly edit configurations  kubectl edit pod/web  You can mention editor of your choice using KUBE_EDITOR variable,  KUBE_EDITOR=&amp;quot;sublime&amp;quot; kubectl edit pod/web  If we want to get any specific thing from configurations  kubectl get pods web -o jsonpath={.</description>
     </item>
     
     <item>
@@ -193,7 +198,7 @@ Some of the cool things I found as below,
       <guid>https://suraj.pro/post/static-pod/</guid>
       <description>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.
 One of the use case for static pod might be for storage like gluster on each minion or maybe for os level debugging on OS like atomic host.
-For testing it, I referred kelseyhightower&amp;rsquo;s standalone kubelet guide.
+For testing it, I referred kelseyhightower&#39;s standalone kubelet guide.
 To install kubelet, we can either download kubelet binary and set it up manually or we can get it from kubernetes-node package,</description>
     </item>
     
@@ -204,7 +209,7 @@ To install kubelet, we can either download kubelet binary and set it up manually
       
       <guid>https://suraj.pro/post/multi-staging/</guid>
       <description>Example Use Cases When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…
- Java apps using WAR files
+  Java apps using WAR files
  First stage uses a container with Maven to compile, test, and build the war file Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.</description>
     </item>
     
@@ -235,9 +240,9 @@ Harshal Shah started the Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, wh
       
       <guid>https://suraj.pro/post/gotools/</guid>
       <description>I went through internet yesterday regarding best practices with golang, I found go-tools written by Dominik Honnef which were pretty interesting and can be . I found some of them useful for me, so are they listed below.
-static check  applies tons of static analysis checks.
- it needs go 1.6 or later,
-  go get honnef.co/go/tools/cmd/staticcheck   syntax is:  $ statickcheck [pkg] or [directory]   I tried it for kompose with some extra hacks:  $ for pkg in $(go list -f &#39;{{ join .</description>
+static check   applies tons of static analysis checks.
+  it needs go 1.6 or later,
+  go get honnef.co/go/tools/cmd/staticcheck  syntax is:  $ statickcheck [pkg] or [directory]  I tried it for kompose with some extra hacks:  $ for pkg in $(go list -f &#39;{{ join .</description>
     </item>
     
     <item>
@@ -247,7 +252,7 @@ static check  applies tons of static analysis checks.
       
       <guid>https://suraj.pro/post/golang_workaround/</guid>
       <description>Yesterday, I was working one of the Kompose issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,
-package main import &amp;quot;fmt&amp;quot; type Animal struct { count int } func main() { m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}} fmt.Println(m) m[&amp;quot;dog&amp;quot;].count = 4 fmt.Println(m) }  so I got this error,</description>
+package main import &amp;quot;fmt&amp;quot; type Animal struct { count int } func main() { m := map[string]Animal{&amp;quot;cat&amp;quot;: Animal{2}, &amp;quot;dog&amp;quot;: Animal{3}, &amp;quot;mouse&amp;quot;: Animal{5}} fmt.Println(m) m[&amp;quot;dog&amp;quot;].count = 4 fmt.Println(m) } so I got this error,</description>
     </item>
     
     <item>
@@ -256,7 +261,7 @@ package main import &amp;quot;fmt&amp;quot; type Animal struct { count int } fun
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/goworkshop/</guid>
-      <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&amp;rsquo;s, who was workshop instructor, started with introduction of golang.
+      <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&#39;s, who was workshop instructor, started with introduction of golang.
 He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.
 Workshop course material can be found here.
 Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
@@ -269,7 +274,7 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
       
       <guid>https://suraj.pro/post/whats-new-in-docker/</guid>
       <description>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.
- Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
+  Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
    As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose.</description>
     </item>
     
@@ -279,9 +284,9 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
       <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/migration-to-hugo/</guid>
-      <description>Hello guys, its been so long, I havn&amp;rsquo;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
+      <description>Hello guys, its been so long, I havn&#39;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
 Installing Hugo .
- Install hugo  $ go get -v github.com/spf13/hugo   Check whether it is properly installed or not  $ hugo help  Using Hugo .</description>
+ Install hugo  $ go get -v github.com/spf13/hugo  Check whether it is properly installed or not  $ hugo help Using Hugo .</description>
     </item>
     
     <item>
@@ -290,7 +295,8 @@ Installing Hugo .
       <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.pro/post/blog17/</guid>
-      <description>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña 1. have used centos 7 box for this purpose.</description>
+      <description>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña
+ have used centos 7 box for this purpose.</description>
     </item>
     
     <item>
@@ -299,7 +305,8 @@ Installing Hugo .
       <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.pro/post/blog16/</guid>
-      <description>Woo! It was so exciting, because It was my First PyCon ,First conference, First flight and First time Delhi. 1. Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P</description>
+      <description>Woo! It was so exciting, because It was my First [PyCon]( https://in.pycon.org/2016/`_) ,First conference, First flight and First time Delhi.
+ Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P  Day1</description>
     </item>
     
     <item>
@@ -309,7 +316,7 @@ Installing Hugo .
       
       <guid>https://suraj.pro/post/blog15/</guid>
       <description>Python Pune July Meetup was held at Red Hat, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns. Around 40 pythonistas were present for meetups, some were students and some were professionals. Topics for the meetup were as below:
- How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj   Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.</description>
+ How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj  Meetup started with Rahul Bajaj&#39;s topic regarding Regular Expressions.</description>
     </item>
     
     <item>
@@ -318,7 +325,8 @@ Installing Hugo .
       <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.pro/post/blog14/</guid>
-      <description>Hello Everyone, From Past few days, I was studying Jenkins, 1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</description>
+      <description>Hello Everyone, From Past few days, I was studying Jenkins,
+ have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</description>
     </item>
     
     <item>
@@ -327,8 +335,8 @@ Installing Hugo .
       <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.pro/post/blog13/</guid>
-      <description>Because you are new to python   If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
- Because you are hiring   Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</description>
+      <description>Because you are new to python  If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
+ Because you are hiring  Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</description>
     </item>
     
     <item>
@@ -376,7 +384,7 @@ Why to Sponser Us ?</description>
       <guid>https://suraj.pro/post/blog9/</guid>
       <description>Python Pune Meetup was held @ Amazatic Solutions and that was about Part II of Machine learning by Sudarshan Gadhave on 28th May 2016. Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.
 Sudarshan started from Required tools/libraries for machine learning :
- Ipython numpy python-pandas python-scikit-learn matplotlib   These are best opensource alternatives to softwares like MATLAB !!
+ Ipython numpy python-pandas python-scikit-learn matplotlib  These are best opensource alternatives to softwares like MATLAB !!
 Machine learning is all about technical,business and statistics.</description>
     </item>
     
@@ -398,8 +406,8 @@ In this blog post, we’ll install a Kubernetes cluster with three minions on Fe
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://suraj.pro/post/blog7/</guid>
-      <description>Hello, after long time, I am writing for a good reason :P 1. had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it:
-https://www.rdoproject.org/community/rdo-bugtriage/
+      <description>Hello, after long time, I am writing for a good reason :P
+ had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it:  https://www.rdoproject.org/community/rdo-bugtriage/
 (I also came to know it just day before yesterday :-))
 As a newbie to RDO community, ChandanKumar and Matthias Runge guided me to what to do there. So, I had created account on http://bugzilla.</description>
     </item>
@@ -433,7 +441,7 @@ unit testing is a method by which individual units of source code, sets of one o
       
       <guid>https://suraj.pro/post/blog4/</guid>
       <description>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows, Everything works fine ;) ,
- [user@localhost project]$ git commit --amend [project d9593ab] &amp;lt;commit message here&amp;gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py  While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
+ [user@localhost project]$ git commit --amend [project d9593ab] &amp;lt;commit message here&amp;gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
  [user@localhost project]$ git review develop remote: Processing changes: refs: 1, done.</description>
     </item>
     

@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -91,109 +100,77 @@ ga('create', '75855569', 'auto');
             <span class="post-date">Jul 11, 2016 </span>
             <div class="post-content">
                 <p>Hello Everyone,
-From Past few days, I was studying  Jenkins,
-1. have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup.
-   So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.I have experimented it and I managed to contributr Jenkins fedora slave image to Fedora Cloud, <a href="https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave">https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave</a></p>
-
+From Past few days, I was studying  Jenkins,</p>
+<ol>
+<li>have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup.
+So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.I have experimented it and I managed to contributr Jenkins fedora slave image to Fedora Cloud, <a href="https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave">https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave</a></li>
+</ol>
 <p>Few Reasons for Container based slaves:</p>
-
 <ul>
 <li>Each image provides a clean environment in which a build can be run.</li>
 <li>They are relatively lightweight (compared to a full VM</li>
-<li>They can be saved/tagged to provide a record of the resulting build output
-<br /></li>
+<li>They can be saved/tagged to provide a record of the resulting build output</li>
 </ul>
-
 <p>What Jenkins docker plugin does ?
 it will able to use docker host so that it will dynamically
 provision slave
 run a single build
 tear down the slave</p>
-
-<p><img src="/docker-jenkins.png" width="600" height="400" />
+<p><!-- raw HTML omitted -->
 .</p>
-
 <p><em>Setting up the Docker host:</em></p>
-
 <ul>
-<li>Make sure that Firewall is disabled
-<br /></li>
+<li>Make sure that Firewall is disabled</li>
 </ul>
-
 <pre><code> sudo systemctl stop firewalld
  sudo systemctl disable firewalld
-</code></pre>
-
-<ul>
-<li>Install docker engine
-<br /></li>
+</code></pre><ul>
+<li>Install docker engine</li>
 </ul>
-
 <pre><code> sudo dnf update -y
  sudo dnf install docker -y
-</code></pre>
-
-<ul>
-<li>Replace following lines with &ldquo;ExecStart&rdquo; under [Service] section in <em>/usr/lib/systemd/system/docker.service</em>
-<br /></li>
+</code></pre><ul>
+<li>Replace following lines with &ldquo;ExecStart&rdquo; under [Service] section in <em>/usr/lib/systemd/system/docker.service</em></li>
 </ul>
-
 <pre><code> ExecStart=
  ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2376
-</code></pre>
-
-<ul>
-<li>Start Docker daemon
-<br /></li>
+</code></pre><ul>
+<li>Start Docker daemon</li>
 </ul>
-
-<p><dl>
-  <dt> :  : </dt>
-  <dd></p>
-
-<pre><code>    sudo systemctl daemon-reload
-    sudo systemctl start docker
-    sudo systemctl enable docker
-</code></pre>
-
-<p></dd>
-</dl>
-Creating Docker image:</p>
-
+<!-- raw HTML omitted -->
 <ul>
-<li>Recently, I have submitted docker image in dockerhub, so you can pull that image using following command,
-<br /></li>
+<li>Recently, I have submitted docker image in dockerhub, so you can pull that image using following command,</li>
 </ul>
-
 <pre><code> docker pull surajnarwade/jenkins-fedora-slave
-</code></pre>
-
-<ul>
-<li><p><strong>Same image(Dockerfile) I requested to merge in Fedora-cloud, and the community happily accepted it, Hence my first Fedora Contribution :)</strong></p></li>
-
-<li><p><a href="https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave">Click Here</a> to access my contributed Dockerfile on fedora cloud.</p></li>
-
-<li><p>Download <a href="https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin">Jenkins Docker plugin</a> in Jenkins, goto &ldquo;Manage Jenkins&rdquo;-&gt;&ldquo;Configure System&rdquo;, Scroll Down to bottom of the page, you should find an option to &ldquo;Add a new cloud&rdquo;, Click on it and select Docker option.</p></li>
-
-<li><p>Docker URL should point to IP address of Docker host.</p></li>
-
-<li><p>Put name of Docker image in ID field.</p></li>
-
-<li><p>Put &lsquo;label&rsquo; Labels field, so that Jenkins projects identify this as docker cloud provider.</p></li>
-
-<li><p>If everything sets up correctly, the &ldquo;Test Connection&rdquo; button should return the current version of Docker running on the host.</p></li>
+</code></pre><ul>
+<li>
+<p><strong>Same image(Dockerfile) I requested to merge in Fedora-cloud, and the community happily accepted it, Hence my first Fedora Contribution :)</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/fedora-cloud/Fedora-Dockerfiles/tree/master/jenkins-slave">Click Here</a> to access my contributed Dockerfile on fedora cloud.</p>
+</li>
+<li>
+<p>Download <a href="https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin">Jenkins Docker plugin</a> in Jenkins, goto &ldquo;Manage Jenkins&rdquo;-&gt;&quot;Configure System&rdquo;, Scroll Down to bottom of the page, you should find an option to &ldquo;Add a new cloud&rdquo;, Click on it and select Docker option.</p>
+</li>
+<li>
+<p>Docker URL should point to IP address of Docker host.</p>
+</li>
+<li>
+<p>Put name of Docker image in ID field.</p>
+</li>
+<li>
+<p>Put &lsquo;label&rsquo; Labels field, so that Jenkins projects identify this as docker cloud provider.</p>
+</li>
+<li>
+<p>If everything sets up correctly, the &ldquo;Test Connection&rdquo; button should return the current version of Docker running on the host.</p>
+</li>
 </ul>
-
-<p><img src="/screenshot.png" width="600" height="400" />
+<p><!-- raw HTML omitted -->
 .</p>
-
 <ul>
-<li>Put label of Docker Cloud in Label Expression field in Project configurations, so now Jenkins should start up a new Docker container, run the build, and then shut down the container.
-<br /></li>
+<li>Put label of Docker Cloud in Label Expression field in Project configurations, so now Jenkins should start up a new Docker container, run the build, and then shut down the container.</li>
 </ul>
-
 <p><em>Conclusion</em></p>
-
 <p>The integration between Jenkins and Docker is still at development stage, so it may take some time and efforts to get them working nicely together. Capability to start new build from clean image is very important thing when it comes to point of reproducible builds.</p>
 
             </div>
@@ -224,7 +201,7 @@ Creating Docker image:</p>
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -92,26 +101,19 @@ ga('create', '75855569', 'auto');
             <div class="post-content">
                 <p>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows,
 Everything works fine ;) ,</p>
-
 <pre><code> [user@localhost project]$ git commit --amend
  [project d9593ab] &lt;commit message here&gt;
  Date: Thu Apr 14 17:34:53 2016 +0530
  1. file changed, 75 insertions(+)
    create mode 100644 project/file.py
-</code></pre>
-
-<p>While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o
+</code></pre><p>While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o
 following error:</p>
-
 <pre><code> [user@localhost project]$ git review develop
  remote: Processing changes: refs: 1, done.
  To ssh://user@xxxxxxxxxxxxxxxxxxxxxxxx.com:22/project
  ! [remote rejected] HEAD -&gt; refs/publish/develop/project (not Signed-off-by author/committer/uploader in  commit message footer)
  error: failed to push some refs to 'ssh://user@xxxxxxxxxxxxxxxxxxxxxxxxx.com:22/project'
-</code></pre>
-
-<p>After trying different methods for half an hour, we have checked commit which was as below:</p>
-
+</code></pre><p>After trying different methods for half an hour, we have checked commit which was as below:</p>
 <pre><code> &lt;commit messgae here&gt;
  Change-Id: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
  # Please enter the commit message for your changes. Lines starting
@@ -125,10 +127,7 @@ following error:</p>
  #
  # Changes to be committed:
  #       new file:   project/file.py
-</code></pre>
-
-<p>After that we had removed Change-Id for patch set and added Signed-off-by line along with username and email id as shown below:</p>
-
+</code></pre><p>After that we had removed Change-Id for patch set and added Signed-off-by line along with username and email id as shown below:</p>
 <pre><code> &lt;commit message here&gt;
  Signed-off-by: username &lt;userid@xyz.com&gt;
  # Please enter the commit message for your changes. Lines starting
@@ -142,10 +141,7 @@ following error:</p>
  #
  # Changes to be committed:
  #       new file:   project/file.py
-</code></pre>
-
-<p><strong>And yippee, it works !!! :-) :-)</strong></p>
-
+</code></pre><p><strong>And yippee, it works !!! :-) :-)</strong></p>
 <pre><code> [user@localhost project]$ git review develop
  remote: Processing changes: new: 1, refs: 1, done
  remote:
@@ -154,9 +150,7 @@ following error:</p>
  remote:
  To ssh://user@xxxxxxxxxxxxxxxxxxxxxx.com:22/project
 - [new branch]      HEAD -&gt; refs/publish/develop/project
-</code></pre>
-
-<p>Thank you, <a href="https://twitter.com/ciypro">ChandanKumar</a> ++</p>
+</code></pre><p>Thank you, <a href="https://twitter.com/ciypro">ChandanKumar</a> ++</p>
 
             </div>
             
@@ -186,7 +180,7 @@ following error:</p>
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

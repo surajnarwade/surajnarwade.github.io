@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,42 +99,25 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/warlock-odo/">Story of Noob Developer on OpenShift</a></h1>
             <span class="post-date">Jan 17, 2019 </span>
             <div class="post-content">
-                
-
-<p>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.</p>
-
+                <p>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.</p>
 <p>On day 1, his boss gave him a Code Repository &amp; his OpenShift Platform Credentials to work his magic.</p>
-
 <p>Warlock got his code,</p>
-
 <pre><code>git clone https://github.com/sclorg/nodejs-ex
-</code></pre>
-
-<p>But was unclear about how to proceed  as he had no idea about OpenShift.
+</code></pre><p>But was unclear about how to proceed  as he had no idea about OpenShift.
 He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it. He could barely login into the cluster using <code>oc</code> and thus got frustrated.</p>
-
 <p>Then, one of his friend suggested that he take a look at <a href="https://openshiftdo.org">odo</a>, Warlock instantly took to it, as it had simple, easy to understand concepts like Application, Components, and URLs.</p>
-
 <p>He found it interesting, read the docs further, and started using it.</p>
-
 <ul>
 <li>He logged into the cluster with the credentials given by his boss,</li>
 </ul>
-
 <pre><code>odo login -u warlock@dream.company -p xxxxxxx
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Warlock read the concept of an application in odo &amp; created an application:</li>
 </ul>
-
 <pre><code>odo app create myapp
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>He referred the odo catalog to check on the availability of NodeJS,</li>
 </ul>
-
 <pre><code>odo catalog list components
 NAME        PROJECT       TAGS
 dotnet      openshift     2.0,latest
@@ -137,42 +129,24 @@ php         openshift     5.5,5.6,7.0,7.1,latest
 python      openshift     2.7,3.3,3.4,3.5,3.6,latest
 ruby        openshift     2.0,2.2,2.3,2.4,2.5,latest
 wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
-</code></pre>
-
-<p>Woo, Warlock was happy because NodeJS was available in the cluster.</p>
-
+</code></pre><p>Woo, Warlock was happy because NodeJS was available in the cluster.</p>
 <p>Since he had only one component of the type nodejs, he created the application,</p>
-
 <pre><code>odo create nodejs
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Now what? Warlock needed an URL to access his application, he tried:</li>
 </ul>
-
 <pre><code>odo url create
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>There was nothing on the URL, warlock got confused, then he realized, he hadn’t pushed the code. So he pushed his code:</li>
 </ul>
-
 <pre><code>odo push
-</code></pre>
-
-<p>Tada, Now he could access his application, everytime he made some changes he did <code>odo push</code> and woah :)</p>
-
+</code></pre><p>Tada, Now he could access his application, everytime he made some changes he did <code>odo push</code> and woah :)</p>
 <ul>
 <li>After a while, he got bored of pushing again and again. On further exploration of the hallowed odo docs he found the watch feature, and performed <code>odo watch</code> in his repo and wooooot !!!!</li>
 </ul>
-
 <pre><code>odo watch
-</code></pre>
-
-<p>Now everytime he changed his code, the changes were automatically reflected in the URL, he did not need to manually push each time.</p>
-
+</code></pre><p>Now everytime he changed his code, the changes were automatically reflected in the URL, he did not need to manually push each time.</p>
 <p>In this way, Warlock the newbie developed his NodeJS application on OpenShift Platform.</p>
-
 <h1 id="now-warlock-always-uses-odo-warlock-is-happy-be-like-warlock-d">Now, Warlock always uses odo, Warlock is Happy, Be like Warlock :D</h1>
 
             </div>
@@ -203,7 +177,7 @@ wildfly     openshift     10.0,10.1,11.0,12.0,13.0,8.1,9.0,latest
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,41 +99,34 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/multi-staging/">Multistage build in Docker</a></h1>
             <span class="post-date">Sep 13, 2017 </span>
             <div class="post-content">
-                
-
-<p><br></p>
-
+                <!-- raw HTML omitted -->
 <h3 id="example-use-cases">Example Use Cases</h3>
-
 <p>When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…</p>
-
 <ul>
-<li><p>Java apps using WAR files</p>
-
+<li>
+<p>Java apps using WAR files</p>
 <ul>
 <li>First stage uses a container with Maven to compile, test, and build the war file</li>
 <li>Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.)</li>
-</ul></li>
-
-<li><p>Golang apps with standalone binaries</p>
-
+</ul>
+</li>
+<li>
+<p>Golang apps with standalone binaries</p>
 <ul>
 <li>First stage uses a container with golang SDK to build the binary</li>
 <li>Second stage copies the binary into an image</li>
-</ul></li>
-
-<li><p>Node.js app needing processed JavaScript for client</p>
-
+</ul>
+</li>
+<li>
+<p>Node.js app needing processed JavaScript for client</p>
 <ul>
 <li>First stage uses a Node container, installs dev dependencies, and performs a build (maybe compiling Typescript, Webpack-ify, etc.)</li>
 <li>Second stage also uses a Node container, installs only prod dependencies (like Express), and copies the distributable from stage one</li>
-</ul></li>
 </ul>
-
-<p><br></p>
-
+</li>
+</ul>
+<!-- raw HTML omitted -->
 <p>Here, we will take simple <code>hello-world</code> golang program to illustrate single-stage build vs multi-stage build:</p>
-
 <pre><code>$ cat main.go 
 package main
 
@@ -134,12 +136,8 @@ func main() {
 	fmt.Println(&quot;Hello World!&quot;)
 }
 
-</code></pre>
-
-<h3 id="single-stage-build">Single stage build</h3>
-
+</code></pre><h3 id="single-stage-build">Single stage build</h3>
 <p>Usually for static type langauge as golang, derive Dockerfile from golang SDk, add source, do a build and push it to dockerhub, unfortuantely size was very huge. for example, basic <code>golang:alpine</code> image is of size 257 MB, it increases further more.</p>
-
 <p>workaround was :
 Derive from a Golang base image with the whole runtime/SDK (Dockerfile.build)
 Add source code
@@ -148,60 +146,48 @@ Copy the static binary from the image to the host (docker create, docker cp)
 Derive from SCRATCH or some other light-weight image such as alpine (Dockerfile)
 Add the binary back in
 Push a tiny image to the Docker Hub</p>
-
 <ul>
-<li><p>that means having two separate Dockerfiles and shell script to control it</p></li>
-
-<li><p>Dockerfile.singlestage</p></li>
+<li>
+<p>that means having two separate Dockerfiles and shell script to control it</p>
+</li>
+<li>
+<p>Dockerfile.singlestage</p>
+</li>
 </ul>
-
 <pre><code>FROM golang:alpine
 WORKDIR /app
 ADD . /app
 RUN cd /app &amp;&amp; go build -o app
 ENTRYPOINT ./app
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>now build the dockerfile and run it using following commands,</li>
 </ul>
-
 <pre><code>$ docker build -t surajnarwade/go-singlestage-app .
 $ docker run --rm surajnarwade/go-singlestage-app
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>You can check docker image size which is only <strong>259MB</strong>:</li>
 </ul>
-
 <pre><code>$ docker images
 REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
 go-singlestage-app               latest              bb2594c6d2fd        3 days ago          259MB
-</code></pre>
-
-<h3 id="multistage-build">Multistage build</h3>
-
+</code></pre><h3 id="multistage-build">Multistage build</h3>
 <ul>
-<li><p>It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile</p></li>
-
-<li><p>syntax is very simple, we will give label to stages as</p></li>
+<li>
+<p>It removes hassle of maintaining multiple files, so now we have to maintain only one Dockerfile</p>
+</li>
+<li>
+<p>syntax is very simple, we will give label to stages as</p>
+</li>
 </ul>
-
 <pre><code>FROM &lt;image&gt; as &lt;label&gt;
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>and then use it in another stage to copy artifacts as,</li>
 </ul>
-
 <pre><code>COPY --from=&lt;label&gt;
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>whichever is last FROM statement, that is the final base image</li>
 <li>Dockerfile.multistage</li>
 </ul>
-
 <pre><code># build stage
 FROM golang:alpine AS build-env
 ADD . /src
@@ -212,25 +198,16 @@ FROM alpine
 WORKDIR /app
 COPY --from=build-env /src/app /app/
 ENTRYPOINT ./app
-</code></pre>
-
-<p>now build the dockerfile and run it using following commands,</p>
-
+</code></pre><p>now build the dockerfile and run it using following commands,</p>
 <pre><code>$ docker build -t surajnarwade/go-multistage-app .
 $ docker run --rm surajnarwade/go-multistage-app
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>you can see docker image size is reduced which is only approximately <strong>6 MB</strong>:</li>
 </ul>
-
 <pre><code>$ docker images
 REPOSITORY         		 TAG                 IMAGE ID            CREATED             SIZE
 go-multistage-app                latest              975ef40d39ee        3 days ago          5.52MB
-</code></pre>
-
-<h4 id="reference">Reference:</h4>
-
+</code></pre><h4 id="reference">Reference:</h4>
 <ul>
 <li><a href="https://blog.alexellis.io/mutli-stage-docker-builds/">https://blog.alexellis.io/mutli-stage-docker-builds/</a></li>
 <li><a href="https://github.com/appleboy/docker-multi-stage-build">https://github.com/appleboy/docker-multi-stage-build</a></li>
@@ -265,7 +242,7 @@ go-multistage-app                latest              975ef40d39ee        3 days 
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,44 +99,25 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/install-minishift-fedora/">Installing Minishift on Fedora</a></h1>
             <span class="post-date">Sep 13, 2018 </span>
             <div class="post-content">
-                
-
-<h2 id="check-for-latest-release-on-github">Check for latest release on github:</h2>
-
+                <h2 id="check-for-latest-release-on-github">Check for latest release on github:</h2>
 <ul>
 <li>Check here: <a href="https://github.com/minishift/minishift/releases">https://github.com/minishift/minishift/releases</a></li>
 </ul>
-
 <h2 id="download-latest-binary">Download latest binary</h2>
-
 <pre><code>wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz
 
 tar -xvf minishift-1.24.0-linux-amd64.tgz
 
 cp minishift ~/.local/bin/minishift
-</code></pre>
-
-<p>NOTE: Create <code>~/.local/bin</code> if it&rsquo;s not present, it&rsquo;s already set in PATH variable.</p>
-
+</code></pre><p>NOTE: Create <code>~/.local/bin</code> if it's not present, it's already set in PATH variable.</p>
 <h2 id="setting-up-virtualization-environment">Setting up Virtualization environment</h2>
-
 <pre><code>sudo dnf install libvirt qemu-kvm -y
-</code></pre>
-
-<pre><code>sudo usermod -a -G libvirt $USER
-</code></pre>
-
-<pre><code>newgrp libvirt
-</code></pre>
-
-<h2 id="setting-the-kvm-driver">Setting the KVM driver</h2>
-
+</code></pre><pre><code>sudo usermod -a -G libvirt $USER
+</code></pre><pre><code>newgrp libvirt
+</code></pre><h2 id="setting-the-kvm-driver">Setting the KVM driver</h2>
 <pre><code>sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm
 sudo chmod +x /usr/local/bin/docker-machine-driver-kvm
-</code></pre>
-
-<h2 id="reference">Reference:</h2>
-
+</code></pre><h2 id="reference">Reference:</h2>
 <ul>
 <li><a href="https://docs.okd.io/latest/minishift/getting-started/installing.html">https://docs.okd.io/latest/minishift/getting-started/installing.html</a></li>
 <li><a href="https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html">https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html</a></li>
@@ -161,7 +151,7 @@ sudo chmod +x /usr/local/bin/docker-machine-driver-kvm
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,63 +99,56 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/videoguideline/">Remove white noise from Videos</a></h1>
             <span class="post-date">Jul 23, 2017 </span>
             <div class="post-content">
-                
-
-<p>May times, We have to create demos for projects for which we use various desktop screen recorders
+                <p>May times, We have to create demos for projects for which we use various desktop screen recorders
 along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.</p>
-
 <p>Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.</p>
-
 <p>I surfed on the internet and found some relevant solutionsm which we will discuss today.</p>
-
 <ul>
-<li><p>First a fall, we need to separate audio from video, for which we need to run following commands,</p>
-
+<li>
+<p>First a fall, we need to separate audio from video, for which we need to run following commands,</p>
 <ul>
 <li>Install <code>ffmpeg</code> package,</li>
 </ul>
-
 <pre><code>    $ sudo dnf install ffmpeg -y
-</code></pre>
+   ```
 
-<ul>
-<li>Run this command for separating audio from video,</li>
+*  Run this command for separating audio from video,
+
+</code></pre><pre><code> $ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
+</code></pre><pre><code>
+ It will create `output.mp3` as audio file.
+
+</code></pre></li>
+<li>
+<p>Install audacity for audio processing,</p>
+</li>
 </ul>
-
-<pre><code>$ ffmpeg -i video.mp4 -vn -ac 2 -ar 44100 -ab 320k -f mp3 output.mp3
-</code></pre>
-
-<p>It will create <code>output.mp3</code> as audio file.</p></li>
-
-<li><p>Install audacity for audio processing,</p></li>
-</ul>
-
 <pre><code>$ sudo dnf install audacity -y
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>Open <code>output.mp3</code> audio file in audacity,</li>
 </ul>
-
-<p><img src="/sc1.png" width="400" height="300" align="middle"/></p>
-
+<!-- raw HTML omitted -->
 <ul>
-<li><p>select any area of noise where there&rsquo;s no talking, (low frequency)</p></li>
-
-<li><p>Click <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>Get noise profile</code></p></li>
+<li>
+<p>select any area of noise where there's no talking, (low frequency)</p>
+</li>
+<li>
+<p>Click <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>Get noise profile</code></p>
+</li>
 </ul>
-
-<p><img src="/sc2.png" width="400" height="300" align="middle"/></p>
-
+<!-- raw HTML omitted -->
 <ul>
-<li><p>Now Select whole audio (Ctrl + A) and goto <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>OK</code></p></li>
-
-<li><p>Now goto <code>File</code> &gt; <code>Export Audio</code> and save it in format of your choice.</p></li>
-
-<li><p>Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer <a href="http://www.openshot.org/">OpenShot</a>)</p></li>
+<li>
+<p>Now Select whole audio (Ctrl + A) and goto <code>Effects</code> &gt; <code>Noise Reduction</code> &gt; <code>OK</code></p>
+</li>
+<li>
+<p>Now goto <code>File</code> &gt; <code>Export Audio</code> and save it in format of your choice.</p>
+</li>
+<li>
+<p>Yo, white noise is removed, now club this audio with your video using your favourite video editors, (I prefer <a href="http://www.openshot.org/">OpenShot</a>)</p>
+</li>
 </ul>
-
-<h2 id="happy-hacking"><code>*Happy Hacking !!!*</code></h2>
+<h2 id="happy-hacking-"><code>*Happy Hacking !!!*</code></h2>
 
             </div>
             
@@ -176,7 +178,7 @@ along with normal earphones with mic for audio. But, It causes a lot of white/ba
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -6,7 +6,7 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
 	</head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -97,12 +106,28 @@ ga('create', '75855569', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/powerofkubectl/">Unleashing the power of kubectl</a></h4>
+							<h4 class="post-date">Feb 13, 2020</h4>
+						</div>
+						<div class="post-summary"><p>Continuing with previous post,
+kubectl explain --raw /  Editor of your choice  By default, kubectl uses default editor (which is most of the time vim or nano), you can set editor of your choice by setting the following environment variable with editor of you choice.
+export KUBE_EDITOR=`code --wait`  Edit while you create  You can edit the resource definition right before deploying whether from a file or remote link.</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/powerofkubectl/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/user-on-os4/">Creating users on OpenShift 4</a></h4>
 							<h4 class="post-date">Apr 13, 2019</h4>
 						</div>
-						<div class="post-summary"><p>It&rsquo;s always bit of confusing about OpenShift 4 :D here&rsquo;s how we can add user in OpenShift 4.
- Create htpasswd file as below and users and their passwords,   $ htpasswd -cb users.htpasswd user1 user1pass  $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &gt; Cluster Settings &gt; Global Configuration
- Click on Edit YAML in front of Oauth</p></div>
+						<div class="post-summary"><p>It's always bit of confusing about OpenShift 4 :D here's how we can add user in OpenShift 4.
+ Create htpasswd file as below and users and their passwords,  $ htpasswd -cb users.htpasswd user1 user1pass $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &gt; Cluster Settings &gt; Global Configuration
+  Click on Edit YAML in front of Oauth
+  Click on Overview, under Identity Providers section, Click on Add and select HTPasswd</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/user-on-os4/">Read More</a>
 						</div>
@@ -118,7 +143,7 @@ ga('create', '75855569', 'auto');
 						<div class="post-summary"><p>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.
 On day 1, his boss gave him a Code Repository &amp; his OpenShift Platform Credentials to work his magic.
 Warlock got his code,
-git clone https://github.com/sclorg/nodejs-ex  But was unclear about how to proceed as he had no idea about OpenShift. He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it.</p></div>
+git clone https://github.com/sclorg/nodejs-ex But was unclear about how to proceed as he had no idea about OpenShift. He then referred to the OpenShift docs but got confused and overwhelmed by all the new terminologies, DeploymentConfigs, Pods, Services, and Routes mentioned in it.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/warlock-odo/">Read More</a>
 						</div>
@@ -132,10 +157,9 @@ git clone https://github.com/sclorg/nodejs-ex  But was unclear about how to proc
 							<h4 class="post-date">Dec 5, 2018</h4>
 						</div>
 						<div class="post-summary"><p>While exploring, I came across ko tool by google &amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
-Pre-Flight Checks 
- Installing ko  go get github.com/google/go-containerregistry/cmd/ko  That&rsquo;s it :)
- Verify your installation by which ko
- We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&rsquo;s docker daemon</p></div>
+Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That's it :)
+  Verify your installation by which ko
+  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube's docker daemon</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/develop-go-minikube/">Read More</a>
 						</div>
@@ -148,10 +172,7 @@ Pre-Flight Checks
 							<h4 class="post-link"><a href="https://suraj.pro/post/exploring-k8s-part1/">Exploring Kubernetes: Client-Go - part-1</a></h4>
 							<h4 class="post-date">Nov 30, 2018</h4>
 						</div>
-						<div class="post-summary"><p>Nowadays, I am learning advance golang, along with that knowledge, I am trying to understand kubernetes in more depth. I found client-go as goto thing to explore &amp; learn things. I am also putting respective client-go code links wherever needed.
-What&rsquo;s client-go ?  Simple, golang client library for talking to kubernetes cluster
-Where&rsquo;s client-go ? 
- you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.</p></div>
+						<div class="post-summary"><p>What's client-go ? Where's client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it's interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/exploring-k8s-part1/">Read More</a>
 						</div>
@@ -165,8 +186,8 @@ Where&rsquo;s client-go ?
 							<h4 class="post-date">Nov 30, 2018</h4>
 						</div>
 						<div class="post-summary"><p>If you have kubeconfig file already in place,
-kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;clientcmd.ConfigOverrides{})  There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
- Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()   REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()   if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig()  Here, kubeconfig is interface of following type:</p></div>
+kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;clientcmd.ConfigOverrides{}) There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
+ Namespace given by current context,  namespace, _, err := kubeconfig.Namespace()  REST config needed to operations  restconfig, err := kubeconfig.ClientConfig()  if you want kubeconfig as a struct  clientcmdapi.Config, err := kubeconfig.RawConfig() Here, kubeconfig is interface of following type:</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/exploring-k8s-part2/">Read More</a>
 						</div>
@@ -182,8 +203,9 @@ kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.N
 						<div class="post-summary"><p>we got restConfig and namespace, connection is set up Yay
 From this restconfig, Now we need to create respective clients for further operations
 we will need following package:
-import k8s.io/client-go/kubernetes   create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig)  it returns clients for APIgroups like: * Apps * CoreV1 * Batch * StorageV1
-If you have some custom controller, generated code will have NewForConfig function which you have call separately,</p></div>
+import k8s.io/client-go/kubernetes  create basic kubernetes client:  kubeClient, err := kubernetes.NewForConfig(restConfig) it returns clients for APIgroups like:
+ Apps CoreV1 Batch StorageV1  If you have some custom controller, generated code will have NewForConfig function which you have call separately,
+For example, In case of service catalog,</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/exploring-k8s-part3/">Read More</a>
 						</div>
@@ -196,7 +218,7 @@ If you have some custom controller, generated code will have NewForConfig functi
 							<h4 class="post-link"><a href="https://suraj.pro/post/nmcli101/">nmcli 101</a></h4>
 							<h4 class="post-date">Nov 15, 2018</h4>
 						</div>
-						<div class="post-summary"><p>  To check devices:   nmcli device status   Overall status of NetworkManager:  nmcli general status   Display connections:  nmcli connection show   display only active connections:  nmcli connection show --active  WI-FI  Check wifi status   nmcli radio wifi   Turn on the wifi  nmcli radio wifi on   Turn off the wifi  nmcli radio wifi off   List available wifi access points  nmcli device wifi list   Refresh the access point list  nmcli device wifi rescan   Connect to wifi  nmcli device wifi connect &lt;SSID&gt;   Connect to password protected access point  nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt;  </p></div>
+						<div class="post-summary"><p> To check devices:  nmcli device status  Overall status of NetworkManager:  nmcli general status  Display connections:  nmcli connection show  display only active connections:  nmcli connection show --active WI-FI  Check wifi status  nmcli radio wifi  Turn on the wifi  nmcli radio wifi on  Turn off the wifi  nmcli radio wifi off  List available wifi access points  nmcli device wifi list  Refresh the access point list  nmcli device wifi rescan  Connect to wifi  nmcli device wifi connect &lt;SSID&gt;  Connect to password protected access point  nmcli device wifi connect &lt;SSID&gt; password &lt;password&gt; </p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/nmcli101/">Read More</a>
 						</div>
@@ -211,9 +233,8 @@ If you have some custom controller, generated code will have NewForConfig functi
 						</div>
 						<div class="post-summary"><p>Hello Folks,
 I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp; I scored 92%, Yay :)
-I got so many request about How to prepare for the exam, Here&rsquo;s my experience with preparation for the exam.
-A bit about Exam: 
- Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</p></div>
+I got so many request about How to prepare for the exam, Here's my experience with preparation for the exam.
+A bit about Exam:  Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/journey-to-cka/">Read More</a>
 						</div>
@@ -226,24 +247,10 @@ A bit about Exam:
 							<h4 class="post-link"><a href="https://suraj.pro/post/install-minishift-fedora/">Installing Minishift on Fedora</a></h4>
 							<h4 class="post-date">Sep 13, 2018</h4>
 						</div>
-						<div class="post-summary"><p>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift  NOTE: Create ~/.local/bin if it&rsquo;s not present, it&rsquo;s already set in PATH variable.
-Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo usermod -a -G libvirt $USER  newgrp libvirt  Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm  Reference:  https://docs.</p></div>
+						<div class="post-summary"><p>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it's not present, it's already set in PATH variable.
+Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference:  https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/install-minishift-fedora/">Read More</a>
-						</div>
-					</div>
-				</li>
-			
-				<li>
-					<div class="post-list-item">
-						<div class="post-header">
-							<h4 class="post-link"><a href="https://suraj.pro/post/access-minishift-registry/">Play with OpenShift Internal Docker Registry and imagestreams</a></h4>
-							<h4 class="post-date">Aug 13, 2018</h4>
-						</div>
-						<div class="post-summary"><p>Configure your shell to use docker daemon of Minishift  eval $(minishift docker-env)   export user token registry URL  export TOKEN=$(oc whoami -t) export REGISTRY_URL=$(minishift openshift registry)   Logging in to Registry  docker login -u developer -p $TOKEN $REGISTRY_URL  OR
- we can use directly as,  docker login -u developer -p $(oc whoam -t) $(minishift openshift registry)  Now you can tag images, push it to respective project to create imagestream</p></div>
-						<div class="post-list-footer text-center">
-							<a href="https://suraj.pro/post/access-minishift-registry/">Read More</a>
 						</div>
 					</div>
 				</li>
@@ -295,7 +302,7 @@ Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y  sudo
 			<div class="push"></div>
 		</div>
 		<footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

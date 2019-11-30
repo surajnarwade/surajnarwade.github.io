@@ -2,7 +2,7 @@
 <html>
 
     <head>
-        <title> Golang workaround for cannot assign to struct field in map &middot; Suraj Narwade </title>
+        <title> Unleashing the power of kubectl &middot; Suraj Narwade </title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -96,74 +96,53 @@ ga('create', 'UA-153648902-1', 'auto');
 </header>
 
         <div class="container wrapper">
-            <h1><a href="https://suraj.pro/post/golang_workaround/">Golang workaround for cannot assign to struct field in map</a></h1>
-            <span class="post-date">May 28, 2017 </span>
+            <h1><a href="https://suraj.pro/post/powerofkubectl/">Unleashing the power of kubectl</a></h1>
+            <span class="post-date">Feb 13, 2020 </span>
             <div class="post-content">
-                <p>Yesterday, I was working one of the <a href="https://github.com/kubernetes-incubator/kompose">Kompose</a> issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,</p>
-<pre><code>package main
-
-import &quot;fmt&quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}}
-        fmt.Println(m)
-	m[&quot;dog&quot;].count = 4
-	
-	fmt.Println(m)
-
-}
-</code></pre><p>so I got this error,</p>
-<pre><code>tmp/sandbox728133053/main.go:12: cannot assign to struct field m[&quot;dog&quot;].count in map
-</code></pre><p>After googling for some time, I found this solution and I tried &amp; it worked as below:</p>
-<pre><code>package main
-
-import &quot;fmt&quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]Animal{&quot;cat&quot;: Animal{2}, &quot;dog&quot;: Animal{3}, &quot;mouse&quot;: Animal{5}}
-
-	fmt.Println(m)
-
-	var x = m[&quot;dog&quot;]
-	x.count = 4
-	m[&quot;dog&quot;] = x
-
-	fmt.Println(m)
-
-
-}
-</code></pre><p>I found one more way to do this by storing pointers as shown below:</p>
-<pre><code>package main
-
-import &quot;fmt&quot;
-
-type Animal struct {
-	count int
-}
-
-func main() {
-	m := map[string]*Animal{&quot;cat&quot;: &amp;Animal{2}, &quot;dog&quot;: &amp;Animal{3}, &quot;mouse&quot;: &amp;Animal{5}}
-	fmt.Printf(&quot;%#v\n&quot;,m[&quot;dog&quot;])
-	
-	m[&quot;dog&quot;].count = 4
-
-	fmt.Printf(&quot;%#v&quot;, m[&quot;dog&quot;])
-
-}
-</code></pre><p><code>Happy Hacking !!!</code></p>
-<h4 id="reference">Reference:</h4>
-<ul>
-<li><a href="https://github.com/golang/go/issues/3117">https://github.com/golang/go/issues/3117</a></li>
+                <p>Continuing with previous <a href="https://suraj.pro/post/kubectl/">post</a>,</p>
+<pre><code>kubectl explain --raw /
+</code></pre><ul>
+<li>Editor of your choice</li>
 </ul>
-
+<p>By default, kubectl uses default editor (which is most of the time vim or nano), you can set editor of your choice by setting the following environment variable with editor of you choice.</p>
+<pre><code>export KUBE_EDITOR=`code --wait`
+</code></pre><ul>
+<li>Edit while you create</li>
+</ul>
+<p>You can edit the resource definition right before deploying whether from a file or remote link.
+This helps when you are deploying sample application from remote link and want to edit something before deploying.</p>
+<pre><code>
+$ kubectl create -f life.yml --edit
+$ kubectl create -f https://goo.gl/Z6WMNF  --edit
+</code></pre><ul>
+<li>explain</li>
+</ul>
+<p>To read more information about resource right from the terminal.</p>
+<pre><code>kubectl explain pod
+kubectl explain pod.spec
+kubectl explain pod.spec.containers
+</code></pre><ul>
+<li>forgot the key</li>
+</ul>
+<p>To check if type of the field/key, whether it is required or not</p>
+<pre><code>kubectl explain life --recursive
+</code></pre><ul>
+<li>Logs always help</li>
+</ul>
+<pre><code>-v=9 CURL command
+-v=8 request and response body
+-v=6 method and apipath
+</code></pre><ul>
+<li>Run before you run</li>
+</ul>
+<p>Always dry run before deploying your application</p>
+<pre><code>$ kubectl create configmap life --from-file=life --dry-run 
+</code></pre><ul>
+<li>Krew</li>
+</ul>
+<pre><code>$ kubectl krew search
+$ kubectl krew install &lt;plugin&gt; 
+</code></pre>
             </div>
             
             <div class="post-comments">

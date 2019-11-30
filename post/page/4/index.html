@@ -6,7 +6,7 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
 	</head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -94,6 +103,21 @@ ga('create', '75855569', 'auto');
 			</div>
 			<ul id="post-list">
                 	
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/blog11/">How to Setup Private Docker Registry in Fedora/CentOS ?</a></h4>
+							<h4 class="post-date">Jun 27, 2016</h4>
+						</div>
+						<div class="post-summary"><p>When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. Docker Hub Regitry
+What is Private Docker Registry ?
+If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/blog11/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
@@ -136,7 +160,7 @@ Why to Sponser Us ?</p></div>
 						</div>
 						<div class="post-summary"><p>Python Pune Meetup was held @ Amazatic Solutions and that was about Part II of Machine learning by Sudarshan Gadhave on 28th May 2016. Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.
 Sudarshan started from Required tools/libraries for machine learning :
- Ipython numpy python-pandas python-scikit-learn matplotlib   These are best opensource alternatives to softwares like MATLAB !!
+ Ipython numpy python-pandas python-scikit-learn matplotlib  These are best opensource alternatives to softwares like MATLAB !!
 Machine learning is all about technical,business and statistics.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog9/">Read More</a>
@@ -166,8 +190,8 @@ In this blog post, we’ll install a Kubernetes cluster with three minions on Fe
 							<h4 class="post-link"><a href="https://suraj.pro/post/blog7/">RDO BUG TRIAGE DAY - First step towards Contribution !!!</a></h4>
 							<h4 class="post-date">May 20, 2016</h4>
 						</div>
-						<div class="post-summary"><p>Hello, after long time, I am writing for a good reason :P 1. had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it:
-https://www.rdoproject.org/community/rdo-bugtriage/
+						<div class="post-summary"><p>Hello, after long time, I am writing for a good reason :P
+ had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it:  https://www.rdoproject.org/community/rdo-bugtriage/
 (I also came to know it just day before yesterday :-))
 As a newbie to RDO community, ChandanKumar and Matthias Runge guided me to what to do there. So, I had created account on http://bugzilla.</p></div>
 						<div class="post-list-footer text-center">
@@ -213,7 +237,7 @@ unit testing is a method by which individual units of source code, sets of one o
 							<h4 class="post-date">Apr 15, 2016</h4>
 						</div>
 						<div class="post-summary"><p>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows, Everything works fine ;) ,
- [user@localhost project]$ git commit --amend [project d9593ab] &lt;commit message here&gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py  While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
+ [user@localhost project]$ git commit --amend [project d9593ab] &lt;commit message here&gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
  [user@localhost project]$ git review develop remote: Processing changes: refs: 1, done.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog4/">Read More</a>
@@ -230,22 +254,6 @@ unit testing is a method by which individual units of source code, sets of one o
 						<div class="post-summary"><p>I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P. ‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’ Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp; awesome, I got to know new things every single day !</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/blog3/">Read More</a>
-						</div>
-					</div>
-				</li>
-			
-				<li>
-					<div class="post-list-item">
-						<div class="post-header">
-							<h4 class="post-link"><a href="https://suraj.pro/post/blog2/">Finally Interns family completed !</a></h4>
-							<h4 class="post-date">Feb 28, 2016</h4>
-						</div>
-						<div class="post-summary"><p>Finally Interns family completed !
-It was 8 February, I came at office bit early ;) .
-Seema welcomed us(new joinees) &amp; took care of all documentation process. Then, Manoj takes us for tour of whole office. It was awesome( Especially 5th floor) and then introduced me to Manager Devang Parikh, Mentor Rishabh Das and Team Lead Shrink ;)
-Then, Rishabh helped me to setup all things &amp; told me about workflow in brief &amp; also about CI/CD, Jenkins, Ansible, Openstack etc.</p></div>
-						<div class="post-list-footer text-center">
-							<a href="https://suraj.pro/post/blog2/">Read More</a>
 						</div>
 					</div>
 				</li>
@@ -297,7 +305,7 @@ Then, Rishabh helped me to setup all things &amp; told me about workflow in brie
 			<div class="push"></div>
 		</div>
 		<footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

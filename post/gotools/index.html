@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.54.0" />
+<meta name="generator" content="Hugo 0.61.0-DEV" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -36,10 +36,12 @@
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', '75855569', 'auto');
+ga('create', 'UA-153648902-1', 'auto');
 	  ga('send', 'pageview');
 
 </script>
+
+
 
 
     </head>
@@ -55,27 +57,34 @@ ga('create', '75855569', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>snarwade@redhat ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
 		</div>
 
 		
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="https://suraj.pro">/home/snarwade</a>
+					<a href="https://suraj.pro">/home/suraj</a>
 				</li>
 				
 				
 				<li class="dropdown">
                     
-            		<a href="https://resume.suraj.pro">~/about/me</a>
+            		<a href="/post">~/posts</a>
             		
         		</li>
         		
 				
 				<li class="dropdown">
                     
-            		<a href="/post">~/posts</a>
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
             		
         		</li>
         		
@@ -90,60 +99,45 @@ ga('create', '75855569', 'auto');
             <h1><a href="https://suraj.pro/post/gotools/">tools to adopt best practices in golang</a></h1>
             <span class="post-date">Jul 6, 2017 </span>
             <div class="post-content">
-                
-
-<p>I went through internet yesterday regarding best practices with golang, I found <a href="https://github.com/dominikh/go-tools">go-tools</a>  written by <a href="https://twitter.com/dominikhonnef">Dominik Honnef</a> which were pretty interesting and can be .
+                <p>I went through internet yesterday regarding best practices with golang, I found <a href="https://github.com/dominikh/go-tools">go-tools</a>  written by <a href="https://twitter.com/dominikhonnef">Dominik Honnef</a> which were pretty interesting and can be .
 I found some of them useful for me, so are they listed below.</p>
-
 <h3 id="static-check">static check</h3>
-
 <ul>
-<li><p>applies tons of static analysis checks.</p></li>
-
-<li><p>it needs go 1.6 or later,</p></li>
+<li>
+<p>applies tons of static analysis checks.</p>
+</li>
+<li>
+<p>it needs go 1.6 or later,</p>
+</li>
 </ul>
-
 <pre><code>go get honnef.co/go/tools/cmd/staticcheck
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>syntax is:</li>
 </ul>
-
 <pre><code>$ statickcheck [pkg] or [directory]
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>I tried it for kompose with some extra hacks:</li>
 </ul>
-
 <pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do staticcheck &quot;$pkg&quot;; done
 cmd/completion.go:48:2: empty branch (SA9003)
 pkg/transformer/kubernetes/kubernetes_test.go:71:6: identical expressions on the left and right side of the '!=' operator (SA4000)
-</code></pre>
-
-<h3 id="gosimple">gosimple</h3>
-
+</code></pre><h3 id="gosimple">gosimple</h3>
 <ul>
-<li><p>it gives suggestions for simplifying your code.</p></li>
-
-<li><p>it needs go 1.6 or later:</p></li>
+<li>
+<p>it gives suggestions for simplifying your code.</p>
+</li>
+<li>
+<p>it needs go 1.6 or later:</p>
+</li>
 </ul>
-
 <pre><code>go get honnef.co/go/tools/cmd/gosimple
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>syntax is:</li>
 </ul>
-
 <pre><code>$ gosimple [pkg] or [directory]
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>I tried it as follows:</li>
 </ul>
-
 <pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do gosimple &quot;$pkg&quot;; done
 pkg/transformer/utils.go:219:2: 'if err != nil { return err }; return nil' can be simplified to 'return err' (S1013)
 pkg/transformer/utils_test.go:115:4: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
@@ -157,39 +151,28 @@ pkg/transformer/kubernetes/k8sutils_test.go:284:5: should omit comparison to boo
 pkg/transformer/kubernetes/k8sutils_test.go:293:5: should omit comparison to bool constant, can be simplified to output (S1002)
 pkg/transformer/kubernetes/kubernetes_test.go:183:68: should omit comparison to bool constant, can be simplified to !*template.Spec.Containers[0].SecurityContext.Privileged (S1002)
 pkg/utils/docker/client.go:31:2: 'if err != nil { return client, err }; return client, nil' can be simplified to 'return client, err' (S1013)
-</code></pre>
-
-<h3 id="unused">unused</h3>
-
+</code></pre><h3 id="unused">unused</h3>
 <ul>
-<li><p>it checks for unused constants, variables, functions and types.</p></li>
-
-<li><p>it needs go 1.6 or later</p></li>
+<li>
+<p>it checks for unused constants, variables, functions and types.</p>
+</li>
+<li>
+<p>it needs go 1.6 or later</p>
+</li>
 </ul>
-
 <pre><code>go get honnef.co/go/tools/cmd/unused
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>syntax is:</li>
 </ul>
-
 <pre><code>$ unused [pkg] or [directory]
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>again, I tried it on kompose, purposefully I have added some unused type and function:</li>
 </ul>
-
 <pre><code>$ for pkg in $(go list -f '{{ join .Deps  &quot;\n&quot;}}' . | grep 'kompose/[^vendor]'); do unused &quot;$pkg&quot;; done
 pkg/kobject/kobject.go:126:6: type abc is unused (U1000)
 pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
-</code></pre>
-
-<h3 id="happy-hacking"><code>Happy Hacking !!!</code></h3>
-
+</code></pre><h3 id="happy-hacking-"><code>Happy Hacking !!!</code></h3>
 <h4 id="references">References:</h4>
-
 <ul>
 <li><a href="https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife">https://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife</a></li>
 <li><a href="https://github.com/dominikh/go-tools">https://github.com/dominikh/go-tools</a></li>
@@ -223,7 +206,7 @@ pkg/kobject/kobject.go:130:6: func hello is unused (U1000)
             <div class="push"></div>
         </div>
         <footer class="footer text-center">
-<p>Copyright &copy; 2019 Suraj Narwade -
+<p>Copyright &copy; 2020 Suraj Narwade -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>
