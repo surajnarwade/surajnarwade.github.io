@@ -100,8 +100,7 @@ ga('create', 'UA-153648902-1', 'auto');
             <span class="post-date">Feb 13, 2020 </span>
             <div class="post-content">
                 <p>Continuing with previous <a href="https://suraj.pro/post/kubectl/">post</a>,</p>
-<pre><code>kubectl explain --raw /
-</code></pre><ul>
+<ul>
 <li>Editor of your choice</li>
 </ul>
 <p>By default, kubectl uses default editor (which is most of the time vim or nano), you can set editor of your choice by setting the following environment variable with editor of you choice.</p>
@@ -129,17 +128,23 @@ kubectl explain pod.spec.containers
 </code></pre><ul>
 <li>Logs always help</li>
 </ul>
+<p>To get more useful informations like request/response body, Curl commands for equivalent kubectl commands</p>
 <pre><code>-v=9 CURL command
 -v=8 request and response body
 -v=6 method and apipath
 </code></pre><ul>
+<li>To explore all api paths</li>
+</ul>
+<pre><code>kubectl get --raw /
+</code></pre><ul>
 <li>Run before you run</li>
 </ul>
-<p>Always dry run before deploying your application</p>
+<p>Always dry run before deploying your application to avoid any consequences.</p>
 <pre><code>$ kubectl create configmap life --from-file=life --dry-run 
 </code></pre><ul>
 <li>Krew</li>
 </ul>
+<p>Krew is kubectl plugin manager to search/install plugins for kubectl which is quite useful</p>
 <pre><code>$ kubectl krew search
 $ kubectl krew install &lt;plugin&gt; 
 </code></pre>
