@@ -6,7 +6,7 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.61.0-DEV" />
+<meta name="generator" content="Hugo 0.65.0" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -106,6 +106,20 @@ ga('create', 'UA-153648902-1', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/install-minishift-fedora/">Installing Minishift on Fedora</a></h4>
+							<h4 class="post-date">Sep 13, 2018</h4>
+						</div>
+						<div class="post-summary"><p>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it&rsquo;s not present, it&rsquo;s already set in PATH variable.
+Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference:  https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/install-minishift-fedora/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/access-minishift-registry/">Play with OpenShift Internal Docker Registry and imagestreams</a></h4>
 							<h4 class="post-date">Aug 13, 2018</h4>
 						</div>
@@ -169,7 +183,7 @@ $ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /
 							<h4 class="post-link"><a href="https://suraj.pro/post/git/">How to split commits in git</a></h4>
 							<h4 class="post-date">Nov 27, 2017</h4>
 						</div>
-						<div class="post-summary"><p>I am very bad at git and I always forget the steps. It's always better to write it somewhere. Then why not a blog ?
+						<div class="post-summary"><p>I am very bad at git and I always forget the steps. It&rsquo;s always better to write it somewhere. Then why not a blog ?
 To split your last or recent commit, simply do,
 $ git reset HEAD~ But I wanted to break 3rd commit and split it into two commits, then I did as following way,
 $ git rebase -i HEAD~3 if you dont know the number you can also mention SHA1 of that commit as well,</p></div>
@@ -202,7 +216,7 @@ Some of the cool things I found as below,
 						</div>
 						<div class="post-summary"><p>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.
 One of the use case for static pod might be for storage like gluster on each minion or maybe for os level debugging on OS like atomic host.
-For testing it, I referred kelseyhightower's standalone kubelet guide.
+For testing it, I referred kelseyhightower&rsquo;s standalone kubelet guide.
 To install kubelet, we can either download kubelet binary and set it up manually or we can get it from kubernetes-node package,</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/static-pod/">Read More</a>
@@ -235,20 +249,6 @@ To install kubelet, we can either download kubelet binary and set it up manually
 Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/videoguideline/">Read More</a>
-						</div>
-					</div>
-				</li>
-			
-				<li>
-					<div class="post-list-item">
-						<div class="post-header">
-							<h4 class="post-link"><a href="https://suraj.pro/post/k8s-pune-meetup/">Kubernetes Pune Meetup - July 2017</a></h4>
-							<h4 class="post-date">Jul 10, 2017</h4>
-						</div>
-						<div class="post-summary"><p>It was beautiful Saturday morning and we were at yet another chapter of kubernetes Pune meetup. Meetup had a good turnaround of about 30 people, even it was the weekend.
-Harshal Shah started the Session on &ldquo;Lifecycle of a Pod&rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.</p></div>
-						<div class="post-list-footer text-center">
-							<a href="https://suraj.pro/post/k8s-pune-meetup/">Read More</a>
 						</div>
 					</div>
 				</li>

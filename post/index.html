@@ -6,7 +6,7 @@
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.61.0-DEV" />
+<meta name="generator" content="Hugo 0.65.0" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -106,6 +106,23 @@ ga('create', 'UA-153648902-1', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://suraj.pro/post/dockerfiles/">Writing Dockerfiles like a pro</a></h4>
+							<h4 class="post-date">May 11, 2020</h4>
+						</div>
+						<div class="post-summary"><p>In this blog post, we focus on:
+ Writing Linting Building the Dockerfile.  Our goal is to have:
+ Cleaner Dockerfiles Smaller &amp; Secure Images Faster builds  Writing Chaining each statement in Dockerfile introduces one extra layer in image, hence we should chain the statement wherever possible
+for example, instead of,
+RUN apt-get update RUN apt-get -y install imagemagick curl software-properties-common gnupg vim ssh RUN apt-get -y install nodejs we could write,</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://suraj.pro/post/dockerfiles/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://suraj.pro/post/powerofkubectl/">Unleashing the power of kubectl</a></h4>
 							<h4 class="post-date">Feb 13, 2020</h4>
 						</div>
@@ -124,7 +141,7 @@ export KUBE_EDITOR=`code --wait`  Edit while you create  You can edit the resour
 							<h4 class="post-link"><a href="https://suraj.pro/post/user-on-os4/">Creating users on OpenShift 4</a></h4>
 							<h4 class="post-date">Apr 13, 2019</h4>
 						</div>
-						<div class="post-summary"><p>It's always bit of confusing about OpenShift 4 :D here's how we can add user in OpenShift 4.
+						<div class="post-summary"><p>It&rsquo;s always bit of confusing about OpenShift 4 :D here&rsquo;s how we can add user in OpenShift 4.
  Create htpasswd file as below and users and their passwords,  $ htpasswd -cb users.htpasswd user1 user1pass $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &gt; Cluster Settings &gt; Global Configuration
   Click on Edit YAML in front of Oauth
   Click on Overview, under Identity Providers section, Click on Add and select HTPasswd</p></div>
@@ -157,9 +174,9 @@ git clone https://github.com/sclorg/nodejs-ex But was unclear about how to proce
 							<h4 class="post-date">Dec 5, 2018</h4>
 						</div>
 						<div class="post-summary"><p>While exploring, I came across ko tool by google &amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
-Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That's it :)
+Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That&rsquo;s it :)
   Verify your installation by which ko
-  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube's docker daemon</p></div>
+  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&rsquo;s docker daemon</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/develop-go-minikube/">Read More</a>
 						</div>
@@ -172,7 +189,7 @@ Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/
 							<h4 class="post-link"><a href="https://suraj.pro/post/exploring-k8s-part1/">Exploring Kubernetes: Client-Go - part-1</a></h4>
 							<h4 class="post-date">Nov 30, 2018</h4>
 						</div>
-						<div class="post-summary"><p>What's client-go ? Where's client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it's interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</p></div>
+						<div class="post-summary"><p>What&rsquo;s client-go ? Where&rsquo;s client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it&rsquo;s interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/exploring-k8s-part1/">Read More</a>
 						</div>
@@ -233,24 +250,10 @@ For example, In case of service catalog,</p></div>
 						</div>
 						<div class="post-summary"><p>Hello Folks,
 I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp; I scored 92%, Yay :)
-I got so many request about How to prepare for the exam, Here's my experience with preparation for the exam.
+I got so many request about How to prepare for the exam, Here&rsquo;s my experience with preparation for the exam.
 A bit about Exam:  Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/journey-to-cka/">Read More</a>
-						</div>
-					</div>
-				</li>
-			
-				<li>
-					<div class="post-list-item">
-						<div class="post-header">
-							<h4 class="post-link"><a href="https://suraj.pro/post/install-minishift-fedora/">Installing Minishift on Fedora</a></h4>
-							<h4 class="post-date">Sep 13, 2018</h4>
-						</div>
-						<div class="post-summary"><p>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it's not present, it's already set in PATH variable.
-Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference:  https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.</p></div>
-						<div class="post-list-footer text-center">
-							<a href="https://suraj.pro/post/install-minishift-fedora/">Read More</a>
 						</div>
 					</div>
 				</li>

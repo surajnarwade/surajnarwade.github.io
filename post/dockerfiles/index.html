@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Writing Dockerfiles like a pro &middot; Suraj Narwade </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.65.0" />
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://suraj.pro/css/nix.css">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata%7COpen+Sans%7CConcert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-153648902-1', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://suraj.pro>suraj@uSwitch ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://suraj.pro">/home/suraj</a>
+				</li>
+				
+				
+				<li class="dropdown">
+                    
+            		<a href="/post">~/posts</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://resume.suraj.pro">~/resume</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="https://slides.suraj.pro">~/talks</a>
+            		
+        		</li>
+        		
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://suraj.pro/post/dockerfiles/">Writing Dockerfiles like a pro</a></h1>
+            <span class="post-date">May 11, 2020 </span>
+            <div class="post-content">
+                <p>In this blog post, we focus on:</p>
+<ul>
+<li>Writing</li>
+<li>Linting</li>
+<li>Building the Dockerfile.</li>
+</ul>
+<p>Our goal is to have:</p>
+<ul>
+<li>Cleaner Dockerfiles</li>
+<li>Smaller &amp; Secure Images</li>
+<li>Faster builds</li>
+</ul>
+<h1 id="writing">Writing</h1>
+<h3 id="chaining">Chaining</h3>
+<p>each statement in Dockerfile introduces one extra layer in image, hence we should chain the statement wherever possible</p>
+<p>for example, instead of,</p>
+<pre><code>RUN apt-get update
+RUN apt-get -y install imagemagick curl software-properties-common gnupg vim ssh
+RUN apt-get -y install nodejs 
+</code></pre><p>we could write,</p>
+<pre><code>RUN apt-get update &amp;&amp; apt-get -y install imagemagick curl software-properties-common gnupg vim ssh &amp;&amp; apt-get -y install nodejs
+</code></pre><p>This will reduce number of layers in image and hence the size.</p>
+<h3 id="remove-package-manager-cache">Remove Package manager cache</h3>
+<pre><code>RUN apt-get update apt-get -y install --no-install-recommends \
+       imagemagick curl software-properties-common gnupg vim ssh nodejs \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre><h3 id="be-specific-about-copy">Be specific about COPY</h3>
+<ul>
+<li>To make sure:
+<ul>
+<li>you are not invalidating cache</li>
+<li>you might accidentally copy secrets or tokens into the image</li>
+</ul>
+</li>
+</ul>
+<p>Instead of copying the whole thing into the container,</p>
+<pre><code>COPY .  /app
+</code></pre><p>only copy what is required</p>
+<pre><code>COPY package.json server.js /app
+</code></pre><h3 id="user">USER</h3>
+<p>If we don&rsquo;t specify any USER in Dockerfiles, it defaults to root user which can potentially access docker host system. Using container as non-root is one of the widespread best practice for security.</p>
+<p>If service can run without privileges, use USER to change to a non-root user, you can create a user in Dockerfile or standard maintained project such as apache or node provides user readily.</p>
+<ul>
+<li>How to add?</li>
+</ul>
+<pre><code>RUN chown -R node:node /app
+USER node
+CMD [&quot;npm&quot;, &quot;start&quot;, &quot;--prefix&quot;, &quot;app&quot;]
+</code></pre><ul>
+<li>
+<p>Things to remember:</p>
+<ul>
+<li>you cant use privileged ports(1-1023)</li>
+<li>you need to provide proper file permissions to directories</li>
+</ul>
+</li>
+</ul>
+<h3 id="multistage-build">Multistage build</h3>
+<ul>
+<li>I have written a detailed blog post about multistage build <a href="https://suraj.pro/post/multi-staging/">here</a></li>
+</ul>
+<h3 id="copy-instead-of-add">COPY INSTEAD OF ADD</h3>
+<ul>
+<li>COPY copies local files recursively, given explicit source and destination files or directories. With COPY, you must declare the locations.</li>
+</ul>
+<pre><code>COPY /source/file/path  /destination/path
+</code></pre><ul>
+<li>
+<p>ADD is lot more complex than COPY, it can do extra things. it copies local files recursively, implicitly creates the destination directory when it doesn&rsquo;t exist, and accepts archives as local or remote URLs as its source, which it expands or downloads respectively into the destination directory.</p>
+<ul>
+<li>Copy local file into image</li>
+</ul>
+<pre><code>ADD /source/file/path  /destination/path
+</code></pre><ul>
+<li>Extract the content of compressed files in destination</li>
+</ul>
+<pre><code>ADD source.file.tar.gz /temp
+</code></pre><ul>
+<li>downloading file from URL and copy it to destination in image</li>
+</ul>
+<pre><code>ADD http://source.file/url  /destination/path
+</code></pre></li>
+</ul>
+<h1 id="linting">Linting</h1>
+<ul>
+<li>You can find there are many Dockerfile linters are available. I liked the project called <a href="https://github.com/hadolint/hadolint">hadolint</a>, it&rsquo;s&rsquo; written in Haskell and fair easy to use.</li>
+</ul>
+<pre><code>$ hadolint Dockerfile
+
+Dockerfile:1 DL3006 Always tag the version of an image explicitly
+Dockerfile:3 DL3009 Delete the apt-get lists after installing something
+Dockerfile:4 DL3008 Pin versions in apt get install. Instead of `apt-get install &lt;package&gt;` use `apt-get install &lt;package&gt;=&lt;version&gt;`
+Dockerfile:4 DL3015 Avoid additional packages by specifying `--no-install-recommends`
+Dockerfile:5 DL3008 Pin versions in apt get install. Instead of `apt-get install &lt;package&gt;` use `apt-get install &lt;package&gt;=&lt;version&gt;`
+Dockerfile:5 DL3015 Avoid additional packages by specifying `--no-install-recommends`
+Dockerfile:6 DL4006 Set the SHELL option -o pipefail before RUN with a pipe in it. If you are using /bin/sh in an alpine image or if your shell is symlinked to busybox then consider explicitly setting your SHELL to /bin/ash, or disable this check
+</code></pre><ul>
+<li>
+<p>We can use <code>--ignore</code> flag in case you want to ignore some of the rules</p>
+</li>
+<li>
+<p>you can find the list of all rules <a href="https://github.com/hadolint/hadolint#rules">here</a></p>
+</li>
+</ul>
+<h1 id="building">Building</h1>
+<p>When you build the image, also consider what tags you are providing.</p>
+<ul>
+<li>In this case, there&rsquo;s no latest tag</li>
+</ul>
+<pre><code># :latest doesn't care
+$ docker build -t company/image_name:0.1 .
+</code></pre><ul>
+<li>if you don&rsquo;t mention any tag, docker create the latest tag</li>
+</ul>
+<pre><code># :latest was created
+$ docker build -t company/image_name
+</code></pre><ul>
+<li>if you again tag the image, it will not at all affect the  latest</li>
+</ul>
+<pre><code># :latest doesn't care
+$ docker build -t company/image_name:0.2 .
+</code></pre><ul>
+<li>if you explicitly mention the latest tag then only it gets updated</li>
+</ul>
+<pre><code># :latest was updated
+$ docker build -t company/image_name:latest .
+</code></pre>
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "surajnarwade-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2020 Suraj Narwade -
+<span class="credit">
+	Powered by
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

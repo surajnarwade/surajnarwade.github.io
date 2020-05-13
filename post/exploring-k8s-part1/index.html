@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.61.0-DEV" />
+<meta name="generator" content="Hugo 0.65.0" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -100,12 +100,12 @@ ga('create', 'UA-153648902-1', 'auto');
             <span class="post-date">Nov 30, 2018 </span>
             <div class="post-content">
                 <!-- raw HTML omitted -->
-<h2 id="whats-clientgo-">What's client-go ?</h2>
+<h2 id="whats-client-go-">What&rsquo;s client-go ?</h2>
 <!-- raw HTML omitted -->
-<h2 id="wheres-clientgo-">Where's client-go ?</h2>
+<h2 id="wheres-client-go-">Where&rsquo;s client-go ?</h2>
 <!-- raw HTML omitted -->
 <ul>
-<li>you can find it in <code>kubernetes/kubernetes/staging</code> directory and published by bot to <code>k8s.io/client-go</code>, kubernetes also uses client-go. it's interesting if you see <code>client-go</code> from kubernetes vendor, it  has symlinks to <code>kubernetes/kubernetes/staging</code></li>
+<li>you can find it in <code>kubernetes/kubernetes/staging</code> directory and published by bot to <code>k8s.io/client-go</code>, kubernetes also uses client-go. it&rsquo;s interesting if you see <code>client-go</code> from kubernetes vendor, it  has symlinks to <code>kubernetes/kubernetes/staging</code></li>
 </ul>
 <!-- raw HTML omitted -->
 <h2 id="in-this-adventure-very-first-step-is-to-see-how-to-connect-to-api-server-"><strong>In this Adventure, very first step is to see how to connect to API Server :)</strong></h2>
@@ -131,7 +131,7 @@ ga('create', 'UA-153648902-1', 'auto');
 <ul>
 <li>When your program runs on kubernetes, it uses service account token inside the pods <code>/var/run/secrets/kubernetes.io/serviceaccount</code> for auth and tls stuff.</li>
 </ul>
-<h2 id="connecting-to-cluster-using-clientgo">Connecting to cluster using client-go</h2>
+<h2 id="connecting-to-cluster-using-client-go">Connecting to cluster using client-go</h2>
 <!-- raw HTML omitted -->
 <ul>
 <li>clientcmd holds the required code to configuring connection to the cluster using kubeconfig as well as about modification to kubeconfig. Code reference <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L546">here</a>.</li>
@@ -146,12 +146,12 @@ ga('create', 'UA-153648902-1', 'auto');
 </ul>
 <pre><code>config, err := clientcmd.BuildConfigFromFlags(&quot;&quot;, kubeconfig)
 </code></pre><ul>
-<li>If you are running program on kubernetes, you don't need to provided parameters, it will automatically fetch details using serviceaccount tokens:</li>
+<li>If you are running program on kubernetes, you don&rsquo;t need to provided parameters, it will automatically fetch details using serviceaccount tokens:</li>
 </ul>
 <pre><code>config, err := clientcmd.BuildConfigFromFlags(&quot;&quot;, &quot;&quot;)
 </code></pre><ul>
 <li>
-<p>If you don't provide any parameters, it fallbacks to <code>InClusterConfig</code>, even if it fails, it fallbacks to default configs which is either <code>KUBERNETES_MASTER</code> environment variable or simply <code>http://localhost:8080</code>, code reference <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L48">here.</a></p>
+<p>If you don&rsquo;t provide any parameters, it fallbacks to <code>InClusterConfig</code>, even if it fails, it fallbacks to default configs which is either <code>KUBERNETES_MASTER</code> environment variable or simply <code>http://localhost:8080</code>, code reference <a href="https://github.com/kubernetes/client-go/blob/master/tools/clientcmd/client_config.go#L48">here.</a></p>
 </li>
 <li>
 <p>Directly use this (even above way internally uses this), Code Ref <a href="https://github.com/kubernetes/client-go/blob/master/rest/config.go#L315">here</a>.</p>

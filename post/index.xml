@@ -6,10 +6,23 @@
     <description>Recent content in Posts on Suraj Narwade</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Feb 2020 21:21:49 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2020 21:21:49 +0530</lastBuildDate>
     
 	<atom:link href="https://suraj.pro/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing Dockerfiles like a pro</title>
+      <link>https://suraj.pro/post/dockerfiles/</link>
+      <pubDate>Mon, 11 May 2020 21:21:49 +0530</pubDate>
+      
+      <guid>https://suraj.pro/post/dockerfiles/</guid>
+      <description>In this blog post, we focus on:
+ Writing Linting Building the Dockerfile.  Our goal is to have:
+ Cleaner Dockerfiles Smaller &amp;amp; Secure Images Faster builds  Writing Chaining each statement in Dockerfile introduces one extra layer in image, hence we should chain the statement wherever possible
+for example, instead of,
+RUN apt-get update RUN apt-get -y install imagemagick curl software-properties-common gnupg vim ssh RUN apt-get -y install nodejs we could write,</description>
+    </item>
     
     <item>
       <title>Unleashing the power of kubectl</title>
@@ -28,7 +41,7 @@ export KUBE_EDITOR=`code --wait`  Edit while you create  You can edit the resour
       <pubDate>Sat, 13 Apr 2019 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/user-on-os4/</guid>
-      <description>It&#39;s always bit of confusing about OpenShift 4 :D here&#39;s how we can add user in OpenShift 4.
+      <description>It&amp;rsquo;s always bit of confusing about OpenShift 4 :D here&amp;rsquo;s how we can add user in OpenShift 4.
  Create htpasswd file as below and users and their passwords,  $ htpasswd -cb users.htpasswd user1 user1pass $ htpasswd -b users.htpasswd user2 user2pass   Through console, login with kube:admin user, navigate to Administration &amp;gt; Cluster Settings &amp;gt; Global Configuration
   Click on Edit YAML in front of Oauth
   Click on Overview, under Identity Providers section, Click on Add and select HTPasswd</description>
@@ -53,9 +66,9 @@ git clone https://github.com/sclorg/nodejs-ex But was unclear about how to proce
       
       <guid>https://suraj.pro/post/develop-go-minikube/</guid>
       <description>While exploring, I came across ko tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
-Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That&#39;s it :)
+Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/cmd/ko That&amp;rsquo;s it :)
   Verify your installation by which ko
-  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&#39;s docker daemon</description>
+  We can mention any docker registry (local or remote) using KO_DOCKER_REPO env variable, but as we are focussing on local development, we will publish images to minikube&amp;rsquo;s docker daemon</description>
     </item>
     
     <item>
@@ -64,7 +77,7 @@ Pre-Flight Checks  Installing ko  go get github.com/google/go-containerregistry/
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/exploring-k8s-part1/</guid>
-      <description>What&#39;s client-go ? Where&#39;s client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it&#39;s interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</description>
+      <description>What&amp;rsquo;s client-go ? Where&amp;rsquo;s client-go ?  you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it&amp;rsquo;s interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging  In this Adventure, very first step is to see how to connect to API Server :)  Connecting to API Server  There are two ways to talk to cluster using any go program:   outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</description>
     </item>
     
     <item>
@@ -109,7 +122,7 @@ For example, In case of service catalog,</description>
       <guid>https://suraj.pro/post/journey-to-cka/</guid>
       <description>Hello Folks,
 I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp;amp; I scored 92%, Yay :)
-I got so many request about How to prepare for the exam, Here&#39;s my experience with preparation for the exam.
+I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.
 A bit about Exam:  Duration: 3 hours (which is fair time if you do lot of practice, I completed in 2 hours 15 mins) Questions: 24 Clusters: 6  After clearing 9 certs to become RHCA (Red Hat Certified Architect), exam environment was kind of familiar to me.</description>
     </item>
     
@@ -119,7 +132,7 @@ A bit about Exam:  Duration: 3 hours (which is fair time if you do lot of practi
       <pubDate>Thu, 13 Sep 2018 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/install-minishift-fedora/</guid>
-      <description>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it&#39;s not present, it&#39;s already set in PATH variable.
+      <description>Check for latest release on github:  Check here: https://github.com/minishift/minishift/releases  Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.
 Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference:  https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.</description>
     </item>
     
@@ -173,7 +186,7 @@ $ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /
       <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/git/</guid>
-      <description>I am very bad at git and I always forget the steps. It&#39;s always better to write it somewhere. Then why not a blog ?
+      <description>I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?
 To split your last or recent commit, simply do,
 $ git reset HEAD~ But I wanted to break 3rd commit and split it into two commits, then I did as following way,
 $ git rebase -i HEAD~3 if you dont know the number you can also mention SHA1 of that commit as well,</description>
@@ -198,7 +211,7 @@ Some of the cool things I found as below,
       <guid>https://suraj.pro/post/static-pod/</guid>
       <description>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.
 One of the use case for static pod might be for storage like gluster on each minion or maybe for os level debugging on OS like atomic host.
-For testing it, I referred kelseyhightower&#39;s standalone kubelet guide.
+For testing it, I referred kelseyhightower&amp;rsquo;s standalone kubelet guide.
 To install kubelet, we can either download kubelet binary and set it up manually or we can get it from kubernetes-node package,</description>
     </item>
     
@@ -261,7 +274,7 @@ package main import &amp;quot;fmt&amp;quot; type Animal struct { count int } fun
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/goworkshop/</guid>
-      <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&#39;s, who was workshop instructor, started with introduction of golang.
+      <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&amp;rsquo;s, who was workshop instructor, started with introduction of golang.
 He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.
 Workshop course material can be found here.
 Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
@@ -284,7 +297,7 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
       <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
       
       <guid>https://suraj.pro/post/migration-to-hugo/</guid>
-      <description>Hello guys, its been so long, I havn&#39;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
+      <description>Hello guys, its been so long, I havn&amp;rsquo;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
 Installing Hugo .
  Install hugo  $ go get -v github.com/spf13/hugo  Check whether it is properly installed or not  $ hugo help Using Hugo .</description>
     </item>
@@ -316,7 +329,7 @@ Installing Hugo .
       
       <guid>https://suraj.pro/post/blog15/</guid>
       <description>Python Pune July Meetup was held at Red Hat, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns. Around 40 pythonistas were present for meetups, some were students and some were professionals. Topics for the meetup were as below:
- How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj  Meetup started with Rahul Bajaj&#39;s topic regarding Regular Expressions.</description>
+ How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj  Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.</description>
     </item>
     
     <item>

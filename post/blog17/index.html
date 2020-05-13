@@ -6,7 +6,7 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.61.0-DEV" />
+<meta name="generator" content="Hugo 0.65.0" />
 
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -121,7 +121,7 @@ ga('create', 'UA-153648902-1', 'auto');
 </code></pre><p>We have used sudo -E, because it preserves environment variables as we declared GEM_HOME</p>
 <pre><code> $ sudo -E /tmp/somedir/bin/r10k puppetfile install -v
  $ sudo cp -r packstack/puppet/modules/packstack /usr/share/openstack-puppet/modules
-</code></pre><p>Now it's time to generate answer file and edit the  contents:
+</code></pre><p>Now it&rsquo;s time to generate answer file and edit the  contents:
 as my target was Magnum component,</p>
 <pre><code> # packstack -d --gen-answer-file=answerfile.txt
 </code></pre><pre><code> # Specify 'y' to install OpenStack Container Service (magnum). ['y',
