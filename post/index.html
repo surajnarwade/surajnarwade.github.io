@@ -111,9 +111,7 @@ ga('create', 'UA-153648902-1', 'auto');
 						</div>
 						<div class="post-summary"><p>In this blog post, we focus on:
  Writing Linting Building the Dockerfile.  Our goal is to have:
- Cleaner Dockerfiles Smaller &amp; Secure Images Faster builds  Writing Chaining each statement in Dockerfile introduces one extra layer in image, hence we should chain the statement wherever possible
-for example, instead of,
-RUN apt-get update RUN apt-get -y install imagemagick curl software-properties-common gnupg vim ssh RUN apt-get -y install nodejs we could write,</p></div>
+ Cleaner Dockerfiles Smaller &amp; Secure Images Faster builds  Writing FROM  Always use slim images instead of using images with whole OS in it example, use debian:stretch-slim instead of debian If possible, use official maintained images such as use node instead of debian Always give tags, example: node:10-alpine, if you dont provide tag or use latest, this might break image cache or even container image.</p></div>
 						<div class="post-list-footer text-center">
 							<a href="https://suraj.pro/post/dockerfiles/">Read More</a>
 						</div>
