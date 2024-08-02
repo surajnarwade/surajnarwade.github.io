@@ -1,0 +1,77 @@
+baseURL: https://surajnarwade.com
+languageCode: en-us
+title: Suraj Narwade
+paginate: 7
+theme: ["PaperMod"]
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+mainsections: ["blog", "papermod"]
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+      - name: Blog
+        url: blog
+        weight: 1
+      - name: About
+        url: about
+        weight: 2
+      - name: Archives
+        url: archives
+        weight: 3
+      - name: Search 🔍
+        url: search
+        weight: 4
+
+minify:
+  disableXML: true
+  # minifyOutput: true
+
+outputs:
+  home:
+  - HTML
+  - RSS
+  - JSON
+
+params:
+  comments: true
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowReadingTime: true
+  ShowShareButtons: true
+  homeInfoParams:
+    Title: 👋 Hi there, I'm Suraj
+    Content: I love Platform Engineering, Kubernetes, AWS, Golang & All things cloud native.
+
+  socialIcons:
+  - name: linkedin
+    url: https://www.linkedin.com/in/surajnarwade/
+  - name: X
+    url: https://x.com/surajincloud
+  - name: youtube
+    url: https://www.youtube.com/@surajincloud
+  - name: github
+    url: https://github.com/surajnarwade/
+  - name: linktree
+    url: https://linktr.ee/surajincloud
+
+services:
+  disqus:
+    shortname: surajnarwade-github-io
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true
