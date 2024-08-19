@@ -16,7 +16,7 @@ const (
 
 a = iota // 0
 b = iota // 1
-c = iota // 3
+c = iota // 2
 )
 ```
 
@@ -41,7 +41,7 @@ import "fmt"
 func main() {
     const (
         a  = iota // 0
-        b        // 1
+        b         // 1
         c         // 2
     )
     
