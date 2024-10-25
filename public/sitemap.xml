@@ -2,277 +2,280 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://surajnarwade.com/blog/</loc>
+    <lastmod>2024-10-25T14:20:49+00:00</lastmod>
+  </url><url>
+    <loc>https://surajnarwade.com/</loc>
+    <lastmod>2024-10-25T14:20:49+00:00</lastmod>
+  </url><url>
+    <loc>https://surajnarwade.com/blog/understanding-iota-function-in-go/</loc>
+    <lastmod>2024-04-16T14:20:49+00:00</lastmod>
+  </url><url>
+    <loc>https://surajnarwade.com/blog/refactoring-terraform-easily-with-moved-block/</loc>
     <lastmod>2024-04-02T10:20:49+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/refactoring-terraform-easily-with-moved-block/</loc>
-    <lastmod>2024-04-02T10:20:49+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-04-02T10:20:49+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/piping-command-output-in-go/</loc>
+    <loc>https://surajnarwade.com/blog/piping-command-output-in-go/</loc>
     <lastmod>2023-09-10T08:03:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/running-shell-commands-in-go/</loc>
+    <loc>https://surajnarwade.com/blog/running-shell-commands-in-go/</loc>
     <lastmod>2023-09-10T07:52:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/building-which-linux-command-in-go/</loc>
+    <loc>https://surajnarwade.com/blog/building-which-linux-command-in-go/</loc>
     <lastmod>2023-09-09T10:48:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/encrypting-text-with-aws-kms/</loc>
+    <loc>https://surajnarwade.com/blog/encrypting-text-with-aws-kms/</loc>
     <lastmod>2023-09-03T23:00:09+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/making-a-wise-choice-with-ec2-instance-selector/</loc>
+    <loc>https://surajnarwade.com/blog/making-a-wise-choice-with-ec2-instance-selector/</loc>
     <lastmod>2023-09-02T23:00:13+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-mux/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-mux/</loc>
     <lastmod>2023-09-01T23:00:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-handlefunc/</loc>
     <lastmod>2023-08-31T08:25:55+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-multiple-handlers/</loc>
     <lastmod>2023-08-31T07:53:51+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-handlers/</loc>
     <lastmod>2023-08-30T23:00:14+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-using-httpserver-struct/</loc>
     <lastmod>2023-08-29T23:00:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/understanding-http-server-in-go-basic/</loc>
+    <loc>https://surajnarwade.com/blog/understanding-http-server-in-go-basic/</loc>
     <lastmod>2023-08-29T20:40:46+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/types-of-dns-records/</loc>
+    <loc>https://surajnarwade.com/blog/types-of-dns-records/</loc>
     <lastmod>2023-08-23T05:17:15+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/fmt-in-golang/</loc>
+    <loc>https://surajnarwade.com/blog/fmt-in-golang/</loc>
     <lastmod>2023-07-30T19:29:54+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/using-go-modules-with-a-private-github-repository/</loc>
+    <loc>https://surajnarwade.com/blog/using-go-modules-with-a-private-github-repository/</loc>
     <lastmod>2023-07-28T14:41:56+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/for-loop-in-golang/</loc>
+    <loc>https://surajnarwade.com/blog/for-loop-in-golang/</loc>
     <lastmod>2023-07-27T07:01:09+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/introduction-to-kubernetes-clients/</loc>
+    <loc>https://surajnarwade.com/blog/introduction-to-kubernetes-clients/</loc>
     <lastmod>2023-07-26T09:57:14+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/how-to-manage-multiple-versions-of-terraform/</loc>
+    <loc>https://surajnarwade.com/blog/how-to-manage-multiple-versions-of-terraform/</loc>
     <lastmod>2023-02-24T16:00:39+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</loc>
+    <loc>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</loc>
     <lastmod>2023-02-20T20:20:39+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/lets-ssm-not-ssh-on-ec2-instances/</loc>
+    <loc>https://surajnarwade.com/blog/lets-ssm-not-ssh-on-ec2-instances/</loc>
     <lastmod>2023-02-20T18:40:39+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</loc>
+    <loc>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</loc>
     <lastmod>2023-02-20T15:54:58+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</loc>
+    <loc>https://surajnarwade.com/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</loc>
     <lastmod>2023-02-18T15:30:39+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/building-awsctl-using-golang-1/</loc>
+    <loc>https://surajnarwade.com/blog/building-awsctl-using-golang-1/</loc>
     <lastmod>2023-02-17T08:36:32+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/basic-authentication-in-http-api-requests-in-golang/</loc>
+    <loc>https://surajnarwade.com/blog/basic-authentication-in-http-api-requests-in-golang/</loc>
     <lastmod>2023-02-12T14:05:38+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/civo-object-store-as-a-terraform-backend/</loc>
+    <loc>https://surajnarwade.com/blog/civo-object-store-as-a-terraform-backend/</loc>
     <lastmod>2023-02-12T12:38:12+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</loc>
+    <loc>https://surajnarwade.com/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</loc>
     <lastmod>2023-02-12T09:58:31+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/installing-setting-up-golang/</loc>
+    <loc>https://surajnarwade.com/blog/installing-setting-up-golang/</loc>
     <lastmod>2023-01-19T12:00:42+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</loc>
+    <loc>https://surajnarwade.com/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</loc>
     <lastmod>2023-01-18T07:30:42+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</loc>
+    <loc>https://surajnarwade.com/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</loc>
     <lastmod>2023-01-14T18:06:45+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/how-to-make-an-http-get-request-in-golang/</loc>
+    <loc>https://surajnarwade.com/blog/how-to-make-an-http-get-request-in-golang/</loc>
     <lastmod>2023-01-13T16:33:28+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/how-to-use-golang-with-mysql/</loc>
+    <loc>https://surajnarwade.com/blog/how-to-use-golang-with-mysql/</loc>
     <lastmod>2023-01-09T12:15:41+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/read-terraforms-plan-the-better-way/</loc>
+    <loc>https://surajnarwade.com/blog/read-terraforms-plan-the-better-way/</loc>
     <lastmod>2022-12-19T07:09:47+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/how-to-generate-terraform-module-docs/</loc>
+    <loc>https://surajnarwade.com/blog/how-to-generate-terraform-module-docs/</loc>
     <lastmod>2022-12-19T07:08:15+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/announcing-kubectl-eks-plugin-v0-1-0/</loc>
+    <loc>https://surajnarwade.com/blog/announcing-kubectl-eks-plugin-v0-1-0/</loc>
     <lastmod>2022-12-19T07:07:20+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</loc>
+    <loc>https://surajnarwade.com/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</loc>
     <lastmod>2022-12-18T15:45:03+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/terraform-cli-args-define-once-use-again-and-again/</loc>
+    <loc>https://surajnarwade.com/blog/terraform-cli-args-define-once-use-again-and-again/</loc>
     <lastmod>2022-12-18T15:32:10+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</loc>
+    <loc>https://surajnarwade.com/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</loc>
     <lastmod>2022-12-17T10:48:31+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/view-kubernetes-secrets-easily/</loc>
+    <loc>https://surajnarwade.com/blog/view-kubernetes-secrets-easily/</loc>
     <lastmod>2022-12-13T16:34:15+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</loc>
+    <loc>https://surajnarwade.com/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</loc>
     <lastmod>2022-12-13T07:34:04+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</loc>
+    <loc>https://surajnarwade.com/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</loc>
     <lastmod>2022-12-10T22:54:09+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/learning-kubernetes-with-kubectl/</loc>
+    <loc>https://surajnarwade.com/blog/learning-kubernetes-with-kubectl/</loc>
     <lastmod>2021-04-23T06:53:40+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/chaining-kiam-certificates-using-cert-manager/</loc>
+    <loc>https://surajnarwade.com/blog/chaining-kiam-certificates-using-cert-manager/</loc>
     <lastmod>2021-04-23T06:51:25+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/adding-own-service-to-kubernetes-cluster-info/</loc>
+    <loc>https://surajnarwade.com/blog/adding-own-service-to-kubernetes-cluster-info/</loc>
     <lastmod>2021-03-26T17:39:01+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/creating-a-cartesian-product-in-terraform/</loc>
+    <loc>https://surajnarwade.com/blog/creating-a-cartesian-product-in-terraform/</loc>
     <lastmod>2021-03-16T16:24:04+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/user-on-os4/</loc>
+    <loc>https://surajnarwade.com/blog/user-on-os4/</loc>
     <lastmod>2019-04-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/warlock-odo/</loc>
+    <loc>https://surajnarwade.com/blog/warlock-odo/</loc>
     <lastmod>2019-01-17T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/develop-go-minikube/</loc>
+    <loc>https://surajnarwade.com/blog/develop-go-minikube/</loc>
     <lastmod>2018-12-05T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/exploring-k8s-part1/</loc>
+    <loc>https://surajnarwade.com/blog/exploring-k8s-part1/</loc>
     <lastmod>2018-11-30T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/exploring-k8s-part2/</loc>
+    <loc>https://surajnarwade.com/blog/exploring-k8s-part2/</loc>
     <lastmod>2018-11-30T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/exploring-k8s-part3/</loc>
+    <loc>https://surajnarwade.com/blog/exploring-k8s-part3/</loc>
     <lastmod>2018-11-30T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/nmcli101/</loc>
+    <loc>https://surajnarwade.com/blog/nmcli101/</loc>
     <lastmod>2018-11-15T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/journey-to-cka/</loc>
+    <loc>https://surajnarwade.com/blog/journey-to-cka/</loc>
     <lastmod>2018-10-21T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/install-minishift-fedora/</loc>
+    <loc>https://surajnarwade.com/blog/install-minishift-fedora/</loc>
     <lastmod>2018-09-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/access-minishift-registry/</loc>
+    <loc>https://surajnarwade.com/blog/access-minishift-registry/</loc>
     <lastmod>2018-08-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/fossasia18/</loc>
+    <loc>https://surajnarwade.com/blog/fossasia18/</loc>
     <lastmod>2018-03-31T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/hostmount-minishift/</loc>
+    <loc>https://surajnarwade.com/blog/hostmount-minishift/</loc>
     <lastmod>2017-12-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/hostmount-minikube/</loc>
+    <loc>https://surajnarwade.com/blog/hostmount-minikube/</loc>
     <lastmod>2017-12-09T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/git/</loc>
+    <loc>https://surajnarwade.com/blog/git/</loc>
     <lastmod>2017-11-27T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/kubectl/</loc>
+    <loc>https://surajnarwade.com/blog/kubectl/</loc>
     <lastmod>2017-09-26T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/static-pod/</loc>
+    <loc>https://surajnarwade.com/blog/static-pod/</loc>
     <lastmod>2017-09-23T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/multi-staging/</loc>
+    <loc>https://surajnarwade.com/blog/multi-staging/</loc>
     <lastmod>2017-09-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/videoguideline/</loc>
+    <loc>https://surajnarwade.com/blog/videoguideline/</loc>
     <lastmod>2017-07-23T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/k8s-pune-meetup/</loc>
+    <loc>https://surajnarwade.com/blog/k8s-pune-meetup/</loc>
     <lastmod>2017-07-10T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/gotools/</loc>
+    <loc>https://surajnarwade.com/blog/gotools/</loc>
     <lastmod>2017-07-06T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/golang_workaround/</loc>
+    <loc>https://surajnarwade.com/blog/golang_workaround/</loc>
     <lastmod>2017-05-28T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/goworkshop/</loc>
+    <loc>https://surajnarwade.com/blog/goworkshop/</loc>
     <lastmod>2017-05-07T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/whats-new-in-docker/</loc>
+    <loc>https://surajnarwade.com/blog/whats-new-in-docker/</loc>
     <lastmod>2017-03-21T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/migration-to-hugo/</loc>
+    <loc>https://surajnarwade.com/blog/migration-to-hugo/</loc>
     <lastmod>2017-03-13T21:21:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog17/</loc>
+    <loc>https://surajnarwade.com/blog/blog17/</loc>
     <lastmod>2016-11-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog16/</loc>
+    <loc>https://surajnarwade.com/blog/blog16/</loc>
     <lastmod>2016-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog15/</loc>
+    <loc>https://surajnarwade.com/blog/blog15/</loc>
     <lastmod>2016-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog14/</loc>
+    <loc>https://surajnarwade.com/blog/blog14/</loc>
     <lastmod>2016-07-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog13/</loc>
+    <loc>https://surajnarwade.com/blog/blog13/</loc>
     <lastmod>2016-07-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog11/</loc>
+    <loc>https://surajnarwade.com/blog/blog11/</loc>
     <lastmod>2016-06-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog12/</loc>
+    <loc>https://surajnarwade.com/blog/blog12/</loc>
     <lastmod>2016-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog10/</loc>
+    <loc>https://surajnarwade.com/blog/blog10/</loc>
     <lastmod>2016-05-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog9/</loc>
+    <loc>https://surajnarwade.com/blog/blog9/</loc>
     <lastmod>2016-05-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog8/</loc>
+    <loc>https://surajnarwade.com/blog/blog8/</loc>
     <lastmod>2016-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog7/</loc>
+    <loc>https://surajnarwade.com/blog/blog7/</loc>
     <lastmod>2016-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog6/</loc>
+    <loc>https://surajnarwade.com/blog/blog6/</loc>
     <lastmod>2016-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog5/</loc>
+    <loc>https://surajnarwade.com/blog/blog5/</loc>
     <lastmod>2016-04-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog4/</loc>
+    <loc>https://surajnarwade.com/blog/blog4/</loc>
     <lastmod>2016-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog3/</loc>
+    <loc>https://surajnarwade.com/blog/blog3/</loc>
     <lastmod>2016-03-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog2/</loc>
+    <loc>https://surajnarwade.com/blog/blog2/</loc>
     <lastmod>2016-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/blog1/</loc>
+    <loc>https://surajnarwade.com/blog/blog1/</loc>
     <lastmod>2016-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://surajnarwade.com/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://surajnarwade.com/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://surajnarwade.com/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://surajnarwade.com/search/</loc>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://surajnarwade.com/series/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://surajnarwade.com/tags/</loc>
   </url>
 </urlset>
