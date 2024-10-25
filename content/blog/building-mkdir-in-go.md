@@ -5,7 +5,7 @@ date = "2024-10-25T14:20:49.779Z"
 category = "Blog"
 +++
 
-One of the best way to learn language is to try recreating familiar linux command in it. In one of the previous post, we have seen how we can implement simple `which` command, you can check the blog post here.
+One of the best way to learn language is to try recreating familiar linux command in it. In one of the previous post, we have seen how we can implement simple `which` command, you can check the [blog post here](https://surajnarwade.com/blog/building-which-linux-command-in-go/).
 
 In this blog post, we will try to implement `mkdir` command, Let’s get started.
 
