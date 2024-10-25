@@ -2,17 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blogs on Suraj Narwade</title>
-    <link>https://surajnarwade.com/blog/</link>
+    <link>http://localhost:1313/blog/</link>
     <description>Recent content in Blogs on Suraj Narwade</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 16 Apr 2024 14:20:49 +0000</lastBuildDate>
-    <atom:link href="https://surajnarwade.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Oct 2024 14:20:49 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building mkdir (linux) command in Go</title>
+      <link>http://localhost:1313/blog/building-mkdir-in-go/</link>
+      <pubDate>Fri, 25 Oct 2024 14:20:49 +0000</pubDate>
+      <guid>http://localhost:1313/blog/building-mkdir-in-go/</guid>
+      <description>One of the best way to learn language is to try recreating familiar linux command in it. In one of the previous post, we have seen how we can implement simple which command, you can check the blog post here.
+In this blog post, we will try to implement mkdir command, Let’s get started.
+mkdir is one of the important commands in Linux which helps to create directories.
+we will cover following in the blog post:</description>
+    </item>
     <item>
       <title>Understanding iota function in Go</title>
-      <link>https://surajnarwade.com/blog/understanding-iota-function-in-go/</link>
+      <link>http://localhost:1313/blog/understanding-iota-function-in-go/</link>
       <pubDate>Tue, 16 Apr 2024 14:20:49 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-iota-function-in-go/</guid>
+      <guid>http://localhost:1313/blog/understanding-iota-function-in-go/</guid>
       <description>Iota is predefined identifier which is used in constant declaration in Go. It is used to simplify incrementing value of constants.
 iota value always start at 0 and increments automatically by 1 for next constant.
 here’s the syntax for the iota,
@@ -21,9 +31,9 @@ const ( a = iota b c ) Let’s look at simple example,</description>
     </item>
     <item>
       <title>Refactoring Terraform easily with moved block</title>
-      <link>https://surajnarwade.com/blog/refactoring-terraform-easily-with-moved-block/</link>
+      <link>http://localhost:1313/blog/refactoring-terraform-easily-with-moved-block/</link>
       <pubDate>Tue, 02 Apr 2024 10:20:49 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/refactoring-terraform-easily-with-moved-block/</guid>
+      <guid>http://localhost:1313/blog/refactoring-terraform-easily-with-moved-block/</guid>
       <description>As Terraform codebase grows, there are chances where you may need to refactor or rename resources in your codebase which can result into deletion and recreation of resources.
 This happens because terraform thinks that you want to delete and create new resource and it allocates new id to the resource.
 Instead, you should let terraform know that you want to simply move the resource instead of replacing it.
@@ -31,9 +41,9 @@ To mimic this we will take simple example where we will have AWS instance with n
     </item>
     <item>
       <title>Piping Command Output in Go</title>
-      <link>https://surajnarwade.com/blog/piping-command-output-in-go/</link>
+      <link>http://localhost:1313/blog/piping-command-output-in-go/</link>
       <pubDate>Sun, 10 Sep 2023 08:03:23 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/piping-command-output-in-go/</guid>
+      <guid>http://localhost:1313/blog/piping-command-output-in-go/</guid>
       <description>In a previous blog post, we learned how to create and run commands in Go. Now, let&amp;rsquo;s explore how to recreate the following command:
 ls -l | grep hello Let&amp;rsquo;s create the first command:
 lsCmd := exec.Command(&amp;#34;ls&amp;#34;, &amp;#34;-l&amp;#34;) Next, create the second command:
@@ -41,9 +51,9 @@ grepCmd := exec.Command(&amp;#34;grep&amp;#34;, &amp;#34;hello&amp;#34;) To conn
     </item>
     <item>
       <title>Running Shell Commands in Go using os/exec</title>
-      <link>https://surajnarwade.com/blog/running-shell-commands-in-go/</link>
+      <link>http://localhost:1313/blog/running-shell-commands-in-go/</link>
       <pubDate>Sun, 10 Sep 2023 07:52:58 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/running-shell-commands-in-go/</guid>
+      <guid>http://localhost:1313/blog/running-shell-commands-in-go/</guid>
       <description>Sometimes, there are certain use cases where you may have to run shell commands through a Golang app. This is where the os/exec package comes in handy.
 If you want to run a command like sleep 1, you can simply do the following:
 cmd := exec.Command(&amp;#34;sleep&amp;#34;, &amp;#34;1&amp;#34;) err := cmd.Run() This will run the command and wait until the execution finishes, but it doesn&amp;rsquo;t capture the stdout.
@@ -51,26 +61,26 @@ If you intend to capture both stdout and stderr, you can use the following code:
     </item>
     <item>
       <title>Building which (Linux) command in Go</title>
-      <link>https://surajnarwade.com/blog/building-which-linux-command-in-go/</link>
+      <link>http://localhost:1313/blog/building-which-linux-command-in-go/</link>
       <pubDate>Sat, 09 Sep 2023 10:48:33 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/building-which-linux-command-in-go/</guid>
+      <guid>http://localhost:1313/blog/building-which-linux-command-in-go/</guid>
       <description>One of the best ways to learn a language is via building equivalent Linux commands using the language of your choice.
 which is my all-time favourite command to see if the binary is present on the server or not. You can see which usage as shown below,
 $ which kubectl-eks /Users/surajnarwade/.krew/bin/kubectl-eks We simply pass the binary name to which command and it will give us the absolute path to the binary.</description>
     </item>
     <item>
       <title>Encrypting text with AWS KMS</title>
-      <link>https://surajnarwade.com/blog/encrypting-text-with-aws-kms/</link>
+      <link>http://localhost:1313/blog/encrypting-text-with-aws-kms/</link>
       <pubDate>Sun, 03 Sep 2023 23:00:09 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/encrypting-text-with-aws-kms/</guid>
+      <guid>http://localhost:1313/blog/encrypting-text-with-aws-kms/</guid>
       <description>Encrypting and decrypting strings using AWS Key Management Service (KMS) and the AWS Command Line Interface (CLI) is a crucial part of securing sensitive data in your AWS environment. In this blog post, we&amp;rsquo;ll walk through the process of encrypting and decrypting a string using KMS and the AWS CLI. This is a fundamental skill for protecting your data in AWS services like S3, RDS, and Lambda.
 Requirement You will need AWS CLI, You can follow this doc to install it, https://docs.</description>
     </item>
     <item>
       <title>Making a wise choice with ec2-instance-selector</title>
-      <link>https://surajnarwade.com/blog/making-a-wise-choice-with-ec2-instance-selector/</link>
+      <link>http://localhost:1313/blog/making-a-wise-choice-with-ec2-instance-selector/</link>
       <pubDate>Sat, 02 Sep 2023 23:00:13 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/making-a-wise-choice-with-ec2-instance-selector/</guid>
+      <guid>http://localhost:1313/blog/making-a-wise-choice-with-ec2-instance-selector/</guid>
       <description>AWS has more than 200 instance types under EC2. It&amp;rsquo;s very tricky to select appropriate ec2-instance types and surely AWS docs can be daunting.
 You can check the official doc here: https://aws.amazon.com/ec2/instance-types/
 ec2-instance-selector is an open-source project by AWS. It is a CLI tool to helps you select compatible instance types.
@@ -80,18 +90,18 @@ Features You can filter AWS Instance types using criteria like vcpu, memory, net
     </item>
     <item>
       <title>Understanding HTTP Server in Go #6 - Mux</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-mux/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-mux/</link>
       <pubDate>Fri, 01 Sep 2023 23:00:12 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-mux/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-mux/</guid>
       <description>Up until now, we&amp;rsquo;ve been using the DefaultServeMux, but it&amp;rsquo;s time to wield more control and precision by explicitly using the http.ServeMux. Plus, we&amp;rsquo;ll look at the powerful frameworks available, like Gorilla Mux and Echo, that take web server functionality to new heights.
 Check out previous posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic Part 2: https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct Part 3: https://surajincloud.com/understanding-http-server-in-go-handlers Part 4: https://surajincloud.com/understanding-http-server-in-go-multiple-handlers Part 5: https://surajincloud.com/understanding-http-server-in-go-handlefunc Why do we need this? While the DefaultServeMux In Golang does a great job of handling basic routing, there will come a point where you&amp;rsquo;ll want more control over your application&amp;rsquo;s routes.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #5 - HandleFunc</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-handlefunc/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</link>
       <pubDate>Thu, 31 Aug 2023 08:25:55 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-handlefunc/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</guid>
       <description>Welcome back to the fifth instalment of our in-depth exploration of creating dynamic web servers using Golang! In this post, we&amp;rsquo;re diving into the fascinating world of HandlerFunc. As you&amp;rsquo;ve come to expect, GoLang provides us with an elegant and powerful way to handle requests through this mechanism. Let&amp;rsquo;s embark on this journey of discovery.
 Check out previous posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
@@ -101,9 +111,9 @@ Part 4: https://surajincloud.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #4 - multiple handlers</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-multiple-handlers/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</link>
       <pubDate>Thu, 31 Aug 2023 07:53:51 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-multiple-handlers/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</guid>
       <description>In the previous blog post, we made our webserver useful for the first time where we printed Hello World instead of 404.
 Check out previous blog posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
@@ -114,9 +124,9 @@ Now in real real-world scenario, we won’t have just one URL right, We will nee
     </item>
     <item>
       <title>Understanding HTTP Server in Go #3 - Handlers</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-handlers/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</link>
       <pubDate>Wed, 30 Aug 2023 23:00:14 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-handlers/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</guid>
       <description>Welcome to the exciting third instalment of our journey into creating web servers using Golang. In our previous articles, we covered the basics of creating a web server and explored the concept of custom servers using the http.Server struct.
 Check out the previous blog posts:
 \ Part 1:* https://surajincloud.com/understanding-http-server-in-go-basic
@@ -125,26 +135,26 @@ However, as you might have noticed, our server was, until now, simply returning 
     </item>
     <item>
       <title>Understanding HTTP Server in Go #2 - using http.Server struct</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-using-httpserver-struct/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</link>
       <pubDate>Tue, 29 Aug 2023 23:00:12 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-using-httpserver-struct/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</guid>
       <description>Welcome back to the second part of our exploration into building web servers using GoLang! In the previous blog post, we discussed creating a basic web server using the http.ListenAndServe function.
 However, this does not give us more control over the server config and to gain more control and flexibility over the server&amp;rsquo;s behaviour, you&amp;rsquo;re in for a treat. In this article, we&amp;rsquo;ll delve into the world of custom servers by utilizing the http.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #1 - Basic</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-basic/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-basic/</link>
       <pubDate>Tue, 29 Aug 2023 20:40:46 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-basic/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-basic/</guid>
       <description>The net/http package in Go offers a powerful set of tools for constructing HTTP servers to handle incoming requests and send responses. In this article, we&amp;rsquo;ll dive into setting up a basic HTTP server.
 Before we delve into the specifics, let&amp;rsquo;s familiarize ourselves with a couple of key terms:
 Multiplexer (or Mux): This is an essential component of an HTTP server that routes incoming requests to the appropriate handlers based on the requested paths or URLs.</description>
     </item>
     <item>
       <title>Types of DNS records</title>
-      <link>https://surajnarwade.com/blog/types-of-dns-records/</link>
+      <link>http://localhost:1313/blog/types-of-dns-records/</link>
       <pubDate>Wed, 23 Aug 2023 05:17:15 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/types-of-dns-records/</guid>
+      <guid>http://localhost:1313/blog/types-of-dns-records/</guid>
       <description>While working with route53, I came across a couple of DNS records which were new to me.
 There are several types of DNS (Domain Name System) records, each with a specific purpose. Here are some of the most common types:
 A record (Address record) Maps a hostname to an IPv4 address.
@@ -153,9 +163,9 @@ example.com IN AAAA 2001:db8::1 CNAME record (Canonical Name record) Maps an ali
     </item>
     <item>
       <title>fmt in Golang - formatting I/O</title>
-      <link>https://surajnarwade.com/blog/fmt-in-golang/</link>
+      <link>http://localhost:1313/blog/fmt-in-golang/</link>
       <pubDate>Sun, 30 Jul 2023 19:29:54 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/fmt-in-golang/</guid>
+      <guid>http://localhost:1313/blog/fmt-in-golang/</guid>
       <description>fmt is one of the essential packages in Golang. fmt stands for &amp;ldquo;format.&amp;rdquo; This package allows us to format strings, print output, and interact with the standard input/output streams.
 In this blog post, we will explore the key functionalities of the fmt package.
 you can import the package as shown:
@@ -163,9 +173,9 @@ import &amp;#34;fmt&amp;#34; Printing to standard output There are various funct
     </item>
     <item>
       <title>Using Go modules with a Private GitHub repository</title>
-      <link>https://surajnarwade.com/blog/using-go-modules-with-a-private-github-repository/</link>
+      <link>http://localhost:1313/blog/using-go-modules-with-a-private-github-repository/</link>
       <pubDate>Fri, 28 Jul 2023 14:41:56 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/using-go-modules-with-a-private-github-repository/</guid>
+      <guid>http://localhost:1313/blog/using-go-modules-with-a-private-github-repository/</guid>
       <description>working with open-source Go modules is more straightforward, you add them in Go mod files and run Go mod commands and it just works.
 Recently, I came across private Go modules usage in one of my projects at work and thought of writing about it so it can help someone :)
 if you have only one repo then you can do
@@ -173,9 +183,9 @@ export GOPRIVATE=github.com/yourorg/yourrepo If you have more than one private m
     </item>
     <item>
       <title>For loop in Golang</title>
-      <link>https://surajnarwade.com/blog/for-loop-in-golang/</link>
+      <link>http://localhost:1313/blog/for-loop-in-golang/</link>
       <pubDate>Thu, 27 Jul 2023 07:01:09 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/for-loop-in-golang/</guid>
+      <guid>http://localhost:1313/blog/for-loop-in-golang/</guid>
       <description>Unlike other Languages, Golang does not have multiple looping constructs. It has only one for.
 But, I think that&amp;rsquo;s enough to cover all the use cases, let&amp;rsquo;s see different variations of loops.
 Basic Loop In basic for loop, there are 3 elements,
@@ -184,9 +194,9 @@ for i := 1; i &amp;lt;= 5; i++ { fmt.Println(i) } output:</description>
     </item>
     <item>
       <title>Introduction to Kubernetes Clients</title>
-      <link>https://surajnarwade.com/blog/introduction-to-kubernetes-clients/</link>
+      <link>http://localhost:1313/blog/introduction-to-kubernetes-clients/</link>
       <pubDate>Wed, 26 Jul 2023 09:57:14 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/introduction-to-kubernetes-clients/</guid>
+      <guid>http://localhost:1313/blog/introduction-to-kubernetes-clients/</guid>
       <description>In this post, we will see different Kubernetes clients, the client is something that you can use to talk to the Kubernetes cluster.
 Mainly, there are 3 ways to talk to a cluster:
 kubectl Console/Dashboard programmatically using clients The Kubernetes community maintains clients in various languages in this repo.
@@ -194,9 +204,9 @@ Since Kubernetes is in Golang, a client library known as client-go is widely use
     </item>
     <item>
       <title>How to manage multiple versions of Terraform?</title>
-      <link>https://surajnarwade.com/blog/how-to-manage-multiple-versions-of-terraform/</link>
+      <link>http://localhost:1313/blog/how-to-manage-multiple-versions-of-terraform/</link>
       <pubDate>Fri, 24 Feb 2023 16:00:39 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-manage-multiple-versions-of-terraform/</guid>
+      <guid>http://localhost:1313/blog/how-to-manage-multiple-versions-of-terraform/</guid>
       <description>Terraform is a popular tool for Infrastructure as a Code practice to manage Cloud Infrastructure using declarative ways.
 As Infrastructure grows, the number of projects grows, and there&amp;rsquo;s a fair chance that you may not have the same terraform versions among your projects.
 There can be various reasons for it. As a result, you may need multiple terraform versions installed on your machine, which can get a little tricky.
@@ -204,18 +214,18 @@ Worry not.</description>
     </item>
     <item>
       <title>Encrypting EC2 Sessions with KMS and SSM Session Managers</title>
-      <link>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</link>
+      <link>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</link>
       <pubDate>Mon, 20 Feb 2023 20:20:39 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</guid>
+      <guid>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers/</guid>
       <description>In a previous blog post, we have seen how to enable SSM Session for EC2 instances to ditch SSH and enable safe and secure shell access.
 In this blog post, we will go one step further towards security and encrypting our SSM sessions from EC2-managed nodes and the local machines of users with the help of the KMS key.
 Creating the KMS key To encrypt the sessions in SSM, we will first need to have the KMS key.</description>
     </item>
     <item>
       <title>Let&#39;s SSM, not SSH, on EC2 instances</title>
-      <link>https://surajnarwade.com/blog/lets-ssm-not-ssh-on-ec2-instances/</link>
+      <link>http://localhost:1313/blog/lets-ssm-not-ssh-on-ec2-instances/</link>
       <pubDate>Mon, 20 Feb 2023 18:40:39 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/lets-ssm-not-ssh-on-ec2-instances/</guid>
+      <guid>http://localhost:1313/blog/lets-ssm-not-ssh-on-ec2-instances/</guid>
       <description>To access EC2 instances, SSH has been the preferred way for many years. But this way has its downsides, such as managing the keypairs, etc.
 Recently, I came across a new safe and secure way to access instances, even from a Web browser and from the terminal, which is SSM. Let&amp;rsquo;s learn more about SSM and how to set it up.
 What is SSM?
@@ -223,18 +233,18 @@ SSM stands for Systems Manager, a set of tools such as Session manager, State ma
     </item>
     <item>
       <title>Encrypting EC2 Sessions with KMS and SSM Session Managers</title>
-      <link>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</link>
+      <link>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</link>
       <pubDate>Mon, 20 Feb 2023 15:54:58 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</guid>
+      <guid>http://localhost:1313/blog/encrypting-ec2-sessions-with-kms-and-ssm-session-managers--deleted/</guid>
       <description>In a previous blog post, we have seen how to enable SSM Session for EC2 instances to ditch SSH and enable safe and secure shell access.
 In this blog post, we will go one step further towards security and encrypting our SSM sessions from EC2-managed nodes and the local machines of users with the help of the KMS key.
 Creating the KMS key To encrypt the sessions in SSM, we will first need to have the KMS key.</description>
     </item>
     <item>
       <title>How to use non-AWS S3 Compatible storage for Terraform Backend?</title>
-      <link>https://surajnarwade.com/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</link>
+      <link>http://localhost:1313/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</link>
       <pubDate>Sat, 18 Feb 2023 15:30:39 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</guid>
+      <guid>http://localhost:1313/blog/how-to-use-non-aws-s3-compatible-storage-for-terraform-backend/</guid>
       <description>As we know, Terraform supports S3 as a backend to store the state in AWS. In GCS and Azure, there are equivalent solutions for object storage available.
 What if we want to store terraform state in our environment or on any other cloud provider?
 The good news is that we can do that, as all we need is S3-compliant storage.
@@ -243,27 +253,27 @@ Minio: minio is S3 compatible Opensource Object storage Civo Object store: I hav
     </item>
     <item>
       <title>Building awsctl using Golang #1</title>
-      <link>https://surajnarwade.com/blog/building-awsctl-using-golang-1/</link>
+      <link>http://localhost:1313/blog/building-awsctl-using-golang-1/</link>
       <pubDate>Fri, 17 Feb 2023 08:36:32 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/building-awsctl-using-golang-1/</guid>
+      <guid>http://localhost:1313/blog/building-awsctl-using-golang-1/</guid>
       <description>A few days back, I came up with the idea of awsctl CLI which will be kubectl style and will be easy to generate information about aws resources.
 I decided to live stream the development of the project so that it will help beginners to understand the process and lifecycle of the OpenSource project and will help the audience to learn how to write the CLI tool.
 here&amp;rsquo;s the summary of first(16th Feb 2023) stream:</description>
     </item>
     <item>
       <title>Basic Authentication in HTTP API requests in Golang</title>
-      <link>https://surajnarwade.com/blog/basic-authentication-in-http-api-requests-in-golang/</link>
+      <link>http://localhost:1313/blog/basic-authentication-in-http-api-requests-in-golang/</link>
       <pubDate>Sun, 12 Feb 2023 14:05:38 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/basic-authentication-in-http-api-requests-in-golang/</guid>
+      <guid>http://localhost:1313/blog/basic-authentication-in-http-api-requests-in-golang/</guid>
       <description>In Golang, implementing basic authentication in an HTTP API request is relatively straightforward.
 Once we construct the request, then we have to call the SetBasicAuth() method and pass username &amp;amp; password
 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;io/ioutil&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { client := &amp;amp;http.Client{} req, err := http.NewRequest(&amp;#34;GET&amp;#34;, &amp;#34;http://google.com&amp;#34;, nil) if err != nil { log.Fatal(err) } req.SetBasicAuth(&amp;#34;admin&amp;#34;, &amp;#34;password&amp;#34;) resp, err := client.Do(req) if err != nil { log.</description>
     </item>
     <item>
       <title>Civo Object Store as a Terraform Backend</title>
-      <link>https://surajnarwade.com/blog/civo-object-store-as-a-terraform-backend/</link>
+      <link>http://localhost:1313/blog/civo-object-store-as-a-terraform-backend/</link>
       <pubDate>Sun, 12 Feb 2023 12:38:12 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/civo-object-store-as-a-terraform-backend/</guid>
+      <guid>http://localhost:1313/blog/civo-object-store-as-a-terraform-backend/</guid>
       <description>Recently, Civo Cloud launched an object store that is object Storage and S3-compatible.
 Read more about it here: https://www.civo.com/learn/using-civo-object-stores
 In my Cloud Heist - Civo series on youtube, one of the viewers asked how we can store terraform state in the bucket, similar to how we do in AWS space.
@@ -272,18 +282,18 @@ Let&amp;rsquo;s create the object store resource &amp;#34;civo_object_store&amp;
     </item>
     <item>
       <title>[SOLVED] Error: multiple EC2 Instances matched; use additional constraints to reduce matches to a single EC2 Instance</title>
-      <link>https://surajnarwade.com/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</link>
+      <link>http://localhost:1313/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</link>
       <pubDate>Sun, 12 Feb 2023 09:58:31 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</guid>
+      <guid>http://localhost:1313/blog/solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance/</guid>
       <description>When you are using data sources for aws_instance probably to fetch the IP address or something else,
 data &amp;#34;aws_instance&amp;#34; &amp;#34;foo&amp;#34; { filter { name = &amp;#34;tag:Name&amp;#34; values = [&amp;#34;instance-name&amp;#34;] } } You must have faced the following issues while using Terraform for EC2 instances.
 │ Error: multiple EC2 Instances matched; use additional constraints to reduce matches to a single EC2 Instance Why this issue occurs? There&amp;rsquo;s a fair chance that the previous instance with the same name is destroyed, but there&amp;rsquo;s still an entry with the terminated state.</description>
     </item>
     <item>
       <title>Installing &amp; Setting up Golang</title>
-      <link>https://surajnarwade.com/blog/installing-setting-up-golang/</link>
+      <link>http://localhost:1313/blog/installing-setting-up-golang/</link>
       <pubDate>Thu, 19 Jan 2023 12:00:42 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/installing-setting-up-golang/</guid>
+      <guid>http://localhost:1313/blog/installing-setting-up-golang/</guid>
       <description>Golang, also known as Go, is a programming language developed by Google. Today, it is used by many organisations for their web applications and CLI tools. Many OpenSource projects in cloud-native spaces, such as Kubernetes and Docker, were written using Go.
 Golang is known for its simplicity, efficiency, and scalability. This blog post will walk you through installing and setting up Golang on your computer.
 Downloading the Go
@@ -291,9 +301,9 @@ Go to this link https://go.</description>
     </item>
     <item>
       <title>Difference between Setting &amp; Adding the Headers in HTTP API in Golang</title>
-      <link>https://surajnarwade.com/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</link>
+      <link>http://localhost:1313/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</link>
       <pubDate>Wed, 18 Jan 2023 07:30:42 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</guid>
+      <guid>http://localhost:1313/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</guid>
       <description>While working with APIs, headers are an essential aspect. Sometimes we set them, or sometimes we consume them and make decisions.
 When I was exploring headers in Golang, I came across two methods. Headers.Set() &amp;amp; Headers.Add() Initially, I thought they were the same. But then I wondered if they are the same, then why two methods?
 Let&amp;rsquo;s understand.
@@ -301,9 +311,9 @@ I will be using a proxy which will use Add &amp;amp; Set on headers, as shown be
     </item>
     <item>
       <title>Why close the HTTP API response body in Golang? What if you don&#39;t...</title>
-      <link>https://surajnarwade.com/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</link>
+      <link>http://localhost:1313/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</link>
       <pubDate>Sat, 14 Jan 2023 18:06:45 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</guid>
+      <guid>http://localhost:1313/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</guid>
       <description>In the previous article, we saw how to make the HTTP GET API request in Golang. While going through the example, we discussed closing the response body.
 In this article, Let&amp;rsquo;s discuss why it is essential to close the response body.
 What is the response body? The response body is a stream of data that is read from the server.
@@ -311,18 +321,18 @@ Why should I close it? Ensure all data has been read and the resources associate
     </item>
     <item>
       <title>How to make an HTTP GET request in Golang?</title>
-      <link>https://surajnarwade.com/blog/how-to-make-an-http-get-request-in-golang/</link>
+      <link>http://localhost:1313/blog/how-to-make-an-http-get-request-in-golang/</link>
       <pubDate>Fri, 13 Jan 2023 16:33:28 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-make-an-http-get-request-in-golang/</guid>
+      <guid>http://localhost:1313/blog/how-to-make-an-http-get-request-in-golang/</guid>
       <description>Golang is one of the widely used languages for designing API Clients. While you design the client, one of the important aspects of the client is fetching the data from the API in some format using a GET request.
 Here&amp;rsquo;s the curl command example, which mimics the GET request which we will write code for in Golang,
 $ curl -XGET localhost:8080 {&amp;#34;message&amp;#34;:&amp;#34;hello world !!!&amp;#34;} Note: I already have a basic webserver running, Hence I can get the output on localhost.</description>
     </item>
     <item>
       <title>How to use Golang with MySQL?</title>
-      <link>https://surajnarwade.com/blog/how-to-use-golang-with-mysql/</link>
+      <link>http://localhost:1313/blog/how-to-use-golang-with-mysql/</link>
       <pubDate>Mon, 09 Jan 2023 12:15:41 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-use-golang-with-mysql/</guid>
+      <guid>http://localhost:1313/blog/how-to-use-golang-with-mysql/</guid>
       <description>Golang is a widely used language for building scalable and reliable web applications.
 When it comes to Storing data (relational), MySQL is one of the old and preferred ways as a database for many organisations.
 This blog post will look at how to use Golang with MySQL by establishing the connection and printing the version using a simple query.
@@ -331,43 +341,43 @@ Prerequisites To follow along with this tutorial, you should have the following 
     </item>
     <item>
       <title>Read Terraform&#39;s plan the better way</title>
-      <link>https://surajnarwade.com/blog/read-terraforms-plan-the-better-way/</link>
+      <link>http://localhost:1313/blog/read-terraforms-plan-the-better-way/</link>
       <pubDate>Mon, 19 Dec 2022 07:09:47 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/read-terraforms-plan-the-better-way/</guid>
+      <guid>http://localhost:1313/blog/read-terraforms-plan-the-better-way/</guid>
       <description>Last year, I started exploring and studying terraform for work. While studying, I mostly relied on Terraform plan command to check the output plan.
 As terraform module I was writing got bigger, the plan got bigger too, and I needed to store the plan in a file and then read &amp;amp; analyse the file later.
 For example, I want to read the plan for the following resource &amp;amp; store it in a file,</description>
     </item>
     <item>
       <title>How to generate Terraform module docs</title>
-      <link>https://surajnarwade.com/blog/how-to-generate-terraform-module-docs/</link>
+      <link>http://localhost:1313/blog/how-to-generate-terraform-module-docs/</link>
       <pubDate>Mon, 19 Dec 2022 07:08:15 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-generate-terraform-module-docs/</guid>
+      <guid>http://localhost:1313/blog/how-to-generate-terraform-module-docs/</guid>
       <description>If you are Terraform user, you are pretty sure you know what the module is and must have used at least one community Terraform module. For those who don’t know what Terraform module is, Read more here
 If you are a pro user or part of the platform engineering or DevOps team, you probably must have written one. When you write the module for yourself or other groups, it’s essential to have documentation on how to use the module, input or output parameters, etc.</description>
     </item>
     <item>
       <title>Announcing Kubectl EKS Plugin v0.1.0</title>
-      <link>https://surajnarwade.com/blog/announcing-kubectl-eks-plugin-v0-1-0/</link>
+      <link>http://localhost:1313/blog/announcing-kubectl-eks-plugin-v0-1-0/</link>
       <pubDate>Mon, 19 Dec 2022 07:07:20 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/announcing-kubectl-eks-plugin-v0-1-0/</guid>
+      <guid>http://localhost:1313/blog/announcing-kubectl-eks-plugin-v0-1-0/</guid>
       <description>Hello everyone, It’s my pleasure to announce the v0.1.0 release of the Kubectl EKS Plugin. I had this of the kubectl plugin for EKS from the day I started using Amazon EKS. But I finally made it into reality and cut the first release.
 The mission of the kubectl EKS plugin is to simplify operations and provide easy access to cluster-related information.
 The first release of kubectl-eks has few but convenient functionalities.</description>
     </item>
     <item>
       <title>[SOLVED] MFA Entity already exists Error in AWS IAM</title>
-      <link>https://surajnarwade.com/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</link>
+      <link>http://localhost:1313/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</link>
       <pubDate>Sun, 18 Dec 2022 15:45:03 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</guid>
+      <guid>http://localhost:1313/blog/solved-mfa-entity-already-exists-error-in-aws-iam/</guid>
       <description>Sometimes, When IAM user tries to register a new Virtual MFA device using Google Authenticator or similar tools, they notice the following error,
 Entity Already exists This entity already exists. MFADevice entity at the same path and name already exists. Before adding a new virtual MFA device, ask your administrator to delete the existing device using the CLI or API. This happens because the MFA device was created but not enabled for the users.</description>
     </item>
     <item>
       <title>Terraform CLI Args, define once, use again and again</title>
-      <link>https://surajnarwade.com/blog/terraform-cli-args-define-once-use-again-and-again/</link>
+      <link>http://localhost:1313/blog/terraform-cli-args-define-once-use-again-and-again/</link>
       <pubDate>Sun, 18 Dec 2022 15:32:10 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/terraform-cli-args-define-once-use-again-and-again/</guid>
+      <guid>http://localhost:1313/blog/terraform-cli-args-define-once-use-again-and-again/</guid>
       <description>I regularly use *terraform plan -no-color* command to check the plan in a more readable way. I wrote a blog post regarding the same here. Give it a read if you haven’t already.
 Running this command every time is quite cumbersome. Hence I was looking for options and came across these terraform environment variables features.
 I can export TF_CLI_ARGS as shown below with the arg.
@@ -375,27 +385,27 @@ export TF_CLI_ARGS=&amp;#34;-no-color&amp;#34; Now, If I run terraform plan it w
     </item>
     <item>
       <title>How to share process namespace among containers in a Kubernetes Pod</title>
-      <link>https://surajnarwade.com/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</link>
+      <link>http://localhost:1313/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</link>
       <pubDate>Sat, 17 Dec 2022 10:48:31 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</guid>
+      <guid>http://localhost:1313/blog/share-process-namespace-among-containers-in-a-kubernetes-pod/</guid>
       <description>A few days ago, I was working on an application which consisted of a multi-container pod where I had to send a signal from container A to a process from container B within the same Pod.
 We know containers inside the pod already share the network namespace by default which means they technically have the same IP address.
 Apart from this, most things, such as other namespaces, are isolated. For example, process namespace.</description>
     </item>
     <item>
       <title>View Kubernetes Secrets easily</title>
-      <link>https://surajnarwade.com/blog/view-kubernetes-secrets-easily/</link>
+      <link>http://localhost:1313/blog/view-kubernetes-secrets-easily/</link>
       <pubDate>Tue, 13 Dec 2022 16:34:15 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/view-kubernetes-secrets-easily/</guid>
+      <guid>http://localhost:1313/blog/view-kubernetes-secrets-easily/</guid>
       <description>Often we find it difficult to visualize the Kubernetes secrets as they are base64 encoded. You will need to manually copy the encoded data and then decode it or write small custom shell scripts for the same.
 Fortunately, there’s a kubectl plugin to simplify this process. view-secret The plugin allows users to view the contents of a secret without having to decode it manually.
 Check out the project on GitHub:</description>
     </item>
     <item>
       <title>Run Commands for All the clusters in your Kubeconfig in parallel</title>
-      <link>https://surajnarwade.com/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</link>
+      <link>http://localhost:1313/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</link>
       <pubDate>Tue, 13 Dec 2022 07:34:04 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</guid>
+      <guid>http://localhost:1313/blog/run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel/</guid>
       <description>Have you ever wondered about running kubectl commands in parallel for some of your clusters? You must have written custom shell scripts or Golang scripts to do so.
 Fortunately, a tool to run commands in parallel now exists, Thanks to Ahmet Alp Balkan 🙏
 Check out the GitHub repo, and don’t forget to ⭐️ the repo :)
@@ -404,17 +414,17 @@ kubectl-foreach Is a tool that allows users to run a kubectl command in one or m
     </item>
     <item>
       <title>Kubernetes and Terraform: Converting YAML to HCL for Better Automation</title>
-      <link>https://surajnarwade.com/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</link>
+      <link>http://localhost:1313/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</link>
       <pubDate>Sat, 10 Dec 2022 22:54:09 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</guid>
+      <guid>http://localhost:1313/blog/kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation/</guid>
       <description>Kubernetes and Terraform are both powerful tools for managing cloud infrastructure, but they use different configuration languages. Kubernetes uses YAML, while Terraform uses HashiCorp Configuration Language (HCL). This can make it difficult to use the two tools together, as you may need to convert YAML files to HCL in order to use them with Terraform.
 Sometimes when you are spinning up managed Kubernetes such as GKE, EKS and AKS, you may need to deploy Kubernetes resources via terraform.</description>
     </item>
     <item>
       <title>Learning Kubernetes with Kubectl</title>
-      <link>https://surajnarwade.com/blog/learning-kubernetes-with-kubectl/</link>
+      <link>http://localhost:1313/blog/learning-kubernetes-with-kubectl/</link>
       <pubDate>Fri, 23 Apr 2021 06:53:40 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/learning-kubernetes-with-kubectl/</guid>
+      <guid>http://localhost:1313/blog/learning-kubernetes-with-kubectl/</guid>
       <description>When we work around Kubernetes, we often have to reference the documentation for a few things to save time from the journey from terminal to browser and back. Kubectl offers a great set of help in itself.
 Learning about the resources
 The command shows all fields from the pod resource along with its type and information about it. You can also look for a subfield.
@@ -423,9 +433,9 @@ $ kubectl explain pod $ kubectl explain pod.</description>
     </item>
     <item>
       <title>Chaining Kiam Certificates using Cert-manager</title>
-      <link>https://surajnarwade.com/blog/chaining-kiam-certificates-using-cert-manager/</link>
+      <link>http://localhost:1313/blog/chaining-kiam-certificates-using-cert-manager/</link>
       <pubDate>Fri, 23 Apr 2021 06:51:25 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/chaining-kiam-certificates-using-cert-manager/</guid>
+      <guid>http://localhost:1313/blog/chaining-kiam-certificates-using-cert-manager/</guid>
       <description>Source: https://unsplash.com/photos/pZld9PiPDno
 When associating IAM roles with pods instead of assigning a super role to worker nodes, Kiam is a fairly popular project in Community; kiam runs as an agent on each node in the Kubernetes cluster, allowing cluster users to associate IAM roles to Pods.
 To enhance security, Kiam uses certificates for servers &amp;amp; agents. To simplify the certificate management for Kiam, we will utilise cert-manager,
@@ -433,9 +443,9 @@ cert-manager is a native Kubernetes certificate management controller that helps
     </item>
     <item>
       <title>Adding own service to Kubernetes Cluster Info</title>
-      <link>https://surajnarwade.com/blog/adding-own-service-to-kubernetes-cluster-info/</link>
+      <link>http://localhost:1313/blog/adding-own-service-to-kubernetes-cluster-info/</link>
       <pubDate>Fri, 26 Mar 2021 17:39:01 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/adding-own-service-to-kubernetes-cluster-info/</guid>
+      <guid>http://localhost:1313/blog/adding-own-service-to-kubernetes-cluster-info/</guid>
       <description>Last week, while going through some of the Kubernetes manifest files, I stumbled upon this label:
 kubernetes.io/cluster-service: “true” I searched about this in Documentation but could not find much information, so I thought of writing a small blog post about it.
 https://surajincloud.gumroad.com/l/own-kubectl-command
@@ -443,9 +453,9 @@ When you add this label to any resource of type Kind: Service , it means it is p
     </item>
     <item>
       <title>Creating a Cartesian Product in Terraform</title>
-      <link>https://surajnarwade.com/blog/creating-a-cartesian-product-in-terraform/</link>
+      <link>http://localhost:1313/blog/creating-a-cartesian-product-in-terraform/</link>
       <pubDate>Tue, 16 Mar 2021 16:24:04 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/creating-a-cartesian-product-in-terraform/</guid>
+      <guid>http://localhost:1313/blog/creating-a-cartesian-product-in-terraform/</guid>
       <description>For one of my terraform tasks, I needed all the possible combinations of elements from all given sets. For example, there are two sets.
 set1 = [&amp;#34;a&amp;#34;,&amp;#34;b&amp;#34;,&amp;#34;c&amp;#34;] set2 = [1,2] The expected result is,
 [[&amp;#34;a&amp;#34;,1], [&amp;#34;a&amp;#34;,2],[&amp;#34;b&amp;#34;,1],[&amp;#34;b&amp;#34;,2],[&amp;#34;c&amp;#34;,1],[&amp;#34;c&amp;#34;,2]] After searching about this, I learned that such a concept is called the Cartesian Product. From the Wikipedia definition,
@@ -453,9 +463,9 @@ the Cartesian product of two sets A and B, denoted A × B, is the set of all ord
     </item>
     <item>
       <title>Creating users on OpenShift 4</title>
-      <link>https://surajnarwade.com/blog/user-on-os4/</link>
+      <link>http://localhost:1313/blog/user-on-os4/</link>
       <pubDate>Sat, 13 Apr 2019 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/user-on-os4/</guid>
+      <guid>http://localhost:1313/blog/user-on-os4/</guid>
       <description>It&amp;rsquo;s always bit of confusing about OpenShift 4 :D here&amp;rsquo;s how we can add user in OpenShift 4.
 Create htpasswd file as below and users and their passwords, $ htpasswd -cb users.htpasswd user1 user1pass $ htpasswd -b users.htpasswd user2 user2pass Through console, login with kube:admin user, navigate to Administration &amp;gt; Cluster Settings &amp;gt; Global Configuration
 Click on Edit YAML in front of Oauth
@@ -463,9 +473,9 @@ Click on Overview, under Identity Providers section, Click on Add and select HTP
     </item>
     <item>
       <title>Story of Noob Developer on OpenShift</title>
-      <link>https://surajnarwade.com/blog/warlock-odo/</link>
+      <link>http://localhost:1313/blog/warlock-odo/</link>
       <pubDate>Thu, 17 Jan 2019 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/warlock-odo/</guid>
+      <guid>http://localhost:1313/blog/warlock-odo/</guid>
       <description>A NodeJS developer named Warlock, recently joined his dream company as an Enterprise Developer.
 On day 1, his boss gave him a Code Repository &amp;amp; his OpenShift Platform Credentials to work his magic.
 Warlock got his code,
@@ -473,9 +483,9 @@ git clone https://github.com/sclorg/nodejs-ex But was unclear about how to proce
     </item>
     <item>
       <title>Local Development of golang app with minikube &amp; ko</title>
-      <link>https://surajnarwade.com/blog/develop-go-minikube/</link>
+      <link>http://localhost:1313/blog/develop-go-minikube/</link>
       <pubDate>Wed, 05 Dec 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/develop-go-minikube/</guid>
+      <guid>http://localhost:1313/blog/develop-go-minikube/</guid>
       <description>While exploring, I came across ko tool by google &amp;amp; found interesting since it buids and deploy golang applications to kubernetes easily. This post is for minikube only since I am focussing on local development.
 Pre-Flight Checks Installing ko go get github.com/google/go-containerregistry/cmd/ko That&amp;rsquo;s it :)
 Verify your installation by which ko
@@ -483,16 +493,16 @@ We can mention any docker registry (local or remote) using KO_DOCKER_REPO env va
     </item>
     <item>
       <title>Exploring Kubernetes: Client-Go - part-1</title>
-      <link>https://surajnarwade.com/blog/exploring-k8s-part1/</link>
+      <link>http://localhost:1313/blog/exploring-k8s-part1/</link>
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/exploring-k8s-part1/</guid>
+      <guid>http://localhost:1313/blog/exploring-k8s-part1/</guid>
       <description>What&amp;rsquo;s client-go ? Where&amp;rsquo;s client-go ? you can find it in kubernetes/kubernetes/staging directory and published by bot to k8s.io/client-go, kubernetes also uses client-go. it&amp;rsquo;s interesting if you see client-go from kubernetes vendor, it has symlinks to kubernetes/kubernetes/staging In this Adventure, very first step is to see how to connect to API Server :) Connecting to API Server There are two ways to talk to cluster using any go program: outside cluster: if your program is standalone and if you have either kubeconfig file or master URL.</description>
     </item>
     <item>
       <title>Exploring Kubernetes: Client-Go - part-2</title>
-      <link>https://surajnarwade.com/blog/exploring-k8s-part2/</link>
+      <link>http://localhost:1313/blog/exploring-k8s-part2/</link>
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/exploring-k8s-part2/</guid>
+      <guid>http://localhost:1313/blog/exploring-k8s-part2/</guid>
       <description>If you have kubeconfig file already in place,
 kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(clientcmd.NewDefaultClientConfigLoadingRules(), &amp;amp;clientcmd.ConfigOverrides{}) There is one more function clientcmd.NewInteractiveDeferredLoadingClientConfig but as per code, we can use it only when password is allowed
 Namespace given by current context, namespace, _, err := kubeconfig.Namespace() REST config needed to operations restconfig, err := kubeconfig.ClientConfig() if you want kubeconfig as a struct clientcmdapi.Config, err := kubeconfig.RawConfig() Here, kubeconfig is interface of following type:
@@ -500,9 +510,9 @@ Namespace given by current context, namespace, _, err := kubeconfig.Namespace() 
     </item>
     <item>
       <title>Exploring Kubernetes: Client-Go - part-3</title>
-      <link>https://surajnarwade.com/blog/exploring-k8s-part3/</link>
+      <link>http://localhost:1313/blog/exploring-k8s-part3/</link>
       <pubDate>Fri, 30 Nov 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/exploring-k8s-part3/</guid>
+      <guid>http://localhost:1313/blog/exploring-k8s-part3/</guid>
       <description>we got restConfig and namespace, connection is set up Yay
 From this restconfig, Now we need to create respective clients for further operations
 we will need following package:
@@ -512,16 +522,16 @@ For example, In case of service catalog,</description>
     </item>
     <item>
       <title>nmcli 101</title>
-      <link>https://surajnarwade.com/blog/nmcli101/</link>
+      <link>http://localhost:1313/blog/nmcli101/</link>
       <pubDate>Thu, 15 Nov 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/nmcli101/</guid>
+      <guid>http://localhost:1313/blog/nmcli101/</guid>
       <description> To check devices: nmcli device status Overall status of NetworkManager: nmcli general status Display connections: nmcli connection show display only active connections: nmcli connection show --active WI-FI Check wifi status nmcli radio wifi Turn on the wifi nmcli radio wifi on Turn off the wifi nmcli radio wifi off List available wifi access points nmcli device wifi list Refresh the access point list nmcli device wifi rescan Connect to wifi nmcli device wifi connect &amp;lt;SSID&amp;gt; Connect to password protected access point nmcli device wifi connect &amp;lt;SSID&amp;gt; password &amp;lt;password&amp;gt; </description>
     </item>
     <item>
       <title>Journey to the CKA</title>
-      <link>https://surajnarwade.com/blog/journey-to-cka/</link>
+      <link>http://localhost:1313/blog/journey-to-cka/</link>
       <pubDate>Sun, 21 Oct 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/journey-to-cka/</guid>
+      <guid>http://localhost:1313/blog/journey-to-cka/</guid>
       <description>Hello Folks,
 I appeared for the exam on 19th October 2018 and yesterday(20th Oct 2018), I got the result &amp;amp; I scored 92%, Yay :)
 I got so many request about How to prepare for the exam, Here&amp;rsquo;s my experience with preparation for the exam.
@@ -529,42 +539,42 @@ A bit about Exam: Duration: 3 hours (which is fair time if you do lot of practic
     </item>
     <item>
       <title>Installing Minishift on Fedora</title>
-      <link>https://surajnarwade.com/blog/install-minishift-fedora/</link>
+      <link>http://localhost:1313/blog/install-minishift-fedora/</link>
       <pubDate>Thu, 13 Sep 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/install-minishift-fedora/</guid>
+      <guid>http://localhost:1313/blog/install-minishift-fedora/</guid>
       <description>Check for latest release on github: Check here: https://github.com/minishift/minishift/releases Download latest binary wget https://github.com/minishift/minishift/releases/download/v1.24.0/minishift-1.24.0-linux-amd64.tgz tar -xvf minishift-1.24.0-linux-amd64.tgz cp minishift ~/.local/bin/minishift NOTE: Create ~/.local/bin if it&amp;rsquo;s not present, it&amp;rsquo;s already set in PATH variable.
 Setting up Virtualization environment sudo dnf install libvirt qemu-kvm -y sudo usermod -a -G libvirt $USER newgrp libvirt Setting the KVM driver sudo curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.7.0/docker-machine-driver-kvm -o /usr/local/bin/docker-machine-driver-kvm sudo chmod +x /usr/local/bin/docker-machine-driver-kvm Reference: https://docs.okd.io/latest/minishift/getting-started/installing.html https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html </description>
     </item>
     <item>
       <title>Play with OpenShift Internal Docker Registry and imagestreams</title>
-      <link>https://surajnarwade.com/blog/access-minishift-registry/</link>
+      <link>http://localhost:1313/blog/access-minishift-registry/</link>
       <pubDate>Mon, 13 Aug 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/access-minishift-registry/</guid>
+      <guid>http://localhost:1313/blog/access-minishift-registry/</guid>
       <description> Configure your shell to use docker daemon of Minishift eval $(minishift docker-env) export user token registry URL export TOKEN=$(oc whoami -t) export REGISTRY_URL=$(minishift openshift registry) Logging in to Registry docker login -u developer -p $TOKEN $REGISTRY_URL OR
 we can use directly as, docker login -u developer -p $(oc whoam -t) $(minishift openshift registry) Now you can tag images, push it to respective project to create imagestream
 docker tag mynodejs $(minishift openshift registry)/myproject/nodejs Push the docker image to registry so that it will create imagestream automatically, docker push $(minishift openshift registry)/myproject/nodejs Now you can create application using the new imagestream, oc new-app --image-stream=nodejs --name app </description>
     </item>
     <item>
       <title>FOSSASIA Summit 2018-Event Report</title>
-      <link>https://surajnarwade.com/blog/fossasia18/</link>
+      <link>http://localhost:1313/blog/fossasia18/</link>
       <pubDate>Sat, 31 Mar 2018 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/fossasia18/</guid>
+      <guid>http://localhost:1313/blog/fossasia18/</guid>
       <description>Day1 I reached venue (LifeLong Learning Institute, Singapore) at around 10.30 am and volunteers were all set to welcome us with smile and welcome kit :) Venue was awesome with multiple conf rooms and good facilities.
 Harish Pillay(Red Hat) &amp;amp; Damini Satya (SalesForce) Kicked off the event with Awesome Keynote with introducing FOSSASIA, stats about FOSSASIA and schedule as well. Followed by Keynote, Teo Ser Luck (Member of Parliament, Singapore) expressed his thoughts about OpenSource and how it is helping Singapore Governance and Economy.</description>
     </item>
     <item>
       <title>Mounting host folders in minishift</title>
-      <link>https://surajnarwade.com/blog/hostmount-minishift/</link>
+      <link>http://localhost:1313/blog/hostmount-minishift/</link>
       <pubDate>Wed, 13 Dec 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/hostmount-minishift/</guid>
+      <guid>http://localhost:1313/blog/hostmount-minishift/</guid>
       <description>Make sure sshd service is running on your host.
 $ sudo systemctl status sshd ● sshd.service - OpenSSH server daemon Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; vendor preset: disabled) Active: active (running) since Wed 2017-12-13 18:23:09 IST; 4min 14s ago Docs: man:sshd(8) man:sshd_config(5) Main PID: 11319 (sshd) Tasks: 1 (limit: 4915) Memory: 4.9M CPU: 333ms CGroup: /system.slice/sshd.service └─11319 /usr/sbin/sshd -D Dec 13 18:23:09 localhost.localdomain systemd[1]: Starting OpenSSH server daemon... Dec 13 18:23:09 localhost.</description>
     </item>
     <item>
       <title>Mounting host folders in minikube</title>
-      <link>https://surajnarwade.com/blog/hostmount-minikube/</link>
+      <link>http://localhost:1313/blog/hostmount-minikube/</link>
       <pubDate>Sat, 09 Dec 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/hostmount-minikube/</guid>
+      <guid>http://localhost:1313/blog/hostmount-minikube/</guid>
       <description>supports PV of type hostpath.
 minikube is configured to persist files stored under following directories.
 /data /var/lib/localkube /var/lib/docker /tmp/hostpath_pv /tmp/hostpath-provisioner any other directory will not persist the data after reboot.
@@ -574,9 +584,9 @@ $ minikube mount ~/mount-dir:/mountexample Mounting /home/user/mount-dir/ into /
     </item>
     <item>
       <title>How to split commits in git</title>
-      <link>https://surajnarwade.com/blog/git/</link>
+      <link>http://localhost:1313/blog/git/</link>
       <pubDate>Mon, 27 Nov 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/git/</guid>
+      <guid>http://localhost:1313/blog/git/</guid>
       <description>I am very bad at git and I always forget the steps. It&amp;rsquo;s always better to write it somewhere. Then why not a blog ?
 To split your last or recent commit, simply do,
 $ git reset HEAD~ But I wanted to break 3rd commit and split it into two commits, then I did as following way,
@@ -584,18 +594,18 @@ $ git rebase -i HEAD~3 if you dont know the number you can also mention SHA1 of 
     </item>
     <item>
       <title>Easter eggs in kubectl</title>
-      <link>https://surajnarwade.com/blog/kubectl/</link>
+      <link>http://localhost:1313/blog/kubectl/</link>
       <pubDate>Tue, 26 Sep 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/kubectl/</guid>
+      <guid>http://localhost:1313/blog/kubectl/</guid>
       <description>I was watching video about kubectl by janakiram and surprising I found there is also world of commands rather than create, delete, get. kubectl has lots of interesting easter eggs.
 Some of the cool things I found as below,
 List pod along with node name on which they are running kubectl get pods -o wide If you want yaml or json configurations of your application(maybe pod,deployment or service,etc) kubectl get pod web -o=yaml/json CLI hacks to retrieve minimal information (In this case, pod name and node name) kubectl get pod -o wide | awk {&amp;#39;print $1&amp;#34; &amp;#34; $7&amp;#39;} | column -t you can directly edit configurations kubectl edit pod/web You can mention editor of your choice using KUBE_EDITOR variable, KUBE_EDITOR=&amp;#34;sublime&amp;#34; kubectl edit pod/web If we want to get any specific thing from configurations kubectl get pods web -o jsonpath={.</description>
     </item>
     <item>
       <title>Running static pod using standalone kubelet on fedora</title>
-      <link>https://surajnarwade.com/blog/static-pod/</link>
+      <link>http://localhost:1313/blog/static-pod/</link>
       <pubDate>Sat, 23 Sep 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/static-pod/</guid>
+      <guid>http://localhost:1313/blog/static-pod/</guid>
       <description>Static Pods are managed by kubelet on specific minion. As they are not associated with any controller, APIServer has no control over it.
 One of the use case for static pod might be for storage like gluster on each minion or maybe for os level debugging on OS like atomic host.
 For testing it, I referred kelseyhightower&amp;rsquo;s standalone kubelet guide.
@@ -603,34 +613,34 @@ To install kubelet, we can either download kubelet binary and set it up manually
     </item>
     <item>
       <title>Multistage build in Docker</title>
-      <link>https://surajnarwade.com/blog/multi-staging/</link>
+      <link>http://localhost:1313/blog/multi-staging/</link>
       <pubDate>Wed, 13 Sep 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/multi-staging/</guid>
+      <guid>http://localhost:1313/blog/multi-staging/</guid>
       <description>Example Use Cases When might you want to use a multi-stage build? It allows you to do an entire pipeline within a single build, rather than having to script the pipeline externally. Here’s a few examples…
 Java apps using WAR files
 First stage uses a container with Maven to compile, test, and build the war file Second stage copies the built war file into an image with the app server (Wildfly, Tomcat, Jetty, etc.</description>
     </item>
     <item>
       <title>Remove white noise from Videos</title>
-      <link>https://surajnarwade.com/blog/videoguideline/</link>
+      <link>http://localhost:1313/blog/videoguideline/</link>
       <pubDate>Sun, 23 Jul 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/videoguideline/</guid>
+      <guid>http://localhost:1313/blog/videoguideline/</guid>
       <description>May times, We have to create demos for projects for which we use various desktop screen recorders along with normal earphones with mic for audio. But, It causes a lot of white/background noise in the video results into degraded video quality.
 Another case, where we record demos, talks from meetups. In this cases, we are not equipped with smart gadgets but only normal mic or mobile phone due to which lots of white noise occurs in a video.</description>
     </item>
     <item>
       <title>Kubernetes Pune Meetup - July 2017</title>
-      <link>https://surajnarwade.com/blog/k8s-pune-meetup/</link>
+      <link>http://localhost:1313/blog/k8s-pune-meetup/</link>
       <pubDate>Mon, 10 Jul 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/k8s-pune-meetup/</guid>
+      <guid>http://localhost:1313/blog/k8s-pune-meetup/</guid>
       <description>It was beautiful Saturday morning and we were at yet another chapter of kubernetes Pune meetup. Meetup had a good turnaround of about 30 people, even it was the weekend.
 Harshal Shah started the Session on &amp;ldquo;Lifecycle of a Pod&amp;rdquo;, where he explained in detail about various states of pods, liveness and readiness probes as well as restart policies. That was really helpful as we get to know what actually happens to pod while deploying and undeploying the application.</description>
     </item>
     <item>
       <title>tools to adopt best practices in golang</title>
-      <link>https://surajnarwade.com/blog/gotools/</link>
+      <link>http://localhost:1313/blog/gotools/</link>
       <pubDate>Thu, 06 Jul 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/gotools/</guid>
+      <guid>http://localhost:1313/blog/gotools/</guid>
       <description>I went through internet yesterday regarding best practices with golang, I found go-tools written by Dominik Honnef which were pretty interesting and can be . I found some of them useful for me, so are they listed below.
 static check applies tons of static analysis checks.
 it needs go 1.6 or later,
@@ -638,17 +648,17 @@ go get honnef.co/go/tools/cmd/staticcheck syntax is: $ statickcheck [pkg] or [di
     </item>
     <item>
       <title>Golang workaround for cannot assign to struct field in map</title>
-      <link>https://surajnarwade.com/blog/golang_workaround/</link>
+      <link>http://localhost:1313/blog/golang_workaround/</link>
       <pubDate>Sun, 28 May 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/golang_workaround/</guid>
+      <guid>http://localhost:1313/blog/golang_workaround/</guid>
       <description>Yesterday, I was working one of the Kompose issue, and I was working on map of string to struct, while iterating over a map I wanted to change elements of struct, so I tried similar to this,
 package main import &amp;#34;fmt&amp;#34; type Animal struct { count int } func main() { m := map[string]Animal{&amp;#34;cat&amp;#34;: Animal{2}, &amp;#34;dog&amp;#34;: Animal{3}, &amp;#34;mouse&amp;#34;: Animal{5}} fmt.Println(m) m[&amp;#34;dog&amp;#34;].count = 4 fmt.Println(m) } so I got this error,</description>
     </item>
     <item>
       <title>The GO Workshop by Baiju</title>
-      <link>https://surajnarwade.com/blog/goworkshop/</link>
+      <link>http://localhost:1313/blog/goworkshop/</link>
       <pubDate>Sun, 07 May 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/goworkshop/</guid>
+      <guid>http://localhost:1313/blog/goworkshop/</guid>
       <description>A golang hands-on workshop was organized under meetup group Practical Data Science on May 6th, 2017. It was run up event for Devconf India 2017. Around 60 people turned up. Baiju&amp;rsquo;s, who was workshop instructor, started with introduction of golang.
 He carried audience through the setup of golang SDK, basic golang semantics, datatypes, control structures, concurrency and other advanced constructs.
 Workshop course material can be found here.
@@ -656,18 +666,18 @@ Me(SurajN), SurajD and Zeeshan volunteered for the event.</description>
     </item>
     <item>
       <title>What&#39;s new in Docker ?</title>
-      <link>https://surajnarwade.com/blog/whats-new-in-docker/</link>
+      <link>http://localhost:1313/blog/whats-new-in-docker/</link>
       <pubDate>Tue, 21 Mar 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/whats-new-in-docker/</guid>
+      <guid>http://localhost:1313/blog/whats-new-in-docker/</guid>
       <description>Recently, I installed latest docker on my machine. But I noticed lots of new features, commands and aliases to the existing commands and felt it was worth posting.
 Docker version that I installed is 17.03.0-ce, Click here to know how to install Docker
 As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose. $ docker --help Usage:	docker COMMAND A self-sufficient runtime for containers .</description>
     </item>
     <item>
       <title>Migration to Hugo</title>
-      <link>https://surajnarwade.com/blog/migration-to-hugo/</link>
+      <link>http://localhost:1313/blog/migration-to-hugo/</link>
       <pubDate>Mon, 13 Mar 2017 21:21:49 +0530</pubDate>
-      <guid>https://surajnarwade.com/blog/migration-to-hugo/</guid>
+      <guid>http://localhost:1313/blog/migration-to-hugo/</guid>
       <description>Hello guys, its been so long, I havn&amp;rsquo;t written any post. Recently, I have migrated my blog from Pelican(python based static site generator) to Hugo(GO based static site generator). Today, I will write about it. You can explore my blog at surajnarwade.github.io
 Installing Hugo .
 Install hugo $ go get -v github.com/spf13/hugo Check whether it is properly installed or not $ hugo help Using Hugo .
@@ -675,58 +685,58 @@ We need to tell hugo to generate blog skeleton, type following command for that:
     </item>
     <item>
       <title>How to install OpenStack-packstack from source and test individual patches locally!</title>
-      <link>https://surajnarwade.com/blog/blog17/</link>
+      <link>http://localhost:1313/blog/blog17/</link>
       <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog17/</guid>
+      <guid>http://localhost:1313/blog/blog17/</guid>
       <description>Yesterday I was reading about magnum component in OpenStack, then I checked with installing OpenStack Newton by following RDO doc. but it seems that, packstack answer file is not ready with magnum component yet. but fortunately, I found a patch https://review.openstack.org/#/c/360388/ about adding magnum deployment in packstack, so I decided to test this patch via installing openstack-packstack through source as per discussion with Chandan Kumar and Javier Peña
 have used centos 7 box for this purpose.</description>
     </item>
     <item>
       <title>PyCon India 2016 - Weekend I’ll never forget</title>
-      <link>https://surajnarwade.com/blog/blog16/</link>
+      <link>http://localhost:1313/blog/blog16/</link>
       <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog16/</guid>
+      <guid>http://localhost:1313/blog/blog16/</guid>
       <description>Woo! It was so exciting, because It was my First [PyCon]( https://in.pycon.org/2016/`_) ,First conference, First flight and First time Delhi.
 Was so excited to meet all new people who were known over IRC,dgplug and social media volunteer(PyCon) only. We landed in the capital city at around 2 am in the morning (terrible experience in Indigo flight) . Then, we went to our Stay point Mulberry house (one of my memorable places in Delhi) :P Day1</description>
     </item>
     <item>
       <title>It&#39;s our time Now !!! PythonPune July Meetup</title>
-      <link>https://surajnarwade.com/blog/blog15/</link>
+      <link>http://localhost:1313/blog/blog15/</link>
       <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog15/</guid>
+      <guid>http://localhost:1313/blog/blog15/</guid>
       <description>Python Pune July Meetup was held at Red Hat, Pune on 30th July 2016, this meetup was quite different than previous meetups because talks were given by Interns. Around 40 pythonistas were present for meetups, some were students and some were professionals. Topics for the meetup were as below:
 How do I automate boring stuff using Python? by Suraj Narwade Writing unit tests for any Python Script by Sudhir Verma Static v/s Dynamically typed languages by Ganesh Kadam Regular Expressions in Python by Rahul Bajaj Meetup started with Rahul Bajaj&amp;rsquo;s topic regarding Regular Expressions.</description>
     </item>
     <item>
       <title>Jenkins Docker Integration along with Fedora Contribution</title>
-      <link>https://surajnarwade.com/blog/blog14/</link>
+      <link>http://localhost:1313/blog/blog14/</link>
       <pubDate>Mon, 11 Jul 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog14/</guid>
+      <guid>http://localhost:1313/blog/blog14/</guid>
       <description>Hello Everyone, From Past few days, I was studying Jenkins,
 have read VMs or cloud instances can be provisioned as the slave for Jenkins, I thought it would be awesome to have more generic setup. So I dig more into the web and found Jenkins Docker Plugin. so that we can provision Jenkins slave on Docker host. and this Docker host can be anywhere on any machine or any cloud instance.</description>
     </item>
     <item>
       <title>Why You Should Attend PyCon India 2016?</title>
-      <link>https://surajnarwade.com/blog/blog13/</link>
+      <link>http://localhost:1313/blog/blog13/</link>
       <pubDate>Tue, 05 Jul 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog13/</guid>
+      <guid>http://localhost:1313/blog/blog13/</guid>
       <description>Because you are new to python If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
 Because you are hiring Are you looking for good people like developers, admins, DevOps for your organization ? PyCon India is the best place where you can find around 1200 to 1350 of the best and brightest people which are pythonist and some of them will be interested in new opportunities.</description>
     </item>
     <item>
       <title>How to Setup Private Docker Registry in Fedora/CentOS ?</title>
-      <link>https://surajnarwade.com/blog/blog11/</link>
+      <link>http://localhost:1313/blog/blog11/</link>
       <pubDate>Mon, 27 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog11/</guid>
+      <guid>http://localhost:1313/blog/blog11/</guid>
       <description>When you request container from image,docker usually it looks for container image locally on a system, if its not there, it will download it to your system from somewhere, i.e. Docker Hub Regitry
 What is Private Docker Registry ?
 If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.</description>
     </item>
     <item>
       <title>Machine Learning Begins Here-Part III !!! #pythonpune</title>
-      <link>https://surajnarwade.com/blog/blog12/</link>
+      <link>http://localhost:1313/blog/blog12/</link>
       <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog12/</guid>
+      <guid>http://localhost:1313/blog/blog12/</guid>
       <description>Python Pune Meetup was held @ Red Hat, Pune and that was about Part III of Machine learning by Sudarshan Gadhave on 25th June 2016.
 This time, along with Chandan, Me, ganesh and satyajit were the Event Host :)
 Meetup was specifically targeted as hackathon based on python pandas and numpy what we have covered in previous meetup.
@@ -734,9 +744,9 @@ Meetup was titled as Data DOJO,(a bit weird) it means practicing and developing 
     </item>
     <item>
       <title>Pycon India 2016,New Delhi !!! Hurry Up guys !!!</title>
-      <link>https://surajnarwade.com/blog/blog10/</link>
+      <link>http://localhost:1313/blog/blog10/</link>
       <pubDate>Tue, 31 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog10/</guid>
+      <guid>http://localhost:1313/blog/blog10/</guid>
       <description>What is Pycon India ?
 PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.
 When &amp;amp; Where it is happening ?
@@ -746,9 +756,9 @@ Why to Sponser Us ?</description>
     </item>
     <item>
       <title>Machine Learning Begins Here-Part II !!! @ #pythonpune</title>
-      <link>https://surajnarwade.com/blog/blog9/</link>
+      <link>http://localhost:1313/blog/blog9/</link>
       <pubDate>Mon, 30 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog9/</guid>
+      <guid>http://localhost:1313/blog/blog9/</guid>
       <description>Python Pune Meetup was held @ Amazatic Solutions and that was about Part II of Machine learning by Sudarshan Gadhave on 28th May 2016. Meetup was specifically targeted on python pandas as last meetup already covered basics of data science.
 Sudarshan started from Required tools/libraries for machine learning :
 Ipython numpy python-pandas python-scikit-learn matplotlib These are best opensource alternatives to softwares like MATLAB !!
@@ -756,9 +766,9 @@ Machine learning is all about technical,business and statistics.</description>
     </item>
     <item>
       <title>Installing Kubernetes Cluster with 3 minions on Fedora 23</title>
-      <link>https://surajnarwade.com/blog/blog8/</link>
+      <link>http://localhost:1313/blog/blog8/</link>
       <pubDate>Fri, 27 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog8/</guid>
+      <guid>http://localhost:1313/blog/blog8/</guid>
       <description>Kubernetes
 Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated. It aims to provide a &amp;ldquo;platform for automating deployment, scaling, and operations of application containers across clusters of hosts&amp;rdquo;
 .
@@ -766,9 +776,9 @@ In this blog post, we’ll install a Kubernetes cluster with three minions on Fe
     </item>
     <item>
       <title>RDO BUG TRIAGE DAY - First step towards Contribution !!!</title>
-      <link>https://surajnarwade.com/blog/blog7/</link>
+      <link>http://localhost:1313/blog/blog7/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog7/</guid>
+      <guid>http://localhost:1313/blog/blog7/</guid>
       <description>Hello, after long time, I am writing for a good reason :P
 had participated in RDO bug triage day on 18th and 19th of May, For those who dont know what is bug triage, Have a look at it: https://www.rdoproject.org/community/rdo-bugtriage/
 (I also came to know it just day before yesterday :-))
@@ -776,43 +786,43 @@ As a newbie to RDO community, ChandanKumar and Matthias Runge guided me to what 
     </item>
     <item>
       <title>Machine Learning Begins Here !!! @ #pythonpune</title>
-      <link>https://surajnarwade.com/blog/blog6/</link>
+      <link>http://localhost:1313/blog/blog6/</link>
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog6/</guid>
+      <guid>http://localhost:1313/blog/blog6/</guid>
       <description>Data is present everywhere at malls, multiplexes, online shopping sites, dating sites, government intelligence almost everywhere that continuously needs to be monitor &amp;amp; analyse, which is very huge data, which cant be analysed by human, at that point machine learning came into picture.
 For introduction to that #PythonPune added new chapter to its Pythonpune Meetup which was held on 30 April 2016 at Red Hat office, Magarpatta.
 Almost 70-80 peoples were there(which was unexpected for us).</description>
     </item>
     <item>
       <title>April Fedora Meetup - Unit Testing Revealed !!!</title>
-      <link>https://surajnarwade.com/blog/blog5/</link>
+      <link>http://localhost:1313/blog/blog5/</link>
       <pubDate>Sun, 24 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog5/</guid>
+      <guid>http://localhost:1313/blog/blog5/</guid>
       <description>April Fedora meetup was dedicated to “Unit testing”.
 As I am into DevOps, usually i had seen various automated tests that was carried out by jenkins are nothing but unit test but i was always wondered what is this?? Kushal gave us brief idea about unit test :
 unit testing is a method by which individual units of source code, sets of one or more computer program modules together are tested to determine if they are fit for use.</description>
     </item>
     <item>
       <title>Gerrit Error not Signed-off-by author/........ Resolved</title>
-      <link>https://surajnarwade.com/blog/blog4/</link>
+      <link>http://localhost:1313/blog/blog4/</link>
       <pubDate>Fri, 15 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog4/</guid>
+      <guid>http://localhost:1313/blog/blog4/</guid>
       <description>Yesterday, I was sending patch for review on gerrit, I commmited the code as follows, Everything works fine ;) ,
 [user@localhost project]$ git commit --amend [project d9593ab] &amp;lt;commit message here&amp;gt; Date: Thu Apr 14 17:34:53 2016 +0530 1. file changed, 75 insertions(+) create mode 100644 project/file.py While I was pushing code to gerrit for review, Suddenly Heavy errorfall occurs with :o following error:
 [user@localhost project]$ git review develop remote: Processing changes: refs: 1, done.</description>
     </item>
     <item>
       <title>So amazing when you&#39;re riding on a ray of sunshine.....</title>
-      <link>https://surajnarwade.com/blog/blog3/</link>
+      <link>http://localhost:1313/blog/blog3/</link>
       <pubDate>Thu, 31 Mar 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog3/</guid>
+      <guid>http://localhost:1313/blog/blog3/</guid>
       <description>I was listening to song ‘We love Raleigh’ by Brian Totty (so-called Red Hat anthem) :P. ‘So amazing when you’re riding on a ray of sunshine now you’re feeling like you might be einstein’ Almost more than one month is spent at Red hat, being surrounded by all OpenSource contributors, peoples dedicated to technologies are here. So, things are becoming cool &amp;amp; awesome, I got to know new things every single day !</description>
     </item>
     <item>
       <title>Finally Interns family completed !</title>
-      <link>https://surajnarwade.com/blog/blog2/</link>
+      <link>http://localhost:1313/blog/blog2/</link>
       <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog2/</guid>
+      <guid>http://localhost:1313/blog/blog2/</guid>
       <description>Finally Interns family completed !
 It was 8 February, I came at office bit early ;) .
 Seema welcomed us(new joinees) &amp;amp; took care of all documentation process. Then, Manoj takes us for tour of whole office. It was awesome( Especially 5th floor) and then introduced me to Manager Devang Parikh, Mentor Rishabh Das and Team Lead Shrink ;)
@@ -820,9 +830,9 @@ Then, Rishabh helped me to setup all things &amp;amp; told me about workflow in 
     </item>
     <item>
       <title>Happiness is when @gmail.com changing to @redhat.com</title>
-      <link>https://surajnarwade.com/blog/blog1/</link>
+      <link>http://localhost:1313/blog/blog1/</link>
       <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/blog1/</guid>
+      <guid>http://localhost:1313/blog/blog1/</guid>
       <description>On 3rd January 2016, I was practising in my institute for my RHCSA in OpenStack certification, it was around 11:45 pm and suddenly, My Instructor Ashutosh Sir told me regarding internship interview at Red Hat on 10th January. I started preparing for interview immediately . (First Job interview, little bit tension, few days left)
 Surprisingly, there was a call from Red Hat ( First Telephonic interview by Rishabh Das) on 7 Jan 2016 in morning, for a while I thought it was from GSS team, I cracked it and I got script( it was shell &amp;amp; python script) to write for second round of screening, I completed it and submitted on next day itself(one day before deadline because there was exam scheduled on next day)</description>
     </item>
