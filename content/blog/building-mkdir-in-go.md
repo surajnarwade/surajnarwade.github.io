@@ -17,6 +17,8 @@ we will cover following in the blog post:
 - mkdir with -p flag
 - mkdir with -m flag
 
+**\| *Here's the man page for the mkdir command:*** [***https://linux.die.net/man/1/mkdir***](https://linux.die.net/man/1/mkdir)
+
 ### mkdir command
 
 Let’s try running mkdir command and understand what it does,
