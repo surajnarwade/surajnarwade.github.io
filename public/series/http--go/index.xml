@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HTTP &amp; Go on Suraj Narwade</title>
+    <link>http://localhost:1313/series/http--go/</link>
+    <description>Recent content in HTTP &amp; Go on Suraj Narwade</description>
+    <generator>Hugo -- 0.129.0</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Sep 2023 23:00:12 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/http--go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding HTTP Server in Go #6 - Mux</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-mux/</link>
+      <pubDate>Fri, 01 Sep 2023 23:00:12 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-mux/</guid>
+      <description>g&amp;quot;] +++
+Up until now, we&amp;rsquo;ve been using the DefaultServeMux, but it&amp;rsquo;s time to wield more control and precision by explicitly using the http.ServeMux. Plus, we&amp;rsquo;ll look at the powerful frameworks available, like Gorilla Mux and Echo, that take web server functionality to new heights.
+Check out previous posts:
+Part 1: https://surajincloud.com/understanding-http-server-in-go-basic Part 2: https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct Part 3: https://surajincloud.com/understanding-http-server-in-go-handlers Part 4: https://surajincloud.com/understanding-http-server-in-go-multiple-handlers Part 5: https://surajincloud.com/understanding-http-server-in-go-handlefunc Why do we need this? While the DefaultServeMux In Golang does a great job of handling basic routing, there will come a point where you&amp;rsquo;ll want more control over your application&amp;rsquo;s routes.</description>
+    </item>
+    <item>
+      <title>Understanding HTTP Server in Go #5 - HandleFunc</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</link>
+      <pubDate>Thu, 31 Aug 2023 08:25:55 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</guid>
+      <description>g&amp;quot;] +++
+Welcome back to the fifth instalment of our in-depth exploration of creating dynamic web servers using Golang! In this post, we&amp;rsquo;re diving into the fascinating world of HandlerFunc. As you&amp;rsquo;ve come to expect, GoLang provides us with an elegant and powerful way to handle requests through this mechanism. Let&amp;rsquo;s embark on this journey of discovery.
+Check out previous posts:
+Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
+Part 2: https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct
+Part 3: https://surajincloud.com/understanding-http-server-in-go-handlers</description>
+    </item>
+    <item>
+      <title>Understanding HTTP Server in Go #4 - multiple handlers</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</link>
+      <pubDate>Thu, 31 Aug 2023 07:53:51 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</guid>
+      <description>g&amp;quot;] +++
+In the previous blog post, we made our webserver useful for the first time where we printed Hello World instead of 404.
+Check out previous blog posts:
+Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
+Part 2: https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct
+Part 3: https://surajincloud.com/understanding-http-server-in-go-handlers
+It was still useless as it was printing the same response on all the paths.
+Now in real real-world scenario, we won’t have just one URL right, We will need multiple paths and handlers and we still don’t have mux so now in this case we can still have multiple handlers</description>
+    </item>
+    <item>
+      <title>Understanding HTTP Server in Go #3 - Handlers</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</link>
+      <pubDate>Wed, 30 Aug 2023 23:00:14 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</guid>
+      <description>g&amp;quot;] +++
+Welcome to the exciting third instalment of our journey into creating web servers using Golang. In our previous articles, we covered the basics of creating a web server and explored the concept of custom servers using the http.Server struct.
+Check out the previous blog posts:
+\ Part 1:* https://surajincloud.com/understanding-http-server-in-go-basic
+\ part 2:* https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct
+However, as you might have noticed, our server was, until now, simply returning a 404 error.</description>
+    </item>
+    <item>
+      <title>Understanding HTTP Server in Go #2 - using http.Server struct</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</link>
+      <pubDate>Tue, 29 Aug 2023 23:00:12 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</guid>
+      <description>g&amp;quot;] +++
+Welcome back to the second part of our exploration into building web servers using GoLang! In the previous blog post, we discussed creating a basic web server using the http.ListenAndServe function.
+However, this does not give us more control over the server config and to gain more control and flexibility over the server&amp;rsquo;s behaviour, you&amp;rsquo;re in for a treat. In this article, we&amp;rsquo;ll delve into the world of custom servers by utilizing the http.</description>
+    </item>
+    <item>
+      <title>Understanding HTTP Server in Go #1 - Basic</title>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-basic/</link>
+      <pubDate>Tue, 29 Aug 2023 20:40:46 +0000</pubDate>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-basic/</guid>
+      <description>g&amp;quot;] +++
+The net/http package in Go offers a powerful set of tools for constructing HTTP servers to handle incoming requests and send responses. In this article, we&amp;rsquo;ll dive into setting up a basic HTTP server.
+Before we delve into the specifics, let&amp;rsquo;s familiarize ourselves with a couple of key terms:
+Multiplexer (or Mux): This is an essential component of an HTTP server that routes incoming requests to the appropriate handlers based on the requested paths or URLs.</description>
+    </item>
+  </channel>
+</rss>

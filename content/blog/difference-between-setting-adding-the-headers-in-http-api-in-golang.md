@@ -3,6 +3,7 @@ title = "Difference between Setting & Adding the Headers in HTTP API in Golang"
 author = "Suraj Narwade"
 date = "2023-01-18T07:30:42.274Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 While working with APIs, headers are an essential aspect. Sometimes we set them, or sometimes we consume them and make decisions.

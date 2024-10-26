@@ -3,6 +3,7 @@ title = "Building which (Linux) command in Go"
 author = "Suraj Narwade"
 date = "2023-09-09T10:48:33.097Z"
 category = "Blog"
+series = ["Linux commands using Golang"]
 +++
 
 One of the best ways to learn a language is via building equivalent Linux commands using the language of your choice.

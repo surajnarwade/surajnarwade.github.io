@@ -3,6 +3,7 @@ title = "Why close the HTTP API response body in Golang? What if you don't..."
 author = "Suraj Narwade"
 date = "2023-01-14T18:06:45.314Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 In the [previous article](https://surajincloud.com/how-to-make-an-http-get-request-in-golang), we saw how to make the HTTP GET API request in Golang. While going through the example, we discussed closing the response body.

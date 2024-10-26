@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #3 - Handlers"
 author = "Suraj Narwade"
 date = "2023-08-30T23:00:14.837Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 Welcome to the exciting third instalment of our journey into creating web servers using Golang. In our previous articles, we covered the basics of creating a web server and explored the concept of custom servers using the `http.Server` struct.

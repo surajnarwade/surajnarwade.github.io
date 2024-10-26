@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #5 - HandleFunc"
 author = "Suraj Narwade"
 date = "2023-08-31T08:25:55.190Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 Welcome back to the fifth instalment of our in\-depth exploration of creating dynamic web servers using Golang! In this post, we're diving into the fascinating world of `HandlerFunc`. As you've come to expect, GoLang provides us with an elegant and powerful way to handle requests through this mechanism. Let's embark on this journey of discovery.

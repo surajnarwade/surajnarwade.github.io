@@ -3,6 +3,7 @@ title = "How to make an HTTP GET request in Golang?"
 author = "Suraj Narwade"
 date = "2023-01-13T16:33:28.575Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 Golang is one of the widely used languages for designing API Clients. While you design the client, one of the important aspects of the client is fetching the data from the API in some format using a **GET** request.

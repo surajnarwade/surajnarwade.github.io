@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #4 - multiple handlers"
 author = "Suraj Narwade"
 date = "2023-08-31T07:53:51.667Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 In the previous blog post, we made our webserver useful for the first time where we printed Hello World instead of 404\.

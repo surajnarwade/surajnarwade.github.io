@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #6 - Mux"
 author = "Suraj Narwade"
 date = "2023-09-01T23:00:12.747Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 Up until now, we've been using the `DefaultServeMux`, but it's time to wield more control and precision by explicitly using the `http.ServeMux`. Plus, we'll look at the powerful frameworks available, like Gorilla Mux and Echo, that take web server functionality to new heights.

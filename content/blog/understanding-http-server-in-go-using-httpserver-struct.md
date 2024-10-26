@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #2 - using http.Server struct"
 author = "Suraj Narwade"
 date = "2023-08-29T23:00:12.435Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 Welcome back to the second part of our exploration into building web servers using GoLang! In the [previous blog post](https://surajincloud.com/understanding-http-server-in-go-basic), we discussed creating a basic web server using the `http.ListenAndServe` function.

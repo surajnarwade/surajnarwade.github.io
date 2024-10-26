@@ -3,6 +3,7 @@ title = "Basic Authentication in HTTP API requests in Golang"
 author = "Suraj Narwade"
 date = "2023-02-12T14:05:38.996Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 In Golang, implementing basic authentication in an HTTP API request is relatively straightforward.

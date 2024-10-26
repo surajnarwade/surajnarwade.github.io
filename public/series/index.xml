@@ -2,10 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Series on Suraj Narwade</title>
-    <link>http://localhost:1313/series/</link>
+    <link>https://surajnarwade.com/series/</link>
     <description>Recent content in Series on Suraj Narwade</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Oct 2024 14:20:49 +0000</lastBuildDate>
+    <atom:link href="https://surajnarwade.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Commands Using Golang</title>
+      <link>https://surajnarwade.com/series/linux-commands-using-golang/</link>
+      <pubDate>Fri, 25 Oct 2024 14:20:49 +0000</pubDate>
+      <guid>https://surajnarwade.com/series/linux-commands-using-golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HTTP Using Golang</title>
+      <link>https://surajnarwade.com/series/http-using-golang/</link>
+      <pubDate>Fri, 01 Sep 2023 23:00:12 +0000</pubDate>
+      <guid>https://surajnarwade.com/series/http-using-golang/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

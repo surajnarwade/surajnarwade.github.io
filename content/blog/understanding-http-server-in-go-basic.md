@@ -3,6 +3,7 @@ title = "Understanding HTTP Server in Go #1 - Basic"
 author = "Suraj Narwade"
 date = "2023-08-29T20:40:46.064Z"
 category = "Blog"
+series = ["HTTP using Golang"]
 +++
 
 The `net/http` package in Go offers a powerful set of tools for constructing HTTP servers to handle incoming requests and send responses. In this article, we'll dive into setting up a basic HTTP server.
