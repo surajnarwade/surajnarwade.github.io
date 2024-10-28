@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>HTTP Using Golang on Suraj Narwade</title>
-    <link>https://surajnarwade.com/series/http-using-golang/</link>
+    <link>http://localhost:1313/series/http-using-golang/</link>
     <description>Recent content in HTTP Using Golang on Suraj Narwade</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>en</language>
     <lastBuildDate>Fri, 01 Sep 2023 23:00:12 +0000</lastBuildDate>
-    <atom:link href="https://surajnarwade.com/series/http-using-golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/series/http-using-golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Understanding HTTP Server in Go #6 - Mux</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-mux/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-mux/</link>
       <pubDate>Fri, 01 Sep 2023 23:00:12 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-mux/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-mux/</guid>
       <description>Up until now, we&amp;rsquo;ve been using the DefaultServeMux, but it&amp;rsquo;s time to wield more control and precision by explicitly using the http.ServeMux. Plus, we&amp;rsquo;ll look at the powerful frameworks available, like Gorilla Mux and Echo, that take web server functionality to new heights.
 Check out previous posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic Part 2: https://surajincloud.com/understanding-http-server-in-go-using-httpserver-struct Part 3: https://surajincloud.com/understanding-http-server-in-go-handlers Part 4: https://surajincloud.com/understanding-http-server-in-go-multiple-handlers Part 5: https://surajincloud.com/understanding-http-server-in-go-handlefunc Why do we need this? While the DefaultServeMux In Golang does a great job of handling basic routing, there will come a point where you&amp;rsquo;ll want more control over your application&amp;rsquo;s routes.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #5 - HandleFunc</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-handlefunc/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</link>
       <pubDate>Thu, 31 Aug 2023 08:25:55 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-handlefunc/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlefunc/</guid>
       <description>Welcome back to the fifth instalment of our in-depth exploration of creating dynamic web servers using Golang! In this post, we&amp;rsquo;re diving into the fascinating world of HandlerFunc. As you&amp;rsquo;ve come to expect, GoLang provides us with an elegant and powerful way to handle requests through this mechanism. Let&amp;rsquo;s embark on this journey of discovery.
 Check out previous posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
@@ -31,9 +31,9 @@ Part 4: https://surajincloud.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #4 - multiple handlers</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-multiple-handlers/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</link>
       <pubDate>Thu, 31 Aug 2023 07:53:51 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-multiple-handlers/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-multiple-handlers/</guid>
       <description>In the previous blog post, we made our webserver useful for the first time where we printed Hello World instead of 404.
 Check out previous blog posts:
 Part 1: https://surajincloud.com/understanding-http-server-in-go-basic
@@ -44,9 +44,9 @@ Now in real real-world scenario, we won’t have just one URL right, We will nee
     </item>
     <item>
       <title>Understanding HTTP Server in Go #3 - Handlers</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-handlers/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</link>
       <pubDate>Wed, 30 Aug 2023 23:00:14 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-handlers/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-handlers/</guid>
       <description>Welcome to the exciting third instalment of our journey into creating web servers using Golang. In our previous articles, we covered the basics of creating a web server and explored the concept of custom servers using the http.Server struct.
 Check out the previous blog posts:
 \ Part 1:* https://surajincloud.com/understanding-http-server-in-go-basic
@@ -55,35 +55,35 @@ However, as you might have noticed, our server was, until now, simply returning 
     </item>
     <item>
       <title>Understanding HTTP Server in Go #2 - using http.Server struct</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-using-httpserver-struct/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</link>
       <pubDate>Tue, 29 Aug 2023 23:00:12 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-using-httpserver-struct/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-using-httpserver-struct/</guid>
       <description>Welcome back to the second part of our exploration into building web servers using GoLang! In the previous blog post, we discussed creating a basic web server using the http.ListenAndServe function.
 However, this does not give us more control over the server config and to gain more control and flexibility over the server&amp;rsquo;s behaviour, you&amp;rsquo;re in for a treat. In this article, we&amp;rsquo;ll delve into the world of custom servers by utilizing the http.</description>
     </item>
     <item>
       <title>Understanding HTTP Server in Go #1 - Basic</title>
-      <link>https://surajnarwade.com/blog/understanding-http-server-in-go-basic/</link>
+      <link>http://localhost:1313/blog/understanding-http-server-in-go-basic/</link>
       <pubDate>Tue, 29 Aug 2023 20:40:46 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/understanding-http-server-in-go-basic/</guid>
+      <guid>http://localhost:1313/blog/understanding-http-server-in-go-basic/</guid>
       <description>The net/http package in Go offers a powerful set of tools for constructing HTTP servers to handle incoming requests and send responses. In this article, we&amp;rsquo;ll dive into setting up a basic HTTP server.
 Before we delve into the specifics, let&amp;rsquo;s familiarize ourselves with a couple of key terms:
 Multiplexer (or Mux): This is an essential component of an HTTP server that routes incoming requests to the appropriate handlers based on the requested paths or URLs.</description>
     </item>
     <item>
       <title>Basic Authentication in HTTP API requests in Golang</title>
-      <link>https://surajnarwade.com/blog/basic-authentication-in-http-api-requests-in-golang/</link>
+      <link>http://localhost:1313/blog/basic-authentication-in-http-api-requests-in-golang/</link>
       <pubDate>Sun, 12 Feb 2023 14:05:38 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/basic-authentication-in-http-api-requests-in-golang/</guid>
+      <guid>http://localhost:1313/blog/basic-authentication-in-http-api-requests-in-golang/</guid>
       <description>In Golang, implementing basic authentication in an HTTP API request is relatively straightforward.
 Once we construct the request, then we have to call the SetBasicAuth() method and pass username &amp;amp; password
 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;io/ioutil&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; ) func main() { client := &amp;amp;http.Client{} req, err := http.NewRequest(&amp;#34;GET&amp;#34;, &amp;#34;http://google.com&amp;#34;, nil) if err != nil { log.Fatal(err) } req.SetBasicAuth(&amp;#34;admin&amp;#34;, &amp;#34;password&amp;#34;) resp, err := client.Do(req) if err != nil { log.</description>
     </item>
     <item>
       <title>Difference between Setting &amp; Adding the Headers in HTTP API in Golang</title>
-      <link>https://surajnarwade.com/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</link>
+      <link>http://localhost:1313/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</link>
       <pubDate>Wed, 18 Jan 2023 07:30:42 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</guid>
+      <guid>http://localhost:1313/blog/difference-between-setting-adding-the-headers-in-http-api-in-golang/</guid>
       <description>While working with APIs, headers are an essential aspect. Sometimes we set them, or sometimes we consume them and make decisions.
 When I was exploring headers in Golang, I came across two methods. Headers.Set() &amp;amp; Headers.Add() Initially, I thought they were the same. But then I wondered if they are the same, then why two methods?
 Let&amp;rsquo;s understand.
@@ -91,9 +91,9 @@ I will be using a proxy which will use Add &amp;amp; Set on headers, as shown be
     </item>
     <item>
       <title>Why close the HTTP API response body in Golang? What if you don&#39;t...</title>
-      <link>https://surajnarwade.com/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</link>
+      <link>http://localhost:1313/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</link>
       <pubDate>Sat, 14 Jan 2023 18:06:45 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</guid>
+      <guid>http://localhost:1313/blog/why-close-the-http-api-response-body-in-golang-what-if-you-dont/</guid>
       <description>In the previous article, we saw how to make the HTTP GET API request in Golang. While going through the example, we discussed closing the response body.
 In this article, Let&amp;rsquo;s discuss why it is essential to close the response body.
 What is the response body? The response body is a stream of data that is read from the server.
@@ -101,9 +101,9 @@ Why should I close it? Ensure all data has been read and the resources associate
     </item>
     <item>
       <title>How to make an HTTP GET request in Golang?</title>
-      <link>https://surajnarwade.com/blog/how-to-make-an-http-get-request-in-golang/</link>
+      <link>http://localhost:1313/blog/how-to-make-an-http-get-request-in-golang/</link>
       <pubDate>Fri, 13 Jan 2023 16:33:28 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/how-to-make-an-http-get-request-in-golang/</guid>
+      <guid>http://localhost:1313/blog/how-to-make-an-http-get-request-in-golang/</guid>
       <description>Golang is one of the widely used languages for designing API Clients. While you design the client, one of the important aspects of the client is fetching the data from the API in some format using a GET request.
 Here&amp;rsquo;s the curl command example, which mimics the GET request which we will write code for in Golang,
 $ curl -XGET localhost:8080 {&amp;#34;message&amp;#34;:&amp;#34;hello world !!!&amp;#34;} Note: I already have a basic webserver running, Hence I can get the output on localhost.</description>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux Commands Using Golang on Suraj Narwade</title>
-    <link>https://surajnarwade.com/series/linux-commands-using-golang/</link>
+    <link>http://localhost:1313/series/linux-commands-using-golang/</link>
     <description>Recent content in Linux Commands Using Golang on Suraj Narwade</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>en</language>
     <lastBuildDate>Fri, 25 Oct 2024 14:20:49 +0000</lastBuildDate>
-    <atom:link href="https://surajnarwade.com/series/linux-commands-using-golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/series/linux-commands-using-golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building mkdir (linux) command in Go</title>
-      <link>https://surajnarwade.com/blog/building-mkdir-in-go/</link>
+      <link>http://localhost:1313/blog/building-mkdir-in-go/</link>
       <pubDate>Fri, 25 Oct 2024 14:20:49 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/building-mkdir-in-go/</guid>
+      <guid>http://localhost:1313/blog/building-mkdir-in-go/</guid>
       <description>One of the best way to learn language is to try recreating familiar linux command in it. In one of the previous post, we have seen how we can implement simple which command, you can check the blog post here.
 In this blog post, we will try to implement mkdir command, Let’s get started.
 mkdir is one of the important commands in Linux which helps to create directories.
@@ -20,9 +20,9 @@ we will cover following in the blog post:</description>
     </item>
     <item>
       <title>Building which (Linux) command in Go</title>
-      <link>https://surajnarwade.com/blog/building-which-linux-command-in-go/</link>
+      <link>http://localhost:1313/blog/building-which-linux-command-in-go/</link>
       <pubDate>Sat, 09 Sep 2023 10:48:33 +0000</pubDate>
-      <guid>https://surajnarwade.com/blog/building-which-linux-command-in-go/</guid>
+      <guid>http://localhost:1313/blog/building-which-linux-command-in-go/</guid>
       <description>One of the best ways to learn a language is via building equivalent Linux commands using the language of your choice.
 which is my all-time favourite command to see if the binary is present on the server or not. You can see which usage as shown below,
 $ which kubectl-eks /Users/surajnarwade/.krew/bin/kubectl-eks We simply pass the binary name to which command and it will give us the absolute path to the binary.</description>
