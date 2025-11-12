@@ -23,6 +23,35 @@ Each file or directory in Linux has an inode associated with it, which contains,
 
 but it does not contain the filename, interesting right, more on that later.
 
+Inodes also stores permission bits that define how a file can be accessed:
+
+* Read (r) – view file contents
+* Write (w) – modify file contents
+* Execute (x) – run as a program or script
+
+we can see this when we run following command,
+
+```
+ls -la
+```
+
+Every file in Linux is stored as a bunch of small chunks on disk called data blocks.
+The inode’s job is to keep track of where those blocks are.
+
+Think of the inode as a map or index card that tells the system:
+
+“The contents of this file are stored in block #120, block #121, and block #122 on the disk.”
+
+So, when you open a file, Linux doesn’t search the entire disk for it — it simply checks the inode to find which blocks hold the file’s data.
+How the Mapping Works
+
+Each inode contains pointers to the data blocks:
+
+* Direct pointers – point straight to the file’s data.
+* Indirect pointers – point to another block that contains more pointers (used for big files).
+
+This layered system lets Linux handle everything — from a tiny config file to a multi-gigabyte log file — efficiently.
+
 ## Viewing Inodes
 
 ### view inode number of file or directory
