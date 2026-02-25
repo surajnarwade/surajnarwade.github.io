@@ -51,6 +51,8 @@ outputs:
 disqusShortname: surajnarwade-github-io
 
 params:
+  author:
+    name: Suraj Narwade
   comments: true
   ShowBreadCrumbs: true
   ShowPostNavLinks: true
@@ -78,5 +80,5 @@ services:
     shortname: surajnarwade-github-io
   instagram:
     disableInlineCSS: true
-  twitter:
+  x:
     disableInlineCSS: true
