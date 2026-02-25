@@ -48,6 +48,8 @@ outputs:
   - RSS
   - JSON
 
+disqusShortname: surajnarwade-github-io
+
 params:
   comments: true
   ShowBreadCrumbs: true
