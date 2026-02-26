@@ -1,7 +1,7 @@
 +++
 title = "Platform Engineering through my lens"
 author = "Suraj Narwade"
-date = "2026-09-26"
+date = "2026-02-26"
 category = "Blog"
 +++
 
