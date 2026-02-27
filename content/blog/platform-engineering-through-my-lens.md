@@ -79,7 +79,7 @@ A simple way to remember it:
 
 A platform can include a combination of the following.
 
-### 1) The infrastructure layer
+### The infrastructure layer
 
 This is where services ultimately run. For example:
 
@@ -91,7 +91,7 @@ This is where services ultimately run. For example:
 
 Not every platform team owns all of this, but the platform is always built on top of something.
 
-### 2) Capabilities that abstract the infrastructure
+### Capabilities that abstract the infrastructure
 
 This is where platform engineering becomes real for developers.
 
@@ -104,7 +104,7 @@ Instead of every team reinventing the same deployment patterns, the platform tea
 
 The goal is not more abstraction. The goal is less cognitive load and fewer sharp edges.
 
-### 3) Interfaces to interact with the platform
+### Interfaces to interact with the platform
 
 A platform is only useful if people can actually use it.
 
@@ -115,7 +115,7 @@ Interfaces might include:
 - Portals / consoles
 - Documentation that is actually usable
 
-### 4) Observability as a platform
+### Observability as a platform
 
 Observability is often a platform within the platform:
 
