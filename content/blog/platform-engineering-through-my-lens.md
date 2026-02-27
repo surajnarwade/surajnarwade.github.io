@@ -14,7 +14,7 @@ But something kept bothering me.
 
 Most of my work was focused on local clusters or limited environments. I wanted to keep doing what I enjoyed (building tools), but also learn what happens when Kubernetes meets real production: infrastructure, reliability, deployments at scale, operational pain, and all the invisible decisions that make systems stable.
 
-So I moved into a Platform Engineering role at uSwitch in 2019.
+So I moved into a Platform Engineering role at Uswitch in 2019.
 
 And yes, I still wrote Go code for CLI tools. But now I also wrote controllers/operators, scripts, automation, and I started learning the infrastructure side properly. That mix, product-thinking plus engineering plus ops reality, is what pulled me in.
 
