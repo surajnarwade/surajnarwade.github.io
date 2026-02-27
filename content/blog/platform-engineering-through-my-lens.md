@@ -89,6 +89,8 @@ This is where services ultimately run. For example:
 - Networking, DNS, load balancers
 - IAM, secrets management, certificates
 
+| Note: above AWS terminologies are for example only, This infrastructure could be anything, any cloud, on-premise or even Raspberry Pi :D
+
 Not every platform team owns all of this, but the platform is always built on top of something.
 
 ### Capabilities that abstract the infrastructure
