@@ -5,73 +5,11 @@ category = "Blog"
 author = "Suraj Narwade"
 +++
 
-In last blog, I explained in detail about my experience and my point of view on Platform Engineering. 
+In my last blog, I shared my experience and point of view on Platform Engineering. 
 
 ([click here to read previous blog post on Platform Engineering through my lens](https://surajnarwade.com/blog/platform-engineering-through-my-lens/))
 
-In this blog post, I would like to share a week in a life of a Platform Engineer as a personal experience as well as what I have heard from fellow Platform folks.
-
-Take this with pinch of salt as we discussed in the previous blog, every organisation, their needs, their platform is unique & different.
-
-Writing about A day won’t make sense :D
-
-Regular event: standup which happens every day morning. now I am part of team which is geographically located in same timezone. 
-
-but often teams are geopgraphically distributed, hence either they try to find common ground or they have async standup on slack or any other medium.
-
-## Mondays
-
-Every monday is Maintainance Mondays. On this day, we focus on reducing toil, tech debts by upgrading components of the infrastrctures.  upgrade depedendencies or libaries to clear up vulnerabilities.
-
-This really help us keep on top. 
-
-I usually have 1x1 with my Manager on Monday on fortnightly basis. 1x1 are such essential part for not just platform engineer but any working professionals to discuss career progressions, any issues or just chitchat sometimes :) 
-
-Cadence for maintainance monday: some companies keep it weekly some keep it fortnightly. (I do it fortnightly)
-
-Retro meeting again fortnightly. this meeting is an opportunity to gather as a team and discuss pain points, celebrate wins, burning questions and upcoming puzzling platform related stuff.
-
-Tuesdays:
-
-This is where I focus on work, there could be ad-hoc work as well.
-
-Fortnightly, I also have planning meeting, this is where we go over the task board and discuss if there any blockers, does everyone in the team have enough work. 
-
-Is there any urgent work which we need to prioritse depend on business needs.
-
-Wednesday:
-
-Middle of the week, focussing on work. we also tend to keep an eye on alerts in slack channel and if we notice any alerts are recurring then we investigate that service.
-
-On this day, we have open door meeting where we invite our customers aka internal developers where we can showcase any upcoming things, developers can bring their queries to doubts.
-
-they can also come up with any feature requests.
-
-sometimes, it’s easy to discuss verbally than text chat in slack support channel.
-
-Thursday:
-
-Heading towards weekend, try to wrap up the work.
-
-Friday: 
-
-it’s friyay, usually this day will have either Tech all hands, or Show & Tell or Business All hands meeting.
-
-Saturday & Sundays:
-
-Usually nothing happens but if person is on-call for out of hours, then there could be incidents, false alerts, or Maintainances.
-
-Along with this if I am the person on-call for in hours which means business hours then my work at hands take little backseat and I am focussed on providing support and assistant to developers.
-
-they come to a slack channel and ask for help and I assist. I am also responsible for any incidents occured and I join the incident channel if they need any help regarding Platform related issues.
-
-So overall that’s how week of platform engineer might look like, so how is your week looks like , Let me know in the comments??
-
----
-
-## A Week in the Life of a Platform Engineer
-
-In my last blog, I shared my experience and point of view on Platform Engineering. In this post, I want to share what a week in the life of a Platform Engineer can look like, based on my own experience and what I’ve heard from other platform folks too.
+In this post, I want to share what a week in the life of a Platform Engineer can look like, based on my own experience and what I’ve heard from other platform folks too.
 
 Take this with a pinch of salt. Every organisation is different. Their needs are different, and their platform is different too.
 
