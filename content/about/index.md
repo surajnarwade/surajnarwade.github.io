@@ -1,8 +1,8 @@
 ---
 title: "About me"
 layout: "about"
-# cover:
-#   image: surajnarwade.png
+cover:
+  image: surajnarwade.png
 ---
 
 ## Bio
