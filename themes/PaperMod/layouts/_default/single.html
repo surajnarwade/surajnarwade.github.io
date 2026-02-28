@@ -59,6 +59,7 @@
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}
+  {{- partial "disqus.html" . }}
   {{- end }}
 </article>
 

@@ -14,7 +14,7 @@ But something kept bothering me.
 
 Most of my work was focused on local clusters or limited environments. I wanted to keep doing what I enjoyed (building tools), but also learn what happens when Kubernetes meets real production: infrastructure, reliability, deployments at scale, operational pain, and all the invisible decisions that make systems stable.
 
-So I moved into a Platform Engineering role at uSwitch in 2019.
+So I moved into a Platform Engineering role at Uswitch in 2019.
 
 And yes, I still wrote Go code for CLI tools. But now I also wrote controllers/operators, scripts, automation, and I started learning the infrastructure side properly. That mix, product-thinking plus engineering plus ops reality, is what pulled me in.
 
@@ -79,7 +79,7 @@ A simple way to remember it:
 
 A platform can include a combination of the following.
 
-### 1) The infrastructure layer
+### The infrastructure layer
 
 This is where services ultimately run. For example:
 
@@ -89,9 +89,11 @@ This is where services ultimately run. For example:
 - Networking, DNS, load balancers
 - IAM, secrets management, certificates
 
+| Note: above AWS terminologies are for example only, This infrastructure could be anything, any cloud, on-premise or even Raspberry Pi :D
+
 Not every platform team owns all of this, but the platform is always built on top of something.
 
-### 2) Capabilities that abstract the infrastructure
+### Capabilities that abstract the infrastructure
 
 This is where platform engineering becomes real for developers.
 
@@ -104,7 +106,7 @@ Instead of every team reinventing the same deployment patterns, the platform tea
 
 The goal is not more abstraction. The goal is less cognitive load and fewer sharp edges.
 
-### 3) Interfaces to interact with the platform
+### Interfaces to interact with the platform
 
 A platform is only useful if people can actually use it.
 
@@ -115,7 +117,7 @@ Interfaces might include:
 - Portals / consoles
 - Documentation that is actually usable
 
-### 4) Observability as a platform
+### Observability as a platform
 
 Observability is often a platform within the platform:
 
