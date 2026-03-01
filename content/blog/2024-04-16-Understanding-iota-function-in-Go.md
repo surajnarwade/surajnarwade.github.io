@@ -1,6 +1,7 @@
 +++
 title = "Understanding iota function in Go"
 slug = "Understanding-iota-function-in-Go"
+description = "Understand iota function in go with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2024-04-16T14:20:49.779Z"
 category = "Blog"

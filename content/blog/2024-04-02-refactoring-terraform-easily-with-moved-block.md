@@ -1,6 +1,7 @@
 +++
 title = "Refactoring Terraform easily with moved block"
 slug = "refactoring-terraform-easily-with-moved-block"
+description = "Learn how to refactor terraform easily with moved block with a practical example and clear steps."
 author = "Suraj Narwade"
 date = "2024-04-02T10:20:49.779Z"
 category = "Blog"

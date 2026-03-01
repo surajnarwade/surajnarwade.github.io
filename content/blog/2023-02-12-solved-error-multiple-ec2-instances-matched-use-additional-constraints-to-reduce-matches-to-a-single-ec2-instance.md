@@ -1,6 +1,7 @@
 +++
 title = "[SOLVED] Error: multiple EC2 Instances matched; use additional constraints to reduce matches to a single EC2 Instance"
 slug = "solved-error-multiple-ec2-instances-matched-use-additional-constraints-to-reduce-matches-to-a-single-ec2-instance"
+description = "A practical post about error: multiple ec2 instances matched; use additional constraints to reduce matches to a single ec2 instance with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-02-12T09:58:31.986Z"
 category = "Blog"

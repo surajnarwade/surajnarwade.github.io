@@ -2,6 +2,7 @@
 date = "2018-11-30T21:21:49+05:30"
 title = "Exploring Kubernetes: Client-Go - part-2"
 slug = "exploring-k8s-part2"
+description = "Explore kubernetes: client-go - part-2 and learn the core ideas step by step."
 category = "Blog"
 author = "Suraj Narwade"
 

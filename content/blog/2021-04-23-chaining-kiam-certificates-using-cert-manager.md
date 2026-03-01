@@ -1,6 +1,7 @@
 +++
 title = "Chaining Kiam Certificates using Cert-manager"
 slug = "chaining-kiam-certificates-using-cert-manager"
+description = "A practical post about chaining kiam certificates using cert-manager with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2021-04-23T06:51:25.501Z"
 category = "Blog"

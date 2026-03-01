@@ -1,6 +1,7 @@
 +++
 title = "Machine Learning Begins Here-Part III !!! #pythonpune"
 slug = "machine-learning-begins-here-part-iii-pythonpune"
+description = "A practical post about machine learning begins here-part iii !!! #pythonpune with lessons, examples, and useful takeaways."
 date = "2016-06-26"
 category = "Meetup"
 author = "Suraj Narwade"

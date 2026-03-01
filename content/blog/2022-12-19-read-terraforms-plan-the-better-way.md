@@ -1,6 +1,7 @@
 +++
 title = "Read Terraform's plan the better way"
 slug = "read-terraforms-plan-the-better-way"
+description = "Learn how to read terraform's plan the better way more effectively with a practical approach."
 author = "Suraj Narwade"
 date = "2022-12-19T07:09:47.610Z"
 category = "Blog"

@@ -2,6 +2,7 @@
 date = "2017-09-23T21:21:49+05:30"
 title = "Running static pod using standalone kubelet on fedora"
 slug = "static-pod"
+description = "A practical post about running static pod using standalone kubelet on fedora with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

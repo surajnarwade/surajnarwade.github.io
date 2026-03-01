@@ -1,6 +1,7 @@
 +++
 title = "Platform Engineering through my lens"
 slug = "platform-engineering-through-my-lens"
+description = "A practical post about platform engineering through my lens with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2026-02-26"
 category = "Blog"

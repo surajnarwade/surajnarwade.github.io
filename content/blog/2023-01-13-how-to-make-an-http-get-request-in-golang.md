@@ -1,6 +1,7 @@
 +++
 title = "How to make an HTTP GET request in Golang?"
 slug = "how-to-make-an-http-get-request-in-golang"
+description = "Learn how to make an http get request in golang with practical steps and examples."
 author = "Suraj Narwade"
 date = "2023-01-13T16:33:28.575Z"
 category = "Blog"

@@ -1,6 +1,7 @@
 +++
 title = "Civo Object Store as a Terraform Backend"
 slug = "civo-object-store-as-a-terraform-backend"
+description = "A practical post about civo object store as a terraform backend with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-02-12T12:38:12.062Z"
 category = "Blog"

@@ -2,6 +2,7 @@
 title = "Finally Interns family completed !"
 slug = "finally-interns-family-completed"
 
+description = "A practical post about finally interns family completed ! with lessons, examples, and useful takeaways."
 date = "2016-02-28" 
 category = "Life at Red Hat"
 author = "Suraj Narwade"

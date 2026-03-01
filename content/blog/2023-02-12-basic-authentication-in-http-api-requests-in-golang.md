@@ -1,6 +1,7 @@
 +++
 title = "Basic Authentication in HTTP API requests in Golang"
 slug = "basic-authentication-in-http-api-requests-in-golang"
+description = "A practical post about basic authentication in http api requests in golang with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-02-12T14:05:38.996Z"
 category = "Blog"

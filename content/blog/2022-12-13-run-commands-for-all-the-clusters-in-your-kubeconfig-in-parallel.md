@@ -1,6 +1,7 @@
 +++
 title = "Run Commands for All the clusters in your Kubeconfig in parallel"
 slug = "run-commands-for-all-the-clusters-in-your-kubeconfig-in-parallel"
+description = "Learn how to run commands for all the clusters in your kubeconfig in parallel more efficiently with a practical approach."
 author = "Suraj Narwade"
 date = "2022-12-13T07:34:04.317Z"
 category = "Blog"

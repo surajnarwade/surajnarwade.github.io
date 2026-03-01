@@ -1,6 +1,7 @@
 +++
 title = "Building which (Linux) command in Go"
 slug = "building-which-linux-command-in-go"
+description = "Learn how to build which (linux) command in go with a practical walkthrough."
 author = "Suraj Narwade"
 date = "2023-09-09T10:48:33.097Z"
 category = "Blog"

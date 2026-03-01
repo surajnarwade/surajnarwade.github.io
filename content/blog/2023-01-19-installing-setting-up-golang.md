@@ -1,6 +1,7 @@
 +++
 title = "Installing & Setting up Golang"
 slug = "installing-setting-up-golang"
+description = "Follow a step-by-step guide to install & setting up golang successfully."
 author = "Suraj Narwade"
 date = "2023-01-19T12:00:42.122Z"
 category = "Blog"

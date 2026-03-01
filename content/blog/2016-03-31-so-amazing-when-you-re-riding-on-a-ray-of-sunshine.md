@@ -1,6 +1,7 @@
 +++
 title = "So amazing when you're riding on a ray of sunshine....."
 slug = "so-amazing-when-you-re-riding-on-a-ray-of-sunshine"
+description = "A practical post about so amazing when you're riding on a ray of sunshine..... with lessons, examples, and useful takeaways."
 date = "2016-03-31"
 category = "Life at Red Hat"
 author = "Suraj Narwade"

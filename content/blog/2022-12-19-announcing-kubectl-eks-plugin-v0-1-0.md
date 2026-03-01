@@ -1,6 +1,7 @@
 +++
 title = "Announcing Kubectl EKS Plugin v0.1.0"
 slug = "announcing-kubectl-eks-plugin-v0-1-0"
+description = "An announcement of Kubectl EKS Plugin v0.1.0 with the key details and what to expect."
 author = "Suraj Narwade"
 date = "2022-12-19T07:07:20.566Z"
 category = "Blog"

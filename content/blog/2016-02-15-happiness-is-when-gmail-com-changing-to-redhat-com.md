@@ -1,6 +1,7 @@
 +++
 title = "Happiness is when @gmail.com changing to @redhat.com"
 slug = "happiness-is-when-gmail-com-changing-to-redhat-com"
+description = "A practical post about happiness is when @gmail.com changing to @redhat.com with lessons, examples, and useful takeaways."
 date = "2016-02-15"  
 category =  "Before Journey"
 author = "Suraj Narwade"

@@ -1,6 +1,7 @@
 +++
 title = "How to generate Terraform module docs"
 slug = "how-to-generate-terraform-module-docs"
+description = "Learn how to generate terraform module docs with practical steps and examples."
 author = "Suraj Narwade"
 date = "2022-12-19T07:08:15.289Z"
 category = "Blog"

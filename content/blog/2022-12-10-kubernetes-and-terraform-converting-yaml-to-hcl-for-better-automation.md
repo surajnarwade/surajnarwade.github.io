@@ -1,6 +1,7 @@
 +++
 title = "Kubernetes and Terraform: Converting YAML to HCL for Better Automation"
 slug = "kubernetes-and-terraform-converting-yaml-to-hcl-for-better-automation"
+description = "A practical post about kubernetes and terraform: converting yaml to hcl for better automation with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2022-12-10T22:54:09.874Z"
 category = "Blog"

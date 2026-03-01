@@ -1,6 +1,7 @@
 +++
 title = "Gerrit Error not Signed-off-by author/........ Resolved"
 slug = "gerrit-error-not-signed-off-by-author-resolved"
+description = "A practical post about gerrit error not signed-off-by author/........ resolved with lessons, examples, and useful takeaways."
 date = "2016-04-15"
 category = "Troubleshoot"
 author = "Suraj Narwade"

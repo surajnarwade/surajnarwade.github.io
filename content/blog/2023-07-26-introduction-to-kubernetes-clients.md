@@ -1,6 +1,7 @@
 +++
 title = "Introduction to Kubernetes Clients"
 slug = "introduction-to-kubernetes-clients"
+description = "Get an introduction to kubernetes clients and learn the basics to get started."
 author = "Suraj Narwade"
 date = "2023-07-26T09:57:14.643Z"
 category = "Blog"

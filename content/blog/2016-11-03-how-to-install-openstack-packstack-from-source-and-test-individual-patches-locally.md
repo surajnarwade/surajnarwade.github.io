@@ -1,6 +1,7 @@
 +++
 title = "How to install OpenStack-packstack from source and test individual patches locally!"
 slug = "how-to-install-openstack-packstack-from-source-and-test-individual-patches-locally"
+description = "Learn how to install openstack-packstack from source and test individual patches locally! with practical steps and examples."
 date = "2016-11-03"
 category = "OpenSource"
 author = "Suraj Narwade"

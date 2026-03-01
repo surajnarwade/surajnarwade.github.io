@@ -1,6 +1,7 @@
 +++
 title = "How to Check Temperature on Raspberry Pi"
 slug = "how-to-check-temp-raspberry-pi"
+description = "Learn how to check temperature on raspberry pi with practical steps and examples."
 author = "Suraj Narwade"
 date = "2026-02-25"
 category = "Blog"

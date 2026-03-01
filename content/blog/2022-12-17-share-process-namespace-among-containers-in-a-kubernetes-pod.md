@@ -1,6 +1,7 @@
 +++
 title = "How to share process namespace among containers in a Kubernetes Pod"
 slug = "share-process-namespace-among-containers-in-a-kubernetes-pod"
+description = "Learn how to share process namespace among containers in a kubernetes pod with practical steps and examples."
 author = "Suraj Narwade"
 date = "2022-12-17T10:48:31.266Z"
 category = "Blog"

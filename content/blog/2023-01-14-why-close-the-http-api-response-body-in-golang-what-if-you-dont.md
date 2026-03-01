@@ -1,6 +1,7 @@
 +++
 title = "Why close the HTTP API response body in Golang? What if you don't..."
 slug = "why-close-the-http-api-response-body-in-golang-what-if-you-dont"
+description = "Learn why close the http api response body in golang? what if you don't... and what it means in practice."
 author = "Suraj Narwade"
 date = "2023-01-14T18:06:45.314Z"
 category = "Blog"

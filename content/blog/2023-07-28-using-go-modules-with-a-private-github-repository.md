@@ -1,6 +1,7 @@
 +++
 title = "Using Go modules with a Private GitHub repository"
 slug = "using-go-modules-with-a-private-github-repository"
+description = "Learn how to use go modules with a private github repository with practical guidance and examples."
 author = "Suraj Narwade"
 date = "2023-07-28T14:41:56.003Z"
 category = "Blog"

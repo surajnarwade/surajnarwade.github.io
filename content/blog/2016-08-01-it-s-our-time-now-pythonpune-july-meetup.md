@@ -1,6 +1,7 @@
 +++
 title = "It's our time Now !!! PythonPune July Meetup"
 slug = "it-s-our-time-now-pythonpune-july-meetup"
+description = "A practical post about it's our time now !!! pythonpune july meetup with lessons, examples, and useful takeaways."
 date = "2016-08-01"
 category = "Meetup"
 author = "Suraj Narwade"

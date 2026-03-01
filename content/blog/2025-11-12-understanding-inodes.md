@@ -1,6 +1,7 @@
 +++
 title = "Understanding inodes in Linux"
 slug = "understanding-inodes"
+description = "Understand inodes in linux with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2025-11-12T20:00:46.064Z"
 category = "Blog"

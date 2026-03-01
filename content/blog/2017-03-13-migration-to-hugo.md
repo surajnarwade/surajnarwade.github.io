@@ -2,6 +2,7 @@
 date = "2017-03-13T21:21:49+05:30"
 title = "Migration to Hugo"
 slug = "migration-to-hugo"
+description = "A practical post about migration to hugo with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

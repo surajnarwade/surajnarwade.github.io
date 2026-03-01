@@ -1,6 +1,7 @@
 +++
 title = "Encrypting EC2 Sessions with KMS and SSM Session Managers"
 slug = "encrypting-ec2-sessions-with-kms-and-ssm-session-managers"
+description = "A practical post about encrypting ec2 sessions with kms and ssm session managers with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-02-20T20:20:39.017Z"
 category = "Blog"

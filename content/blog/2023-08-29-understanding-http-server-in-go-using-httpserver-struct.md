@@ -1,6 +1,7 @@
 +++
 title = "Understanding HTTP Server in Go #2 - using http.Server struct"
 slug = "understanding-http-server-in-go-using-httpserver-struct"
+description = "Understand http server in go #2 - using http.server struct with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2023-08-29T23:00:12.435Z"
 category = "Blog"

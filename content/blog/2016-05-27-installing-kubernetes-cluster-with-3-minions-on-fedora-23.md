@@ -2,6 +2,7 @@
 title = "Installing Kubernetes Cluster with 3 minions on Fedora 23"
 slug = "installing-kubernetes-cluster-with-3-minions-on-fedora-23"
 
+description = "Follow a step-by-step guide to install kubernetes cluster with 3 minions on fedora 23 successfully."
 date = "2016-05-27" 
 category = "What I learn ?"
 author = "Suraj Narwade"

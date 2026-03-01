@@ -1,6 +1,7 @@
 +++
 title = "How to use non-AWS S3 Compatible storage for Terraform Backend?"
 slug = "how-to-use-non-aws-s3-compatible-storage-for-terraform-backend"
+description = "Learn how to use non-aws s3 compatible storage for terraform backend with practical steps and examples."
 author = "Suraj Narwade"
 date = "2023-02-18T15:30:39.163Z"
 category = "Blog"

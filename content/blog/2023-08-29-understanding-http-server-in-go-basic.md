@@ -1,6 +1,7 @@
 +++
 title = "Understanding HTTP Server in Go #1 - Basic"
 slug = "understanding-http-server-in-go-basic"
+description = "Understand http server in go #1 - basic with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2023-08-29T20:40:46.064Z"
 category = "Blog"

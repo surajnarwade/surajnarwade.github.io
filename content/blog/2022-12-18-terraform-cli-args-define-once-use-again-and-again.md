@@ -1,6 +1,7 @@
 +++
 title = "Terraform CLI Args, define once, use again and again"
 slug = "terraform-cli-args-define-once-use-again-and-again"
+description = "A practical post about terraform cli args, define once, use again and again with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2022-12-18T15:32:10.384Z"
 category = "Blog"

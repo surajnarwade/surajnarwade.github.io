@@ -1,6 +1,7 @@
 +++
 title = "[SOLVED] MFA Entity already exists Error in AWS IAM"
 slug = "solved-mfa-entity-already-exists-error-in-aws-iam"
+description = "A practical post about mfa entity already exists error in aws iam with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2022-12-18T15:45:03.524Z"
 category = "Blog"

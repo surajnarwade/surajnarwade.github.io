@@ -1,6 +1,7 @@
 +++
 title = "Difference between Setting & Adding the Headers in HTTP API in Golang"
 slug = "difference-between-setting-adding-the-headers-in-http-api-in-golang"
+description = "Understand the difference between setting & adding the headers in http api in golang with practical examples."
 author = "Suraj Narwade"
 date = "2023-01-18T07:30:42.274Z"
 category = "Blog"

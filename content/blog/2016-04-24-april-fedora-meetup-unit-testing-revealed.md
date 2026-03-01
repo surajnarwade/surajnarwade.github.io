@@ -1,6 +1,7 @@
 +++
 title = "April Fedora Meetup - Unit Testing Revealed !!!"
 slug = "april-fedora-meetup-unit-testing-revealed"
+description = "A practical post about april fedora meetup - unit testing revealed !!! with lessons, examples, and useful takeaways."
 date = "2016-04-24"
 category = "Meetup"
 author = "Suraj Narwade"

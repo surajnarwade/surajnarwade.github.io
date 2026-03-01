@@ -1,6 +1,7 @@
 +++
 title = "How to manage multiple versions of Terraform?"
 slug = "how-to-manage-multiple-versions-of-terraform"
+description = "Learn how to manage multiple versions of terraform with practical steps and examples."
 author = "Suraj Narwade"
 date = "2023-02-24T16:00:39.160Z"
 category = "Blog"

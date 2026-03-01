@@ -2,6 +2,7 @@
 date = "2026-02-28"
 title = "A Week in a Life of a Platform Engineer"
 slug = "week-in-a-life-of-platform-engineer"
+description = "A personal look at a life of a platform engineer and the work behind it."
 category = "Blog"
 author = "Suraj Narwade"
 +++

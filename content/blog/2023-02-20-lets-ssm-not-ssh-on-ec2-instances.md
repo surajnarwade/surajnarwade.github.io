@@ -1,6 +1,7 @@
 +++
 title = "Let's SSM, not SSH, on EC2 instances"
 slug = "lets-ssm-not-ssh-on-ec2-instances"
+description = "A practical post about let's ssm, not ssh, on ec2 instances with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-02-20T18:40:39.193Z"
 category = "Blog"

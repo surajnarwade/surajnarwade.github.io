@@ -1,6 +1,7 @@
 +++
 title = "Why You Should Attend PyCon India 2016?"
 slug = "why-you-should-attend-pycon-india-2016"
+description = "Learn why you should attend pycon india 2016 and what it means in practice."
 date =  "2016-07-05"
 category =  "Open Source"
 author = "Suraj Narwade"

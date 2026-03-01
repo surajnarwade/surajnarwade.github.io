@@ -2,6 +2,7 @@
 date = "2017-12-13T21:21:49+05:30"
 title = "Mounting host folders in minishift"
 slug = "hostmount-minishift"
+description = "A practical post about mounting host folders in minishift with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

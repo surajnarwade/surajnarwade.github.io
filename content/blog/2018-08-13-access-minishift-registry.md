@@ -2,6 +2,7 @@
 date = "2018-08-13T21:21:49+05:30"
 title = "Play with OpenShift Internal Docker Registry and imagestreams"
 slug = "access-minishift-registry"
+description = "A practical post about play with openshift internal docker registry and imagestreams with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

@@ -1,6 +1,7 @@
 +++
 title = "How to Setup Private Docker Registry in Fedora/CentOS ?"
 slug = "how-to-setup-private-docker-registry-in-fedora-centos"
+description = "Learn how to setup private docker registry in fedora/centos  with practical steps and examples."
 date = "2016-06-27"
 category = "Open Source"
 author = "Suraj Narwade"

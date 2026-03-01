@@ -1,6 +1,7 @@
 +++
 title = "Encrypting text with AWS KMS"
 slug = "encrypting-text-with-aws-kms"
+description = "A practical post about encrypting text with aws kms with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-09-03T23:00:09.442Z"
 category = "Blog"

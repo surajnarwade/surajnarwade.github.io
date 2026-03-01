@@ -1,6 +1,7 @@
 +++
 title = "Types of DNS records"
 slug = "types-of-dns-records"
+description = "Learn the main types of dns records and when each one is used."
 author = "Suraj Narwade"
 date = "2023-08-23T05:17:15.741Z"
 category = "Blog"

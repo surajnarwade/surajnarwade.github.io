@@ -1,6 +1,7 @@
 +++
 title = "View Kubernetes Secrets easily"
 slug = "view-kubernetes-secrets-easily"
+description = "Learn how to view kubernetes secrets easily more easily with a practical approach."
 author = "Suraj Narwade"
 date = "2022-12-13T16:34:15.025Z"
 category = "Blog"

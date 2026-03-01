@@ -1,6 +1,7 @@
 +++
 title = "Understanding HTTP Server in Go #3 - Handlers"
 slug = "understanding-http-server-in-go-handlers"
+description = "Understand http server in go #3 - handlers with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2023-08-30T23:00:14.837Z"
 category = "Blog"

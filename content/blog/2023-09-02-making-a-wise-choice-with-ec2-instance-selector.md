@@ -1,6 +1,7 @@
 +++
 title = "Making a wise choice with ec2-instance-selector"
 slug = "making-a-wise-choice-with-ec2-instance-selector"
+description = "Learn how to make a wise choice with ec2-instance-selector with practical guidance and examples."
 author = "Suraj Narwade"
 date = "2023-09-02T23:00:13.092Z"
 category = "Blog"

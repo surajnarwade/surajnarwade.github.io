@@ -2,6 +2,7 @@
 date = "2017-09-13T21:21:49+05:30"
 title = "Multistage build in Docker"
 slug = "multi-staging"
+description = "A practical post about multistage build in docker with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

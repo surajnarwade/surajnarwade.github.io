@@ -2,6 +2,7 @@
 date = "2017-03-21T21:21:49+05:30"
 title = "What's new in Docker ?"
 slug = "whats-new-in-docker"
+description = "A quick look at what is new in docker  and why it matters."
 category = "Blog"
 author = "Suraj Narwade"
 

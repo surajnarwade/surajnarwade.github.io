@@ -1,6 +1,7 @@
 +++
 title = "PyCon India 2016 - Weekend I’ll never forget"
 slug = "pycon-india-2016-weekend-i-ll-never-forget"
+description = "A practical post about pycon india 2016 - weekend i’ll never forget with lessons, examples, and useful takeaways."
 date = "2016-10-03" 
 category = "Conference"
 author = "Suraj Narwade"

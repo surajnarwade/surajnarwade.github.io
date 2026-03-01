@@ -2,6 +2,7 @@
 date = "2018-12-05T21:21:49+05:30"
 title = "Local Development of golang app with minikube & ko"
 slug = "develop-go-minikube"
+description = "A practical post about local development of golang app with minikube & ko with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

@@ -1,6 +1,7 @@
 +++
 title = "Piping Command Output in Go"
 slug = "piping-command-output-in-go"
+description = "A practical post about piping command output in go with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-09-10T08:03:23.844Z"
 category = "Blog"

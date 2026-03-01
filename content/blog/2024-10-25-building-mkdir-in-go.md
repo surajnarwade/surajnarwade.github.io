@@ -1,6 +1,7 @@
 +++
 title = "Building mkdir (linux) command in Go"
 slug = "building-mkdir-in-go"
+description = "Learn how to build mkdir (linux) command in go with a practical walkthrough."
 author = "Suraj Narwade"
 date = "2024-10-25T14:20:49.779Z"
 category = "Blog"

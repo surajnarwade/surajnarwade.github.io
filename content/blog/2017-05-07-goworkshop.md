@@ -2,6 +2,7 @@
 date = "2017-05-07T21:21:49+05:30"
 title = "The GO Workshop by Baiju"
 slug = "goworkshop"
+description = "A practical post about the go workshop by baiju with lessons, examples, and useful takeaways."
 category = "meetup"
 author = "Suraj Narwade"
 menu = "meetup"

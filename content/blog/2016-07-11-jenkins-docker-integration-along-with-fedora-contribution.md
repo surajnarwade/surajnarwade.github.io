@@ -1,6 +1,7 @@
 +++
 title = "Jenkins Docker Integration along with Fedora Contribution"
 slug = "jenkins-docker-integration-along-with-fedora-contribution"
+description = "A practical post about jenkins docker integration along with fedora contribution with lessons, examples, and useful takeaways."
 date = "2016-07-11"
 category = "Open Source"
 author = "Suraj Narwade"

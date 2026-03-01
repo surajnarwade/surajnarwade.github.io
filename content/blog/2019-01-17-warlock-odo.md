@@ -2,6 +2,7 @@
 date = "2019-01-17T21:21:49+05:30"
 title = "Story of Noob Developer on OpenShift"
 slug = "warlock-odo"
+description = "A practical post about story of noob developer on openshift with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

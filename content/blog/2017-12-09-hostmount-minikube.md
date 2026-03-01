@@ -2,6 +2,7 @@
 date = "2017-12-09T21:21:49+05:30"
 title = "Mounting host folders in minikube"
 slug = "hostmount-minikube"
+description = "A practical post about mounting host folders in minikube with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

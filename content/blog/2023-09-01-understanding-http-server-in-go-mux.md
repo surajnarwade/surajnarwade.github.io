@@ -1,6 +1,7 @@
 +++
 title = "Understanding HTTP Server in Go #6 - Mux"
 slug = "understanding-http-server-in-go-mux"
+description = "Understand http server in go #6 - mux with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2023-09-01T23:00:12.747Z"
 category = "Blog"

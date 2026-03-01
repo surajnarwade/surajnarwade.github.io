@@ -1,6 +1,7 @@
 +++
 title = "Building awsctl using Golang #1"
 slug = "building-awsctl-using-golang-1"
+description = "Learn how to build awsctl using golang #1 with a practical walkthrough."
 author = "Suraj Narwade"
 date = "2023-02-17T08:36:32.639Z"
 category = "Blog"

@@ -1,6 +1,7 @@
 +++
 title = "Exploring Crossplane #1: Introduction"
 slug = "exploring-crossplane-1-intro"
+description = "Explore crossplane #1: introduction and learn the core ideas step by step."
 author = "Suraj Narwade"
 date = "2024-10-28T20:00:46.064Z"
 category = "Blog"

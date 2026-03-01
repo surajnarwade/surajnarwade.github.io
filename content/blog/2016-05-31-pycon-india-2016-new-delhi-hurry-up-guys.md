@@ -1,6 +1,7 @@
 +++
 title = "Pycon India 2016,New Delhi !!! Hurry Up guys !!!"
 slug = "pycon-india-2016-new-delhi-hurry-up-guys"
+description = "A practical post about pycon india 2016,new delhi !!! hurry up guys !!! with lessons, examples, and useful takeaways."
 date = "2016-05-31"
 category = "Open Source"
 author = "Suraj Narwade"

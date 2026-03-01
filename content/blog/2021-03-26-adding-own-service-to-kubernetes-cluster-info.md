@@ -1,6 +1,7 @@
 +++
 title = "Adding own service to Kubernetes Cluster Info"
 slug = "adding-own-service-to-kubernetes-cluster-info"
+description = "A practical post about adding own service to kubernetes cluster info with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2021-03-26T17:39:01.865Z"
 category = "Blog"

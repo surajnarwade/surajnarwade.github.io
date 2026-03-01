@@ -2,6 +2,7 @@
 date = "2018-09-13T21:21:49+05:30"
 title = "Installing Minishift on Fedora"
 slug = "install-minishift-fedora"
+description = "Follow a step-by-step guide to install minishift on fedora successfully."
 category = "Blog"
 author = "Suraj Narwade"
 

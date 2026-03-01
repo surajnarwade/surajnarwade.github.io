@@ -1,6 +1,7 @@
 +++
 title = "Creating a Cartesian Product in Terraform"
 slug = "creating-a-cartesian-product-in-terraform"
+description = "Learn how to create a cartesian product in terraform with a practical example."
 author = "Suraj Narwade"
 date = "2021-03-16T16:24:04.027Z"
 category = "Blog"

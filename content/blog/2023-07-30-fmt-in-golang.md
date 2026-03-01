@@ -1,6 +1,7 @@
 +++
 title = "fmt in Golang - formatting I/O"
 slug = "fmt-in-golang"
+description = "A practical post about fmt in golang - formatting i/o with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-07-30T19:29:54.197Z"
 category = "Blog"

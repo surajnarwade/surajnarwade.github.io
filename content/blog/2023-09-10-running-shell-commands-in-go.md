@@ -1,6 +1,7 @@
 +++
 title = "Running Shell Commands in Go using os/exec"
 slug = "running-shell-commands-in-go"
+description = "A practical post about running shell commands in go using os/exec with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-09-10T07:52:58.664Z"
 category = "Blog"

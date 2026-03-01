@@ -2,6 +2,7 @@
 date = "2017-05-28T21:21:49+05:30"
 title = "Golang workaround for cannot assign to struct field in map"
 slug = "golang_workaround"
+description = "A practical post about golang workaround for cannot assign to struct field in map with lessons, examples, and useful takeaways."
 category = "Blog"
 author = "Suraj Narwade"
 

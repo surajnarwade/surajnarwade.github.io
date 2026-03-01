@@ -1,6 +1,7 @@
 +++
 title = "RDO BUG TRIAGE DAY - First step towards Contribution !!!"
 slug = "rdo-bug-triage-day-first-step-towards-contribution"
+description = "A practical post about rdo bug triage day - first step towards contribution !!! with lessons, examples, and useful takeaways."
 date = "2016-05-20"  
 category = "Open Source"
 author = "Suraj Narwade"

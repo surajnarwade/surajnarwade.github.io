@@ -1,6 +1,7 @@
 +++
 title = "How to use Golang with MySQL?"
 slug = "how-to-use-golang-with-mysql"
+description = "Learn how to use golang with mysql with practical steps and examples."
 author = "Suraj Narwade"
 date = "2023-01-09T12:15:41.969Z"
 category = "Blog"

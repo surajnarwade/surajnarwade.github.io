@@ -1,6 +1,7 @@
 +++
 title = "For loop in Golang"
 slug = "for-loop-in-golang"
+description = "A practical post about for loop in golang with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2023-07-27T07:01:09.351Z"
 category = "Blog"

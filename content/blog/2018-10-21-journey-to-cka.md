@@ -2,6 +2,7 @@
 date = "2018-10-21T21:21:49+05:30"
 title = "Journey to the CKA"
 slug = "journey-to-cka"
+description = "A personal account of the journey to the CKA and the lessons learned along the way."
 category = "Blog"
 author = "Suraj Narwade"
 

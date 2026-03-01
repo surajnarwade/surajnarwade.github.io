@@ -1,6 +1,7 @@
 +++
 title = "Understanding HTTP Server in Go #5 - HandleFunc"
 slug = "understanding-http-server-in-go-handlefunc"
+description = "Understand http server in go #5 - handlefunc with clear explanations and practical examples."
 author = "Suraj Narwade"
 date = "2023-08-31T08:25:55.190Z"
 category = "Blog"

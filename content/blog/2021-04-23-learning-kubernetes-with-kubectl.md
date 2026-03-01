@@ -1,6 +1,7 @@
 +++
 title = "Learning Kubernetes with Kubectl"
 slug = "learning-kubernetes-with-kubectl"
+description = "A practical post about learning kubernetes with kubectl with lessons, examples, and useful takeaways."
 author = "Suraj Narwade"
 date = "2021-04-23T06:53:40.035Z"
 category = "Blog"

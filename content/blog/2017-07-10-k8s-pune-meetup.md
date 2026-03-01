@@ -2,6 +2,7 @@
 date = "2017-07-10T21:21:49+05:30"
 title = "Kubernetes Pune Meetup - July 2017"
 slug = "k8s-pune-meetup"
+description = "A practical post about kubernetes pune meetup - july 2017 with lessons, examples, and useful takeaways."
 category = "meetup"
 author = "Suraj Narwade"
 

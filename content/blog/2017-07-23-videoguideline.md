@@ -2,6 +2,7 @@
 date = "2017-07-23T21:21:49+05:30"
 title = "Remove white noise from Videos"
 slug = "videoguideline"
+description = "A practical post about remove white noise from videos with lessons, examples, and useful takeaways."
 category = "general"
 author = "Suraj Narwade"
 menu = "vlog"
