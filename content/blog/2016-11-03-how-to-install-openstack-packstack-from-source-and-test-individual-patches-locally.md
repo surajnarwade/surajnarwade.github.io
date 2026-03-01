@@ -1,6 +1,6 @@
 +++
 title = "How to install OpenStack-packstack from source and test individual patches locally!"
-slug = "blog17"
+slug = "how-to-install-openstack-packstack-from-source-and-test-individual-patches-locally"
 date = "2016-11-03"
 category = "OpenSource"
 author = "Suraj Narwade"
@@ -62,4 +62,3 @@ Run the packstack by giving path of answerfile
 In this way, I tested patch with packstack locally. I will write about Magnum component in next blog post.
 
 Happy Hacking!
-

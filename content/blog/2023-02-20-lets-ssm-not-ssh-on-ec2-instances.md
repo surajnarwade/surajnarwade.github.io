@@ -61,7 +61,7 @@ Verify that the agent is installed,
 
 
 
-```
+```bash
 sudo systemctl status amazon-ssm-agent
 
 ```
@@ -90,23 +90,27 @@ If you cannot use default policies, follow this documentation and manually creat
 * To access the instance using AWS CLI, you will need a session manager plugin for AWS CLI
 * Follow this documentation to install the plugin: [https://docs.aws.amazon.com/systems\-manager/latest/userguide/session\-manager\-working\-with\-install\-plugin.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
 * Verify that the plugin is installed by running the following command,
-* ```
-  $ session-manager-plugin
-  The Session Manager plugin is installed successfully. Use the AWS CLI to start a session.
 
+```bash
+session-manager-plugin
 ```
+
+Expected output:
+
+```text
+The Session Manager plugin is installed successfully. Use the AWS CLI to start a session.
+```
+
 * Now you can run the following command to connect to the instance
 
 
 
-```
-  aws ssm start-session --target <instance-id>
-
+```bash
+aws ssm start-session --target <instance-id>
 ```
 
  In This way, you can completely ditch SSH and start using SSM to access your EC2 instances.
 
 
  I hope you learned something new from this blog post. Click [**here**](https://surajincloud.com/about) to learn about me and how you can support my work, Thank you.
-
 

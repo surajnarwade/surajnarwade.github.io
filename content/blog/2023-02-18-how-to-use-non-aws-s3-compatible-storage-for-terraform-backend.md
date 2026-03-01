@@ -26,19 +26,19 @@ For this example, we will use minio:
 
 
 * Let's run minio in a docker container locally
-* ```
-  mkdir -p ${HOME}/minio/data
 
-  docker run \
-     -p 9000:9000 \
-     -p 9090:9090 \
-     --user $(id -u):$(id -g) \
-     --name minio1 \
-     -e "MINIO_ROOT_USER=ADMIN" \
-     -e "MINIO_ROOT_PASSWORD=PASSWORD" \
-     -v ${HOME}/minio/data:/data \
-     quay.io/minio/minio server /data --console-address ":9090"
+```bash
+mkdir -p ${HOME}/minio/data
 
+docker run \
+   -p 9000:9000 \
+   -p 9090:9090 \
+   --user $(id -u):$(id -g) \
+   --name minio1 \
+   -e "MINIO_ROOT_USER=ADMIN" \
+   -e "MINIO_ROOT_PASSWORD=PASSWORD" \
+   -v ${HOME}/minio/data:/data \
+   quay.io/minio/minio server /data --console-address ":9090"
 ```
 * Once it is running, go to [http://127\.0\.0\.1:9090](http://127.0.0.1:9090/access-keys) and log in using the credentials
 * create access key [http://127\.0\.0\.1:9090/access\-keys](http://127.0.0.1:9090/access-keys)
@@ -46,7 +46,7 @@ For this example, we will use minio:
 
 
 
-```
+```hcl
 terraform {
   backend "s3" {
     bucket                      = "state"
@@ -77,7 +77,7 @@ You can also export credentials in the environment variables as shown instead of
 
 
 
-```
+```bash
 export AWS_S3_ENDPOINT=<minio-url>
 export AWS_ACCESS_KEY_ID=<access-key>
 export AWS_SECRET_ACCESS_KEY=<secret-key>
@@ -88,11 +88,10 @@ That's it. You are now ready to use non\-AWS S3 compliant Storage for Terraform 
 
 
 
-```
+```bash
 terraform init
 
 ```
 
 I hope you learned something new from this blog post. Click [**here**](https://surajincloud.com/about) to learn about me and how you can support my work, Thank you.
-
 

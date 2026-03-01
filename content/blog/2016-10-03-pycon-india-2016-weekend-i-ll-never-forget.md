@@ -1,6 +1,6 @@
 +++
 title = "PyCon India 2016 - Weekend I’ll never forget"
-slug = "blog16"
+slug = "pycon-india-2016-weekend-i-ll-never-forget"
 date = "2016-10-03" 
 category = "Conference"
 author = "Suraj Narwade"
