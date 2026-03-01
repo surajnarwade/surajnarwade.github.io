@@ -1,0 +1,17 @@
+{{- if or (eq .Section "blog") (eq .RelPermalink "/about/") }}
+<section class="blog-subscribe" aria-labelledby="blog-subscribe-title">
+  <div class="blog-subscribe-copy">
+    <p class="blog-subscribe-eyebrow">Newsletter</p>
+    <h2 id="blog-subscribe-title">Subscribe to my newsletter</h2>
+    <p>Get new blog posts and other interesting updates straight to your inbox.</p>
+  </div>
+  <div class="blog-subscribe-embed">
+    <iframe
+      src="https://theplatformengineering.substack.com/embed"
+      title="Subscribe to The Platform Engineering newsletter"
+      loading="lazy"
+      frameborder="0"
+      scrolling="no"></iframe>
+  </div>
+</section>
+{{- end }}

@@ -1,0 +1,50 @@
+.blog-subscribe {
+    margin: 40px 0 24px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--entry) 0%, color-mix(in srgb, var(--entry) 92%, var(--theme) 8%) 100%);
+}
+
+.blog-subscribe-copy {
+    margin-bottom: 16px;
+}
+
+.blog-subscribe-eyebrow {
+    margin: 0 0 8px;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.blog-subscribe h2 {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+}
+
+.blog-subscribe p {
+    margin: 0;
+}
+
+.blog-subscribe-embed {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    background: #fff;
+}
+
+.blog-subscribe-embed iframe {
+    display: block;
+    width: 100%;
+    min-height: 180px;
+    border: 0;
+    background: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .blog-subscribe {
+        padding: 28px;
+    }
+}

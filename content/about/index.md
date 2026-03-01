@@ -1,8 +1,11 @@
 ---
 title: "About me"
 layout: "about"
-cover:
-  image: surajnarwade.png
+hideAuthor: true
+ShowReadingTime: false
+hideMeta: true
+# cover:
+#   image: surajnarwade.png
 ---
 
 ## Bio
