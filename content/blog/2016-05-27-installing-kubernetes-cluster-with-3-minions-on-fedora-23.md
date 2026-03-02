@@ -12,7 +12,7 @@ author = "Suraj Narwade"
 Kubernetes is a system, developed by google, for managing containerized applications in a clustered environment. It provides basic mechanisms for deployment, maintenance and scaling of applications on public, private or hybrid setups. It also comes with self-healing features where containers can be auto provisioned, restarted or even replicated.
 It aims to provide a "platform for automating deployment, scaling, and operations of application containers across clusters of hosts"
 
-<img src="/images/kube7-logo.png" width="600" height="250" />
+<img src="../images/kube7-logo.png" width="600" height="250" />
 
 .
 
