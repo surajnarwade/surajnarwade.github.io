@@ -1,5 +1,4 @@
-++ content/blog/2026-03-12-padding-in-go-structs.md
-++
++++
 title = "Padding in Go structs"
 slug = "padding-in-go-structs"
 description = "How padding and field order influence Go struct size and when to act on it."
@@ -7,7 +6,7 @@ author = "Suraj Narwade"
 date = "2026-03-12"
 category = "Blog"
 tags = ["go", "performance", "memory"]
-++
++++
 
 I recently came across a simple but surprisingly rich concept in Go: padding. It is the space the compiler inserts between fields so each value aligns with the architecture's expectations. Once you see how much wasted room can live between the fields, you start to appreciate how a small reordering can shrink both the in-memory size of a struct and the amount of memory you move around.
 
