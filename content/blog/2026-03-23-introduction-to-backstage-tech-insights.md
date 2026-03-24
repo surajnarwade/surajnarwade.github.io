@@ -132,9 +132,8 @@ This is the first post in a series on Backstage Tech Insights. Over the next few
 4. **Scorecards and Visualization**: grouping checks into scorecards and displaying them in the UI
 5. **Frontend, Service Maturity**: tracking maturity levels for your services
 6. **Custom Fact Retrievers**: building your own retrievers for organisation-specific needs
-7. **Case Study: Pull Based Architecture**: a real-world pattern for fact retrieval
-8. **Troubleshooting & Production Best Practices**: debugging, monitoring, and hardening for production
-9. **Series Wrap Up**: key takeaways and next steps
+7. **Troubleshooting & Production Best Practices**: debugging, monitoring, and hardening for production
+8. **Series Wrap Up**: key takeaways and next steps
 
 By the end of this series, you will have a working Tech Insights setup that tracks the standards that matter to your team.
 

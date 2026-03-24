@@ -59,7 +59,7 @@ No additional database configuration is needed beyond what Backstage already use
 
 If you are running SQLite for local development, that works too, but PostgreSQL is strongly recommended for anything beyond local testing.
 
-As per standard backstage practice where it creates database called `plugin_<plugin-name>`
+As per standard backstage practice where it creates database called `backstage_plugin_<plugin-name>`
 
 For tech-insights, it will be `backstage_plugin_tech-insights` this is important if you want troubleshoot anything.
 
@@ -96,17 +96,6 @@ mydb=# \l
 The package we just installed (`plugin-tech-insights-backend`) is the core framework. It handles scheduling, storage, and the API layer. But the actual fact retrievers and check engine come from a separate module, which we will install in the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/).
 
 This modular design means you can also write your own modules for custom fact retrieval and check logic, which we will cover later in this series.
-
-set following in backstage app config:
-
-
-````
-backend:
-  auth:
-    dangerouslyDisableDefaultAuthPolicy: true
-```
-
-ref: https://backstage.io/docs/tutorials/auth-service-migration/#disabling-the-default-auth-policy
 
 ---
 
