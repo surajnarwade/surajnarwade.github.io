@@ -97,6 +97,17 @@ The package we just installed (`plugin-tech-insights-backend`) is the core frame
 
 This modular design means you can also write your own modules for custom fact retrieval and check logic, which we will cover later in this series.
 
+set following in backstage app config:
+
+
+````
+backend:
+  auth:
+    dangerouslyDisableDefaultAuthPolicy: true
+```
+
+ref: https://backstage.io/docs/tutorials/auth-service-migration/#disabling-the-default-auth-policy
+
 ---
 
 ## What is next?
