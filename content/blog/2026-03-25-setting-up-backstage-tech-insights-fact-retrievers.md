@@ -30,7 +30,7 @@ Once facts are stored, checks can evaluate them.
 
 ## What does a fact retriever look like internally?
 
-Before we configure anything, it helps to understand what a fact retriever looks like under the hood. Whether it is a built-in one or a custom one you write yourself, every fact retriever follows the same structure:
+Before we configure anything, it helps to understand what a fact retriever looks like under the hood. Whether it is a built-in one or a custom one you write yourself, every fact retriever follows the same structure. Here is representation for `entityMetadataFactRetriever`:
 
 ```typescript
 const entityMetadataFactRetriever: FactRetriever = {
@@ -78,9 +78,7 @@ For now, you don't need to write any code. The built-in retrievers are ready to 
 
 ## Registering fact retrievers in app-config.yaml
 
-The Tech Insights backend plugin we installed in [post #2](/blog/setting-up-backstage-tech-insights-backend/) ships with three built-in fact retrievers. But they won't do anything until you register them in your `app-config.yaml`. Without registration, the backend has no idea which retrievers to run, how often to run them, or how long to keep the data.
-
-This applies to custom fact retrievers too. Whether built-in or custom, every fact retriever needs to be registered with a cadence and lifecycle before it starts collecting facts.
+The Tech Insights backend plugin we installed in [post #2](/blog/setting-up-backstage-tech-insights-backend/) ships with three built-in fact retrievers. But they won't do anything until you register them in your `app-config.yaml`. Without registration, the backend has no idea which retrievers to run, how often to run them, or how long to keep the data. This applies to custom fact retrievers too. Whether built-in or custom, every fact retriever needs to be registered with a cadence and lifecycle before it starts collecting facts.
 
 The three built-in retrievers are configured under the `techInsights.factRetrievers` key:
 
@@ -229,50 +227,116 @@ Here is the complete reference of every fact available from the built-in retriev
 You will use these exact fact names in the [next post](/blog/setting-up-backstage-tech-insights-checks/) when defining checks.
 
 ---
+
+## Looking at logs
+
+Once you add the above block in your Backstage config and start the backend, you should see logs like these. They indicate that the fact retrievers are registered and scheduled:
+
+```
+2026-03-24T17:07:48.931Z tech-insights info Registered scheduled task: entityMetadataFactRetriever, {"version":2,"cadence":"*/15 * * * *","initialDelayDuration":"PT5S","timeoutAfterDuration":"PT5M"} task="entityMetadataFactRetriever"
+2026-03-24T17:07:48.932Z tech-insights info Registered scheduled task: techdocsFactRetriever, {"version":2,"cadence":"*/15 * * * *","initialDelayDuration":"PT5S","timeoutAfterDuration":"PT5M"} task="techdocsFactRetriever"
+2026-03-24T17:07:48.932Z tech-insights info Registered scheduled task: entityOwnershipFactRetriever, {"version":2,"cadence":"*/15 * * * *","initialDelayDuration":"PT5S","timeoutAfterDuration":"PT5M"} task="entityOwnershipFactRetriever"
+2026-03-24T17:07:48.932Z tech-insights info Scheduled 3/3 fact retrievers into the tech-insights engine
+```
+
+The following logs show that retrievers are running and gathering facts:
+
+```
+2026-03-24T17:08:04.007Z tech-insights info Retrieving facts for fact retriever entityMetadataFactRetriever
+2026-03-24T17:08:04.008Z tech-insights info Retrieving facts for fact retriever entityOwnershipFactRetriever
+2026-03-24T17:08:04.010Z tech-insights info Retrieving facts for fact retriever techdocsFactRetriever
+2026-03-24T17:08:04.044Z tech-insights info Stored 12 facts for fact retriever entityOwnershipFactRetriever in 0.0s
+2026-03-24T17:08:04.046Z tech-insights info Stored 18 facts for fact retriever entityMetadataFactRetriever in 0.0s
+2026-03-24T17:08:04.048Z tech-insights info Stored 18 facts for fact retriever techdocsFactRetriever in 0.0s
+```
+
 ## Verifying API outputs
 
 Backstage runs on port `7007` by default. All the API URLs below assume you are running the backend locally on this default port.
 
-### check fact schemas
+### Checking fact schemas
 
-* we can check if all retrievers are properly registered and have schema:
+You can verify that all retrievers are properly registered by hitting the fact schemas endpoint:
 
-````
-http://localhost:7007/api/tech-insights/fact-schemas
-````
+```
+curl http://localhost:7007/api/tech-insights/fact-schemas
+```
 
+This returns the schema for every registered retriever, including the fact names, types, and descriptions. If a retriever is missing from the response, it wasn't registered correctly in your config.
 
-## Verifying that facts are being collected
+### Checking that facts are being collected
 
 Once the retrievers are configured and the cadence has triggered for the first time, verify that facts are flowing by querying the Tech Insights API:
 
 ```bash
-http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/deprecated-service-1&ids[]=entityMetadataFactRetriever
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/deprecated-service-1&ids[]=entityMetadataFactRetriever"
 ```
 
 You should see a response containing the facts for that entity:
 
 ```json
 {
-  "facts": {
-    "entityMetadataFactRetriever": {
-      "hasTitle": true,
+  "entityMetadataFactRetriever": {
+    "id": "entityMetadataFactRetriever",
+    "entity": {
+      "namespace": "default",
+      "kind": "component",
+      "name": "deprecated-service-1"
+    },
+    "timestamp": "2026-03-24T17:13:05.000+00:00",
+    "version": "0.0.1",
+    "facts": {
+      "hasTitle": false,
       "hasDescription": true,
       "hasTags": false
-    },
-    "entityOwnershipFactRetriever": {
-      "hasOwner": true,
-      "hasGroupOwner": true
-    },
-    "techdocsFactRetriever": {
-      "hasAnnotationBackstageIoTechdocsRef": false,
-      "hasAnnotationBackstageIoTechdocsEntity": false
     }
   }
 }
 ```
 
-If the curl requests fail with an authentication error, you may need to disable the default auth policy for local development. Add the following to your `app-config.yaml`:
+The `ids[]` parameter is an array, so you can query multiple retrievers at once by repeating it:
+
+```bash
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/deprecated-service-1&ids[]=entityMetadataFactRetriever&ids[]=entityOwnershipFactRetriever"
+```
+
+output would be:
+
+```json
+{
+  "entityOwnershipFactRetriever": {
+    "id": "entityOwnershipFactRetriever",
+    "entity": {
+      "namespace": "default",
+      "kind": "component",
+      "name": "deprecated-service-1"
+    },
+    "timestamp": "2026-03-24T17:14:05.000+00:00",
+    "version": "0.0.1",
+    "facts": {
+      "hasOwner": true,
+      "hasGroupOwner": false
+    }
+  },
+  "entityMetadataFactRetriever": {
+    "id": "entityMetadataFactRetriever",
+    "entity": {
+      "namespace": "default",
+      "kind": "component",
+      "name": "deprecated-service-1"
+    },
+    "timestamp": "2026-03-24T17:14:05.000+00:00",
+    "version": "0.0.1",
+    "facts": {
+      "hasTitle": false,
+      "hasDescription": true,
+      "hasTags": false
+    }
+  }
+}
+```
+
+If these requests fail with an authentication error, you may need to disable the default auth policy for local development. Add the following to your `app-config.yaml`:
 
 ```yaml
 backend:

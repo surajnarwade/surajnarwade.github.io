@@ -47,7 +47,7 @@ In your backend, you need to register the Tech Insights backend plugin. With the
 backend.add(import('@backstage-community/plugin-tech-insights-backend'));
 ```
 
-This registers the core Tech Insights backend. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will install the module that provides the three built-in fact retrievers and configure them in `app-config.yaml`.
+This registers the core Tech Insights backend, it also consists of built-in fact retrievers but they are not registered yet. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will see how to register these three built-in fact retrievers and configure them in `app-config.yaml`.
 
 ---
 
@@ -93,7 +93,7 @@ mydb=# \l
 
 ## A note on the module system
 
-The package we just installed (`plugin-tech-insights-backend`) is the core framework. It handles scheduling, storage, and the API layer. But the actual fact retrievers and check engine come from a separate module, which we will install in the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/).
+The package we just installed (`plugin-tech-insights-backend`) is the core framework. It handles scheduling, storage, and the API layer. It also has built-in fact retrievers, but they are not registered or activated yet.
 
 This modular design means you can also write your own modules for custom fact retrieval and check logic, which we will cover later in this series.
 

@@ -74,7 +74,7 @@ Checks return a simple pass or fail result.
 
 ### Scorecards
 
-Scorecards group related checks together. For example, you might have a "Production Readiness" scorecard that includes checks for documentation, CI, monitoring, and ownership.
+Scorecards group related checks together. For example, you might have a "Production Readiness" scorecard that includes checks for documentation, CI, monitoring, and ownership. also as name indicates, it shows score (for example, 3/5 meaning 3 checks are passing out of total 5 checks)
 
 ### Service Maturity
 
@@ -127,7 +127,7 @@ It works well alongside other Backstage features like TechDocs, scaffolder templ
 This is the first post in a series on Backstage Tech Insights. Over the next few posts, we will cover:
 
 1. **Setting up the backend**: installing and configuring the backend plugin
-2. **Fact Retrievers**: how to collect data about your entities
+2. **Built-in Fact Retrievers**: how to collect data about your entities using built in fact retrievers
 3. **Defining Checks**: how to write checks that evaluate facts
 4. **Scorecards and Visualization**: grouping checks into scorecards and displaying them in the UI
 5. **Frontend, Service Maturity**: tracking maturity levels for your services
