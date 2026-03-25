@@ -3,7 +3,7 @@ title = "Backstage Tech Insights #7: Custom Fact Retrievers"
 slug = "backstage-tech-insights-custom-fact-retrievers"
 description = "How to build a custom fact retriever in Backstage Tech Insights that queries the Kubernetes API to check for org-specific annotations on running deployments."
 author = "Suraj Narwade"
-date = "2026-03-25"
+date = "2026-03-23"
 category = "Blog"
 tags = ["backstage", "tech-insights", "platform-engineering", "custom-fact-retrievers", "kubernetes"]
 series = ["Backstage Tech Insights"]
@@ -65,6 +65,13 @@ plugins
         └── module.ts
 ```
 
+The generated `index.ts` re-exports the module as the default export. This is what Backstage uses when you `import()` the package in the backend. It should look like this:
+
+```typescript
+// plugins/tech-insights-backend-module-kubernetes-annotation-retriever/src/index.ts
+export { techInsightsModuleKubernetesAnnotationRetriever as default } from './module';
+```
+
 This will also update `packages/backend/package.json` to add the new module as a dependency:
 
 ```json
@@ -101,9 +108,20 @@ import {
 import { CatalogClient } from "@backstage/catalog-client";
 
 export const kubernetesAnnotationFactRetriever: FactRetriever = {
+  // This ID is permanent. Checks and the database reference it,
+  // so changing it later would break existing data.
   id: "kubernetesAnnotationFactRetriever",
+
+  // Bump this whenever you add, remove, or change fields in the schema.
+  // Tech Insights uses it to detect schema changes and update DB columns.
   version: "0.1.0",
+
+  // Only run this retriever against components of type "service".
+  // Adjust to match your catalog structure.
   entityFilter: [{ kind: "component", "spec.type": "service" }],
+
+  // Each key here becomes a fact that checks can reference.
+  // Supported types: "boolean", "number", "string".
   schema: {
     hasCostCenterAnnotation: {
       type: "boolean",
@@ -148,11 +166,16 @@ We can use the Backstage Kubernetes backend plugin's proxy to talk to clusters. 
     discovery,
     entityFilter,
     auth,
+    logger,
   }: FactRetrieverContext) => {
+    // Service-to-service auth: get a token scoped to the catalog plugin.
+    // This is the standard Backstage backend pattern for inter-plugin calls.
     const { token } = await auth.getPluginRequestToken({
       onBehalfOf: await auth.getOwnServiceCredentials(),
       targetPluginId: 'catalog',
     });
+
+    // Fetch all entities matching our entityFilter (component + service).
     const catalogClient = new CatalogClient({
       discoveryApi: discovery,
     });
@@ -163,27 +186,34 @@ We can use the Backstage Kubernetes backend plugin's proxy to talk to clusters. 
       { token },
     );
 
-    // Get a token for the Kubernetes plugin
+    // Separate token for the Kubernetes plugin, since each target plugin
+    // needs its own scoped token for auth.
     const { token: k8sToken } = await auth.getPluginRequestToken({
       onBehalfOf: await auth.getOwnServiceCredentials(),
       targetPluginId: 'kubernetes',
     });
 
+    // discovery.getBaseUrl resolves to something like
+    // http://localhost:7007/api/kubernetes
     const k8sBaseUrl = await discovery.getBaseUrl('kubernetes');
 
     const facts: TechInsightFact[] = [];
-
 
     for (const entity of entities) {
       const namespace = entity.metadata.namespace || 'default';
       const name = entity.metadata.name;
       const kind = entity.kind;
 
+      // Default to false. If the K8s API is unreachable or the entity
+      // has no deployments, the facts stay false rather than erroring out.
       let hasCostCenterAnnotation = false;
       let hasTeamAnnotation = false;
 
       try {
-        // Use the Backstage Kubernetes proxy to fetch resources for this entity
+        // Query the Backstage Kubernetes backend proxy. This endpoint
+        // figures out which cluster to talk to based on entity annotations
+        // like backstage.io/kubernetes-id or backstage.io/kubernetes-namespace.
+        // We pass the entity's annotations so the K8s plugin can resolve the cluster.
         const response = await fetch(
           `${k8sBaseUrl}/resources/workloads/query`,
           {
@@ -204,12 +234,21 @@ We can use the Backstage Kubernetes backend plugin's proxy to talk to clusters. 
         if (response.ok) {
           const data = await response.json();
 
-          // Walk through the cluster responses to find deployments
+          // Response structure from the K8s backend:
+          //   data.items[]             -> one entry per cluster
+          //     .resources[]           -> resource groups (deployments, statefulsets, etc.)
+          //       .type                -> "deployments", "statefulsets", etc.
+          //       .resources[]         -> actual Kubernetes resource objects
           for (const cluster of data.items || []) {
             for (const resource of cluster.resources || []) {
+              // We only care about deployments for this retriever.
               if (resource.type !== 'deployments') continue;
 
               for (const deployment of resource.resources || []) {
+                // Check the actual K8s deployment annotations, not the
+                // Backstage catalog metadata. This is the whole point:
+                // catching drift between catalog-info.yaml and what's
+                // actually running in the cluster.
                 const annotations = deployment.metadata?.annotations || {};
                 if (annotations['myorg.io/cost-center']) {
                   hasCostCenterAnnotation = true;
@@ -222,13 +261,16 @@ We can use the Backstage Kubernetes backend plugin's proxy to talk to clusters. 
           }
         }
       } catch (error) {
-        // Network/auth/parsing errors should not crash the whole retriever run.
+        // Don't let one failed lookup crash the entire retriever run.
+        // Log and move on so other entities still get processed.
         logger.warn(
           `Kubernetes lookup failed for ${kind}:${namespace}/${name}`,
           error instanceof Error ? error : undefined,
         );
       }
 
+      // Each fact must include the entity reference so Tech Insights
+      // knows which catalog entity these facts belong to.
       facts.push({
         entity: {
           namespace,
@@ -252,6 +294,7 @@ A few things to note:
 - For each entity, it queries the Backstage Kubernetes plugin's proxy to get the workload resources
 - It checks the actual deployment annotations, not the catalog metadata
 - If the Kubernetes API is unreachable or the entity has no deployments, facts default to `false`
+- If a service has deployments across multiple clusters, the code loops over all of them. If **any** deployment has the annotation, the fact is `true`. This is an "at least one" check. If you need **every** deployment to have the annotation, you'd flip the logic: start with `true` and set to `false` when a deployment is missing it.
 
 The Backstage Kubernetes plugin figures out which cluster to query based on the entity's annotations (like `backstage.io/kubernetes-id` or `backstage.io/kubernetes-namespace`). Make sure your entities have these annotations set. You can read more about this in the [Backstage Kubernetes plugin docs](https://backstage.io/docs/features/kubernetes/).
 
@@ -269,14 +312,21 @@ import { kubernetesAnnotationFactRetriever } from "./factRetriever";
 
 export const techInsightsModuleKubernetesAnnotationRetriever =
   createBackendModule({
+    // pluginId must match the plugin you're extending (tech-insights).
     pluginId: "tech-insights",
+    // moduleId is your unique identifier for this module.
     moduleId: "kubernetes-annotation-retriever",
     register(reg) {
       reg.registerInit({
+        // Request the Tech Insights extension point so we can register
+        // our custom retriever alongside the built-in ones.
         deps: {
           techInsightsFactRetrievers: techInsightsFactRetrieversExtensionPoint,
         },
         async init({ techInsightsFactRetrievers }) {
+          // This registers our retriever with the Tech Insights backend.
+          // The cadence and lifecycle come from app-config.yaml (Step 5),
+          // not from code.
           techInsightsFactRetrievers.addFactRetrievers({
             kubernetesAnnotationFactRetriever,
           });
@@ -314,6 +364,8 @@ techInsights:
 ```
 
 The key here must match the `id` field from your fact retriever definition. Since we're querying the Kubernetes API, a cadence of every 6 hours is a reasonable starting point. Kubernetes annotations don't change that often, and you want to avoid putting unnecessary load on your clusters. Adjust based on how frequently your deployments change.
+
+One thing to note: Tech Insights triggers an initial run for each retriever on backend startup, regardless of the cadence. So you don't have to wait 6 hours to see your first facts. Restart the backend and the retriever will run right away.
 
 ---
 

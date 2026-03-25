@@ -3,7 +3,7 @@ title = "Backstage Tech Insights #8: Troubleshooting & Production Best Practices
 slug = "backstage-tech-insights-troubleshooting-production"
 description = "Debug common Tech Insights issues, monitor fact retriever health, manage database growth, and harden your setup for production."
 author = "Suraj Narwade"
-date = "2026-03-26"
+date = "2026-03-24"
 category = "Blog"
 tags = ["backstage", "tech-insights", "platform-engineering", "troubleshooting", "production"]
 series = ["Backstage Tech Insights"]
@@ -13,7 +13,7 @@ In the [previous post](/blog/backstage-tech-insights-custom-fact-retrievers/), w
 
 But running Tech Insights in a development environment is one thing. Running it reliably in production is another.
 
-This post covers the issues you are most likely to hit and how to solve them.
+This post covers the issues you're most likely to hit, and how to run Tech Insights reliably in production.
 
 ---
 
@@ -34,23 +34,30 @@ Common causes:
 
 - **The retriever is not registered.** Verify that the backend module is added in `packages/backend/src/index.ts` and that the fact retriever is registered via the extension point.
 - **The retriever is not enabled in config.** Defining and registering a retriever in code is not enough. You must also add it under `techInsights.factRetrievers` in `app-config.yaml` with `cadence` and `lifecycle`. If it is missing there, Tech Insights will not schedule it, and no facts will be collected.
-- **The cadence has not triggered yet.** If you set a 6-hour cron, the first run will not happen until the next cron window. For testing, use a short cadence like `*/2 * * * *` (every 2 minutes).
+- **The cadence has not triggered yet.** Tech Insights does trigger an initial run on backend startup, but if the backend was already running when you added the retriever, the first run won't happen until the next cron window. Restart the backend or use a short cadence like `*/2 * * * *` (every 2 minutes) for testing.
 - **The entity filter matches nothing.** If your `entityFilter` is `[{ kind: 'component', 'spec.type': 'service' }]` but your catalog has no entities matching that filter, no facts will be collected.
 
 ### Checks show "no data" even though facts exist
 
-This usually means the check's `factRef` does not match the fact retriever's `id`.
+This usually means the check's `factIds` does not match the fact retriever's `id`.
 
 ```yaml
-# In app-config.yaml
-techInsights:
-  factChecker:
-    checks:
-      myCheck:
-        factRef: entityMetadataFactRetriever  # Must match the retriever's id exactly
+# In app-config.yaml under techInsights.factChecker.checks
+myCheck:
+  type: json-rules-engine
+  name: My Check
+  description: ...
+  factIds:
+    - entityMetadataFactRetriever  # Must match the retriever's id exactly
+  rule:
+    conditions:
+      all:
+        - fact: hasOwner
+          operator: equal
+          value: true
 ```
 
-Double-check the `id` field in your fact retriever definition against the `factRef` in your check configuration.
+Double-check the `id` field in your fact retriever definition against the `factIds` in your check configuration.
 
 ### Facts are collected but checks always fail
 
@@ -69,7 +76,7 @@ rule:
 You can verify the actual fact values by querying the Tech Insights API directly:
 
 ```bash
-curl http://localhost:7007/api/tech-insights/v1/facts/latest?entity=component:default/my-service
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/my-service&ids[]=entityMetadataFactRetriever"
 ```
 
 ---
@@ -86,7 +93,7 @@ techInsights:
       lifecycle: { timeToLive: { weeks: 2 } }
 ```
 
-If you do not set a `lifecycle`, facts can accumulate indefinitely. For production, set a reasonable TTL for every retriever.
+**If you do not set a `lifecycle`, facts accumulate indefinitely.** This is the single biggest cause of database bloat in production Tech Insights setups. Set a reasonable TTL for every retriever.
 
 **Sizing guidance:**
 
@@ -136,7 +143,8 @@ for (const entity of entities) {
   const result = await fetchFromApi(entity);
 }
 
-// Do this:
+// Do this: process in batches to avoid overwhelming the target API.
+// Tune batchSize based on your API's rate limits.
 const batchSize = 50;
 for (let i = 0; i < entities.length; i += batchSize) {
   const batch = entities.slice(i, i + batchSize);
@@ -167,6 +175,28 @@ The Tech Insights frontend fetches check results per entity. If you have many ch
 
 ---
 
+## Schema changes and database migrations
+
+When you change a fact retriever's schema (add, remove, or modify fields), bump the `version` field in the retriever definition. Tech Insights uses this version to detect schema changes and update the underlying database columns.
+
+What to expect when you bump the version:
+
+- Tech Insights will run a migration on the next retriever execution to add new columns
+- Existing fact rows keep their old values. New columns will be `null` until the next retriever run populates them
+- Removing a field from the schema does not drop the column. The column stays but stops getting new values
+
+If you change the schema without bumping the version, the new fields won't be picked up and your checks will see stale or missing data. This is a common gotcha in production.
+
+---
+
+## Multiple backend replicas
+
+If you run multiple Backstage backend instances (which you should in production), you might wonder whether the same retriever runs on every replica simultaneously.
+
+It doesn't. Tech Insights uses the Backstage `TaskScheduler`, which relies on PostgreSQL advisory locks for distributed coordination. Only one replica picks up a given retriever run at a time. The others skip it. This works out of the box with PostgreSQL. If you're still on SQLite (don't do this in production), there's no distributed locking and you'll get duplicate runs.
+
+---
+
 ## Production checklist
 
 Before going live with Tech Insights, verify the following:
@@ -183,12 +213,8 @@ Before going live with Tech Insights, verify the following:
 
 ---
 
-## What is next?
+## What's next?
 
 This is the last technical post in the series. In the [final post](/blog/backstage-tech-insights-series-wrap-up/), we will wrap up with a summary of everything we covered and key takeaways.
 
----
-
-Tech Insights is easy to set up, but running it well in production requires attention to database growth, retriever health, and performance. The issues covered here are the ones that come up most often in real deployments.
-
-Set up monitoring early, keep your lifecycle configuration tight, and stagger your retrievers. Most problems become visible quickly if you are watching the logs.
+Most of these problems become visible quickly if you're watching the logs. Set up monitoring early and you'll catch issues before your users do.
