@@ -24,7 +24,7 @@ He explained about regex, it's requirement,how to use it along with simple examp
 
 **Rahul Talking about regex**
 
-<img src="/rahul.jpg" width="600" height="400" />
+![](/images/rahul.jpg)
 
 .
 
@@ -40,7 +40,7 @@ Links  for my talk:
 
 **Me talking about Automating Boring Stuff**
 
-<img src="/suraj.jpg" width="600" height="400" />
+![](/images/suraj.jpg)
 
 .
 
@@ -52,14 +52,14 @@ As Unit Testing is known as important part of software development process, We c
 
 **Sudhir Talking on Unit Testing**
 
-<img src="/sudhir.jpg" width="600" height="400" />
+![](/images/sudhir.jpg)
 
 .
 Last Talk was Static vs. Dynamic Languages by [Ganesh Kadam](https://twitter.com/meganeshkadam) , He talked about Why [AsciiNema](http://blog.asciinema.org/) ported back to python from Golang as well how language should be chosen depend on requirement. He also explained difference between static and dynamic languages. [Click here for his slides](https://docs.google.com/presentation/d/1Ier4vDqq3d9UAlyhJl5l-6dw4g_e-WH__xzhvqe0-bo/edit#slide=id.p)
 
 **Ganesh Talking about Static & Dynamic Languages**
 
-<img src="/ganesh.jpg" width="600" height="400" />
+![](/images/ganesh.jpg)
 
 .
 
@@ -67,5 +67,5 @@ Finally Chandan told about Openstack community and took positive feedbacks regar
 
 **Python Pune July Meetup Group Photo**
 
-<img src="/pythonpune1.jpeg" width="600" height="400" />
+![](/images/pythonpune1.jpeg)
 

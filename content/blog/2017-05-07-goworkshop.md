@@ -14,7 +14,7 @@ He carried audience through the setup of golang SDK, basic golang semantics, dat
 
 Workshop course material can be found [here](http://talks.godoc.org/github.com/baijum/presentation/golang_workshop/presentation.slide#1).
 
-<img src="/start.jpg" width="400" height="300" align="middle"/>
+![](/images/start.jpg)
 
 Me([SurajN](https://twitter.com/red_suraj)), [SurajD](https://twitter.com/surajd_) and [Zeeshan](https://twitter.com/zee_10000) volunteered for the event. We helped attendees for installing golang and also helped them while they were solving exercises given by Baiju.
 
@@ -22,15 +22,15 @@ At around 1:15pm, we broke off for lunch.
 
 People were eager to learn golang and the workshop was very interactive. 
 
-<img src="/attendee.jpg" width="400" height="300" align="middle"/>
+![](/images/attendee.jpg)
 
 Post lunch [Bargava](https://twitter.com/bargava) explained how golang and Data community converge and what could be the possible future of Data Science in his view.
 
-<img src="/bargava.jpg" width="400" height="300" align="middle"/>
+![](/images/bargava.jpg)
 
 [Baiju's](https://twitter.com/nogenerics) passion for teaching golang was immense and that inspired folks to follow along.
 
-<img src="/baiju1.jpg" width="400" height="300" align="middle"/>
+![](/images/baiju1.jpg)
 
 Meanwhile, [SurajD](https://twitter.com/surajd_) announced [Kubernetes 101 meetup](https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/) which is going to happen on 20th May. Feel free to ping us if you have a venue for this event.
 
@@ -38,7 +38,7 @@ Thanks to [Bargava](https://twitter.com/bargava) & [Baiju](https://twitter.com/n
 
 Stay tuned for [upcoming meetups](https://www.meetup.com/kubernetes-openshift-India-Meetup/events/239381714/).
 
-<img src="/baiju.jpg" width="400" height="300" align="middle"/>
+![](/images/baiju.jpg)
 
 
 # `*Happy Hacking !!!*`

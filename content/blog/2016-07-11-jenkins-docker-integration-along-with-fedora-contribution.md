@@ -27,7 +27,7 @@ provision slave
 run a single build
 tear down the slave
 
-<img src="/docker-jenkins.png" width="600" height="400" />
+![](/images/docker-jenkins.png)
 .
 
 *Setting up the Docker host:*
@@ -85,7 +85,7 @@ Creating Docker image:
 - If everything sets up correctly, the "Test Connection" button should return the current version of Docker running on the host.
   
 
-<img src="/screenshot.png" width="600" height="400" />
+![](/images/screenshot.png)
 .
 
 - Put label of Docker Cloud in Label Expression field in Project configurations, so now Jenkins should start up a new Docker container, run the build, and then shut down the container.

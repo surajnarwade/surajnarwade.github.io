@@ -42,16 +42,16 @@ Navigate to any entity in your catalog. You'll see a new **Tech Insights** tab o
 
 On the entity homepage, you'll see a summary card showing the check status:
 
-![Scorecard on Entity homepage](/content/images/ts-homepage.png)
+![Scorecard on Entity homepage](/images/ts-homepage.png)
 
 
 Each check shows its name, description, and a pass/fail icon. Here's what it looks like for an entity that's failing most checks:
 
-![Tech Insights tab showing scorecard with check results](/content/images/ts-page-example.png)
+![Tech Insights tab showing scorecard with check results](/images/ts-page-example.png)
 
 And here's an entity with more checks configured, most of them passing:
 
-![Tech Insights tab with multiple checks](/content/images/ts-page-prd.png)
+![Tech Insights tab with multiple checks](/images/ts-page-prd.png)
 
 The scorecard groups all your checks into a single view. Notice the score counter in the top right (e.g., "1/5") which gives you a quick pass/fail ratio at a glance.
 

@@ -51,21 +51,21 @@ Thanks to [ChandanKumar](https://twitter.com/ciypro), [Praveen Kumar](https://tw
 
 Satish Patil delivering Session on Machine Learning:
 
-<img src="/ml1.jpg" width="600" height="400" />
+![](/images/ml1.jpg)
 
 *
 
-<img src="/ml5.jpeg" width="600" height="400" />
+![](/images/ml5.jpeg)
 
 *
 
-<img src="/ml3.jpg" width="600" height="400" />
+![](/images/ml3.jpg)
 
 Sudarshan Gadhave Talking about Machine Learning:
 
-<img src="/ml4.jpg" width="600" height="400" />
+![](/images/ml4.jpg)
 
 ChandanKumar talking about Fedora Scientific and OpenSource Contribution:
 
-<img src="/ml2.jpg" width="600" height="400" />
+![](/images/ml2.jpg)
 

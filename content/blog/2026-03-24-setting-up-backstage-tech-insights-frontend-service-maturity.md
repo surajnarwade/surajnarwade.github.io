@@ -171,25 +171,25 @@ Once the plugin is installed and your checks have maturity metadata, here's what
 
 The entity overview page shows a compact maturity card. It tells you the current maturity level of a service at a glance without navigating to a separate page.
 
-![Maturity Summary Card on Entity Home Page](/content/images/sm-homepage.png)
+![Maturity Summary Card on Entity Home Page](/images/sm-homepage.png)
 
 ### Maturity Summary Page (Gold Standard)
 
 Clicking into the maturity tab on a Component entity gives you this detailed view. All checks are grouped by category, and you can see which ones are passing and what rank they belong to.
 
-![Maturity Summary Page Example (Gold Standard)](/content/images/sm-maturity-page2.png)
+![Maturity Summary Page Example (Gold Standard)](/images/sm-maturity-page2.png)
 
 ### Maturity Summary Page (Detailed)
 
 For System, Domain, or Group entities, the maturity page aggregates data across all owned entities. This gives leads and managers a rolled-up view of maturity across their area.
 
-![Maturity Summary Page Example (Detailed)](/content/images/sm-maturitypage1.png)
+![Maturity Summary Page Example (Detailed)](/images/sm-maturitypage1.png)
 
 ### Maturity Page for Systems and Teams
 
 This view shows the category of each check, and if a check is failing, it displays the solution along with a link to documentation so teams can resolve it themselves. It also shows when a given check last ran.
 
-![Maturity Page for System, Teams](/content/images/sm-maturity-team.png)
+![Maturity Page for System, Teams](/images/sm-maturity-team.png)
 
 ---
 

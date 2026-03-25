@@ -27,16 +27,16 @@ Day2 started with KG award(one of the prestigious awards in community ) felicita
 
 Now It was time to encourage, appreciate the efforts of [Python Express](https://pythonexpress.in/) volunteers. We all gathered on the stage. It was an awesome feeling( huge round of applause) :).  We, volunteers conducted Around 88 workshops in 11 states in this python month(10th august to 10th September). Thinking of such grand success, we have decided to run this python express for all 365 days.
 
-<img src="/p2-3.jpg" width="600" height="400" />
+![](/images/p2-3.jpg)
 
-<img src="/p2-5.jpg" width="600" height="400" />
+![](/images/p2-5.jpg)
 
 Much awaited keynote was delivered by [Baishampayan Ghose](https://twitter.com/ghoseb), known as B.G. is the CTO of Helpshift,Inc. He discussed lots of things regarding programmer, systems, etc some of his key points were:
 
 - "Programmer think like bricklayers”
 - “The world is not a program, it's a system... and it's distributed”
   
-<img src="/p2-1.jpg" width="600" height="400" />
+![](/images/p2-1.jpg)
    
 .
 
@@ -44,7 +44,7 @@ Meanwhile, I was at Red Hat booth too, we distributed lots of stickers as well a
 
 Lots of geeks were gathered and crowded  Red Hat booth, were curious about RedHat , RDOproject, solved some there queries too :)
 
-<img src="/p2-4.jpg" width="600" height="400" />
+![](/images/p2-4.jpg)
 .
 
 It was around 4.30 pm and it was time for our 2nd keynote speaker, [Van Lindberg](https://twitter.com/vanl) , Vice President of RackSpace.
@@ -73,21 +73,21 @@ Avoiding Failure:
 - Embrace change
   
 
-<img src="/p2-2.jpg" width="600" height="400" />
+![](/images/p2-2.jpg)
 .
 
 Day 2 ended with PyCon India Dinner Party for volunteers and speakers at BBQ Nation Vasant Kunj, Delhi, It was full of fun and enjoyment. Meanwhile, I found something interesting near BBQ, MINI cooper on a wall :)
 
 .
 
-<img src="/p2-5.jpg" width="600" height="400" />
+![](/images/p2-5.jpg)
 .
 
 *Day3*
 
 Started with the keynote of [Andreas Mueller](https://twitter.com/amuellerml) (Research Engineer at the NYU Center for Data Science)
 
-<img src="/p3-1.jpg" width="600" height="400" />
+![](/images/p3-1.jpg)
 .
 
 As per Andreas,
@@ -104,7 +104,7 @@ Vote of thanks was given by anuvrat Parashar, and announcement of Next PyCon was
 Finally, we had #dgplug group photo, photo sessions and  goodbye with lots of memories and a good stock of knowledge, new friends. Finally thanked to my social media volunteer colleagues Shashank Aryan and Shweta Suman.
 
 
-<img src="/p3-2.jpg" width="600" height="400" />
+![](/images/p3-2.jpg)
 .
 
 Thanks, Sayan, Kushal  for awesome clicks.

@@ -12,7 +12,7 @@ author = "Suraj Narwade"
 
 *PyCon India, the premier conference in India on using and developing the Python programming language is conducted annually by the Python developer community. It attracts the best Python programmers from across the country and abroad.*
 
-![Image](/pycon16logo.png)
+![Image](/images/pycon16logo.png)
 
 **When & Where it is happening ?**
 

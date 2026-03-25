@@ -47,8 +47,8 @@ As I was new to fedora meetup, i got connected with new friends too.
 
 This experiment of meetup was awesome as it was kind of interactive,  rather than just one person talking and others are just listening.
 
-<img src="/fedora.png" width="600" height="400" />
-<img src="/fedora1.png" width="600" height="400" />
+![](/images/fedora.png)
+![](/images/fedora1.png)
 
 1. forget to mention above, we had tasty snacks and drinks too !!! :P
    

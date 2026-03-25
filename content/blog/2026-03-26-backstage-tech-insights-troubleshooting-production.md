@@ -9,7 +9,7 @@ tags = ["backstage", "tech-insights", "platform-engineering", "troubleshooting",
 series = ["Backstage Tech Insights"]
 +++
 
-In the [previous post](/blog/backstage-tech-insights-custom-fact-retrievers/), we built a custom fact retriever to collect data from GitHub. By now you have a working Tech Insights setup: fact retrievers collecting data, checks evaluating it, and a frontend displaying results.
+In the [previous post](/blog/backstage-tech-insights-custom-fact-retrievers/), we built a custom fact retriever to check Kubernetes annotations on running deployments. By now you have a working Tech Insights setup: fact retrievers collecting data, checks evaluating it, and a frontend displaying results.
 
 But running Tech Insights in a development environment is one thing. Running it reliably in production is another.
 

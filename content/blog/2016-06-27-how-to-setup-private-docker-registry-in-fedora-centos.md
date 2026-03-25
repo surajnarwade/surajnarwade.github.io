@@ -13,7 +13,7 @@ When you request container from image,docker usually it looks for container imag
 
 *If you want to keep your images private to yourself only, instead of going them over internet, you want to save to time by pushing and pulling them locally, at that point, Private Docker Registry comes into picture.*
 
-<img src="/private.png" width="500" height="300" />
+![](/images/private.png)
 
 **NOTE :- Docker is not required for Docker registry Server.**
 
@@ -48,7 +48,7 @@ $ systemctl enable docker-registry
 $ systemctl status docker-registry
 ```
 
-<img src="/registry.png" width="600" height="400" />
+![](/images/registry.png)
 
 
 **Allow access to registry for Docker Client**

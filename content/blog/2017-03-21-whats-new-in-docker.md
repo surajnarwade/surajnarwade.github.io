@@ -12,7 +12,7 @@ author = "Suraj Narwade"
 
 * Docker version that I installed is 17.03.0-ce, [Click here](https://docs.docker.com/engine/installation/linux/fedora/) to know how to install Docker
 
-<img src="/docker.png" width="400" height="300" align="middle"/>
+![](/images/docker.png)
 
 * As we can see in docker help, commands are grouped as management commands under names like container, network, image, etc as per their purpose. 
 

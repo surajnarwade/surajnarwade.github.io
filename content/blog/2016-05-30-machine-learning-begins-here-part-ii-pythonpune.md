@@ -71,5 +71,5 @@ Thank you [Amazatic Solutions](http://amazatic.com/), and Stay Connected to [Pyt
 
 .
 
-<img src="/meetup2.jpg" width="600" height="400" />
+![](/images/meetup2.jpg)
 

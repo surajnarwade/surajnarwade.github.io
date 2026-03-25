@@ -39,13 +39,13 @@ $ sudo dnf install audacity -y
 
 * Open `output.mp3` audio file in audacity,
 
-<img src="/sc1.png" width="400" height="300" align="middle"/>
+![](/images/sc1.png)
 
 * select any area of noise where there's no talking, (low frequency)
 
 * Click `Effects` > `Noise Reduction` > `Get noise profile`
 
-<img src="/sc2.png" width="400" height="300" align="middle"/>
+![](/images/sc2.png)
 
 * Now Select whole audio (Ctrl + A) and goto `Effects` > `Noise Reduction` > `OK`
 

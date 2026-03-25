@@ -45,5 +45,5 @@ Thank you !!!
 *Data Science Enthusiast at Meetup:*
 .
 
-<img src="/dojo.jpg" width="600" height="400" />
+![](/images/dojo.jpg)
 

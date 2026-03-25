@@ -12,7 +12,7 @@ author = "Suraj Narwade"
 
 If you want to know python or want to get better at python, this is one of the best avenue to learn and hack. Make new friends having same interest, have a fun !!!
 
-<img src="/pycon16logo.png" width="900" height="400" />
+![](/images/pycon16logo.png)
 
 - **Because you are hiring**
   

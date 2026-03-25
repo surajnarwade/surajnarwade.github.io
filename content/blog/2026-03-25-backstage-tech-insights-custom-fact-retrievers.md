@@ -1,17 +1,17 @@
 +++
 title = "Backstage Tech Insights #7: Custom Fact Retrievers"
 slug = "backstage-tech-insights-custom-fact-retrievers"
-description = "How to build custom fact retrievers in Backstage Tech Insights to collect data from external systems like GitHub, CI tools, and more."
+description = "How to build a custom fact retriever in Backstage Tech Insights that queries the Kubernetes API to check for org-specific annotations on running deployments."
 author = "Suraj Narwade"
 date = "2026-03-25"
 category = "Blog"
-tags = ["backstage", "tech-insights", "platform-engineering", "custom-fact-retrievers"]
+tags = ["backstage", "tech-insights", "platform-engineering", "custom-fact-retrievers", "kubernetes"]
 series = ["Backstage Tech Insights"]
 +++
 
-Over the past six posts, we set up Tech Insights end to end using the three built-in fact retrievers. You have six facts covering metadata completeness, ownership, and TechDocs, and you've seen them in the UI through scorecards and service maturity.
+Over the past six posts, we set up Tech Insights end to end using the three built-in fact retrievers. You have seven facts covering metadata completeness, ownership, and TechDocs, and you've seen them in the UI through scorecards and service maturity.
 
-That's a solid foundation. But those six facts only tell you what's in `catalog-info.yaml`. They can't tell you whether branch protection is enabled on a GitHub repository, whether the last CI build passed, or whether a service has a Dockerfile.
+That's a solid foundation. But those seven facts only tell you what's in `catalog-info.yaml`. They can't tell you whether your Kubernetes deployments have the required annotations, whether the last CI build passed, or whether a service has branch protection enabled.
 
 For that, you need custom fact retrievers.
 
@@ -23,13 +23,15 @@ The built-in retrievers only inspect catalog metadata: `metadata.title`, `metada
 
 You need a custom fact retriever when the data comes from somewhere else:
 
+- **Kubernetes**: required annotations on running deployments, resource limits, replica counts
 - **GitHub/GitLab**: branch protection, open PR count, CODEOWNERS file presence
 - **CI/CD systems**: last build status, deployment frequency
-- **Monitoring tools**: alert count, SLO compliance, whether Snyk is enabled
-- **Package registries**: dependency versions, vulnerability counts
+- **Monitoring tools**: alert count, SLO compliance
 - **Custom APIs**: anything specific to your organization
 
-Let's build one. We'll create a GitHub fact retriever that checks whether repositories have branch protection enabled and a CODEOWNERS file.
+Let's build one. We'll create a Kubernetes fact retriever that checks whether running deployments have required org-specific annotations like `myorg.io/cost-center` and `myorg.io/team`.
+
+This is a practical problem. Teams might set everything correctly in `catalog-info.yaml`, but the actual Kubernetes deployment could be missing annotations that your org requires for cost tracking, ownership, or compliance. A custom fact retriever lets you catch that drift.
 
 ---
 
@@ -41,12 +43,12 @@ A custom fact retriever lives in its own backend module. Backstage provides a sc
 yarn new
 ```
 
-Select `backend-plugin-module`, enter `tech-insights-backend` as the plugin ID, and give your module an ID (e.g., `github-retriever`). This creates the module structure under the `plugins/` directory.
+Select `backend-plugin-module`, enter `tech-insights-backend` as the plugin ID, and give your module an ID (e.g., `kubernetes-annotation-retriever`). This creates the module structure under the `plugins/` directory.
 
 This will also update `packages/backend/package.json` to add the new module as a dependency:
 
 ```json
-"@internal/backstage-plugin-tech-insights-backend-module-github-retriever": "workspace:^",
+"@internal/backstage-plugin-tech-insights-backend-module-kubernetes-annotation-retriever": "workspace:^",
 ```
 
 ---
@@ -63,24 +65,24 @@ Two fields to pay attention to:
 Create a file for the retriever in your new module:
 
 ```typescript
-// plugins/tech-insights-backend-module-github/src/factRetrievers.ts
+// plugins/tech-insights-backend-module-kubernetes-annotation-retriever/src/factRetrievers.ts
 import {
   FactRetriever,
   FactRetrieverContext,
 } from '@backstage/plugin-tech-insights-node';
 
-export const githubFactRetriever: FactRetriever = {
-  id: 'githubFactRetriever',
+export const kubernetesAnnotationFactRetriever: FactRetriever = {
+  id: 'kubernetesAnnotationFactRetriever',
   version: '0.1.0',
-  entityFilter: [{ kind: 'component' }],
+  entityFilter: [{ kind: 'component', 'spec.type': 'service' }],
   schema: {
-    hasBranchProtection: {
+    hasCostCenterAnnotation: {
       type: 'boolean',
-      description: 'Whether the default branch has protection rules enabled',
+      description: 'The Kubernetes deployment has the myorg.io/cost-center annotation',
     },
-    hasCodeowners: {
+    hasTeamAnnotation: {
       type: 'boolean',
-      description: 'Whether the repository has a CODEOWNERS file',
+      description: 'The Kubernetes deployment has the myorg.io/team annotation',
     },
   },
   handler: async ({ auth, discovery, entityFilter }: FactRetrieverContext) => {
@@ -89,14 +91,14 @@ export const githubFactRetriever: FactRetriever = {
 };
 ```
 
-The `entityFilter` field controls which catalog entities this retriever processes. In this case, we only care about components. You can narrow it further:
+The `entityFilter` field controls which catalog entities this retriever processes. Since we're checking Kubernetes deployments, we filter to components of type `service`. You can adjust this to match your catalog structure:
 
 ```typescript
 // Only process components of type service
 entityFilter: [{ kind: 'component', 'spec.type': 'service' }],
 
-// Process components and APIs
-entityFilter: [{ kind: 'component' }, { kind: 'api' }],
+// Process all components
+entityFilter: [{ kind: 'component' }],
 ```
 
 The schema follows the same structure we covered in [post #3](/blog/setting-up-backstage-tech-insights-fact-retrievers/). Each fact gets a type (`boolean`, `number`, or `string`) and a description. The difference with custom retrievers is that these facts come from external systems rather than catalog metadata.
@@ -105,7 +107,9 @@ The schema follows the same structure we covered in [post #3](/blog/setting-up-b
 
 ## Step 3: Write the handler
 
-The handler is where data collection happens. It receives a context object with access to the catalog and auth services. The job is simple: fetch the entities, collect data for each one, and return the facts.
+The handler is where data collection happens. It receives a context object with access to the catalog and auth services. The job is simple: fetch the entities, query the Kubernetes API for each one, and return the facts.
+
+We use the Backstage Kubernetes backend plugin's proxy to talk to clusters. This means you don't need to manage kubeconfig or credentials in your retriever. The Kubernetes plugin handles cluster discovery and authentication.
 
 ```typescript
 handler: async ({ auth, discovery, entityFilter }) => {
@@ -122,51 +126,76 @@ handler: async ({ auth, discovery, entityFilter }) => {
     { token: token.token },
   );
 
+  // Get a token for the Kubernetes plugin
+  const k8sToken = await auth.getPluginRequestToken({
+    onBehalfOf: await auth.getOwnServiceCredentials(),
+    targetPluginId: 'kubernetes',
+  });
+
+  const k8sBaseUrl = await discovery.getBaseUrl('kubernetes');
+
   const facts = [];
 
   for (const entity of entities) {
-    const repoUrl = entity.metadata.annotations?.['backstage.io/source-location'];
+    const namespace = entity.metadata.namespace || 'default';
+    const name = entity.metadata.name;
+    const kind = entity.kind;
 
-    if (!repoUrl) {
-      continue;
-    }
+    let hasCostCenterAnnotation = false;
+    let hasTeamAnnotation = false;
 
-    // Parse the repo URL to get owner and repo name
-    const { owner, repo } = parseRepoUrl(repoUrl);
-
-    // Check branch protection via GitHub API
-    let hasBranchProtection = false;
     try {
+      // Use the Backstage Kubernetes proxy to fetch resources for this entity
       const response = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}/branches/main/protection`,
-        { headers: { Authorization: `token ${githubToken}` } },
+        `${k8sBaseUrl}/resources/workloads/query`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${k8sToken.token}`,
+          },
+          body: JSON.stringify({
+            entity: {
+              metadata: { namespace, name, annotations: entity.metadata.annotations },
+              kind,
+            },
+          }),
+        },
       );
-      hasBranchProtection = response.ok;
-    } catch {
-      hasBranchProtection = false;
-    }
 
-    // Check for CODEOWNERS file
-    let hasCodeowners = false;
-    try {
-      const response = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}/contents/CODEOWNERS`,
-        { headers: { Authorization: `token ${githubToken}` } },
-      );
-      hasCodeowners = response.ok;
+      if (response.ok) {
+        const data = await response.json();
+
+        // Walk through the cluster responses to find deployments
+        for (const cluster of data.items || []) {
+          for (const resource of cluster.resources || []) {
+            if (resource.type !== 'deployments') continue;
+
+            for (const deployment of resource.resources || []) {
+              const annotations = deployment.metadata?.annotations || {};
+              if (annotations['myorg.io/cost-center']) {
+                hasCostCenterAnnotation = true;
+              }
+              if (annotations['myorg.io/team']) {
+                hasTeamAnnotation = true;
+              }
+            }
+          }
+        }
+      }
     } catch {
-      hasCodeowners = false;
+      // If the Kubernetes API is unreachable, facts default to false
     }
 
     facts.push({
       entity: {
-        namespace: entity.metadata.namespace || 'default',
-        kind: entity.kind,
-        name: entity.metadata.name,
+        namespace,
+        kind,
+        name,
       },
       facts: {
-        hasBranchProtection,
-        hasCodeowners,
+        hasCostCenterAnnotation,
+        hasTeamAnnotation,
       },
     });
   }
@@ -178,9 +207,11 @@ handler: async ({ auth, discovery, entityFilter }) => {
 A few things to note:
 
 - The handler fetches entities from the catalog using the provided filter
-- For each entity, it makes API calls to GitHub to collect the data
-- It returns an array of facts, one per entity
-- Error handling matters here since external APIs can fail or be rate-limited
+- For each entity, it queries the Backstage Kubernetes plugin's proxy to get the workload resources
+- It checks the actual deployment annotations, not the catalog metadata
+- If the Kubernetes API is unreachable or the entity has no deployments, facts default to `false`
+
+The Backstage Kubernetes plugin figures out which cluster to query based on the entity's annotations (like `backstage.io/kubernetes-id` or `backstage.io/kubernetes-namespace`). Make sure your entities have these annotations set. You can read more about this in the [Backstage Kubernetes plugin docs](https://backstage.io/docs/features/kubernetes/).
 
 ---
 
@@ -189,13 +220,13 @@ A few things to note:
 Wire up your fact retriever in the generated module file:
 
 ```typescript
-// plugins/tech-insights-backend-module-github/src/module.ts
+// plugins/tech-insights-backend-module-kubernetes-annotation-retriever/src/module.ts
 import { techInsightsFactRetrieversExtensionPoint } from '@backstage-community/plugin-tech-insights-node';
-import { myFactRetriever } from './myFactRetriever';
+import { kubernetesAnnotationFactRetriever } from './factRetrievers';
 
-export const techInsightsModuleMyFactRetriever = createBackendModule({
+export const techInsightsModuleKubernetesAnnotationRetriever = createBackendModule({
   pluginId: 'tech-insights',
-  moduleId: 'my-fact-retriever',
+  moduleId: 'kubernetes-annotation-retriever',
   register(reg) {
     reg.registerInit({
       deps: {
@@ -203,7 +234,7 @@ export const techInsightsModuleMyFactRetriever = createBackendModule({
       },
       async init({ providers }) {
         providers.addFactRetrievers({
-          myFactRetriever,
+          kubernetesAnnotationFactRetriever,
         });
       },
     });
@@ -215,7 +246,7 @@ Then add the module to your backend:
 
 ```typescript
 // packages/backend/src/index.ts
-backend.add(import('./plugins/tech-insights-backend-module-github'));
+backend.add(import('./plugins/tech-insights-backend-module-kubernetes-annotation-retriever'));
 ```
 
 ---
@@ -240,12 +271,12 @@ techInsights:
       cadence: '*/15 * * * *'
       lifecycle: { timeToLive: { weeks: 2 } }
     # your custom retriever
-    githubFactRetriever:
+    kubernetesAnnotationFactRetriever:
       cadence: '0 */6 * * *'
       lifecycle: { timeToLive: { weeks: 2 } }
 ```
 
-The key here must match the `id` field from your fact retriever definition. Since we're calling an external API, a cadence of every 6 hours is a reasonable starting point. You can always adjust this based on how frequently the data changes and your API rate limits.
+The key here must match the `id` field from your fact retriever definition. Since we're querying the Kubernetes API, a cadence of every 6 hours is a reasonable starting point. Kubernetes annotations don't change that often, and you want to avoid putting unnecessary load on your clusters. Adjust based on how frequently your deployments change.
 
 ---
 
@@ -254,40 +285,52 @@ The key here must match the `id` field from your fact retriever definition. Sinc
 Now that you have new facts flowing in, define checks against them just like we did in [post #4](/blog/setting-up-backstage-tech-insights-checks/). Here's a full example with `metadata` for service maturity (covered in [post #6](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/)) and `links` pointing to relevant documentation:
 
 ```yaml
-hasBranchProtection:
+hasCostCenterAnnotation:
   type: json-rules-engine
-  name: Branch Protection Enabled
-  description: The default branch has protection rules enabled. Branch protection prevents direct pushes and enforces review requirements.
+  name: Kubernetes Cost Center Annotation
+  description: The Kubernetes deployment has the myorg.io/cost-center annotation. This annotation is required for cost tracking and chargeback.
   factIds:
-    - githubFactRetriever
+    - kubernetesAnnotationFactRetriever
   rule:
     conditions:
       all:
-        - fact: hasBranchProtection
+        - fact: hasCostCenterAnnotation
           operator: equal
           value: true
   metadata:
-    category: Security
+    category: Compliance
     rank: 2
-    solution: Go to your GitHub repository settings, navigate to Branches, and add a branch protection rule for the default branch. At minimum, enable "Require a pull request before merging".
-  links:
-    - title: GitHub Branch Protection Docs
-      url: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-a-branch-protection-rule
+    solution: Add the myorg.io/cost-center annotation to your Kubernetes deployment manifest. Check the platform team's wiki for the list of valid cost center codes.
+
+hasTeamAnnotation:
+  type: json-rules-engine
+  name: Kubernetes Team Annotation
+  description: The Kubernetes deployment has the myorg.io/team annotation. This annotation is required for ownership tracking at the infrastructure level.
+  factIds:
+    - kubernetesAnnotationFactRetriever
+  rule:
+    conditions:
+      all:
+        - fact: hasTeamAnnotation
+          operator: equal
+          value: true
+  metadata:
+    category: Ownership
+    rank: 1
+    solution: Add the myorg.io/team annotation to your Kubernetes deployment manifest. The value should match your team name in the catalog.
 ```
 
-This check will show up in your scorecards ([post #5](/blog/setting-up-backstage-tech-insights-frontend-scorecards/)) and the maturity dashboard ([post #6](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/)) automatically.
+These checks will show up in your scorecards ([post #5](/blog/setting-up-backstage-tech-insights-frontend-scorecards/)) and the maturity dashboard ([post #6](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/)) automatically.
 
 ---
 
-## Handling rate limits and performance
+## Handling API performance
 
-When your fact retriever calls external APIs, keep these in mind:
+When your fact retriever calls the Kubernetes API, keep these in mind:
 
-- **Batch requests where possible**: use GraphQL APIs or bulk endpoints instead of one call per entity
-- **Add delays between requests**: a simple `await sleep(100)` can avoid hitting rate limits
-- **Use conditional requests**: GitHub supports `If-None-Match` headers to skip unchanged data
-- **Set appropriate timeouts**: large catalogs need longer timeouts
-- **Use entity filters**: narrow the scope to only the entity types that matter
+- **Set appropriate timeouts**: large catalogs need longer timeouts, and some clusters are slower than others
+- **Use entity filters**: narrow the scope to only the entity types that matter. Not every component in your catalog has a Kubernetes deployment
+- **Handle missing deployments gracefully**: some entities might not have any workloads deployed yet. That's fine, just return `false` for the facts
 
 We cover performance tuning in more depth in [post #8](/blog/backstage-tech-insights-troubleshooting-production/), including batching patterns, staggering retriever schedules, and production monitoring.
 
@@ -297,10 +340,16 @@ We cover performance tuning in more depth in [post #8](/blog/backstage-tech-insi
 
 Before deploying, test it locally:
 
-1. **Unit test the handler**: mock the catalog client and external APIs, verify the facts are structured correctly
+1. **Unit test the handler**: mock the catalog client and Kubernetes API responses, verify the facts are structured correctly
 2. **Run locally**: start Backstage locally and check the Tech Insights tab for your new facts
 3. **Check the logs**: the Tech Insights backend logs when retrievers run and if they encounter errors
 4. **Start with a small entity filter**: test with a specific entity before running against the entire catalog
+
+You can also verify facts via the API before setting up checks:
+
+```bash
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/my-service&ids[]=kubernetesAnnotationFactRetriever"
+```
 
 ---
 
@@ -308,9 +357,10 @@ Before deploying, test it locally:
 
 In the [next post](/blog/backstage-tech-insights-troubleshooting-production/), we'll cover troubleshooting common issues and production best practices.
 
-The pattern for building custom fact retrievers is always the same: scaffold a module, define the schema, write a handler, register it, and add checks. Start small and iterate. The visibility alone tends to drive improvement.
+The pattern for building custom fact retrievers is always the same: scaffold a module, define the schema, write a handler, register it, and add checks. Start small and iterate. We picked Kubernetes annotations here, but the same pattern works for any external data source. Once teams see which deployments are missing required annotations, they tend to fix them pretty quickly. The visibility alone drives improvement.
 
 ## References
 
 - [Tech Insights documentation](https://backstage.io/docs/features/tech-insights/)
 - [FactRetriever interface](https://github.com/backstage/backstage/blob/master/plugins/tech-insights-node/src/facts.ts)
+- [Backstage Kubernetes plugin](https://backstage.io/docs/features/kubernetes/)
