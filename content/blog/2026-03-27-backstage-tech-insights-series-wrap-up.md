@@ -9,7 +9,7 @@ tags = ["backstage", "tech-insights", "platform-engineering", "developer-portal"
 series = ["Backstage Tech Insights"]
 +++
 
-This is the final post in the Backstage Tech Insights series. Over the past eight posts, we went from "what is Tech Insights?" to building custom fact retrievers, exploring advanced architecture patterns, and covering production troubleshooting.
+This is the final post in the Backstage Tech Insights series. Over the past eight posts, we went from "what is Tech Insights?" to setting up plugins, retrievers, checks, scorecards, custom retrievers, and production troubleshooting.
 
 Here is everything we covered, with links to each post.
 
@@ -17,21 +17,21 @@ Here is everything we covered, with links to each post.
 
 ## The series
 
-1. **[Introduction to Backstage Tech Insights](/blog/introduction-to-backstage-tech-insights/)** :What Tech Insights is, why it matters, and how it fits into your developer portal. Covers the core concepts: fact retrievers, checks, and scorecards.
+1. **[Introduction to Backstage Tech Insights](/blog/introduction-to-backstage-tech-insights/)**: What Tech Insights is, why it matters, and how it fits into your developer portal. Covers the core concepts: fact retrievers, checks, and scorecards.
 
-2. **[Setting Up Tech Insights :Backend](/blog/setting-up-backstage-tech-insights-backend/)** :Installing and configuring the backend plugin, database setup, and the module system.
+2. **[Setting Up Tech Insights Backend](/blog/setting-up-backstage-tech-insights-backend/)**: Installing and configuring the backend plugin, database setup, and the module system.
 
-3. **[Setting Up Fact Retrievers](/blog/setting-up-backstage-tech-insights-fact-retrievers/)** :How fact retrievers work, the built-in entity metadata fact retriever, fact schemas, handler functions, and scheduling.
+3. **[Setting Up Fact Retrievers](/blog/setting-up-backstage-tech-insights-fact-retrievers/)**: How fact retrievers work, the built-in entity metadata fact retriever, fact schemas, handler functions, and scheduling.
 
-4. **[Setting Up Checks](/blog/setting-up-backstage-tech-insights-checks/)** :Writing checks with the JSON rules engine, available operators, combining conditions with AND/OR logic, and verifying check results via the API.
+4. **[Setting Up Checks](/blog/setting-up-backstage-tech-insights-checks/)**: Writing checks with the JSON rules engine, available operators, combining conditions with AND/OR logic, and verifying check results via the API.
 
-5. **[Scorecards and Visualization](/blog/setting-up-backstage-tech-insights-frontend-scorecards/)** :Defining scorecards to group checks, installing the frontend plugin, and surfacing check results on entity pages.
+5. **[Setting Up Scorecards](/blog/setting-up-backstage-tech-insights-frontend-scorecards/)**: Defining scorecards to group checks, installing the frontend plugin, and surfacing check results on entity pages.
 
-6. **[Setting Up Frontend :Service Maturity](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/)** :Configuring the Service Maturity component for maturity rankings on entity pages.
+6. **[Setting Up Service Maturity](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/)**: Configuring the Service Maturity component for maturity rankings on entity pages.
 
-7. **[Custom Fact Retrievers](/blog/backstage-tech-insights-custom-fact-retrievers/)** :Building your own fact retrievers to collect data from GitHub, CI systems, and other external sources. Covers registration, entity filtering, rate limits, and testing.
+7. **[Building Custom Fact Retrievers](/blog/backstage-tech-insights-custom-fact-retrievers/)**: Building your own fact retrievers to collect data from GitHub, CI systems, and other external sources. Covers registration, entity filtering, rate limits, and testing.
 
-8. **[Troubleshooting & Production Best Practices](/blog/backstage-tech-insights-troubleshooting-production/)** :Debugging common issues, monitoring retriever health, database maintenance, and hardening Tech Insights for production.
+8. **[Troubleshooting & Production Best Practices](/blog/backstage-tech-insights-troubleshooting-production/)**: Debugging common issues, monitoring retriever health, database maintenance, and hardening Tech Insights for production.
 
 ---
 
@@ -39,7 +39,7 @@ Here is everything we covered, with links to each post.
 
 If you take away a few things from this series, let it be these:
 
-- **Start small.** Pick two or three standards that your organisation already cares about. Build retrievers and checks for those first.
+- **Start small.** Pick two or three standards that your organization already cares about. Build retrievers and checks for those first.
 
 - **Visibility drives improvement.** In most cases, teams fix issues simply because they can see them on the entity page. You do not need enforcement to get results.
 
@@ -54,5 +54,7 @@ If you take away a few things from this series, let it be these:
 Tech Insights turns vague standards into something measurable, visible, and trackable.
 
 If you have been following along, you now have everything you need to set it up in your own Backstage instance. Start simple, let the data tell you what to focus on, and build from there.
+
+If you are not sure where to start, pick one standard this week and implement your first check.
 
 Thanks for reading the series.

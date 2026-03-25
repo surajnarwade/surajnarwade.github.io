@@ -19,9 +19,9 @@ This post walks through the backend installation and configuration of the Tech I
 
 Before you start, make sure you have:
 
-- Node.js and Yarn installed
-- A working Backstage instance and codebase
-- Access to the Backstage backend and frontend source code
+- [Node.js](https://nodejs.org/en/download) and [Yarn](https://yarnpkg.com/getting-started/install) installed
+- A working Backstage instance
+- Access to the Backstage codebase
 
 If you do not have a Backstage instance yet, the [official getting started guide](https://backstage.io/docs/getting-started/) is the best place to begin.
 
@@ -31,7 +31,7 @@ If you do not have a Backstage instance yet, the [official getting started guide
 
 The Tech Insights backend is responsible for running fact retrievers, storing facts, and evaluating checks.
 
-Install it in your backend package by running following command from backstage root directory:
+Install it in your backend package by running following command from Backstage root directory:
 
 ```bash
 yarn --cwd packages/backend add @backstage-community/plugin-tech-insights-backend
@@ -47,19 +47,19 @@ In your backend, you need to register the Tech Insights backend plugin. With the
 backend.add(import('@backstage-community/plugin-tech-insights-backend'));
 ```
 
-This registers the core Tech Insights backend, it also consists of built-in fact retrievers but they are not registered yet. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will see how to register these three built-in fact retrievers and configure them in `app-config.yaml`.
+This registers the core Tech Insights backend, it also consists of built-in fact retrievers but they are not registered yet. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will see how to register these built-in fact retrievers and configure them in `app-config.yaml`.
 
 ---
 
 ## Step 3: Configure the database
 
-Tech Insights stores facts in a database. If your Backstage instance already uses PostgreSQL (which is recommended for production), Tech Insights will use the same database connection.
+Tech Insights stores facts in a Backstage database. If your Backstage instance already uses PostgreSQL (which is recommended for production), Unlike any other Backstage plugins, Tech Insights will use the same database connection.
 
 No additional database configuration is needed beyond what Backstage already uses. The plugin creates its own tables automatically on startup.
 
 If you are running SQLite for local development, that works too, but PostgreSQL is strongly recommended for anything beyond local testing.
 
-As per standard backstage practice where it creates database called `backstage_plugin_<plugin-name>`
+As per standard Backstage practice where it creates database called `backstage_plugin_<plugin-name>`
 
 For tech-insights, it will be `backstage_plugin_tech-insights` this is important if you want troubleshoot anything.
 
@@ -91,14 +91,12 @@ mydb=# \l
 
 ---
 
-## A note on the module system
-
 The package we just installed (`plugin-tech-insights-backend`) is the core framework. It handles scheduling, storage, and the API layer. It also has built-in fact retrievers, but they are not registered or activated yet.
 
-This modular design means you can also write your own modules for custom fact retrieval and check logic, which we will cover later in this series.
+By leveraging Backstage modular design, you can also write your own modules which will extend `tech-insights-backend` for custom fact retrieval and check logic, which we will cover later in this series.
 
 ---
 
 ## What is next?
 
-The backend is ready. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will install the built-in fact retrievers module and configure it to start collecting data about your entities.
+The backend is now ready. In the [next post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we will install the built-in fact retrievers and configure it to start collecting data about your entities.

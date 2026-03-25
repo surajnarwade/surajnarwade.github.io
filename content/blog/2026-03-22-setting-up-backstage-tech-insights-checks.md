@@ -9,7 +9,7 @@ tags = ["backstage", "tech-insights", "platform-engineering", "checks"]
 series = ["Backstage Tech Insights"]
 +++
 
-In the [previous post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we set up the three built-in fact retrievers and verified that facts are flowing. We now have six facts being collected for every entity in our catalog.
+In the [previous post](/blog/setting-up-backstage-tech-insights-fact-retrievers/), we set up the built-in fact retrievers and verified that facts are flowing. We now have acts being collected for every entity in our catalog.
 
 Facts on their own are useful, but they become much more valuable when you evaluate them. Checks do exactly that.
 
@@ -19,7 +19,7 @@ A check takes one or more facts and evaluates them against a condition. The resu
 
 ## Installing the check engine
 
-To evaluate facts, we need a check engine. The Tech Insights plugin provides a module called `plugin-tech-insights-backend-module-jsonfc`. The name **jsonfc** stands for **JSON Fact Checker**. Under the hood, it uses [`json-rules-engine`](https://github.com/CacheControl/json-rules-engine), a lightweight library for evaluating rules defined as JSON objects. This means you can define all your checks as JSON-based rules directly in `app-config.yaml` without writing any custom code.
+To evaluate facts, we need a check engine. The Tech Insights plugin provides a backend module called [plugin-tech-insights-backend-module-jsonfc](https://github.com/backstage/community-plugins/tree/main/workspaces/tech-insights/plugins/tech-insights-backend-module-jsonfc). The name **jsonfc** stands for **JSON Fact Checker**. Under the hood, it uses [`json-rules-engine`](https://github.com/CacheControl/json-rules-engine), a lightweight library for evaluating rules defined as JSON objects. This means you can define all your checks as JSON-based rules directly in `app-config.yaml` without writing any custom code.
 
 Install it from your Backstage root directory:
 
@@ -32,8 +32,6 @@ Then register it in your backend (`packages/backend/src/index.ts`):
 ```typescript
 backend.add(import('@backstage-community/plugin-tech-insights-backend-module-jsonfc'));
 ```
-
-The `type` field in each check is set to `json-rules-engine` because this module is built on top of json-rules-engine. This is the default engine that ships with the plugin. You can also bring your own check engine by implementing the `FactCheckerFactory` interface, but for most use cases the built-in engine is all you need.
 
 You can confirm that it's set up via logs:
 
@@ -64,6 +62,10 @@ techInsights:
                 operator: equal
                 value: true
 ```
+
+> Note: The `type` field in each check is set to `json-rules-engine` because as discussed earlier, we will be using `json-rules-engine`. This is the default engine that ships with the plugin. You can also bring your own check engine by implementing the `FactCheckerFactory` interface, but for most use cases the built-in engine is all you need.
+
+Let's look at Check now:
 
 | Field | Required | Description |
 |-------|----------|-------------|
@@ -138,7 +140,9 @@ This is useful when the built-in operators don't cover your comparison logic. Yo
 
 Not every check makes sense for every entity. You might want ownership checks to only apply to production components, or documentation checks to only apply to APIs. Add a `filter` property to your check configuration. You can use dot notation to access nested entity fields.
 
-Fun fact: I contributed the check filtering functionality to this plugin. You can find the PR [here](https://github.com/backstage/community-plugins/pull/6697).
+> Note: If you have custom fact retriever, you can control the filtering in the fact retriever itself.
+
+> Fun fact: I have personally faced filtering issue myself hence I contributed the check filtering functionality to this plugin. You can find the PR [here](https://github.com/backstage/community-plugins/pull/6697).
 
 ```yaml
 groupOwnerCheck:
@@ -209,6 +213,9 @@ techInsights:
         description: Entity has a title in metadata. Add a title field to your catalog-info.yaml.
         factIds:
           - entityMetadataFactRetriever
+        filter:
+          - kind: component
+            spec.lifecycle: production
         rule:
           conditions:
             all:

@@ -9,7 +9,7 @@ tags = ["backstage", "tech-insights", "platform-engineering", "scorecards"]
 series = ["Backstage Tech Insights"]
 +++
 
-In the [previous post](/blog/setting-up-backstage-tech-insights-checks/), we defined checks and verified them through the API. But the only way to see check results right now is by curling the backend. That's not going to work for your teams.
+In the [previous post](/blog/setting-up-backstage-tech-insights-checks/), we defined checks and verified them through the API. But the only way to see check results right now is by curling the backend. That's not the best way, is it?
 
 In this post, we'll install the frontend plugin so check results show up directly on entity pages in the Backstage UI.
 
@@ -63,13 +63,11 @@ If the scorecard appears empty or shows errors, make sure your fact retrievers h
 
 ## What's next?
 
-With the frontend in place, your teams can now see check results directly on their entity pages. No more curling the API.
+With the frontend in place, your teams can now see check results directly on their entity pages and act on.
 
 In the [next post](/blog/setting-up-backstage-tech-insights-frontend-service-maturity/), we'll set up the Service Maturity component which gives you a different way to visualize the same check data.
 
 ---
-
-Scorecards turn your checks into something your teams can actually see and act on. No more curling the API to find out what's passing or failing.
 
 ## References
 

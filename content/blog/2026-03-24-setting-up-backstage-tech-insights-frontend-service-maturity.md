@@ -161,6 +161,8 @@ techDocsConfigured:
 
 The `rank` field is what drives the maturity levels. If any rank 1 check fails, the service stays at Stone.
 
+> Pro Tip: If you want to introduce any check but don't want to associate it with any rank so that it doesn't mess up overall maturity rankings, you can simply not add rank so that check will run but it will not appear in the UI and will not affect the maturity.
+
 ---
 
 ## What it looks like

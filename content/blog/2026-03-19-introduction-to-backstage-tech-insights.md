@@ -9,7 +9,7 @@ tags = ["backstage", "tech-insights", "platform-engineering", "developer-portal"
 series = ["Backstage Tech Insights"]
 +++
 
-If you are running Backstage as your internal developer portal, you have probably dealt with this question at some point:
+If you are running Backstage as your internal developer portal, you have the software catalog in place, you can easily discover services but you have probably dealt with this question at some point:
 
 > How do we know if our services are following the standards we agreed on?
 
@@ -41,14 +41,13 @@ It gives you a structured way to measure and track standards across your organis
 
 In most organisations, standards exist but enforcement is inconsistent.
 
-Someone writes a wiki page that says "every service must have a Dockerfile". But there is no automated way to verify it. Over time, compliance drifts and nobody notices until something breaks.
+Someone writes a wiki page that says "every service must have a specific label or annotation". But there is no automated way to verify it. Over time, compliance drifts and nobody notices until something breaks.
 
 Tech Insights addresses this by:
 
-- **Making standards visible**: instead of hidden wiki pages, checks are surfaced in the Backstage UI next to each entity
 - **Automating verification**: facts are collected automatically on a schedule
-- **Tracking over time**: you can observe whether compliance improves or regresses
-- **Reducing manual audits**: no more spreadsheets or quarterly reviews
+- **Making standards visible**: instead of hidden wiki pages, checks are surfaced in the Backstage UI next to each entity
+- **Actionable Steps**: user can see what checks failed, why failed and possibly link to resolution doc/channels
 
 ---
 
@@ -60,14 +59,14 @@ Tech Insights has three main concepts:
 
 A fact retriever is responsible for collecting facts (data) about entities. It runs on a schedule and stores the results as facts.
 
-For example, a fact retriever might check whether an entity has a specific annotation, or whether a GitHub repository has branch protection enabled.
+For example, a fact retriever might check whether an entity has a specific annotation, or whether a service has snyk enabled.
 
 ### Checks
 
 A check evaluates one or more facts against a condition. For example:
 
 - "Does the entity have a `backstage.io/techdocs-ref` annotation?"
-- "Is the CI pipeline status passing?"
+- "Is Snyk enabled on the service?"
 - "Does the service have more than zero test cases?"
 
 Checks return a simple pass or fail result.
@@ -78,7 +77,7 @@ Scorecards group related checks together. For example, you might have a "Product
 
 ### Service Maturity
 
-Tech Insights Maturity helps teams see where their services stand and what they need to do next. It introduces maturity rankings and categories into your checks.
+Tech Insights Maturity helps teams see where their services stand and what they need to do next. It introduces maturity rankings and categories into your checks. This also shows next actionable steps if checks are failing.
 
 ---
 

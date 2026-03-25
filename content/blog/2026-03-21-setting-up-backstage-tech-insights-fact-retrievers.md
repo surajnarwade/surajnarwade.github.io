@@ -1,7 +1,7 @@
 +++
 title = "Backstage Tech Insights #3: Setting Up Fact Retrievers"
 slug = "setting-up-backstage-tech-insights-fact-retrievers"
-description = "Configure the three built-in fact retrievers in Backstage Tech Insights, understand the facts they produce, and verify data collection."
+description = "Configure the built-in fact retrievers in Backstage Tech Insights, understand the facts they produce, and verify data collection."
 author = "Suraj Narwade"
 date = "2026-03-21"
 category = "Blog"
@@ -66,6 +66,7 @@ The key parts:
 | Field | What it does |
 |-------|-------------|
 | **`id`** | Unique identifier. You will reference this in check configurations later. |
+| **`version`** | Version for the fact retriever, should be changed if there is schema change |
 | **`entityFilter`** | Controls which catalog entities the retriever processes. |
 | **`schema`** | Declares what facts the retriever produces. Each fact has a name, type (`boolean`, `number`, or `string`), and description. |
 | **`handler`** | The function that actually collects the data. It receives entities from the catalog and returns facts for each one. |
@@ -80,7 +81,7 @@ For now, you don't need to write any code. The built-in retrievers are ready to 
 
 The Tech Insights backend plugin we installed in [post #2](/blog/setting-up-backstage-tech-insights-backend/) ships with three built-in fact retrievers. But they won't do anything until you register them in your `app-config.yaml`. Without registration, the backend has no idea which retrievers to run, how often to run them, or how long to keep the data. This applies to custom fact retrievers too. Whether built-in or custom, every fact retriever needs to be registered with a cadence and lifecycle before it starts collecting facts.
 
-The three built-in retrievers are configured under the `techInsights.factRetrievers` key:
+The built-in retrievers can be configured under the `techInsights.factRetrievers` key as shown below:
 
 ```yaml
 techInsights:
@@ -127,11 +128,11 @@ Alternatively, you can limit by count instead of time:
 lifecycle: { maxItems: 10 }
 ```
 
-For most setups, `timeToLive` with `weeks: 2` is a sensible default. Use a shorter TTL if you have many entities or frequent cadences.
+> Note: Use a shorter TTL if you have many entities or frequent cadences.
 
 ---
 
-## The three built-in fact retrievers
+## Built-in fact retrievers
 
 Now let's look at what each retriever collects. Understanding the exact facts they produce is important because you will reference these fact names when defining checks in the next post.
 
@@ -256,7 +257,7 @@ Backstage runs on port `7007` by default. All the API URLs below assume you are 
 
 ### Checking fact schemas
 
-You can verify that all retrievers are properly registered by hitting the fact schemas endpoint:
+You can verify that all retrievers are properly registered by hitting the fact schemas endpoint as shown below:
 
 ```
 curl http://localhost:7007/api/tech-insights/fact-schemas
@@ -269,7 +270,7 @@ This returns the schema for every registered retriever, including the fact names
 Once the retrievers are configured and the cadence has triggered for the first time, verify that facts are flowing by querying the Tech Insights API:
 
 ```bash
-curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/deprecated-service-1&ids[]=entityMetadataFactRetriever"
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/my-service-1&ids[]=entityMetadataFactRetriever"
 ```
 
 You should see a response containing the facts for that entity:
@@ -281,7 +282,7 @@ You should see a response containing the facts for that entity:
     "entity": {
       "namespace": "default",
       "kind": "component",
-      "name": "deprecated-service-1"
+      "name": "my-service-1"
     },
     "timestamp": "2026-03-24T17:13:05.000+00:00",
     "version": "0.0.1",
@@ -297,7 +298,7 @@ You should see a response containing the facts for that entity:
 The `ids[]` parameter is an array, so you can query multiple retrievers at once by repeating it:
 
 ```bash
-curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/deprecated-service-1&ids[]=entityMetadataFactRetriever&ids[]=entityOwnershipFactRetriever"
+curl "http://localhost:7007/api/tech-insights/facts/latest?entity=component:default/my-service-1&ids[]=entityMetadataFactRetriever&ids[]=entityOwnershipFactRetriever"
 ```
 
 output would be:
@@ -309,7 +310,7 @@ output would be:
     "entity": {
       "namespace": "default",
       "kind": "component",
-      "name": "deprecated-service-1"
+      "name": "my-service-1"
     },
     "timestamp": "2026-03-24T17:14:05.000+00:00",
     "version": "0.0.1",
@@ -323,7 +324,7 @@ output would be:
     "entity": {
       "namespace": "default",
       "kind": "component",
-      "name": "deprecated-service-1"
+      "name": "my-service-1"
     },
     "timestamp": "2026-03-24T17:14:05.000+00:00",
     "version": "0.0.1",
@@ -357,10 +358,10 @@ Later, once we set up the frontend ([post #5](/blog/setting-up-backstage-tech-in
 
 ## What is next?
 
-Now that we have facts being collected from all three built-in retrievers, the next step is to define checks that evaluate those facts. In the [next post](/blog/setting-up-backstage-tech-insights-checks/), we will install the check engine and write checks against the seven facts we just set up.
+Now that we have facts being collected from all built-in retrievers, the next step is to define checks that evaluate those facts. In the [next post](/blog/setting-up-backstage-tech-insights-checks/), we will install the check engine and write checks against the facts we just set up.
 
 ---
 
-The three built-in fact retrievers cover the basics that most organisations care about: metadata completeness, ownership, and documentation. Together they produce seven facts that you can start writing checks against immediately.
+The built-in fact retrievers cover the basics that most organisations care about: metadata completeness, ownership, and documentation. Together they produce facts that you can start writing checks against immediately.
 
 Get these running first. Verify the data is flowing via the API. Once you are comfortable with how facts work, we will define checks in the next post. Later in the series ([post #7](/blog/backstage-tech-insights-custom-fact-retrievers/)), we will go beyond catalog metadata and build custom fact retrievers that collect data from external systems like GitHub and CI tools.

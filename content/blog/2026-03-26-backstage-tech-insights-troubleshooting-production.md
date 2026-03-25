@@ -33,6 +33,7 @@ grep -i "tech-insights\|techInsights\|fact-retriever" backstage.log
 Common causes:
 
 - **The retriever is not registered.** Verify that the backend module is added in `packages/backend/src/index.ts` and that the fact retriever is registered via the extension point.
+- **The retriever is not enabled in config.** Defining and registering a retriever in code is not enough. You must also add it under `techInsights.factRetrievers` in `app-config.yaml` with `cadence` and `lifecycle`. If it is missing there, Tech Insights will not schedule it, and no facts will be collected.
 - **The cadence has not triggered yet.** If you set a 6-hour cron, the first run will not happen until the next cron window. For testing, use a short cadence like `*/2 * * * *` (every 2 minutes).
 - **The entity filter matches nothing.** If your `entityFilter` is `[{ kind: 'component', 'spec.type': 'service' }]` but your catalog has no entities matching that filter, no facts will be collected.
 
@@ -73,21 +74,9 @@ curl http://localhost:7007/api/tech-insights/v1/facts/latest?entity=component:de
 
 ---
 
-## Database management
+## Retention and scheduling
 
-### Understanding the Tech Insights tables
-
-Tech Insights creates its own database (`backstage_plugin_tech-insights`) with tables for:
-
-- **Fact schemas**: the registered retriever schemas
-- **Facts**: the actual collected data, one row per entity per retriever per run
-- **Check results**: cached check evaluation results
-
-Over time, the facts table grows with every retriever run.
-
-### Managing data growth
-
-The `lifecycle` configuration controls how long facts are retained:
+The `lifecycle` configuration controls how long facts are retained, and cadence controls how often new facts are collected:
 
 ```yaml
 techInsights:
@@ -97,7 +86,7 @@ techInsights:
       lifecycle: { timeToLive: { weeks: 2 } }
 ```
 
-If you do not set a `lifecycle`, facts are kept indefinitely. For production, always set a TTL.
+If you do not set a `lifecycle`, facts can accumulate indefinitely. For production, set a reasonable TTL for every retriever.
 
 **Sizing guidance:**
 
@@ -106,22 +95,6 @@ If you do not set a `lifecycle`, facts are kept indefinitely. For production, al
 | < 100 entities | Every 15 min | 4 weeks |
 | 100–500 entities | Every hour | 2 weeks |
 | 500+ entities | Every 6 hours | 1 week |
-
-If the database is already large, you can clean up old facts manually:
-
-```sql
-DELETE FROM facts WHERE timestamp < NOW() - INTERVAL '14 days';
-```
-
-Run this during low-traffic hours and vacuum the table afterwards if using PostgreSQL.
-
-### Database migrations
-
-When upgrading the Tech Insights plugin, migrations run automatically on startup. If a migration fails:
-
-1. Check the backend logs for the specific migration error
-2. Verify database permissions. The Backstage database user needs `CREATE TABLE` and `ALTER TABLE` privileges
-3. If the migration is stuck, check if a lock exists in the `knex_migrations_lock` table and release it
 
 ---
 
@@ -139,20 +112,7 @@ At minimum, set up alerts on Tech Insights error logs. Look for:
 
 ### Freshness checks
 
-A useful pattern is to create a "meta" fact retriever that checks the freshness of other retrievers' data:
-
-```typescript
-// Query the facts table directly to check when facts were last updated
-const lastRun = await db.query(
-  `SELECT MAX(timestamp) as last_run FROM facts WHERE retriever_id = $1`,
-  ['entityMetadataFactRetriever']
-);
-
-const hoursSinceLastRun = (Date.now() - lastRun.last_run) / (1000 * 60 * 60);
-if (hoursSinceLastRun > 2) {
-  logger.warn(`entityMetadataFactRetriever has not run in ${hoursSinceLastRun} hours`);
-}
-```
+A useful pattern is to alert on stale retriever activity by monitoring logs and expected run intervals. For example, if a retriever runs every 15 minutes, alert if no successful run is seen for more than 1 hour.
 
 ### Backstage health endpoint
 
@@ -214,8 +174,7 @@ Before going live with Tech Insights, verify the following:
 - [ ] **PostgreSQL** is the database backend (not SQLite)
 - [ ] **Lifecycle/TTL** is configured for every fact retriever
 - [ ] **Cadence** is set appropriately for your catalog size
-- [ ] **Error monitoring** is set up for Tech Insights backend logs
-- [ ] **Database backups** include the `backstage_plugin_tech-insights` database
+- [ ] **Logs** are set up for Tech Insights backend logs
 - [ ] **Entity filters** are scoped correctly, no unnecessary processing
 - [ ] **External API tokens** (GitHub, CI, etc.) are stored securely in Backstage config or a secrets manager
 - [ ] **Rate limits** are accounted for in custom retrievers
