@@ -18,7 +18,7 @@ Running LLMs (large language models) locally is becoming more practical every mo
 
 The quickest way to install Ollama on Linux is the official install script:
 
-```bash
+```
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
@@ -28,7 +28,7 @@ This downloads the binary, sets up a systemd service, and gets everything ready.
 
 Once installed, verify it:
 
-```bash
+```
 ollama --version
 ```
 
@@ -85,7 +85,7 @@ WantedBy=default.target
 
 Now for the fun part. Let us pull a model and start chatting with it.
 
-```bash
+```
 ollama pull gemma4:e2b
 ```
 
@@ -96,7 +96,7 @@ This downloads the model weights. Depending on the model size and your internet 
 
 To see which models you have pulled locally:
 
-```bash
+```
 ollama list
 ```
 
@@ -141,7 +141,7 @@ ollama run gemma4:e2b --think=false
 
 Ollama also exposes a local HTTP API on port 11434. This is useful if you want to integrate it into your own tools or scripts.
 
-```bash
+```
 curl http://localhost:11434/api/generate -d '{
   "model": "gemma4:e2b",
   "prompt": "What is the capital of France?",
